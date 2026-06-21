@@ -8,9 +8,18 @@
 
 ## Phase 2 - Specifications
 
+Status: Sprint 002 completed
+
 - Define the specification format
 - Add examples for different business types
 - Establish validation rules for project briefs
+
+### Sprint 002 - Specification System
+
+- Added the canonical specification schema in `specs/schema.md`
+- Added realistic example specifications for dentist, clinic, and lawyer projects
+- Added a top-level `schema.md` entrypoint for the specification format
+- Established documentation-first rules for future project briefs
 
 ## Phase 3 - Skills
 
@@ -35,4 +44,3 @@
 - Generate websites from specifications
 - Validate outputs through QA
 - Store completed projects in the workspace
-
