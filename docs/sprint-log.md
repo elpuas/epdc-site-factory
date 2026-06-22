@@ -31,3 +31,21 @@ Completed:
 
 Next:
 Frontend Skill Design
+
+## Sprint 004
+
+Goal:
+Define the core implementation skills that future agents will use.
+
+Completed:
+
+- Replaced `skills/astro.md` with Astro + TypeScript implementation guidance covering structure, component rules, performance, accessibility, best practices, and EPDC standards.
+- Replaced `skills/supabase.md` with backend guidance covering database scope, authentication, security, migrations, and EPDC standards.
+- Replaced `skills/seo.md` with implementation guidance covering technical SEO, local SEO, metadata, OpenGraph, structured data, sitemap, robots, and EPDC standards.
+- Replaced `skills/qa.md` with release-oriented QA guidance covering functional, responsive, accessibility, performance, and SEO verification.
+- Added `skills/content.md` to define content structure, page hierarchy, calls to action, service-page guidance, local-business content, and multilingual content rules.
+- Added `docs/skills-architecture.md` to document the flow from specification to planner to tasks to skills to future agents.
+- Updated `docs/roadmap.md` with Sprint 004 status and deliverables.
+
+Next:
+Agent Contract Design
