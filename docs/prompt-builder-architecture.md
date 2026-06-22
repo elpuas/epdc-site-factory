@@ -1,6 +1,6 @@
 # Prompt Builder Architecture
 
-This document defines the first working Prompt Builder layer for EPDC Site Factory.
+This document defines the working Prompt Builder layer for EPDC Site Factory.
 
 ## Workflow
 
@@ -12,7 +12,7 @@ This document defines the first working Prompt Builder layer for EPDC Site Facto
 
 `↓`
 
-`Tasks`
+`Task Runner`
 
 `↓`
 
@@ -24,15 +24,13 @@ This document defines the first working Prompt Builder layer for EPDC Site Facto
 
 `↓`
 
-`Prompt File`
+`Generated Prompt Files`
 
 ## Step 1 - SPEC
 
-The specification remains the source of truth for project scope.
+The specification defines the project scope and remains the source of truth.
 
-<<<<<<< HEAD
-=======
-It defines:
+It establishes:
 
 - Business goals
 - Technical requirements
@@ -43,58 +41,21 @@ It defines:
 - Integrations
 - Acceptance criteria
 
->>>>>>> @{-1}
 ## Step 2 - Planner
 
-The planner turns specification requirements into structured tasks.
+The planner converts specification scope into structured tasks.
 
-<<<<<<< HEAD
-## Step 3 - Tasks
+This matters because the Prompt Builder should never guess scope directly from raw project documents.
 
-Tasks determine the work unit, category ownership, and relevant dependencies.
+## Step 3 - Task Runner
 
-## Step 4 - Context Assembly Engine
+The Task Runner determines which task is being converted into a prompt and which category owns that task.
 
-The context engine builds the input package the prompt builder consumes.
-
-## Step 5 - Prompt Builder
-
-The prompt builder:
-
-- Reads a context package
-- Chooses the correct template
-- Assembles the final prompt
-- Writes a deterministic prompt file
-
-## Step 6 - Prompt File
-
-The output is a rebuildable prompt file stored under `generated-prompts/`.
-
-## Boundaries
-
-The Prompt Builder does not:
-
-- Call Codex
-- Call any AI model
-- Generate websites
-- Implement memory
-- Execute prompts
-=======
-This matters because the prompt builder should not guess what work is in scope. It should build prompts for a concrete planned task category.
-
-## Step 3 - Tasks
-
-Tasks determine:
-
-- Which work unit is being targeted
-- Which category owns the work
-- Which dependencies matter
-
-Tasks are what keep prompt generation deterministic and bounded.
+That gives the Prompt Builder a deterministic upstream work unit instead of a broad project-wide request.
 
 ## Step 4 - Context Assembly Engine
 
-The Context Assembly Engine collects the relevant materials for one unit of work and assembles a context package.
+The Context Engine assembles the canonical JSON context package for that work unit.
 
 That package includes:
 
@@ -105,68 +66,73 @@ That package includes:
 - Constraints
 - Expected output
 
-The prompt builder consumes this package instead of re-reading the raw architecture on every build.
+The Prompt Builder consumes this JSON package directly.
 
 ## Step 5 - Prompt Builder
 
 The Prompt Builder is responsible for:
 
-- Reading a context package
-- Choosing the correct prompt template
-- Assembling the final prompt sections
+- Reading a canonical JSON context package
+- Selecting the correct builder template by category
+- Rendering prompt sections in a stable order
 - Writing a deterministic prompt file
 
-It does not:
+The Prompt Builder does not:
 
 - Call Codex
 - Call any AI model
 - Execute prompts
 - Generate websites
+- Implement orchestration
 - Implement memory
 
-## Step 6 - Prompt File
+## Step 6 - Generated Prompt Files
 
-The output is a Codex-ready prompt file stored in `generated-prompts/`.
+The output of the Prompt Builder is a deterministic markdown prompt file stored in `generated-prompts/`.
 
-This file is:
+These files are:
 
-- Deterministic
 - Rebuildable
-- Derived from a context package and template
-- Separate from execution
+- Derived from source contracts
+- Ready for downstream handoff
+- Still separate from execution
 
-## Responsibilities
+## Prompt Layer Clarification
 
-The Prompt Builder owns:
+The prompt layer has two source types:
 
-- Prompt file construction
-- Template application
-- Deterministic markdown output
-- Prompt-file path reporting through the CLI
+- `prompts/`: guidance documents describing how prompts should be assembled
+- `prompt-builder/templates/`: executable render templates consumed by the builder
 
-The Context Assembly Engine owns:
-
-- Context gathering
-- Context-package construction
-- Source selection for task, agent, and skills
-
-Keeping these responsibilities separate makes it easier to test context quality independently from prompt rendering.
+This split exists so architecture guidance can evolve without changing the final prompt-file layout every time.
 
 ## Boundaries
 
-The Prompt Builder does not implement:
+The Prompt Builder owns:
 
-- Codex integration
-- AI calls
-- Orchestration
-- Memory
-- Website generation
+- Prompt rendering
+- Template application
+- Prompt-file writing
+- CLI output reporting
 
-It only renders prompt files from assembled context.
+The Context Engine owns:
 
-## Current Limitations
+- Context assembly
+- Context-package structure
+- Source selection for task, agent, and skills
 
-- The working CLI currently targets the example frontend, backend, and SEO context packages.
-- The template set exists for QA and Content, but those targets do not yet have generated example outputs in this sprint.
-- The builder currently reads the markdown context-package format defined in `context-engine/`.
->>>>>>> @{-1}
+The Task Runner owns:
+
+- Task iteration
+- Category routing
+- Prompt-file naming for task-level runs
+
+## Current Status
+
+The current implementation supports deterministic prompt generation for:
+
+- `frontend`
+- `backend`
+- `seo`
+- `content`
+- `qa`

@@ -1,143 +1,170 @@
 # EPDC Site Factory
 
-EPDC Site Factory is a workspace for experimenting with how multiple specialized agents could eventually collaborate to generate production-ready websites using Astro and Supabase from structured project specifications.
+EPDC Site Factory is a documentation-first workspace for designing a deterministic pipeline that turns structured project specifications into execution-ready prompt artifacts for future Codex-driven work.
 
-This repository does **not** implement agents, LLM integrations, orchestration logic, or memory systems yet. The current phase establishes a clean foundation for future experimentation, iteration, and documentation.
+The repository currently defines architecture, schemas, contracts, and local CLI layers. It does not call Codex, call any AI model, generate websites, implement orchestration, or implement memory.
 
-## Project Vision
+## Current Architecture
 
-The long-term vision is to create a repeatable workflow where a project specification can be transformed into a generated website through a set of clearly defined responsibilities, reusable skills, templates, and validation steps.
+The current pipeline is:
 
-The repository is designed to support:
+`SPEC`
 
-- Specification-driven website generation
-- Clear separation of agent roles and responsibilities
-- Reusable skills and templates
-- Experimentation with memory strategies
-- Storage of generated project outputs in one workspace
+`↓`
 
-## Current Goals
+`Planner`
 
-This initial scaffolding phase focuses on:
+`↓`
 
-- Establishing the repository structure
-- Defining documentation for future components
-- Creating placeholders for skills, agents, templates, memory, and scripts
-- Keeping the project simple, dependency-free, and easy to evolve
+`Task Runner`
 
-This phase only creates the scaffolding.
+`↓`
 
-## Planned Workflow
+`Context Engine`
 
-The intended future workflow is:
+`↓`
 
-`SPEC -> Planner -> Specialized Agents -> QA -> Generated Project`
+`Prompt Builder`
 
-Conceptually, that means:
+`↓`
 
-1. A specification defines the website requirements.
-2. A planner interprets the specification and breaks the work into tasks.
-3. Specialized agents handle focused concerns such as frontend, backend, SEO, and quality review.
-4. QA validates the generated output against the specification.
-5. The final generated project is stored in the workspace.
+`Generated Prompts`
 
-This workflow is documented here for alignment only. It is not implemented in this phase.
+`↓`
+
+`Codex Handoff Layer`
+
+`↓`
+
+`Codex`
+
+Current execution stops before Codex. The repository prepares deterministic artifacts only.
+
+## Active Layers
+
+### Specification Layer
+
+- Canonical schema: `specs/schema.md`
+- Realistic examples: `specs/examples/`
+
+### Planning Layer
+
+- Planner skill: `skills/planner.md`
+- Planner output schema: `planner/task-schema.json`
+- Example planner output: `planner/example-output.json`
+
+### Agent and Skill Contracts
+
+- Agent registry: `AGENTS.md`
+- Agent contracts: `agents/`
+- Skill contracts: `skills/`
+
+### Context Engine
+
+- Architecture and schema: `context-engine/`
+- Canonical context format: JSON context package
+- CLI: `npm run assemble-context`
+
+### Prompt Layer
+
+- Prompt guidance documents: `prompts/`
+- Prompt builder schema and executable templates: `prompt-builder/`
+- CLI: `npm run build-prompt`
+
+### Task Runner
+
+- Task runner docs and schema: `task-runner/`
+- CLI: `npm run run-tasks`
+
+### Codex Handoff Layer
+
+- Handoff docs and schema: `codex-handoff/`
+- CLI: `npm run prepare-handoff`
+
+## Source Examples vs Generated Artifacts
+
+Source examples:
+
+- `specs/examples/`
+- `prompt-builder/examples/`
+- `codex-handoff/examples/`
+
+Generated artifacts:
+
+- `generated-prompts/`
+- `generated-prompts/tasks/`
+- `codex-handoff/output/`
+
+The source example directories document intended structures. The generated-artifact directories contain deterministic outputs produced by repository scripts.
+
+## Canonical Context Format
+
+The canonical context package format is JSON.
+
+Reason:
+
+- The Context Engine already assembles structured objects.
+- JSON provides one stable format for the Context Engine, Prompt Builder, and Task Runner.
+- Human-readable markdown context examples may still exist for illustration, but they are not the canonical executable format.
 
 ## Repository Structure
 
 ```text
 epdc-site-factory/
-├── README.md
 ├── AGENTS.md
-├── SPEC.md
-├── package.json
+├── README.md
 ├── agents/
-│   ├── backend.md
-│   ├── frontend.md
-│   ├── orchestrator.md
-│   ├── planner.md
-│   ├── qa.md
-│   └── seo.md
+├── codex-handoff/
+├── context-engine/
 ├── docs/
-│   ├── roadmap.md
-│   └── vision.md
-├── memory/
-│   └── README.md
-├── projects/
-│   └── README.md
+├── generated-prompts/
+├── planner/
+├── prompt-builder/
+├── prompts/
 ├── scripts/
-│   ├── create-project.js
-│   └── run-orchestrator.js
 ├── skills/
-│   ├── astro.md
-│   ├── planner.md
-│   ├── qa.md
-│   ├── seo.md
-│   └── supabase.md
+├── specs/
+├── task-runner/
 └── templates/
-    ├── clinic/
-    │   └── README.md
-    ├── dentist/
-    │   └── README.md
-    ├── lawyer/
-    │   └── README.md
-    └── local-business/
-        └── README.md
 ```
+
+## CLI Entry Points
+
+- `npm run assemble-context`
+- `npm run build-prompt`
+- `npm run run-tasks`
+- `npm run prepare-handoff`
 
 ## Design Principles
 
-- Use Node.js as the runtime for future automation scripts
-- Use ESM modules consistently
-- Prefer markdown documentation before implementation
-- Keep all early decisions easy to revise
-- Avoid external dependencies until they are justified
-- Optimize for experimentation and learning rather than completeness
+- Keep specifications as the source of truth.
+- Keep every layer deterministic and inspectable.
+- Separate contracts from generated artifacts.
+- Separate context assembly from prompt rendering.
+- Separate prompt rendering from Codex handoff.
+- Avoid external dependencies unless clearly justified.
 
-## Future Roadmap
+## Out Of Scope
 
-### Phase 1: Repository Structure
+The repository still does not implement:
 
-Create the scaffold, documentation, placeholders, and baseline conventions.
+- Codex execution
+- AI model calls
+- Website generation
+- Orchestration
+- Memory
+- External API integration
 
-### Phase 2: Specifications
+## Current Status
 
-Define how website specifications should be authored, validated, versioned, and extended.
+The project has progressed from scaffolding into a deterministic pre-execution pipeline:
 
-### Phase 3: Skills
+- Specification schema defined
+- Planner contract defined
+- Agent and skill contracts defined
+- Context assembly implemented
+- Prompt generation implemented
+- Task runner implemented
+- Codex handoff packaging implemented
 
-Document reusable capabilities for planning, Astro generation, Supabase setup, SEO work, and QA.
-
-### Phase 4: Agent Orchestration
-
-Explore how multiple specialized agents may coordinate around a shared specification and execution flow.
-
-### Phase 5: Memory
-
-Design working memory, long-term memory, storage schemas, and retrieval strategies.
-
-### Phase 6: Project Generation
-
-Generate, review, and iterate on real Astro + Supabase projects from specifications.
-
-## What Is Not Implemented
-
-The following are intentionally out of scope for this phase:
-
-- AI agents
-- LLM integrations
-- Memory systems
-- Orchestration logic
-- Generated website code
-- External service integrations
-
-## Next Steps
-
-Immediate next steps after this scaffolding phase could include:
-
-- Formalizing the specification format
-- Expanding the skill definitions
-- Defining agent contracts and handoff boundaries
-- Creating initial template standards
-- Designing validation criteria for generated projects
-
+The next stages should build on this cleanup baseline rather than adding new overlapping formats.

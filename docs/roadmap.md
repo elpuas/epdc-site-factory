@@ -4,7 +4,7 @@
 
 - Create the base repository layout
 - Add foundational documentation
-- Add placeholders for agents, skills, templates, memory, projects, and scripts
+- Establish early conventions for scripts, agents, skills, and project storage
 
 ## Phase 2 - Specifications
 
@@ -19,104 +19,107 @@ Status: Sprint 002 completed
 - Added the canonical specification schema in `specs/schema.md`
 - Added realistic example specifications for dentist, clinic, and lawyer projects
 - Added a top-level `schema.md` entrypoint for the specification format
-- Established documentation-first rules for future project briefs
 
-## Phase 3 - Skills
+## Phase 3 - Planning And Skills
 
 Status: Sprint 004 completed
 
-- Expand skill definitions
-- Standardize inputs and outputs
-- Define reusable patterns for frontend, backend, SEO, and QA
+- Define planning output contracts
+- Standardize reusable implementation knowledge
+- Establish domain-specific skill guidance
 
 ### Sprint 003 - Planner Skill Design
 
-- Replaced the planner placeholder with a documented Planner Skill contract
-- Added a JSON schema for planner task output in `planner/task-schema.json`
-- Added a realistic dentist-based planning example in `planner/example-output.json`
-- Documented the specification-to-task planning workflow in `docs/planning-process.md`
+- Added `skills/planner.md`
+- Added `planner/task-schema.json`
+- Added `planner/example-output.json`
+- Added `docs/planning-process.md`
 
 ### Sprint 004 - Core Skills Foundation
 
-- Replaced the Astro, Supabase, SEO, and QA skill placeholders with implementation guidance
-- Added the new Content Skill in `skills/content.md`
-- Added `docs/skills-architecture.md` to explain the flow from specifications to tasks to skills to future agents
-- Established EPDC implementation standards for frontend, backend, content, SEO, and QA knowledge
+- Added implementation guidance for Astro, Supabase, SEO, QA, and Content
+- Added `docs/skills-architecture.md`
 
-## Phase 4 - Agent Orchestration
+## Phase 4 - Agent Contracts
 
 Status: Sprint 005 completed
 
-- Define agent contracts
-- Explore task routing and handoffs
-- Prototype orchestration flow
+- Define agent responsibilities and handoff boundaries
+- Keep planner and specialist roles separate
 
 ### Sprint 005 - Agent Definitions
 
-- Replaced placeholder agent documents with full contracts for Planner, Frontend, Backend, SEO, QA, and Content agents
-- Added `agents/content.md` as the dedicated content-agent contract
-- Converted `AGENTS.md` into the central registry for all specialized agents
-- Added `docs/agent-architecture.md` to document the flow from specification to planner to specialized agents to outputs
+- Added full contracts for Planner, Frontend, Backend, SEO, QA, and Content agents
+- Converted `AGENTS.md` into the central registry
+- Added `docs/agent-architecture.md`
 
-## Phase 5 - Prompt Generation Layer
+## Phase 5 - Prompt Design
 
 Status: Sprint 008 completed
 
 - Define reusable prompt structure
-- Assemble prompts from specifications, tasks, agents, and skills
-- Prepare Codex-ready prompt contracts for future execution
+- Define prompt guidance documents
+- Add deterministic builder templates and CLI output
 
 ### Sprint 006 - Prompt Generation Layer
 
-- Added agent-specific prompt templates in `prompts/`
-- Added the prompt builder documentation layer in `prompt-builder/`
-- Added realistic dentist-based prompt examples for frontend, backend, and SEO
-- Added `docs/prompt-architecture.md` to document the flow from specification to prompt assembly to Codex
+- Added prompt guidance documents in `prompts/`
+- Added `prompt-builder/prompt-schema.md`
+- Added source prompt examples in `prompt-builder/examples/`
+- Added `docs/prompt-architecture.md`
 
 ### Sprint 008 - Prompt Builder CLI
 
-- Added the working Prompt Builder CLI in `scripts/build-prompt.js`
-- Added deterministic final-render templates in `prompt-builder/templates/`
-- Added generated prompt outputs in `generated-prompts/`
-- Added expected generated-output examples in `prompt-builder/examples/`
-- Added `docs/prompt-builder-architecture.md` to document the flow from context package to prompt file
+- Added `scripts/build-prompt.js`
+- Added executable builder templates in `prompt-builder/templates/`
+- Added prompt artifacts in `generated-prompts/`
+- Added `docs/prompt-builder-architecture.md`
 
-## Phase 6 - Context Assembly Engine
+## Phase 6 - Context And Task Preparation
 
-Status: Sprint 009 completed
+Status: Sprint 010 completed
 
-- Gather specifications, tasks, agent definitions, and skill definitions into context packages
-- Provide a deterministic pre-execution assembly layer
-- Keep context assembly separate from prompt execution and Codex integration
+- Assemble execution context deterministically
+- Turn planner output into task-level prompts
+- Clean up overlapping formats and clarify layer boundaries
 
 ### Sprint 007 - Context Assembly Engine
 
-- Added the context engine documentation layer in `context-engine/`
-- Added example context packages for frontend, backend, and SEO based on the dentist specification
-- Added `scripts/assemble-context.js` to simulate context assembly and print `Assembled Context`
-- Added `docs/context-architecture.md` to document the flow from specification to context package
-
-### Sprint 008 - Prompt Builder CLI
-
-- Added the working Prompt Builder CLI in `scripts/build-prompt.js`
-- Added deterministic final-render templates in `prompt-builder/templates/`
-- Added prompt output storage in `generated-prompts/`
-- Added `docs/prompt-builder-architecture.md` to document the flow from context package to prompt file
+- Added `context-engine/`
+- Added `scripts/assemble-context.js`
+- Added `docs/context-architecture.md`
 
 ### Sprint 009 - Task Runner Foundation
 
-- Added the Task Runner documentation layer in `task-runner/`
-- Added `scripts/run-tasks.js` to convert planner tasks into task-specific prompt files
-- Added deterministic task prompt output in `generated-prompts/tasks/`
-- Added `docs/task-runner-architecture.md` to document the flow from planner output to task prompt files
+- Added `task-runner/`
+- Added `scripts/run-tasks.js`
+- Added task-level prompt artifacts in `generated-prompts/tasks/`
+- Added `docs/task-runner-architecture.md`
 
-## Phase 7 - Memory
+### Sprint 010 - Architecture Cleanup + Codex Handoff Layer
+
+- Resolved active documentation merge conflicts
+- Updated the repository docs to reflect the current architecture
+- Chose JSON as the canonical context-package format
+- Clarified the distinction between prompt guidance documents and builder templates
+- Clarified source examples versus generated artifacts
+- Added the Codex Handoff layer in `codex-handoff/`
+- Added `scripts/prepare-codex-handoff.js`
+- Added `docs/codex-handoff-architecture.md`
+
+## Phase 7 - Execution Handoff
+
+- Package generated prompts for execution surfaces
+- Preserve deterministic boundaries before model execution
+- Prepare for future Codex integration without invoking it yet
+
+## Phase 8 - Memory
 
 - Design working memory structures
 - Explore long-term knowledge storage
-- Evaluate SQLite and vector retrieval strategies
+- Evaluate SQLite and retrieval strategies
 
-## Phase 8 - Project Generation
+## Phase 9 - Project Generation
 
 - Generate websites from specifications
 - Validate outputs through QA

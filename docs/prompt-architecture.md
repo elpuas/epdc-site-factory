@@ -1,6 +1,6 @@
 # Prompt Architecture
 
-This document defines the Prompt Generation Layer for EPDC Site Factory.
+This document defines the prompt layer for EPDC Site Factory.
 
 ## Workflow
 
@@ -12,7 +12,7 @@ This document defines the Prompt Generation Layer for EPDC Site Factory.
 
 `↓`
 
-`Tasks`
+`Task Runner`
 
 `↓`
 
@@ -20,11 +20,11 @@ This document defines the Prompt Generation Layer for EPDC Site Factory.
 
 `↓`
 
-`Agent`
+`Prompt Guidance`
 
 `↓`
 
-`Skill`
+`Prompt Builder Templates`
 
 `↓`
 
@@ -32,146 +32,68 @@ This document defines the Prompt Generation Layer for EPDC Site Factory.
 
 `↓`
 
-`Codex`
+`Generated Prompts`
 
-## Step 1 - SPEC
+## Prompt Layer Split
 
-The project specification remains the source of truth.
+The prompt layer has two distinct source types.
 
-It provides:
+### Prompt Guidance
 
-- Business goals
-- Technical requirements
-- Pages
-- Features
-- SEO requirements
-- Content requirements
-- Integrations
-- Acceptance criteria
+Location:
 
-Prompt assembly begins here because prompts must stay grounded in actual project requirements.
+- `prompts/`
 
-## Step 2 - Planner
+Purpose:
 
-The planning layer translates the specification into structured work.
+- Describe how prompts for each role should be assembled
+- Explain source inputs, boundaries, and expected outputs
+- Provide architecture guidance, not executable templates
 
-It determines:
+### Prompt Builder Templates
 
-- What tasks exist
-- Which category owns each task
-- Which tasks depend on other tasks
-- What priority each task has
+Location:
 
-Without planning, prompt generation would be forced to infer scope directly from the raw specification, which would create inconsistent prompt boundaries.
+- `prompt-builder/templates/`
 
-## Step 3 - Tasks
+Purpose:
 
-The task layer narrows the prompt scope.
+- Define the final render structure used by the builder
+- Provide placeholder-based executable prompt-file templates
 
-Prompt generation should use tasks to determine:
+## Why The Split Exists
 
-- Which agent should receive the prompt
-- Which subset of the specification matters for that prompt
-- Which dependencies or upstream work must be referenced
+The guidance documents explain prompt intent and responsibilities. The builder templates define the final file shape.
 
-Tasks are the main filtering mechanism that prevents overly broad prompts.
+Keeping them separate allows the repository to:
 
-## Step 4 - Context Assembly Engine
+- Evolve prompt guidance without rewriting builder templates unnecessarily
+- Keep executable templates minimal and deterministic
+- Distinguish source documentation from generated artifacts
 
-The context engine assembles the source package that prompt generation can consume deterministically.
+## Canonical Inputs
 
-This matters because the prompt builder should not have to reconstruct ownership, skills, and constraints from raw files on every run.
+The Prompt Builder consumes:
 
-## Step 5 - Agent
+- Planner-scoped task ownership
+- Canonical JSON context packages
+- Agent contracts
+- Skill contracts
+- Builder templates
 
-The agent contract defines the role that the prompt should assume.
+## Output
 
-The prompt builder pulls from the relevant agent definition to determine:
+The output is a generated prompt artifact in `generated-prompts/`.
 
-- Role
-- Responsibilities
-- Required context
-- Outputs
-- Constraints
-- Success posture
+These prompt files are then eligible for downstream packaging by the Codex Handoff Layer.
 
-This ensures prompt identity comes from the documented architecture instead of ad hoc role descriptions.
+## Boundary
 
-## Step 6 - Skill
+This prompt layer does not:
 
-The skill layer defines the implementation standards that the prompt must enforce.
-
-The prompt builder pulls standards from the relevant skill documents so prompts inherit:
-
-- Frontend rules
-- Backend rules
-- SEO rules
-- QA rules
-- Content rules
-- Planning rules
-
-Skills keep prompts aligned with EPDC standards without forcing every prompt to rewrite those standards from scratch.
-
-## Step 7 - Prompt Builder
-
-The Prompt Builder assembles the final prompt.
-
-Its responsibilities are:
-
-- Consume the assembled context package
-- Assemble prompt sections in a stable order
-- Preserve traceability back to the specification, tasks, agent, and skills
-- Produce a Codex-ready prompt without implementing Codex integration
-
-The reusable prompt structure is defined in `prompt-builder/prompt-schema.md`.
-
-## Step 8 - Codex
-
-Codex is the target consumer of the assembled prompt.
-
-In this repository phase, Codex is only the conceptual destination of the prompt. This layer does not:
-
-- Integrate Codex
+- Call Codex
+- Call any AI model
 - Execute prompts
-- Route prompts automatically
-- Manage prompt history or memory
-
-It only defines what a future Codex-facing prompt should look like and how it should be assembled.
-
-## Assembly Principles
-
-- The specification remains the source of truth.
-- Tasks determine prompt scope.
-- Agent definitions determine prompt identity and output expectations.
-- Skill definitions determine standards and implementation rules.
-- Prompts should be filtered to the assigned work rather than bloated with every available document.
-- Prompt structure should stay consistent across domains.
-
-## Example Assembly
-
-For a frontend prompt based on the dentist project:
-
-1. Start with `specs/examples/dentist.md`.
-2. Assemble the relevant frontend context package.
-3. Load the frontend template and the context package.
-4. Assemble the prompt using the schema sections:
-   - Role
-   - Responsibilities
-   - Context
-   - Task
-   - Standards
-   - Constraints
-   - Expected Output
-5. Produce a Codex-ready prompt that is narrow enough to be actionable and broad enough to include all required implementation context.
-
-## Current Boundary
-
-This prompt architecture does not implement:
-
-- AI systems
-- Orchestration
-- Memory
-- Codex integration
-- Website generation
-
-It only defines the prompt assembly contract that future execution systems would use.
+- Generate websites
+- Implement orchestration
+- Implement memory

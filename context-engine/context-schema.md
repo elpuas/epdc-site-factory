@@ -1,130 +1,131 @@
 # Context Schema
 
-This document defines the reusable structure for EPDC context packages.
+This document defines the canonical EPDC context-package format.
 
-## Purpose
+## Canonical Format Decision
 
-A context package is the assembled input bundle for one unit of agent-owned work.
+The canonical context package format is JSON.
 
-It packages the materials that a future execution layer would need without making that execution layer responsible for gathering raw documents on its own.
+Reason:
+
+- The Context Engine assembles structured objects natively.
+- JSON is the simplest deterministic interchange format between the Context Engine, Prompt Builder, and Task Runner.
+- The prior markdown representation was useful for human readability, but it created ambiguity between documentation examples and executable artifacts.
+
+Markdown context examples may still exist as illustrative source material. They are not the canonical executable format.
 
 ## Canonical Structure
 
-Every context package should contain:
+Every context package should follow this JSON shape:
 
-```md
-# Context Package
-
-## Project Specification
-
-## Assigned Task
-
-## Agent Definition
-
-## Required Skills
-
-## Constraints
-
-## Expected Output
+```json
+{
+  "target": "frontend",
+  "projectSpecification": {
+    "project": {
+      "name": "Harbor Point Dental Studio",
+      "slug": "harbor-point-dental-studio",
+      "industry": "Family dentistry and cosmetic dental care",
+      "sourceSpecification": "specs/examples/dentist.md"
+    },
+    "planningSummary": {
+      "primaryGoal": "Increase new patient appointment requests from families and working professionals in the East Bay area.",
+      "scopeSummary": "Plan the implementation work for a static-first Astro marketing site focused on appointment conversion, local dental SEO, treatment-specific service pages, and launch-ready form delivery without a database.",
+      "constraints": [
+        "Framework must remain Astro-based."
+      ]
+    },
+    "sourceSpecification": "specs/examples/dentist.md",
+    "relevantTaskCategory": "frontend"
+  },
+  "assignedTask": {
+    "id": "frontend-core-pages",
+    "title": "Plan implementation of Home, About, Services, New Patients, Reviews, and Contact pages",
+    "description": "Break down the core site pages that support the main appointment-conversion journey.",
+    "category": "frontend",
+    "priority": "high",
+    "dependencies": [
+      "frontend-site-foundation"
+    ]
+  },
+  "agentDefinition": {
+    "file": "agents/frontend.md",
+    "content": "# Frontend Agent..."
+  },
+  "requiredSkills": [
+    {
+      "file": "skills/astro.md",
+      "content": "# Astro Skill..."
+    }
+  ],
+  "constraints": [
+    "Do not integrate Codex."
+  ],
+  "expectedOutput": [
+    "Frontend implementation guidance"
+  ]
+}
 ```
 
-## Section Definitions
+## Field Definitions
 
-### Project Specification
+### `target`
 
-Contains the specification material relevant to the assigned task.
+- Category-oriented context target
+- Expected values currently match planner categories such as `frontend`, `backend`, `seo`, `content`, or `qa`
 
-This should include:
+### `projectSpecification`
 
-- Project identity
-- Relevant business goal
-- Relevant technical requirements
-- Relevant page, feature, SEO, content, integration, or acceptance requirements
+- Filtered specification data relevant to the assigned task
+- Includes project identity, planning summary, source specification, and relevant task category
 
-This section should be filtered to the assigned work rather than duplicating the full specification by default.
+### `assignedTask`
 
-### Assigned Task
+- One planner task
+- Includes `id`, `title`, `description`, `category`, `priority`, and `dependencies`
 
-Contains the specific planner task being assembled.
+### `agentDefinition`
 
-This should include:
+- The owning agent contract
+- Includes the source file path and full contract content
 
-- Task `id`
-- Task `title`
-- Task `description`
-- Task `category`
-- Task `priority`
-- Task `dependencies`
+### `requiredSkills`
 
-This section is the anchor that determines which agent and skills are required.
+- Array of required skill documents
+- Includes the source file path and full skill content for each required skill
 
-### Agent Definition
+### `constraints`
 
-Contains the relevant agent contract material for the task.
+- Combined execution boundaries for the work package
+- Includes planning constraints and repository-wide phase restrictions
 
-This should include:
+### `expectedOutput`
 
-- Agent purpose
-- Agent responsibilities
-- Agent inputs
-- Agent required context
-- Agent constraints
-- Agent success criteria
-
-This section should come from the corresponding file in `agents/`.
-
-### Required Skills
-
-Contains the implementation standards required by the target agent.
-
-This should include:
-
-- Skill names
-- Why each skill is required for the assigned task
-- The relevant standards or rules pulled from those skill documents
-
-This section should include only the skills listed by the agent contract.
-
-### Constraints
-
-Contains the non-negotiable boundaries for the assembled work package.
-
-This should combine:
-
-- Specification constraints
-- Agent constraints
-- Skill constraints that materially affect the task
-- Repository-wide phase boundaries such as no AI, no orchestration, no memory, and no website generation
-
-### Expected Output
-
-Contains the output shape that the future execution layer should produce from this context package.
-
-Examples:
-
-- Frontend implementation guidance
-- Backend handling notes
-- SEO requirements
-- QA findings
-- Prompt-ready material
+- Domain-specific output guidance for the downstream consumer
 
 ## Assembly Rules
 
-- Start from a single assigned task.
-- Identify the owning agent from the task category.
+- Start from one planner task.
+- Identify the owning category from that task.
 - Load the owning agent contract.
-- Load the skills required by that agent.
-- Pull only the specification material relevant to that task.
-- Preserve traceability to the original source files.
-- Keep the package narrow enough to be actionable.
+- Load the required skill contracts for that agent.
+- Filter specification data to the assigned task.
+- Preserve traceability through source file references.
+- Keep the package deterministic for the same planner input.
 
-## Context Quality Checklist
+## Boundary
 
-Before a context package is considered complete, confirm:
+The context package is an assembly artifact, not an execution artifact.
 
-- The task is explicit.
-- The owning agent is explicit.
-- The relevant specification context is present.
-- The required skills are present.
-- Constraints are preserved.
-- The expected output is specific to the assigned work.
+It exists to support:
+
+- Prompt building
+- Reviewability
+- Future handoff packaging
+
+It does not imply:
+
+- Codex execution
+- AI calls
+- Orchestration
+- Memory

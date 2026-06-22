@@ -2,33 +2,30 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
+import { buildContextPackageByTarget } from "./assemble-context.js";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
 
 const targetMap = {
   frontend: {
-    contextPath: "context-engine/examples/frontend-context.md",
     templatePath: "prompt-builder/templates/frontend-template.md",
     outputPath: "generated-prompts/generated-frontend-prompt.md",
   },
   backend: {
-    contextPath: "context-engine/examples/backend-context.md",
     templatePath: "prompt-builder/templates/backend-template.md",
     outputPath: "generated-prompts/generated-backend-prompt.md",
   },
   seo: {
-    contextPath: "context-engine/examples/seo-context.md",
     templatePath: "prompt-builder/templates/seo-template.md",
     outputPath: "generated-prompts/generated-seo-prompt.md",
   },
   qa: {
-    contextPath: null,
     templatePath: "prompt-builder/templates/qa-template.md",
     outputPath: "generated-prompts/generated-qa-prompt.md",
   },
   content: {
-    contextPath: null,
     templatePath: "prompt-builder/templates/content-template.md",
     outputPath: "generated-prompts/generated-content-prompt.md",
   },
@@ -69,119 +66,78 @@ function splitSections(markdown) {
   return sections;
 }
 
-function parseEntries(sectionBody) {
-  const entries = [];
-  let current = null;
-
-  for (const line of sectionBody.split("\n")) {
-    const fieldMatch = line.match(/^- ([^:]+):\s*(.*)$/);
-    const itemMatch = line.match(/^  - (.*)$/);
-    const bulletMatch = line.match(/^- (.*)$/);
-
-    if (fieldMatch) {
-      current = {
-        label: fieldMatch[1].trim(),
-        value: fieldMatch[2].trim(),
-        items: [],
-      };
-      entries.push(current);
-      continue;
-    }
-
-    if (itemMatch && current) {
-      current.items.push(itemMatch[1].trim());
-      continue;
-    }
-
-    if (bulletMatch) {
-      current = {
-        label: null,
-        value: bulletMatch[1].trim(),
-        items: [],
-      };
-      entries.push(current);
-    }
-  }
-
-  return entries;
-}
-
-function getEntry(entries, label) {
-  return entries.find((entry) => entry.label?.toLowerCase() === label.toLowerCase());
-}
-
 function renderBullets(items) {
   return items.filter(Boolean).map((item) => `- ${item}`).join("\n");
 }
 
-function renderContext(projectEntries, taskEntries) {
-  const projectBlock = renderBullets(
-    projectEntries.map((entry) => {
-      if (entry.label && entry.items.length > 0 && entry.value) {
-        return `${entry.label}: ${entry.value}`.trim();
-      }
+function extractHeading(markdown) {
+  return markdown.match(/^#\s+(.+)$/m)?.[1]?.trim() || "Specialized Agent";
+}
 
-      if (entry.label && entry.items.length === 0) {
-        return `${entry.label}: ${entry.value}`.trim();
-      }
+function extractBulletLines(sectionBody) {
+  return sectionBody
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith("- "))
+    .map((line) => line.replace(/^- /, "").trim());
+}
 
-      return entry.items.length === 0 ? entry.value : null;
-    }),
-  );
+function extractContractData(markdown) {
+  const sections = splitSections(markdown);
 
-  const nestedProjectDetails = projectEntries
-    .filter((entry) => entry.items.length > 0)
-    .map((entry) => {
-      const heading = `### ${entry.label}`;
-      const body = renderBullets(entry.items);
-      return `${heading}\n\n${body}`;
-    })
-    .join("\n\n");
+  return {
+    heading: extractHeading(markdown),
+    purpose: sections.Purpose?.replace(/\s+/g, " ").trim() || "",
+    responsibilities: extractBulletLines(sections.Responsibilities || ""),
+    constraints: extractBulletLines(sections.Constraints || ""),
+  };
+}
 
-  const taskBlock = renderBullets(
-    taskEntries.map((entry) => {
-      if (entry.label && entry.items.length > 0 && entry.value) {
-        return `${entry.label}: ${entry.value}`.trim();
-      }
+function extractSkillStandards(skill) {
+  const sections = splitSections(skill.content);
+  const standardsSection = sections["EPDC Standards"] || sections.Responsibilities || "";
+  const standards = extractBulletLines(standardsSection);
 
-      if (entry.label && entry.items.length === 0) {
-        return `${entry.label}: ${entry.value}`.trim();
-      }
+  return {
+    file: skill.file,
+    standards: standards.length > 0 ? standards : ["Use the documented standards from this skill file."],
+  };
+}
 
-      return entry.items.length === 0 ? entry.value : null;
-    }),
-  );
-
-  const nestedTaskDetails = taskEntries
-    .filter((entry) => entry.items.length > 0)
-    .map((entry) => {
-      const heading = `### ${entry.label}`;
-      const body = renderBullets(entry.items);
-      return `${heading}\n\n${body}`;
-    })
-    .join("\n\n");
+function renderContextFromPackage(contextPackage) {
+  const project = contextPackage.projectSpecification.project;
+  const planningSummary = contextPackage.projectSpecification.planningSummary;
+  const task = contextPackage.assignedTask;
 
   return [
     "### Project Specification",
     "",
-    projectBlock,
-    nestedProjectDetails || "",
+    `- Project: ${project.name}`,
+    `- Slug: \`${project.slug}\``,
+    `- Industry: ${project.industry}`,
+    `- Source specification: \`${project.sourceSpecification}\``,
+    `- Primary goal: ${planningSummary.primaryGoal}`,
+    `- Scope summary: ${planningSummary.scopeSummary}`,
+    "- Planning constraints:",
+    ...planningSummary.constraints.map((item) => `  - ${item}`),
     "",
     "### Assigned Task",
     "",
-    taskBlock,
-    nestedTaskDetails || "",
-  ]
-    .filter(Boolean)
-    .join("\n");
+    `- ID: \`${task.id}\``,
+    `- Title: ${task.title}`,
+    `- Category: \`${task.category}\``,
+    `- Priority: \`${task.priority}\``,
+    `- Description: ${task.description}`,
+    "- Dependencies:",
+    ...(task.dependencies.length > 0 ? task.dependencies.map((item) => `  - \`${item}\``) : ["  - None"]),
+  ].join("\n");
 }
 
-function renderStandards(skillEntries) {
-  return skillEntries
-    .map((entry) => {
-      const intro = entry.label ? `- \`${entry.label}\`` : `- ${entry.value}`;
-      const details = entry.items.map((item) => `  - ${item}`).join("\n");
-      return details ? `${intro}\n${details}` : intro;
+function renderStandardsFromPackage(requiredSkills) {
+  return requiredSkills
+    .map((skill) => {
+      const data = extractSkillStandards(skill);
+      return [`- \`${data.file}\``, ...data.standards.map((item) => `  - ${item}`)].join("\n");
     })
     .join("\n");
 }
@@ -201,33 +157,18 @@ function renderMergedConstraints(agentConstraints, topLevelConstraints) {
   return renderBullets(ordered);
 }
 
-export function buildPromptParts(contextMarkdown) {
-  const sections = splitSections(contextMarkdown);
-  const projectEntries = parseEntries(sections["Project Specification"] || "");
-  const taskEntries = parseEntries(sections["Assigned Task"] || "");
-  const agentEntries = parseEntries(sections["Agent Definition"] || "");
-  const skillEntries = parseEntries(sections["Required Skills"] || "");
-  const constraintEntries = parseEntries(sections["Constraints"] || "");
-  const expectedEntries = parseEntries(sections["Expected Output"] || "");
-
-  const agentName = getEntry(agentEntries, "Agent")?.value || "Specialized Agent";
-  const purpose = getEntry(agentEntries, "Purpose")?.value || "";
-  const responsibilities = getEntry(agentEntries, "Responsibilities")?.items || [];
-  const agentConstraints = getEntry(agentEntries, "Constraints")?.items || [];
-  const taskId = getEntry(taskEntries, "ID")?.value || "";
-  const taskTitle = getEntry(taskEntries, "Title")?.value || "";
-  const taskDescription = getEntry(taskEntries, "Description")?.value || "";
-  const topLevelConstraints = constraintEntries.map((entry) => entry.value);
-  const expectedOutput = expectedEntries.map((entry) => entry.value);
+export function buildPromptPartsFromContextPackage(contextPackage) {
+  const agentData = extractContractData(contextPackage.agentDefinition.content);
+  const task = contextPackage.assignedTask;
 
   return {
-    role: `You are the ${agentName} for EPDC Site Factory. ${purpose}`,
-    responsibilities: renderBullets(responsibilities),
-    context: renderContext(projectEntries, taskEntries),
-    task: `Use this assembled context package to address task ${taskId}: ${taskTitle}. ${taskDescription} Produce the outputs listed in the Expected Output section for this task.`,
-    standards: renderStandards(skillEntries),
-    constraints: renderMergedConstraints(agentConstraints, topLevelConstraints),
-    expectedOutput: renderBullets(expectedOutput),
+    role: `You are the ${agentData.heading} for EPDC Site Factory. ${agentData.purpose}`,
+    responsibilities: renderBullets(agentData.responsibilities),
+    context: renderContextFromPackage(contextPackage),
+    task: `Use this assembled context package to address task \`${task.id}\`: ${task.title}. ${task.description} Produce the outputs listed in the Expected Output section for this task.`,
+    standards: renderStandardsFromPackage(contextPackage.requiredSkills),
+    constraints: renderMergedConstraints(agentData.constraints, contextPackage.constraints),
+    expectedOutput: renderBullets(contextPackage.expectedOutput),
   };
 }
 
@@ -242,8 +183,8 @@ export function applyTemplate(templateMarkdown, promptParts) {
     .replace("{{EXPECTED_OUTPUT}}", promptParts.expectedOutput);
 }
 
-export function buildPromptFromContext(contextMarkdown, templateMarkdown) {
-  const promptParts = buildPromptParts(contextMarkdown);
+export function buildPromptFromContextPackage(contextPackage, templateMarkdown) {
+  const promptParts = buildPromptPartsFromContextPackage(contextPackage);
   return `${applyTemplate(templateMarkdown, promptParts).trim()}\n`;
 }
 
@@ -251,7 +192,7 @@ function resolveInput(arg) {
   const value = arg || "frontend";
 
   if (targetMap[value]) {
-    return targetMap[value];
+    return { mode: "target", targetName: value, ...targetMap[value] };
   }
 
   const absolutePath = path.isAbsolute(value) ? value : path.join(rootDir, value);
@@ -262,23 +203,37 @@ function resolveInput(arg) {
   }
 
   return {
+    mode: "file",
     contextPath: path.relative(rootDir, absolutePath),
-    templatePath: "prompt-builder/templates/frontend-template.md",
-    outputPath: "generated-prompts/generated-custom-prompt.md",
   };
 }
 
 function main() {
-  const target = resolveInput(process.argv[2]);
+  const input = resolveInput(process.argv[2]);
+  let contextPackage;
+  let templatePath;
+  let outputPath;
 
-  if (!target.contextPath) {
-    throw new Error(`No default context package is configured for target.`);
+  if (input.mode === "target") {
+    contextPackage = buildContextPackageByTarget(input.targetName);
+    templatePath = input.templatePath;
+    outputPath = path.join(rootDir, input.outputPath);
+  } else {
+    contextPackage = JSON.parse(readText(input.contextPath));
+    const category = contextPackage.target || contextPackage.assignedTask?.category;
+    const config = targetMap[category];
+
+    if (!config) {
+      const supported = Object.keys(targetMap).join(", ");
+      throw new Error(`Unsupported context package target: ${category}. Supported targets: ${supported}`);
+    }
+
+    templatePath = config.templatePath;
+    outputPath = path.join(rootDir, `generated-prompts/generated-${category}-prompt.md`);
   }
 
-  const contextMarkdown = readText(target.contextPath);
-  const templateMarkdown = readText(target.templatePath);
-  const finalPrompt = buildPromptFromContext(contextMarkdown, templateMarkdown);
-  const outputPath = path.join(rootDir, target.outputPath);
+  const templateMarkdown = readText(templatePath);
+  const finalPrompt = buildPromptFromContextPackage(contextPackage, templateMarkdown);
 
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, finalPrompt);

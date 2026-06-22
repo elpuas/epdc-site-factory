@@ -28,61 +28,35 @@ This document defines the Context Assembly Engine layer for EPDC Site Factory.
 
 `↓`
 
-`Context Package`
+`JSON Context Package`
 
 ## Step 1 - SPEC
 
-The project specification remains the source of truth.
-
-It provides:
-
-- Business goals
-- Technical requirements
-- Page requirements
-- Features
-- SEO requirements
-- Content requirements
-- Integrations
-- Acceptance criteria
-
-The context engine does not replace the specification. It packages the relevant parts of it.
+The specification remains the source of truth.
 
 ## Step 2 - Planner
 
-The planning layer turns the specification into structured tasks.
-
-This matters because the context engine should not guess scope from the raw specification alone. It should assemble context for a concrete unit of planned work.
+The planner turns the specification into structured tasks so context can be assembled for one concrete unit of work.
 
 ## Step 3 - Tasks
 
-The task layer tells the context engine:
+The task tells the Context Engine:
 
 - Which work unit is being assembled
-- Which category owns that work
-- Which dependencies or upstream tasks matter
-
-Tasks are the entrypoint for context selection.
+- Which category owns it
+- Which dependencies matter
 
 ## Step 4 - Agent
 
-The agent contract tells the context engine:
-
-- Which agent owns the task
-- Which inputs the agent expects
-- Which context must be loaded
-- Which outputs and constraints apply
-
-This keeps assembled context aligned with the documented execution role.
+The agent contract tells the Context Engine which role owns the task and what outputs and constraints apply.
 
 ## Step 5 - Skill
 
-The skill layer tells the context engine which implementation standards belong in the package.
-
-By loading only the skills required by the target agent, the engine avoids overloading the package with irrelevant rules.
+The skill layer tells the Context Engine which implementation standards belong in the package.
 
 ## Step 6 - Context Assembly Engine
 
-The Context Assembly Engine gathers:
+The Context Engine gathers:
 
 - Relevant specification material
 - One assigned task
@@ -91,42 +65,24 @@ The Context Assembly Engine gathers:
 - Shared constraints
 - Expected output guidance
 
-It then assembles these into one context package.
+## Step 7 - JSON Context Package
 
-The current repository implementation is a simulation layer only. The script:
+The output is a canonical JSON context package.
 
-- Reads local files
-- Selects a predefined task target
-- Builds a structured package
-- Prints `Assembled Context`
+This format exists so downstream layers can:
 
-## Step 7 - Context Package
+- Consume one stable structured artifact
+- Avoid re-reading raw files repeatedly
+- Avoid rebuilding task ownership logic
+- Preserve deterministic behavior
 
-The context package is the reusable output of the engine.
+## Why JSON Is Canonical
 
-It exists so future execution layers do not need to:
+JSON is the chosen format because:
 
-- Re-read unrelated files
-- Infer ownership repeatedly
-- Guess which skills apply
-- Reconstruct constraints from scratch
-
-The context package is intentionally separate from Codex because these are different responsibilities.
-
-## Why This Layer Is Separate From Codex
-
-The Context Assembly Engine should exist independently because:
-
-- Context gathering is not the same as prompt execution.
-- The repository needs a reusable, inspectable package before any future model execution.
-- Context packages can be tested and reviewed without AI dependencies.
-- Separating assembly from execution keeps the architecture modular and auditable.
-
-If this layer were merged directly into a future prompt or Codex integration, it would be harder to:
-
-- Validate context quality
-- Reuse context across different execution strategies
-- Keep the non-AI parts of the system deterministic
+- It matches the structured nature of the assembled data
+- It is easy for scripts to consume directly
+- It removes the previous ambiguity between readable markdown examples and executable context artifacts
 
 ## Current Boundary
 
@@ -134,8 +90,7 @@ This layer does not implement:
 
 - Codex integration
 - AI calls
+- Prompt rendering
 - Orchestration
 - Memory
 - Website generation
-
-It only assembles context packages from the existing documentation contracts.

@@ -118,7 +118,7 @@ export function buildContextPackageForTask(task, planningData = loadPlanningData
   };
 }
 
-function buildContextPackage(targetName) {
+export function buildContextPackageByTarget(targetName, planningData = loadPlanningData()) {
   const taskId = defaultTargets[targetName];
 
   if (!taskId) {
@@ -126,7 +126,6 @@ function buildContextPackage(targetName) {
     throw new Error(`Unknown context target: ${targetName}. Supported targets: ${supported}`);
   }
 
-  const planningData = loadPlanningData();
   const task = extractTask(planningData, taskId);
 
   if (!task) {
@@ -138,7 +137,7 @@ function buildContextPackage(targetName) {
 
 function main() {
   const targetName = process.argv[2] || "frontend";
-  const contextPackage = buildContextPackage(targetName);
+  const contextPackage = buildContextPackageByTarget(targetName);
 
   console.log("Assembled Context");
   console.log(JSON.stringify(contextPackage, null, 2));

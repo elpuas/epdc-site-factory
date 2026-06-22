@@ -1,6 +1,6 @@
-# Planner Prompt Template
+# Planner Prompt Guidance
 
-Use this template to assemble a Codex-ready prompt for the Planner Agent.
+Use this guidance document to assemble a Codex-ready prompt for the Planner Agent.
 
 ## Purpose
 
