@@ -65,3 +65,19 @@ Completed:
 
 Next:
 Orchestration Contract Design
+
+## Sprint 006
+
+Goal:
+Design the Prompt Generation Layer.
+
+Completed:
+
+- Added prompt templates for Planner, Frontend, Backend, SEO, QA, and Content agents in `prompts/`.
+- Added `prompt-builder/README.md` and `prompt-builder/prompt-schema.md` to define prompt assembly inputs and the reusable prompt structure.
+- Added realistic dentist-based prompt examples in `prompt-builder/examples/frontend-prompt.md`, `prompt-builder/examples/backend-prompt.md`, and `prompt-builder/examples/seo-prompt.md`.
+- Added `docs/prompt-architecture.md` to document the flow from specification to planner to tasks to agent to skill to prompt builder to Codex.
+- Updated `docs/roadmap.md` with Sprint 006 status and deliverables.
+
+Next:
+Prompt Routing Design
