@@ -5,8 +5,8 @@
   "type": "module",
   "description": "Initial scaffolding for experimenting with agent orchestration for Astro + Supabase website generation.",
   "scripts": {
+    "assemble-context": "node ./scripts/assemble-context.js",
     "create-project": "node ./scripts/create-project.js",
     "run-orchestrator": "node ./scripts/run-orchestrator.js"
   }
 }
-
