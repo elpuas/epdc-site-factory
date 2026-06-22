@@ -49,3 +49,19 @@ Completed:
 
 Next:
 Agent Contract Design
+
+## Sprint 005
+
+Goal:
+Define the first production-ready agent contracts.
+
+Completed:
+
+- Replaced the placeholder documents in `agents/planner.md`, `agents/frontend.md`, `agents/backend.md`, `agents/seo.md`, and `agents/qa.md` with full agent contracts.
+- Added `agents/content.md` to define the new Content Agent contract.
+- Converted `AGENTS.md` into the central agent registry with links to each specialized definition.
+- Created `docs/agent-architecture.md` to document the flow from specification to planner agent to task breakdown to specialized agents to outputs.
+- Updated `docs/roadmap.md` with Sprint 005 status and deliverables.
+
+Next:
+Orchestration Contract Design

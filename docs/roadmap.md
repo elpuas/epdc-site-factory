@@ -45,9 +45,18 @@ Status: Sprint 004 completed
 
 ## Phase 4 - Agent Orchestration
 
+Status: Sprint 005 completed
+
 - Define agent contracts
 - Explore task routing and handoffs
 - Prototype orchestration flow
+
+### Sprint 005 - Agent Definitions
+
+- Replaced placeholder agent documents with full contracts for Planner, Frontend, Backend, SEO, QA, and Content agents
+- Added `agents/content.md` as the dedicated content-agent contract
+- Converted `AGENTS.md` into the central registry for all specialized agents
+- Added `docs/agent-architecture.md` to document the flow from specification to planner to specialized agents to outputs
 
 ## Phase 5 - Memory
 

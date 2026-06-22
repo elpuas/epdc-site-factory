@@ -1,58 +1,59 @@
-# Agent Roles
+# Agent Registry
 
-This document defines the future roles planned for EPDC Site Factory. These roles are placeholders only and do not represent implemented behavior.
+This document is the central registry for the EPDC Site Factory agent contracts.
 
-## Orchestrator
+These agents are documentation-defined only. They do not implement AI behavior, orchestration logic, memory, or website generation in this phase.
 
-- Coordinate the overall workflow across agents
-- Manage execution order and handoffs
-- Track progress across the generation pipeline
-- TODO: Define orchestration contract
-- TODO: Define lifecycle and control flow
-- TODO: Define failure handling
+## Architecture Summary
 
-## Planner
+The intended flow is:
 
-- Interpret project specifications
-- Break work into structured tasks
-- Assign tasks to specialized agents
-- TODO: Define planning output format
-- TODO: Define task decomposition rules
-- TODO: Define acceptance mapping strategy
+`SPEC -> Planner Agent -> Task Breakdown -> Specialized Agents -> Outputs`
 
-## Frontend Agent
+The specification defines scope, the planner creates structured work, and specialized agents apply domain skills to produce implementation outputs.
 
-- Generate or adapt Astro-based frontend structures
-- Implement page structure, UI sections, and content placement
-- Apply template-specific presentation decisions
-- TODO: Define component boundaries
-- TODO: Define content-to-layout rules
-- TODO: Define Astro generation constraints
+## Registered Agents
 
-## Backend Agent
+### Planner Agent
 
-- Prepare future Supabase-related setup and backend concerns
-- Handle data models, forms, and integration requirements
-- Support project-specific application needs
-- TODO: Define Supabase scope
-- TODO: Define schema responsibilities
-- TODO: Define environment and deployment assumptions
+- Purpose: Transform a project specification into structured implementation tasks.
+- Primary domain: Planning and task decomposition.
+- Detailed definition: [agents/planner.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/agents/planner.md)
 
-## SEO Agent
+### Frontend Agent
 
-- Review specifications for discoverability needs
-- Define metadata, content structure, and SEO requirements
-- Validate optimization goals against output
-- TODO: Define SEO checklist
-- TODO: Define structured data requirements
-- TODO: Define local business optimization rules
+- Purpose: Define how approved frontend tasks become Astro + TypeScript implementation output.
+- Primary domain: Pages, layouts, components, and frontend structure.
+- Detailed definition: [agents/frontend.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/agents/frontend.md)
 
-## QA Agent
+### Backend Agent
 
-- Validate generated output against the specification
-- Check completeness, consistency, and implementation quality
-- Identify issues for rework before project handoff
-- TODO: Define QA checklist
-- TODO: Define validation artifacts
-- TODO: Define approval criteria
+- Purpose: Define how approved backend tasks become Supabase-aligned backend design and integration output.
+- Primary domain: Data, forms, integrations, security, and backend scope control.
+- Detailed definition: [agents/backend.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/agents/backend.md)
 
+### SEO Agent
+
+- Purpose: Define how approved SEO tasks become technical and local search implementation output.
+- Primary domain: Metadata, structured data, crawlability, and local discoverability.
+- Detailed definition: [agents/seo.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/agents/seo.md)
+
+### QA Agent
+
+- Purpose: Validate delivered output against the specification, planner tasks, and implementation standards.
+- Primary domain: Functional quality, responsive behavior, accessibility, performance, and SEO verification.
+- Detailed definition: [agents/qa.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/agents/qa.md)
+
+### Content Agent
+
+- Purpose: Define how approved content tasks become page-ready messaging and content structure.
+- Primary domain: Page hierarchy, conversion messaging, service-page content, local business content, and multilingual consistency.
+- Detailed definition: [agents/content.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/agents/content.md)
+
+## Registry Rules
+
+- Agents must operate from the project specification and planner task output.
+- Agents must load their required context before producing outputs.
+- Agents must use the skill documents assigned to their domain.
+- Agents must not expand scope beyond the specification or planner-approved tasks.
+- Agents remain separable so implementation knowledge can evolve without changing the specification format.
