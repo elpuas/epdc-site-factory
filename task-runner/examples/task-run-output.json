@@ -1,0 +1,108 @@
+{
+  "sourcePlannerOutput": "planner/example-output.json",
+  "generatedAtLayer": "task-runner",
+  "tasksProcessed": [
+    {
+      "taskId": "frontend-site-foundation",
+      "category": "frontend",
+      "contextTarget": "frontend",
+      "promptFile": "generated-prompts/tasks/frontend-001.md"
+    },
+    {
+      "taskId": "content-brand-messaging",
+      "category": "content",
+      "contextTarget": "content",
+      "promptFile": "generated-prompts/tasks/content-001.md"
+    },
+    {
+      "taskId": "content-dentist-bio-and-practice-details",
+      "category": "content",
+      "contextTarget": "content",
+      "promptFile": "generated-prompts/tasks/content-002.md"
+    },
+    {
+      "taskId": "frontend-core-pages",
+      "category": "frontend",
+      "contextTarget": "frontend",
+      "promptFile": "generated-prompts/tasks/frontend-002.md"
+    },
+    {
+      "taskId": "frontend-treatment-pages",
+      "category": "frontend",
+      "contextTarget": "frontend",
+      "promptFile": "generated-prompts/tasks/frontend-003.md"
+    },
+    {
+      "taskId": "frontend-appointment-form-and-mobile-cta",
+      "category": "frontend",
+      "contextTarget": "frontend",
+      "promptFile": "generated-prompts/tasks/frontend-004.md"
+    },
+    {
+      "taskId": "backend-form-delivery",
+      "category": "backend",
+      "contextTarget": "backend",
+      "promptFile": "generated-prompts/tasks/backend-001.md"
+    },
+    {
+      "taskId": "frontend-map-and-location-details",
+      "category": "frontend",
+      "contextTarget": "frontend",
+      "promptFile": "generated-prompts/tasks/frontend-005.md"
+    },
+    {
+      "taskId": "backend-analytics-integration",
+      "category": "backend",
+      "contextTarget": "backend",
+      "promptFile": "generated-prompts/tasks/backend-002.md"
+    },
+    {
+      "taskId": "seo-page-metadata",
+      "category": "seo",
+      "contextTarget": "seo",
+      "promptFile": "generated-prompts/tasks/seo-001.md"
+    },
+    {
+      "taskId": "seo-local-targeting-and-sitemap",
+      "category": "seo",
+      "contextTarget": "seo",
+      "promptFile": "generated-prompts/tasks/seo-002.md"
+    },
+    {
+      "taskId": "seo-structured-data",
+      "category": "seo",
+      "contextTarget": "seo",
+      "promptFile": "generated-prompts/tasks/seo-003.md"
+    },
+    {
+      "taskId": "content-treatment-copy",
+      "category": "content",
+      "contextTarget": "content",
+      "promptFile": "generated-prompts/tasks/content-003.md"
+    },
+    {
+      "taskId": "content-testimonials-and-faqs",
+      "category": "content",
+      "contextTarget": "content",
+      "promptFile": "generated-prompts/tasks/content-004.md"
+    },
+    {
+      "taskId": "qa-specification-coverage",
+      "category": "qa",
+      "contextTarget": "qa",
+      "promptFile": "generated-prompts/tasks/qa-001.md"
+    },
+    {
+      "taskId": "qa-conversion-and-consistency-review",
+      "category": "qa",
+      "contextTarget": "qa",
+      "promptFile": "generated-prompts/tasks/qa-002.md"
+    },
+    {
+      "taskId": "qa-seo-requirements-review",
+      "category": "qa",
+      "contextTarget": "qa",
+      "promptFile": "generated-prompts/tasks/qa-003.md"
+    }
+  ]
+}

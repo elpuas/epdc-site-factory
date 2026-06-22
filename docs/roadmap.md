@@ -75,7 +75,7 @@ Status: Sprint 006 completed
 
 ## Phase 6 - Context Assembly Engine
 
-Status: Sprint 007 completed
+Status: Sprint 009 completed
 
 - Gather specifications, tasks, agent definitions, and skill definitions into context packages
 - Provide a deterministic pre-execution assembly layer
@@ -87,6 +87,20 @@ Status: Sprint 007 completed
 - Added example context packages for frontend, backend, and SEO based on the dentist specification
 - Added `scripts/assemble-context.js` to simulate context assembly and print `Assembled Context`
 - Added `docs/context-architecture.md` to document the flow from specification to context package
+
+### Sprint 008 - Prompt Builder CLI
+
+- Added the working Prompt Builder CLI in `scripts/build-prompt.js`
+- Added deterministic final-render templates in `prompt-builder/templates/`
+- Added prompt output storage in `generated-prompts/`
+- Added `docs/prompt-builder-architecture.md` to document the flow from context package to prompt file
+
+### Sprint 009 - Task Runner Foundation
+
+- Added the Task Runner documentation layer in `task-runner/`
+- Added `scripts/run-tasks.js` to convert planner tasks into task-specific prompt files
+- Added deterministic task prompt output in `generated-prompts/tasks/`
+- Added `docs/task-runner-architecture.md` to document the flow from planner output to task prompt files
 
 ## Phase 7 - Memory
 

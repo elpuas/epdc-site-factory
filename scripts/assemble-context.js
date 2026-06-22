@@ -6,9 +6,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
 
-const contextTargets = {
+const categoryConfig = {
   frontend: {
-    taskId: "frontend-core-pages",
     agentFile: "agents/frontend.md",
     skillFiles: ["skills/astro.md", "skills/content.md", "skills/seo.md"],
     expectedOutput: [
@@ -19,7 +18,6 @@ const contextTargets = {
     ],
   },
   backend: {
-    taskId: "backend-form-delivery",
     agentFile: "agents/backend.md",
     skillFiles: ["skills/supabase.md", "skills/qa.md"],
     expectedOutput: [
@@ -30,7 +28,6 @@ const contextTargets = {
     ],
   },
   seo: {
-    taskId: "seo-page-metadata",
     agentFile: "agents/seo.md",
     skillFiles: ["skills/seo.md", "skills/content.md", "skills/astro.md"],
     expectedOutput: [
@@ -40,6 +37,32 @@ const contextTargets = {
       "Structured-data and dependency notes",
     ],
   },
+  qa: {
+    agentFile: "agents/qa.md",
+    skillFiles: ["skills/qa.md", "skills/astro.md", "skills/seo.md", "skills/content.md"],
+    expectedOutput: [
+      "Structured QA findings",
+      "Release-readiness summary",
+      "Rework recommendations",
+      "Coverage notes mapped to requirements",
+    ],
+  },
+  content: {
+    agentFile: "agents/content.md",
+    skillFiles: ["skills/content.md", "skills/seo.md", "skills/astro.md"],
+    expectedOutput: [
+      "Content implementation guidance",
+      "Page hierarchy and CTA notes",
+      "Service-page or local-business messaging notes",
+      "Dependency notes for frontend or SEO implementation",
+    ],
+  },
+};
+
+const defaultTargets = {
+  frontend: "frontend-core-pages",
+  backend: "backend-form-delivery",
+  seo: "seo-page-metadata",
 };
 
 function readText(relPath) {
@@ -50,7 +73,7 @@ function loadPlanningData() {
   return JSON.parse(readText("planner/example-output.json"));
 }
 
-function extractTask(planningData, taskId) {
+export function extractTask(planningData, taskId) {
   return planningData.tasks.find((task) => task.id === taskId);
 }
 
@@ -63,23 +86,16 @@ function buildSpecificationSummary(planningData, task) {
   };
 }
 
-function buildContextPackage(targetName) {
-  const target = contextTargets[targetName];
+export function buildContextPackageForTask(task, planningData = loadPlanningData()) {
+  const target = categoryConfig[task.category];
 
   if (!target) {
-    const supported = Object.keys(contextTargets).join(", ");
-    throw new Error(`Unknown context target: ${targetName}. Supported targets: ${supported}`);
-  }
-
-  const planningData = loadPlanningData();
-  const task = extractTask(planningData, target.taskId);
-
-  if (!task) {
-    throw new Error(`Task not found in planner/example-output.json: ${target.taskId}`);
+    const supported = Object.keys(categoryConfig).join(", ");
+    throw new Error(`Unsupported task category: ${task.category}. Supported categories: ${supported}`);
   }
 
   return {
-    target: targetName,
+    target: task.category,
     projectSpecification: buildSpecificationSummary(planningData, task),
     assignedTask: task,
     agentDefinition: {
@@ -102,6 +118,24 @@ function buildContextPackage(targetName) {
   };
 }
 
+function buildContextPackage(targetName) {
+  const taskId = defaultTargets[targetName];
+
+  if (!taskId) {
+    const supported = Object.keys(defaultTargets).join(", ");
+    throw new Error(`Unknown context target: ${targetName}. Supported targets: ${supported}`);
+  }
+
+  const planningData = loadPlanningData();
+  const task = extractTask(planningData, taskId);
+
+  if (!task) {
+    throw new Error(`Task not found in planner/example-output.json: ${taskId}`);
+  }
+
+  return buildContextPackageForTask(task, planningData);
+}
+
 function main() {
   const targetName = process.argv[2] || "frontend";
   const contextPackage = buildContextPackage(targetName);
@@ -110,4 +144,6 @@ function main() {
   console.log(JSON.stringify(contextPackage, null, 2));
 }
 
-main();
+if (process.argv[1] === __filename) {
+  main();
+}
