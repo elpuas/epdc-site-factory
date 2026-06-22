@@ -1,6 +1,6 @@
 # Task Runner Architecture
 
-This document defines the Task Runner Foundation for EPDC Site Factory.
+This document defines the Task Runner layer for EPDC Site Factory.
 
 ## Workflow
 
@@ -24,7 +24,7 @@ This document defines the Task Runner Foundation for EPDC Site Factory.
 
 `↓`
 
-`Task Prompt Files`
+`Generated Task Prompts`
 
 ## Step 1 - SPEC
 
@@ -36,66 +36,48 @@ The planner converts that scope into ordered tasks with categories, priorities, 
 
 ## Step 3 - Task Runner
 
-The Task Runner reads the planner output and processes each task in planner order.
+The Task Runner reads the planner output and processes tasks deterministically in planner order.
 
 Its responsibilities are:
 
-- Iterate over tasks deterministically
+- Iterate over tasks
 - Match each task to its category
-- Trigger context assembly for that task
+- Request a canonical JSON context package for that task
 - Trigger prompt generation for that task
-- Write a category-sequenced prompt file
+- Write category-sequenced prompt files
+- Report the generated output set
 
 ## Step 4 - Context Assembly Engine
 
-The context engine builds a task-specific context package from:
-
-- Relevant specification material
-- The assigned task
-- The owning agent definition
-- The required skill definitions
-- Shared constraints
-- Expected output guidance
+The Context Engine provides the task-specific JSON context package required by the runner.
 
 ## Step 5 - Prompt Builder
 
-The prompt builder consumes that context package and applies the correct template for the task category.
+The Prompt Builder consumes that JSON context package and applies the correct template for the task category.
 
-## Step 6 - Task Prompt Files
+## Step 6 - Generated Task Prompts
 
 The outputs are deterministic markdown prompt files in:
 
 - `generated-prompts/tasks/`
 
-Examples:
+These files can later be packaged by the Codex Handoff Layer.
 
-- `generated-prompts/tasks/frontend-001.md`
-- `generated-prompts/tasks/backend-001.md`
-- `generated-prompts/tasks/seo-001.md`
-
-## Responsibilities
+## Boundaries
 
 The Task Runner owns:
 
 - Planner-output iteration
-- Category-to-template routing
+- Category routing
 - Task-level prompt-file naming
-- Task-run reporting
+- Run reporting
 
 The Task Runner does not own:
 
+- Context-package schema design
+- Prompt-template design
 - Codex execution
 - AI calls
 - Website generation
 - Memory
 - Orchestration
-
-## Known Scope
-
-The current implementation supports all categories present in the example planner output:
-
-- `frontend`
-- `backend`
-- `seo`
-- `content`
-- `qa`

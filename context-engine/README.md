@@ -1,48 +1,34 @@
 # Context Assembly Engine
 
-The Context Assembly Engine is the first executable layer in EPDC Site Factory.
+The Context Assembly Engine gathers the materials needed for one unit of downstream work and packages them into a canonical JSON context package.
 
 ## Purpose
 
-This layer gathers the source material needed for a single unit of downstream work and assembles it into a unified context package.
+This layer connects:
 
-It combines:
+- Specification scope
+- Planner tasks
+- Agent ownership
+- Skill requirements
+- Shared execution constraints
 
-- Project specification
-- Assigned task
-- Agent definition
-- Required skill definitions
-- Constraints
-- Expected output
+into one deterministic package that downstream layers can consume.
 
-## Why This Layer Exists
+## Canonical Format
 
-The repository already defines:
+The canonical context-package format is JSON.
 
-- What a project requires through specifications
-- What work exists through planner tasks
-- Who owns the work through agent contracts
-- How the work should be done through skill contracts
-- How prompts may later be assembled through the prompt layer
+Why:
 
-The Context Assembly Engine exists to gather those sources into one reusable package before any future prompt execution or Codex interaction happens.
+- The builder and runner need structured data, not presentation-oriented markdown
+- JSON removes ambiguity between source examples and executable artifacts
+- The Context Engine already assembles structured objects
 
-## Boundary
-
-This layer does not:
-
-- Integrate Codex
-- Call any AI model
-- Execute prompts
-- Generate websites
-- Implement orchestration
-- Implement memory
-
-It only assembles context.
+Human-readable markdown context examples may still exist as source examples, but the working scripts use JSON context packages.
 
 ## Inputs
 
-The engine gathers material from:
+The Context Engine loads material from:
 
 - `specs/`
 - `planner/`
@@ -51,36 +37,34 @@ The engine gathers material from:
 
 ## Output
 
-The output is an assembled context package shaped by `context-engine/context-schema.md`.
+The output is a context package shaped by `context-engine/context-schema.md`.
 
-The current simulation script prints:
+The current CLI prints:
 
-`Assembled Context`
+- `Assembled Context`
+- A JSON representation of the assembled package
 
-followed by a JSON representation of the assembled package.
+## CLI
 
-## Current Script
-
-Simulation entrypoint:
+Entrypoint:
 
 - `scripts/assemble-context.js`
 
-Optional context targets:
-
-- `frontend`
-- `backend`
-- `seo`
-
-Example:
+Examples:
 
 ```bash
-node ./scripts/assemble-context.js frontend
+npm run assemble-context frontend
+npm run assemble-context backend
+npm run assemble-context seo
 ```
 
-## Example Context Packages
+## Boundary
 
-Realistic dentist-based examples live in:
+This layer does not:
 
-- `context-engine/examples/frontend-context.md`
-- `context-engine/examples/backend-context.md`
-- `context-engine/examples/seo-context.md`
+- Call Codex
+- Call any AI model
+- Generate prompts
+- Generate websites
+- Implement orchestration
+- Implement memory

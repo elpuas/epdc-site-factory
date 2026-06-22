@@ -1,6 +1,6 @@
-# SEO Prompt Template
+# SEO Prompt Guidance
 
-Use this template to assemble a Codex-ready prompt for the SEO Agent.
+Use this guidance document to assemble a Codex-ready prompt for the SEO Agent.
 
 ## Purpose
 

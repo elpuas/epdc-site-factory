@@ -1,6 +1,6 @@
-# Frontend Prompt Template
+# Frontend Prompt Guidance
 
-Use this template to assemble a Codex-ready prompt for the Frontend Agent.
+Use this guidance document to assemble a Codex-ready prompt for the Frontend Agent.
 
 ## Purpose
 

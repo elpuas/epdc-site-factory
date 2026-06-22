@@ -1,120 +1,97 @@
 # Prompt Builder
 
-The Prompt Builder layer defines how EPDC Site Factory assembles deterministic Codex-ready prompts from the existing documentation contracts.
+The Prompt Builder layer converts canonical JSON context packages into deterministic prompt files.
 
 ## Purpose
 
-The purpose of this layer is to transform:
+This layer prepares Codex-ready prompt artifacts without invoking Codex or any AI model.
 
-- Specifications
-- Planner tasks
-- Agent definitions
-- Skill definitions
+It consumes:
 
-into prompts that are ready for future Codex execution.
+- Project specifications
+- Planner output
+- Agent contracts
+- Skill contracts
+- Context packages from the Context Engine
 
-This layer does not implement AI, orchestration, memory, Codex integration, or website generation.
+It produces:
 
-## Source Materials
+- Deterministic prompt files in `generated-prompts/`
 
-Prompt assembly depends on these source layers:
+## Prompt Layer Split
 
-- Specification documents in `specs/`
-- Planner output shaped by `planner/task-schema.json`
-- Agent contracts in `agents/`
-- Skill contracts in `skills/`
-- Context packages assembled by the Context Assembly Engine
+The repository has two prompt-related source layers with different responsibilities.
 
-## Output Target
+### Prompt Guidance Documents
 
-The output target is a structured prompt that follows the reusable schema defined in `prompt-builder/prompt-schema.md`.
+Location:
 
-<<<<<<< HEAD
-The working builder writes prompt files into `generated-prompts/`.
+- `prompts/`
 
-## Assembly Process
+Role:
 
-1. Start with the specification and planner output.
-2. Assemble a context package for the target task.
-3. Select the correct prompt template by category.
-4. Assemble the prompt sections in schema order.
-5. Write the deterministic prompt file.
+- Explain how prompts for each agent category should be assembled
+- Describe which sources matter for each prompt type
+- Document boundaries, standards, and expected outputs
 
-## Prompt Templates
+These are architecture guidance documents. They are not executable render templates.
 
-Assembly guidance lives in:
-=======
-The first working CLI writes generated prompt files into `generated-prompts/`.
+### Prompt Builder Templates
 
-## Assembly Process
+Location:
 
-1. Start with the specification.
-2. Select the relevant planner tasks.
-3. Assemble a context package through the Context Assembly Engine.
-4. Choose the prompt template for the target domain.
-5. Assemble the prompt sections in schema order.
-6. Write a deterministic prompt file.
+- `prompt-builder/templates/`
 
-## Prompt Templates
+Role:
 
-Final render templates live in:
+- Define the final prompt-file structure used by the builder
+- Contain the stable placeholder layout consumed by `scripts/build-prompt.js`
 
-- `prompt-builder/templates/frontend-template.md`
-- `prompt-builder/templates/backend-template.md`
-- `prompt-builder/templates/seo-template.md`
-- `prompt-builder/templates/qa-template.md`
-- `prompt-builder/templates/content-template.md`
+These are executable render templates.
 
-Prompt assembly guidance still lives in:
+## Canonical Input Format
 
-Agent-specific prompt templates live in:
->>>>>>> @{-1}
+The canonical context package format is JSON.
 
-- `prompts/planner.md`
-- `prompts/frontend.md`
-- `prompts/backend.md`
-- `prompts/seo.md`
-- `prompts/qa.md`
-- `prompts/content.md`
+The working builder consumes a structured context package object produced by the Context Engine. Markdown examples may exist for human review, but they are not the executable source format.
 
-Final render templates live in:
+## Output Types
 
-- `prompt-builder/templates/frontend-template.md`
-- `prompt-builder/templates/backend-template.md`
-- `prompt-builder/templates/seo-template.md`
-- `prompt-builder/templates/qa-template.md`
-- `prompt-builder/templates/content-template.md`
-
-## Example Prompts
-
-Realistic examples based on the dentist specification live in:
+Source examples:
 
 - `prompt-builder/examples/frontend-prompt.md`
 - `prompt-builder/examples/backend-prompt.md`
 - `prompt-builder/examples/seo-prompt.md`
+- `prompt-builder/examples/generated-frontend-prompt.md`
+- `prompt-builder/examples/generated-backend-prompt.md`
+- `prompt-builder/examples/generated-seo-prompt.md`
 
-<<<<<<< HEAD
+Generated artifacts:
+
+- `generated-prompts/generated-frontend-prompt.md`
+- `generated-prompts/generated-backend-prompt.md`
+- `generated-prompts/generated-seo-prompt.md`
+- `generated-prompts/tasks/*.md`
+
+The `prompt-builder/examples/` directory is source-controlled reference material. The `generated-prompts/` directory is deterministic script output.
+
+## Assembly Process
+
+1. Start from a specification-backed planner task or standalone example target.
+2. Assemble a JSON context package through the Context Engine.
+3. Select the correct render template by category.
+4. Build prompt sections in schema order.
+5. Write the deterministic prompt file into `generated-prompts/`.
+
 ## CLI
 
 Builder entrypoint:
 
 - `scripts/build-prompt.js`
 
-Task-runner entrypoint:
+Task-runner downstream entrypoint:
 
 - `scripts/run-tasks.js`
-=======
-Generated-output examples live in:
-
-- `prompt-builder/examples/generated-frontend-prompt.md`
-- `prompt-builder/examples/generated-backend-prompt.md`
-- `prompt-builder/examples/generated-seo-prompt.md`
-
-## CLI
-
-The working builder entrypoint is:
-
-- `scripts/build-prompt.js`
 
 Examples:
 
@@ -123,13 +100,12 @@ npm run build-prompt frontend
 npm run build-prompt backend
 npm run build-prompt seo
 ```
->>>>>>> @{-1}
 
 ## Design Principles
 
 - The specification remains the source of truth.
-- Planner tasks determine prompt scope.
-- Agent definitions determine role and output expectations.
-- Skill documents determine standards and constraints.
-- Prompts should be filtered, not bloated.
-- The prompt builder should preserve traceability back to its source inputs.
+- Planner tasks determine scope.
+- Context packages determine what the builder receives.
+- Agent contracts determine role and output posture.
+- Skill contracts determine standards and constraints.
+- Prompt files are generated artifacts, not handwritten source definitions.

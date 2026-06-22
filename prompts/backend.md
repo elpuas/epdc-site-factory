@@ -1,6 +1,6 @@
-# Backend Prompt Template
+# Backend Prompt Guidance
 
-Use this template to assemble a Codex-ready prompt for the Backend Agent.
+Use this guidance document to assemble a Codex-ready prompt for the Backend Agent.
 
 ## Purpose
 
