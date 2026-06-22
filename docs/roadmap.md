@@ -23,9 +23,18 @@ Status: Sprint 002 completed
 
 ## Phase 3 - Skills
 
+Status: Sprint 003 completed
+
 - Expand skill definitions
 - Standardize inputs and outputs
 - Define reusable patterns for frontend, backend, SEO, and QA
+
+### Sprint 003 - Planner Skill Design
+
+- Replaced the planner placeholder with a documented Planner Skill contract
+- Added a JSON schema for planner task output in `planner/task-schema.json`
+- Added a realistic dentist-based planning example in `planner/example-output.json`
+- Documented the specification-to-task planning workflow in `docs/planning-process.md`
 
 ## Phase 4 - Agent Orchestration
 

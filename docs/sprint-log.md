@@ -15,3 +15,19 @@ Completed:
 
 Next:
 Planner Skill Design
+
+## Sprint 003
+
+Goal:
+Design the Planner Skill.
+
+Completed:
+
+- Replaced `skills/planner.md` with a full planner skill definition covering purpose, responsibilities, inputs, outputs, planning rules, task categories, prioritization rules, and constraints.
+- Created `planner/task-schema.json` to define the canonical planner output structure.
+- Created `planner/example-output.json` using the dentist specification as a realistic planning example.
+- Created `docs/planning-process.md` to document the flow from specification to planning to task breakdown to specialized agents.
+- Updated `docs/roadmap.md` with Sprint 003 status and deliverables.
+
+Next:
+Frontend Skill Design

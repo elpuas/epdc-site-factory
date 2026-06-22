@@ -1,0 +1,209 @@
+{
+  "project": {
+    "name": "Harbor Point Dental Studio",
+    "slug": "harbor-point-dental-studio",
+    "industry": "Family dentistry and cosmetic dental care",
+    "sourceSpecification": "specs/examples/dentist.md"
+  },
+  "planningSummary": {
+    "primaryGoal": "Increase new patient appointment requests from families and working professionals in the East Bay area.",
+    "scopeSummary": "Plan the implementation work for a static-first Astro marketing site focused on appointment conversion, local dental SEO, treatment-specific service pages, and launch-ready form delivery without a database.",
+    "constraints": [
+      "Framework must remain Astro-based.",
+      "Launch does not require a database.",
+      "Deployment is static-first with room for future form handling enhancements.",
+      "Planning must cover local SEO for Alameda, Oakland, and San Leandro.",
+      "Planning must include consistent contact details and conversion actions across the site."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "frontend-site-foundation",
+      "title": "Plan shared site structure and conversion patterns",
+      "description": "Define the shared frontend foundation for navigation, header, footer, contact-detail placement, and persistent conversion actions so all required pages can reuse a consistent structure.",
+      "category": "frontend",
+      "priority": "high",
+      "dependencies": []
+    },
+    {
+      "id": "content-brand-messaging",
+      "title": "Prepare core brand and trust messaging",
+      "description": "Structure the core messaging needed across the site, including the practice value proposition, reassuring tone, service-category summaries, and trust signals tied to family and cosmetic dental care.",
+      "category": "content",
+      "priority": "high",
+      "dependencies": []
+    },
+    {
+      "id": "content-dentist-bio-and-practice-details",
+      "title": "Prepare dentist bio and practice information",
+      "description": "Define the required content for the lead dentist biography, education, years of experience, care philosophy, insurance notes, office hours, parking guidance, and other practice details referenced across About, New Patients, and Contact pages.",
+      "category": "content",
+      "priority": "high",
+      "dependencies": [
+        "content-brand-messaging"
+      ]
+    },
+    {
+      "id": "frontend-core-pages",
+      "title": "Plan implementation of Home, About, Services, New Patients, Reviews, and Contact pages",
+      "description": "Break down the core site pages that support the main appointment-conversion journey, ensuring each page includes the required sections and primary calls to action from the specification.",
+      "category": "frontend",
+      "priority": "high",
+      "dependencies": [
+        "frontend-site-foundation",
+        "content-brand-messaging",
+        "content-dentist-bio-and-practice-details"
+      ]
+    },
+    {
+      "id": "frontend-treatment-pages",
+      "title": "Plan treatment-specific pages for Teeth Whitening and Dental Implants",
+      "description": "Define the implementation work for the treatment-focused pages, including treatment overview, candidacy, process, benefits, FAQs, and consultation calls to action for high-intent search visitors.",
+      "category": "frontend",
+      "priority": "high",
+      "dependencies": [
+        "frontend-site-foundation",
+        "content-brand-messaging"
+      ]
+    },
+    {
+      "id": "frontend-appointment-form-and-mobile-cta",
+      "title": "Plan appointment request form and mobile conversion actions",
+      "description": "Define the frontend work for the appointment request form with service-interest selection, visible request actions on conversion pages, and a persistent mobile click-to-call experience.",
+      "category": "frontend",
+      "priority": "high",
+      "dependencies": [
+        "frontend-site-foundation",
+        "frontend-core-pages"
+      ]
+    },
+    {
+      "id": "backend-form-delivery",
+      "title": "Plan launch-ready form delivery without database storage",
+      "description": "Define the backend-facing work needed to deliver appointment request submissions to the practice email inbox while preserving the launch constraint of no database requirement.",
+      "category": "backend",
+      "priority": "high",
+      "dependencies": [
+        "frontend-appointment-form-and-mobile-cta"
+      ]
+    },
+    {
+      "id": "frontend-map-and-location-details",
+      "title": "Plan location presentation and map integration",
+      "description": "Define the frontend work for the Contact page map embed, office hours, full street address, and parking guidance so local visitors can find the practice easily.",
+      "category": "frontend",
+      "priority": "medium",
+      "dependencies": [
+        "frontend-core-pages",
+        "content-dentist-bio-and-practice-details"
+      ]
+    },
+    {
+      "id": "backend-analytics-integration",
+      "title": "Plan analytics integration requirements",
+      "description": "Define the backend or configuration work needed to support Google Analytics tracking for launch without expanding scope into unrelated data systems.",
+      "category": "backend",
+      "priority": "medium",
+      "dependencies": [
+        "frontend-site-foundation"
+      ]
+    },
+    {
+      "id": "seo-page-metadata",
+      "title": "Plan unique metadata for all public pages",
+      "description": "Define page-specific title and meta description requirements for Home, core pages, and treatment pages so each page aligns with its search intent and business purpose.",
+      "category": "seo",
+      "priority": "high",
+      "dependencies": [
+        "frontend-core-pages",
+        "frontend-treatment-pages",
+        "content-brand-messaging"
+      ]
+    },
+    {
+      "id": "seo-local-targeting-and-sitemap",
+      "title": "Plan local SEO targeting and sitemap coverage",
+      "description": "Define the local search targeting for Alameda, Oakland, and San Leandro, along with sitemap coverage for all public pages and rules for excluding future utility pages when needed.",
+      "category": "seo",
+      "priority": "high",
+      "dependencies": [
+        "frontend-core-pages",
+        "frontend-treatment-pages"
+      ]
+    },
+    {
+      "id": "seo-structured-data",
+      "title": "Plan structured data for the practice and FAQ content",
+      "description": "Define how Dentist-related business schema and FAQPage markup should be applied to the practice and treatment-page FAQs in alignment with the specification.",
+      "category": "seo",
+      "priority": "medium",
+      "dependencies": [
+        "frontend-treatment-pages",
+        "content-dentist-bio-and-practice-details"
+      ]
+    },
+    {
+      "id": "content-treatment-copy",
+      "title": "Prepare treatment-page copy for cosmetic and restorative services",
+      "description": "Structure the content required for Teeth Whitening and Dental Implants pages, including benefits, candidacy, treatment process, expected results, financing note, and patient next steps.",
+      "category": "content",
+      "priority": "high",
+      "dependencies": [
+        "content-brand-messaging"
+      ]
+    },
+    {
+      "id": "content-testimonials-and-faqs",
+      "title": "Prepare testimonials and FAQ content",
+      "description": "Define the review highlights, patient-priority themes, and treatment-related FAQ content needed to support trust and search visibility across Reviews and treatment pages.",
+      "category": "content",
+      "priority": "medium",
+      "dependencies": [
+        "content-brand-messaging"
+      ]
+    },
+    {
+      "id": "qa-specification-coverage",
+      "title": "Validate task coverage against the project specification",
+      "description": "Review whether the planned implementation covers every required page, feature, integration, and acceptance criterion from the dental specification before downstream execution begins.",
+      "category": "qa",
+      "priority": "high",
+      "dependencies": [
+        "frontend-core-pages",
+        "frontend-treatment-pages",
+        "frontend-appointment-form-and-mobile-cta",
+        "backend-form-delivery",
+        "backend-analytics-integration",
+        "seo-page-metadata",
+        "seo-local-targeting-and-sitemap",
+        "seo-structured-data",
+        "content-treatment-copy",
+        "content-testimonials-and-faqs"
+      ]
+    },
+    {
+      "id": "qa-conversion-and-consistency-review",
+      "title": "Plan QA checks for conversion visibility and contact consistency",
+      "description": "Define the QA review needed to confirm appointment actions are visible on desktop and mobile and that practice name, phone number, address, and office hours remain consistent across key pages.",
+      "category": "qa",
+      "priority": "high",
+      "dependencies": [
+        "frontend-core-pages",
+        "frontend-appointment-form-and-mobile-cta",
+        "frontend-map-and-location-details"
+      ]
+    },
+    {
+      "id": "qa-seo-requirements-review",
+      "title": "Plan QA checks for metadata and local SEO requirements",
+      "description": "Define the QA review for unique metadata, local targeting coverage, and structured data expectations so the site can be checked against the specification's search-readiness criteria.",
+      "category": "qa",
+      "priority": "medium",
+      "dependencies": [
+        "seo-page-metadata",
+        "seo-local-targeting-and-sitemap",
+        "seo-structured-data"
+      ]
+    }
+  ]
+}
