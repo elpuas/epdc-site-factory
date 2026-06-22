@@ -81,3 +81,20 @@ Completed:
 
 Next:
 Prompt Routing Design
+
+## Sprint 007
+
+Goal:
+Create the first executable layer of the EPDC Site Factory through the Context Assembly Engine.
+
+Completed:
+
+- Added `context-engine/README.md` and `context-engine/context-schema.md` to define the context assembly layer and reusable package structure.
+- Added realistic dentist-based context package examples in `context-engine/examples/frontend-context.md`, `context-engine/examples/backend-context.md`, and `context-engine/examples/seo-context.md`.
+- Added `scripts/assemble-context.js` to simulate context assembly from local specification, planning, agent, and skill documents.
+- Updated `package.json` with an `assemble-context` script entry.
+- Added `docs/context-architecture.md` to document the flow from specification to planner to tasks to agent to skill to context assembly engine to context package.
+- Updated `docs/roadmap.md` with Sprint 007 status and deliverables.
+
+Next:
+Execution Boundary Design

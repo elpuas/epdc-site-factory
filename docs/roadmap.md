@@ -73,13 +73,28 @@ Status: Sprint 006 completed
 - Added realistic dentist-based prompt examples for frontend, backend, and SEO
 - Added `docs/prompt-architecture.md` to document the flow from specification to prompt assembly to Codex
 
-## Phase 6 - Memory
+## Phase 6 - Context Assembly Engine
+
+Status: Sprint 007 completed
+
+- Gather specifications, tasks, agent definitions, and skill definitions into context packages
+- Provide a deterministic pre-execution assembly layer
+- Keep context assembly separate from prompt execution and Codex integration
+
+### Sprint 007 - Context Assembly Engine
+
+- Added the context engine documentation layer in `context-engine/`
+- Added example context packages for frontend, backend, and SEO based on the dentist specification
+- Added `scripts/assemble-context.js` to simulate context assembly and print `Assembled Context`
+- Added `docs/context-architecture.md` to document the flow from specification to context package
+
+## Phase 7 - Memory
 
 - Design working memory structures
 - Explore long-term knowledge storage
 - Evaluate SQLite and vector retrieval strategies
 
-## Phase 7 - Project Generation
+## Phase 8 - Project Generation
 
 - Generate websites from specifications
 - Validate outputs through QA
