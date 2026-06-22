@@ -58,13 +58,28 @@ Status: Sprint 005 completed
 - Converted `AGENTS.md` into the central registry for all specialized agents
 - Added `docs/agent-architecture.md` to document the flow from specification to planner to specialized agents to outputs
 
-## Phase 5 - Memory
+## Phase 5 - Prompt Generation Layer
+
+Status: Sprint 006 completed
+
+- Define reusable prompt structure
+- Assemble prompts from specifications, tasks, agents, and skills
+- Prepare Codex-ready prompt contracts for future execution
+
+### Sprint 006 - Prompt Generation Layer
+
+- Added agent-specific prompt templates in `prompts/`
+- Added the prompt builder documentation layer in `prompt-builder/`
+- Added realistic dentist-based prompt examples for frontend, backend, and SEO
+- Added `docs/prompt-architecture.md` to document the flow from specification to prompt assembly to Codex
+
+## Phase 6 - Memory
 
 - Design working memory structures
 - Explore long-term knowledge storage
 - Evaluate SQLite and vector retrieval strategies
 
-## Phase 6 - Project Generation
+## Phase 7 - Project Generation
 
 - Generate websites from specifications
 - Validate outputs through QA
