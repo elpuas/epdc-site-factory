@@ -28,16 +28,28 @@ Prompt assembly depends on four main sources:
 
 The output target is a structured prompt that follows the reusable schema defined in `prompt-builder/prompt-schema.md`.
 
+The first working CLI writes generated prompt files into `generated-prompts/`.
+
 ## Assembly Process
 
 1. Start with the specification.
 2. Select the relevant planner tasks.
-3. Load the target agent contract.
-4. Load the skill documents required by that agent.
+3. Assemble a context package through the Context Assembly Engine.
+4. Choose the prompt template for the target domain.
 5. Assemble the prompt sections in schema order.
-6. Filter context so the prompt includes only material relevant to the assigned task set.
+6. Write a deterministic prompt file.
 
 ## Prompt Templates
+
+Final render templates live in:
+
+- `prompt-builder/templates/frontend-template.md`
+- `prompt-builder/templates/backend-template.md`
+- `prompt-builder/templates/seo-template.md`
+- `prompt-builder/templates/qa-template.md`
+- `prompt-builder/templates/content-template.md`
+
+Prompt assembly guidance still lives in:
 
 Agent-specific prompt templates live in:
 
@@ -55,6 +67,26 @@ Realistic examples based on the dentist specification live in:
 - `prompt-builder/examples/frontend-prompt.md`
 - `prompt-builder/examples/backend-prompt.md`
 - `prompt-builder/examples/seo-prompt.md`
+
+Generated-output examples live in:
+
+- `prompt-builder/examples/generated-frontend-prompt.md`
+- `prompt-builder/examples/generated-backend-prompt.md`
+- `prompt-builder/examples/generated-seo-prompt.md`
+
+## CLI
+
+The working builder entrypoint is:
+
+- `scripts/build-prompt.js`
+
+Examples:
+
+```bash
+npm run build-prompt frontend
+npm run build-prompt backend
+npm run build-prompt seo
+```
 
 ## Design Principles
 

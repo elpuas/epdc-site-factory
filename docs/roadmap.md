@@ -60,7 +60,7 @@ Status: Sprint 005 completed
 
 ## Phase 5 - Prompt Generation Layer
 
-Status: Sprint 006 completed
+Status: Sprint 008 completed
 
 - Define reusable prompt structure
 - Assemble prompts from specifications, tasks, agents, and skills
@@ -72,6 +72,14 @@ Status: Sprint 006 completed
 - Added the prompt builder documentation layer in `prompt-builder/`
 - Added realistic dentist-based prompt examples for frontend, backend, and SEO
 - Added `docs/prompt-architecture.md` to document the flow from specification to prompt assembly to Codex
+
+### Sprint 008 - Prompt Builder CLI
+
+- Added the working Prompt Builder CLI in `scripts/build-prompt.js`
+- Added deterministic final-render templates in `prompt-builder/templates/`
+- Added generated prompt outputs in `generated-prompts/`
+- Added expected generated-output examples in `prompt-builder/examples/`
+- Added `docs/prompt-builder-architecture.md` to document the flow from context package to prompt file
 
 ## Phase 6 - Context Assembly Engine
 

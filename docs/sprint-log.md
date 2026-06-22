@@ -98,3 +98,36 @@ Completed:
 
 Next:
 Execution Boundary Design
+
+## Sprint 008
+
+Goal:
+Create the first working Prompt Builder.
+
+Completed:
+
+- Added `scripts/build-prompt.js` to read a context package, assemble a deterministic prompt, write it into `generated-prompts/`, and print the generated file path.
+- Added final render templates in `prompt-builder/templates/` for frontend, backend, SEO, QA, and content prompts.
+- Added `generated-prompts/README.md` and wired prompt output into the generated-prompts directory.
+- Added `docs/prompt-builder-architecture.md` to document the flow from specification to planner to tasks to context assembly engine to prompt builder to prompt file.
+- Updated `prompt-builder/README.md` and `docs/prompt-architecture.md` so they reflect the working builder and the context-engine dependency.
+- Updated `package.json` with an `npm run build-prompt` command.
+
+Dependencies added:
+
+- None. The CLI uses the existing Node.js runtime and built-in modules only.
+
+Decisions made:
+
+- The builder consumes the markdown context packages defined in `context-engine/examples/`.
+- The CLI currently supports deterministic frontend, backend, and SEO builds as first working targets.
+- Prompt rendering uses static markdown templates with placeholder replacement instead of introducing a templating dependency.
+
+Known limitations:
+
+- Generated example outputs in this sprint cover frontend, backend, and SEO only.
+- QA and Content templates exist, but matching context examples and generated outputs are not part of this sprint.
+- The builder reads the current context markdown structure and is not yet generalized for alternate package formats.
+
+Next:
+Context-To-Prompt Routing Expansion
