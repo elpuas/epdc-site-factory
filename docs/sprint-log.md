@@ -108,6 +108,60 @@ Completed:
 
 - Added `scripts/build-prompt.js` to read a context package, assemble a deterministic prompt, write it into `generated-prompts/`, and print the generated file path.
 - Added final render templates in `prompt-builder/templates/` for frontend, backend, SEO, QA, and content prompts.
+<<<<<<< HEAD
+- Added `generated-prompts/README.md` and deterministic generated prompt output support.
+- Added `docs/prompt-builder-architecture.md` and updated `prompt-builder/README.md` to reflect the working builder.
+
+Dependencies added:
+
+- None. The builder uses only the existing Node.js runtime and built-in modules.
+
+Decisions made:
+
+- The builder consumes markdown context packages rather than introducing a second context format.
+- Prompt rendering uses static markdown templates with placeholder replacement.
+
+Known limitations:
+
+- Default standalone builds are currently configured for frontend, backend, and SEO.
+- QA and content templates exist, but standalone example context files are not included at this layer.
+
+Next:
+Task Runner Foundation
+
+## Sprint 009
+
+Goal:
+Create the Task Runner Foundation.
+
+Completed:
+
+- Added `task-runner/README.md` and `task-runner/task-runner-schema.md` to define the Task Runner layer and output contract.
+- Added `task-runner/examples/task-run-output.json` as the deterministic example report for the example planner output.
+- Added `scripts/run-tasks.js` to read `planner/example-output.json`, assemble task-specific context, build prompts, and write them into `generated-prompts/tasks/`.
+- Extended `scripts/assemble-context.js` to support all planner categories through task-based context assembly.
+- Updated `package.json` with an `npm run run-tasks` command.
+- Added `docs/task-runner-architecture.md` to document the flow from planner output through context assembly and prompt building to task prompt files.
+
+Dependencies added:
+
+- None. The task runner uses only the existing Node.js runtime and built-in modules.
+
+Decisions made:
+
+- Task prompt file naming is deterministic and category-sequenced, such as `frontend-001.md`.
+- The runner processes tasks in the same order they appear in the planner output.
+- The runner reuses the context assembly and prompt builder layers instead of duplicating prompt-generation logic.
+
+Known limitations:
+
+- The task runner currently operates on `planner/example-output.json` only.
+- Task prompt context is rendered from the current markdown context schema rather than a typed intermediate artifact format.
+- The generated prompt files are deterministic build artifacts and are not yet routed to any execution surface.
+
+Next:
+Execution Boundary Design
+=======
 - Added `generated-prompts/README.md` and wired prompt output into the generated-prompts directory.
 - Added `docs/prompt-builder-architecture.md` to document the flow from specification to planner to tasks to context assembly engine to prompt builder to prompt file.
 - Updated `prompt-builder/README.md` and `docs/prompt-architecture.md` so they reflect the working builder and the context-engine dependency.
@@ -131,3 +185,4 @@ Known limitations:
 
 Next:
 Context-To-Prompt Routing Expansion
+>>>>>>> @{-1}

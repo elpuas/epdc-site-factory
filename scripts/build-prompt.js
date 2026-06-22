@@ -22,31 +22,20 @@ const targetMap = {
     templatePath: "prompt-builder/templates/seo-template.md",
     outputPath: "generated-prompts/generated-seo-prompt.md",
   },
+  qa: {
+    contextPath: null,
+    templatePath: "prompt-builder/templates/qa-template.md",
+    outputPath: "generated-prompts/generated-qa-prompt.md",
+  },
+  content: {
+    contextPath: null,
+    templatePath: "prompt-builder/templates/content-template.md",
+    outputPath: "generated-prompts/generated-content-prompt.md",
+  },
 };
 
 function readText(relPath) {
   return fs.readFileSync(path.join(rootDir, relPath), "utf8");
-}
-
-function resolveInput(arg) {
-  const value = arg || "frontend";
-
-  if (targetMap[value]) {
-    return targetMap[value];
-  }
-
-  const absolutePath = path.isAbsolute(value) ? value : path.join(rootDir, value);
-
-  if (!fs.existsSync(absolutePath)) {
-    const supported = Object.keys(targetMap).join(", ");
-    throw new Error(`Unknown prompt target or context path: ${value}. Supported targets: ${supported}`);
-  }
-
-  return {
-    contextPath: path.relative(rootDir, absolutePath),
-    templatePath: "prompt-builder/templates/frontend-template.md",
-    outputPath: "generated-prompts/generated-custom-prompt.md",
-  };
 }
 
 function splitSections(markdown) {
@@ -212,7 +201,7 @@ function renderMergedConstraints(agentConstraints, topLevelConstraints) {
   return renderBullets(ordered);
 }
 
-function buildPrompt(contextMarkdown) {
+export function buildPromptParts(contextMarkdown) {
   const sections = splitSections(contextMarkdown);
   const projectEntries = parseEntries(sections["Project Specification"] || "");
   const taskEntries = parseEntries(sections["Assigned Task"] || "");
@@ -242,8 +231,8 @@ function buildPrompt(contextMarkdown) {
   };
 }
 
-function applyTemplate(template, promptParts) {
-  return template
+export function applyTemplate(templateMarkdown, promptParts) {
+  return templateMarkdown
     .replace("{{ROLE}}", promptParts.role)
     .replace("{{RESPONSIBILITIES}}", promptParts.responsibilities)
     .replace("{{CONTEXT}}", promptParts.context)
@@ -253,18 +242,50 @@ function applyTemplate(template, promptParts) {
     .replace("{{EXPECTED_OUTPUT}}", promptParts.expectedOutput);
 }
 
+export function buildPromptFromContext(contextMarkdown, templateMarkdown) {
+  const promptParts = buildPromptParts(contextMarkdown);
+  return `${applyTemplate(templateMarkdown, promptParts).trim()}\n`;
+}
+
+function resolveInput(arg) {
+  const value = arg || "frontend";
+
+  if (targetMap[value]) {
+    return targetMap[value];
+  }
+
+  const absolutePath = path.isAbsolute(value) ? value : path.join(rootDir, value);
+
+  if (!fs.existsSync(absolutePath)) {
+    const supported = Object.keys(targetMap).join(", ");
+    throw new Error(`Unknown prompt target or context path: ${value}. Supported targets: ${supported}`);
+  }
+
+  return {
+    contextPath: path.relative(rootDir, absolutePath),
+    templatePath: "prompt-builder/templates/frontend-template.md",
+    outputPath: "generated-prompts/generated-custom-prompt.md",
+  };
+}
+
 function main() {
   const target = resolveInput(process.argv[2]);
+
+  if (!target.contextPath) {
+    throw new Error(`No default context package is configured for target.`);
+  }
+
   const contextMarkdown = readText(target.contextPath);
   const templateMarkdown = readText(target.templatePath);
-  const promptParts = buildPrompt(contextMarkdown);
-  const finalPrompt = applyTemplate(templateMarkdown, promptParts);
+  const finalPrompt = buildPromptFromContext(contextMarkdown, templateMarkdown);
   const outputPath = path.join(rootDir, target.outputPath);
 
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-  fs.writeFileSync(outputPath, `${finalPrompt.trim()}\n`);
+  fs.writeFileSync(outputPath, finalPrompt);
 
   console.log(outputPath);
 }
 
-main();
+if (process.argv[1] === __filename) {
+  main();
+}

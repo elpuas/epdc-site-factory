@@ -30,6 +30,8 @@ This document defines the first working Prompt Builder layer for EPDC Site Facto
 
 The specification remains the source of truth for project scope.
 
+<<<<<<< HEAD
+=======
 It defines:
 
 - Business goals
@@ -41,10 +43,43 @@ It defines:
 - Integrations
 - Acceptance criteria
 
+>>>>>>> @{-1}
 ## Step 2 - Planner
 
 The planner turns specification requirements into structured tasks.
 
+<<<<<<< HEAD
+## Step 3 - Tasks
+
+Tasks determine the work unit, category ownership, and relevant dependencies.
+
+## Step 4 - Context Assembly Engine
+
+The context engine builds the input package the prompt builder consumes.
+
+## Step 5 - Prompt Builder
+
+The prompt builder:
+
+- Reads a context package
+- Chooses the correct template
+- Assembles the final prompt
+- Writes a deterministic prompt file
+
+## Step 6 - Prompt File
+
+The output is a rebuildable prompt file stored under `generated-prompts/`.
+
+## Boundaries
+
+The Prompt Builder does not:
+
+- Call Codex
+- Call any AI model
+- Generate websites
+- Implement memory
+- Execute prompts
+=======
 This matters because the prompt builder should not guess what work is in scope. It should build prompts for a concrete planned task category.
 
 ## Step 3 - Tasks
@@ -134,3 +169,4 @@ It only renders prompt files from assembled context.
 - The working CLI currently targets the example frontend, backend, and SEO context packages.
 - The template set exists for QA and Content, but those targets do not yet have generated example outputs in this sprint.
 - The builder currently reads the markdown context-package format defined in `context-engine/`.
+>>>>>>> @{-1}

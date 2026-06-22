@@ -122,7 +122,7 @@ The Context Assembly Engine should exist independently because:
 - Context packages can be tested and reviewed without AI dependencies.
 - Separating assembly from execution keeps the architecture modular and auditable.
 
-If this layer were merged directly into a future Codex integration, it would be harder to:
+If this layer were merged directly into a future prompt or Codex integration, it would be harder to:
 
 - Validate context quality
 - Reuse context across different execution strategies

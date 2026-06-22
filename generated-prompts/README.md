@@ -1,29 +1,18 @@
 # Generated Prompts
 
-This directory stores prompt files produced by the Prompt Builder CLI.
+This directory stores deterministic prompt files produced by the EPDC executable layers.
 
-## Purpose
+## Contents
 
-The files in this directory are deterministic build artifacts created from:
+- Root-level generated prompts created by `npm run build-prompt`
+- Task-level generated prompts created by `npm run run-tasks`
 
-- Context packages in `context-engine/examples/`
-- Prompt templates in `prompt-builder/templates/`
-- The build script in `scripts/build-prompt.js`
+## Current Task Output Directory
 
-## Current Output Targets
+- `generated-prompts/tasks/`
 
-- `generated-frontend-prompt.md`
-- `generated-backend-prompt.md`
-- `generated-seo-prompt.md`
+## Behavior
 
-## Usage
-
-Examples:
-
-```bash
-npm run build-prompt frontend
-npm run build-prompt backend
-npm run build-prompt seo
-```
-
-Each command overwrites the corresponding generated prompt file with deterministic content.
+- Generated files are build artifacts.
+- Re-running the CLI commands overwrites the existing outputs with deterministic content.
+- No AI calls or Codex integration happen while generating these files.
