@@ -23,7 +23,7 @@ Status: Sprint 002 completed
 
 ## Phase 3 - Skills
 
-Status: Sprint 003 completed
+Status: Sprint 004 completed
 
 - Expand skill definitions
 - Standardize inputs and outputs
@@ -35,6 +35,13 @@ Status: Sprint 003 completed
 - Added a JSON schema for planner task output in `planner/task-schema.json`
 - Added a realistic dentist-based planning example in `planner/example-output.json`
 - Documented the specification-to-task planning workflow in `docs/planning-process.md`
+
+### Sprint 004 - Core Skills Foundation
+
+- Replaced the Astro, Supabase, SEO, and QA skill placeholders with implementation guidance
+- Added the new Content Skill in `skills/content.md`
+- Added `docs/skills-architecture.md` to explain the flow from specifications to tasks to skills to future agents
+- Established EPDC implementation standards for frontend, backend, content, SEO, and QA knowledge
 
 ## Phase 4 - Agent Orchestration
 
