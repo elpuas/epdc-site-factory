@@ -16,6 +16,10 @@ This document defines the Prompt Generation Layer for EPDC Site Factory.
 
 `↓`
 
+`Context Assembly Engine`
+
+`↓`
+
 `Agent`
 
 `↓`
@@ -72,7 +76,13 @@ Prompt generation should use tasks to determine:
 
 Tasks are the main filtering mechanism that prevents overly broad prompts.
 
-## Step 4 - Agent
+## Step 4 - Context Assembly Engine
+
+The context engine assembles the source package that prompt generation can consume deterministically.
+
+This matters because the prompt builder should not have to reconstruct ownership, skills, and constraints from raw files on every run.
+
+## Step 5 - Agent
 
 The agent contract defines the role that the prompt should assume.
 
@@ -87,7 +97,7 @@ The prompt builder pulls from the relevant agent definition to determine:
 
 This ensures prompt identity comes from the documented architecture instead of ad hoc role descriptions.
 
-## Step 5 - Skill
+## Step 6 - Skill
 
 The skill layer defines the implementation standards that the prompt must enforce.
 
@@ -102,21 +112,20 @@ The prompt builder pulls standards from the relevant skill documents so prompts 
 
 Skills keep prompts aligned with EPDC standards without forcing every prompt to rewrite those standards from scratch.
 
-## Step 6 - Prompt Builder
+## Step 7 - Prompt Builder
 
 The Prompt Builder assembles the final prompt.
 
 Its responsibilities are:
 
-- Select the relevant source materials
-- Filter context to the assigned tasks
+- Consume the assembled context package
 - Assemble prompt sections in a stable order
 - Preserve traceability back to the specification, tasks, agent, and skills
 - Produce a Codex-ready prompt without implementing Codex integration
 
 The reusable prompt structure is defined in `prompt-builder/prompt-schema.md`.
 
-## Step 7 - Codex
+## Step 8 - Codex
 
 Codex is the target consumer of the assembled prompt.
 
@@ -143,10 +152,9 @@ It only defines what a future Codex-facing prompt should look like and how it sh
 For a frontend prompt based on the dentist project:
 
 1. Start with `specs/examples/dentist.md`.
-2. Select the relevant `frontend` tasks from `planner/example-output.json`.
-3. Load `agents/frontend.md`.
-4. Load `skills/astro.md`, `skills/content.md`, and `skills/seo.md`.
-5. Assemble the prompt using the schema sections:
+2. Assemble the relevant frontend context package.
+3. Load the frontend template and the context package.
+4. Assemble the prompt using the schema sections:
    - Role
    - Responsibilities
    - Context
@@ -154,7 +162,7 @@ For a frontend prompt based on the dentist project:
    - Standards
    - Constraints
    - Expected Output
-6. Produce a Codex-ready prompt that is narrow enough to be actionable and broad enough to include all required implementation context.
+5. Produce a Codex-ready prompt that is narrow enough to be actionable and broad enough to include all required implementation context.
 
 ## Current Boundary
 
