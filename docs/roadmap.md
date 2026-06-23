@@ -143,3 +143,10 @@ Status: Sprint 012 completed
 - Generated a minimal Astro page set with shared layout, header, footer, and structured site data
 - Added `projects/harbor-point-dental-studio/FACTORY_REPORT.md` to document task coverage, missing information, and specification improvements
 - Added `docs/project-generation-learnings.md` to capture what worked, what failed, and what still needs redesign
+
+### Sprint 013 - Generated Project Audit And Skill Refinement
+
+- Audited the first generated Astro project in `docs/generated-project-audit.md`
+- Refined `skills/astro.md` based on evidence from the generated project
+- Updated `specs/schema.md` to require clearer business-detail inputs when relevant
+- Added `docs/factory-improvements.md` to distinguish implemented versus deferred improvements

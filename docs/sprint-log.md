@@ -287,3 +287,42 @@ Future execution plans:
 
 Next:
 Full Sitemap Generation Validation
+
+## Sprint 013
+
+Goal:
+Audit the first generated Astro project and refine the factory based on evidence.
+
+Completed:
+
+- Added `docs/generated-project-audit.md`.
+- Audited Astro structure, specification coverage, skills, prompts, and planner output using the generated Harbor Point Dental Studio project.
+- Refined `skills/astro.md` with project bootstrap guidance, folder conventions, TypeScript data guidance, layout rules, and validation-build reporting guidance.
+- Updated `specs/schema.md` to require additional business-detail inputs when relevant for local service and professional-service projects.
+- Added `docs/factory-improvements.md`.
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None. This sprint changed documentation only.
+
+Decisions made:
+
+- Refine only the Astro skill because the evidence was strongest there.
+- Update the specification schema only for business-detail fields directly tied to repeated TODOs in the generated project.
+- Defer prompt, planner, and QA refinements until a later sprint because the audit identified them, but this sprint did not need broader contract changes.
+
+Known limitations:
+
+- The audit is based on one generated project only.
+- Prompt and planner issues were documented but not corrected in this sprint.
+- The generated project itself was not expanded or rebuilt during this audit sprint.
+
+Future execution plans:
+
+- Use the audit findings to tighten prompt requirements for file-generation outputs.
+- Add planner support for bootstrap and validation-mode project generation.
+- Add QA review rules for TODO-heavy validation builds.
+
+Next:
+Prompt And Planner Refinement For Full Generation
