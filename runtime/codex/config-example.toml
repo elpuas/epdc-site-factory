@@ -1,0 +1,33 @@
+# Example Codex runtime configuration.
+# This file is documentation only for Sprint 014.
+
+runtime_name = "codex"
+runtime_version = "example"
+workspace_root = "projects/target-project"
+execution_package = "execution/packages/generated-prompts/generated-frontend-prompt-execution.json"
+project_specification = "specs/examples/dentist.md"
+results_root = "runtime/results/generated-prompts/generated-frontend-prompt/codex"
+
+[prompt]
+source_prompt = "generated-prompts/generated-frontend-prompt.md"
+delivery_mode = "execution-package-payload"
+preserve_payload = true
+
+[review]
+require_qa_review = true
+review_report = "runtime/results/generated-prompts/generated-frontend-prompt/codex/attempt-001/review-report.md"
+
+[logging]
+runtime_log = "runtime/results/generated-prompts/generated-frontend-prompt/codex/attempt-001/runtime-log.json"
+store_attempt_history = true
+store_retry_history = true
+
+[retry]
+max_attempts = 3
+retry_on_failure = true
+retry_on_review_revision = true
+
+[boundaries]
+allow_factory_changes = false
+allow_memory = false
+allow_mcp_execution = false

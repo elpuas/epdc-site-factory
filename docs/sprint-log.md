@@ -326,3 +326,52 @@ Future execution plans:
 
 Next:
 Prompt And Planner Refinement For Full Generation
+
+## Sprint 014
+
+Goal:
+Define the Runtime Foundation layer that begins after execution-package creation.
+
+Completed:
+
+- Added `runtime/README.md`.
+- Added `runtime/runtime-schema.md`.
+- Added `runtime/codex/README.md`.
+- Added `runtime/codex/config-example.toml`.
+- Added `runtime/codex/execution-process.md`.
+- Added `runtime/codex/mcp-strategy.md`.
+- Added `docs/runtime-architecture.md`.
+- Added `docs/factory-vs-runtime.md`.
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None. This sprint changed documentation only.
+
+Runtime decisions:
+
+- The factory stops at deterministic execution-package preparation.
+- The runtime begins when an external execution surface consumes that package.
+- Runtime outputs must include generated files, runtime logs, and review notes.
+- Approval is a post-runtime review state, not an execution-complete state.
+
+Runtime boundary decisions:
+
+- Prompt generation remains factory-owned.
+- Prompt delivery, retries, runtime logging, and generated file capture are runtime-owned.
+- QA review remains downstream from runtime execution even when a runtime produces its own review report.
+
+MCP strategy decisions:
+
+- Astro Docs, Supabase, and GitHub are the preferred MCP categories for future Codex runtime use.
+- MCP configuration belongs to the runtime layer because it is execution-time and environment-specific.
+- MCP access does not belong to the factory layer because the factory must stay deterministic and runtime-agnostic.
+
+Known limitations:
+
+- No runtime execution is implemented.
+- No MCP integration is implemented.
+- The runtime layer is documented for Codex only in this sprint, though the architecture is written to support other runtimes later.
+
+Next:
+Prompt And Planner Refinement For Full Generation
