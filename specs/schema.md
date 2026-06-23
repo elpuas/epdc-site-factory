@@ -225,6 +225,31 @@ Include:
 - Testimonials, FAQs, trust signals, or legal disclaimers
 - Content depth expectations by page
 
+At minimum, the content requirements should provide enough structured detail to avoid blocking first-page generation.
+
+For local service businesses, include when relevant:
+
+- Business phone number
+- Full street address
+- Office hours
+- Parking or arrival guidance
+- Practice or office email used for contact workflows
+
+For professional-service or clinician-led businesses, include when relevant:
+
+- Lead professional name
+- Credentials or education
+- Years of experience
+- Care philosophy or practice philosophy
+
+For onboarding or conversion-support content, include when relevant:
+
+- Accepted insurance networks
+- Payment methods
+- Downloadable-form requirements
+- Approved testimonial excerpts or explicit placeholder rules
+- Map embed or location-link requirements
+
 ### Integrations
 
 Defines external services or third-party systems.
