@@ -1,0 +1,126 @@
+{
+  "sourceHandoffDirectory": "codex-handoff/output",
+  "outputDirectory": "execution/packages",
+  "packagesCreated": [
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/generated-backend-prompt-handoff.md",
+      "category": "backend",
+      "executionPackage": "execution/packages/generated-prompts/generated-backend-prompt-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/generated-backend-prompt/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/generated-frontend-prompt-handoff.md",
+      "category": "frontend",
+      "executionPackage": "execution/packages/generated-prompts/generated-frontend-prompt-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/generated-frontend-prompt/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/generated-seo-prompt-handoff.md",
+      "category": "seo",
+      "executionPackage": "execution/packages/generated-prompts/generated-seo-prompt-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/generated-seo-prompt/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/backend-001-handoff.md",
+      "category": "backend",
+      "executionPackage": "execution/packages/generated-prompts/tasks/backend-001-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/backend-001/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/backend-002-handoff.md",
+      "category": "backend",
+      "executionPackage": "execution/packages/generated-prompts/tasks/backend-002-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/backend-002/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/content-001-handoff.md",
+      "category": "content",
+      "executionPackage": "execution/packages/generated-prompts/tasks/content-001-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/content-001/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/content-002-handoff.md",
+      "category": "content",
+      "executionPackage": "execution/packages/generated-prompts/tasks/content-002-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/content-002/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/content-003-handoff.md",
+      "category": "content",
+      "executionPackage": "execution/packages/generated-prompts/tasks/content-003-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/content-003/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/content-004-handoff.md",
+      "category": "content",
+      "executionPackage": "execution/packages/generated-prompts/tasks/content-004-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/content-004/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/frontend-001-handoff.md",
+      "category": "frontend",
+      "executionPackage": "execution/packages/generated-prompts/tasks/frontend-001-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/frontend-001/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/frontend-002-handoff.md",
+      "category": "frontend",
+      "executionPackage": "execution/packages/generated-prompts/tasks/frontend-002-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/frontend-002/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/frontend-003-handoff.md",
+      "category": "frontend",
+      "executionPackage": "execution/packages/generated-prompts/tasks/frontend-003-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/frontend-003/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/frontend-004-handoff.md",
+      "category": "frontend",
+      "executionPackage": "execution/packages/generated-prompts/tasks/frontend-004-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/frontend-004/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/frontend-005-handoff.md",
+      "category": "frontend",
+      "executionPackage": "execution/packages/generated-prompts/tasks/frontend-005-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/frontend-005/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/qa-001-handoff.md",
+      "category": "qa",
+      "executionPackage": "execution/packages/generated-prompts/tasks/qa-001-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/qa-001/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/qa-002-handoff.md",
+      "category": "qa",
+      "executionPackage": "execution/packages/generated-prompts/tasks/qa-002-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/qa-002/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/qa-003-handoff.md",
+      "category": "qa",
+      "executionPackage": "execution/packages/generated-prompts/tasks/qa-003-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/qa-003/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/seo-001-handoff.md",
+      "category": "seo",
+      "executionPackage": "execution/packages/generated-prompts/tasks/seo-001-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/seo-001/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/seo-002-handoff.md",
+      "category": "seo",
+      "executionPackage": "execution/packages/generated-prompts/tasks/seo-002-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/seo-002/result.json"
+    },
+    {
+      "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/seo-003-handoff.md",
+      "category": "seo",
+      "executionPackage": "execution/packages/generated-prompts/tasks/seo-003-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/tasks/seo-003/result.json"
+    }
+  ]
+}

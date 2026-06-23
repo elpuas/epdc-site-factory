@@ -206,3 +206,43 @@ Known limitations:
 
 Next:
 Execution Boundary Validation
+
+## Sprint 011
+
+Goal:
+Design the Execution Workflow layer.
+
+Completed:
+
+- Added `execution/README.md`, `execution/execution-schema.md`, and `execution/review-process.md`.
+- Added execution-package examples for frontend, backend, and SEO in `execution/examples/`.
+- Added `execution/results/README.md` to define the future execution-output structure.
+- Added `docs/execution-architecture.md`.
+- Added `scripts/create-execution-package.js`.
+- Updated `package.json` with `npm run create-execution-package`.
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None. The execution workflow uses the existing Node.js runtime and built-in modules only.
+
+Decisions made:
+
+- The Execution Workflow consumes handoff documents rather than raw prompt files.
+- Execution packages are JSON artifacts that preserve prompt payloads and declare future result paths.
+- Review requirements are embedded in execution packages so future QA-aware layers can consume one deterministic contract.
+
+Known limitations:
+
+- The execution workflow does not call Codex or any AI model.
+- The execution workflow prepares packages only from local handoff artifacts.
+- Future execution results are documented structurally but not implemented.
+
+Future execution plans:
+
+- Attach real execution status transitions when a future execution surface exists.
+- Route result artifacts back into structured review and QA workflows.
+- Add approval-state updates once the execution boundary is implemented.
+
+Next:
+Execution Result Contract Validation

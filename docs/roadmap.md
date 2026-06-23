@@ -109,9 +109,19 @@ Status: Sprint 010 completed
 
 ## Phase 7 - Execution Handoff
 
+Status: Sprint 011 completed
+
 - Package generated prompts for execution surfaces
 - Preserve deterministic boundaries before model execution
-- Prepare for future Codex integration without invoking it yet
+- Prepare execution packages and result flow without invoking Codex yet
+
+### Sprint 011 - Execution Workflow Foundation
+
+- Added the Execution Workflow layer in `execution/`
+- Added `scripts/create-execution-package.js`
+- Added execution-package examples and review-process documentation
+- Added `execution/results/README.md` to define the future execution-output structure
+- Added `docs/execution-architecture.md`
 
 ## Phase 8 - Memory
 

@@ -1,0 +1,45 @@
+{
+  "executionId": "generated-prompts--tasks--frontend-004-execution",
+  "sourceHandoff": "codex-handoff/output/generated-prompts/tasks/frontend-004-handoff.md",
+  "sourcePrompt": "generated-prompts/tasks/frontend-004.md",
+  "category": "frontend",
+  "status": "prepared",
+  "promptPayload": "# Prompt",
+  "expectedResultPath": "execution/results/generated-prompts/tasks/frontend-004/result.json",
+  "reviewRequirements": {
+    "reviewer": "future-qa-layer",
+    "approvalStatus": "pending-review",
+    "mustReview": [
+      "Prompt payload completeness",
+      "Category-to-task alignment",
+      "Boundary compliance",
+      "Output-path readiness"
+    ],
+    "successConditions": [
+      "Execution package is structurally complete",
+      "Source handoff metadata is preserved",
+      "Prompt payload is present without semantic modification",
+      "Result location is predeclared for downstream execution output"
+    ],
+    "failureConditions": [
+      "Missing prompt payload",
+      "Missing source handoff reference",
+      "Category mismatch between handoff and package",
+      "Execution package points outside the repository execution/results structure"
+    ],
+    "approvalProcess": [
+      "Review package metadata and payload completeness",
+      "Confirm boundaries are preserved",
+      "Confirm result path is valid for future execution output",
+      "Mark package as approved for future execution"
+    ],
+    "categoryFocus": "Route, layout, component, and conversion-surface execution output"
+  },
+  "boundaries": [
+    "Do not call Codex.",
+    "Do not call any AI model.",
+    "Do not generate websites.",
+    "Do not implement orchestration.",
+    "Do not implement memory."
+  ]
+}
