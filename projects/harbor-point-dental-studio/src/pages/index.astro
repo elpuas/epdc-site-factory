@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title={site.metadata.home.title} description={site.metadata.home.description}>
+  <div class="page-shell">
+    <section class="hero">
+      <span class="eyebrow">Family and cosmetic dental care</span>
+      <h1>Modern, reassuring dental visits for East Bay families and working professionals.</h1>
+      <p>
+        {site.name} is positioned as a warm, clinically trustworthy practice that supports preventive,
+        restorative, and cosmetic care while making the path to a first appointment easy to understand.
+      </p>
+      <div class="cta-row">
+        <a class="button" href={site.primaryCta.href}>{site.primaryCta.label}</a>
+        <a class="button-secondary" href="/services">Explore services</a>
+      </div>
+      <p class="note">
+        Local focus: content and metadata should support visibility for patients searching in
+        {site.serviceAreas.join(", ")}.
+      </p>
+    </section>
+
+    <section class="grid three" aria-label="Featured service categories">
+      {site.services.slice(0, 3).map((service) => (
+        <article class="section-card">
+          <h2>{service.name}</h2>
+          <p>{service.description}</p>
+        </article>
+      ))}
+    </section>
+
+    <section class="grid two" style="margin-top: 1rem;">
+      <article class="section-card">
+        <h2>Dentistry built around confidence and comfort</h2>
+        <p>
+          The specification emphasizes a modern, welcoming tone with clear next steps for anxious or
+          first-time patients. This page therefore prioritizes trust signals, simple service language,
+          and persistent conversion actions.
+        </p>
+        <ul class="stack-list">
+          <li>Preventive, restorative, and cosmetic services explained in plain language</li>
+          <li>Trust reinforced through testimonials, credentials, and consistent office details</li>
+          <li>Appointment actions kept visible on both desktop and mobile</li>
+        </ul>
+      </article>
+
+      <article class="section-card">
+        <h2>Lead dentist introduction</h2>
+        <p><strong>{site.leadDentist.name}</strong></p>
+        <p>{site.leadDentist.philosophy}</p>
+        <p class="note">
+          TODO: The specification requires education and years of experience on the About page, but
+          those details are not provided in the source specification.
+        </p>
+      </article>
+    </section>
+
+    <section class="grid two" style="margin-top: 1rem;">
+      <article class="section-card">
+        <h2>Patient trust highlights</h2>
+        <p>
+          Reviews should sound authentic and reinforce the priorities named in the specification.
+        </p>
+        <ul class="stack-list">
+          {site.testimonialThemes.map((theme) => (
+            <li>Patients value {theme.toLowerCase()}.</li>
+          ))}
+        </ul>
+      </article>
+
+      <article class="section-card">
+        <h2>Insurance and payment snapshot</h2>
+        <p>{site.insuranceNote}</p>
+        <p class="note">
+          TODO: Specific PPO networks and payment methods are required for the New Patients experience,
+          but the source specification does not include them.
+        </p>
+      </article>
+    </section>
+
+    <section class="section-card" style="margin-top: 1rem;">
+      <h2>Contact snapshot</h2>
+      <div class="grid two">
+        <div>
+          <p><strong>Phone:</strong> {site.phone}</p>
+          <p><strong>Address:</strong> {site.address}</p>
+        </div>
+        <div>
+          <p><strong>Hours:</strong> {site.officeHours}</p>
+          <p><strong>Parking:</strong> {site.parkingNotes}</p>
+        </div>
+      </div>
+      <div class="cta-row" style="margin-top: 1rem;">
+        <a class="button" href="/contact">Request an appointment</a>
+        <a class="button-secondary" href="tel:TODO">TODO: Add click-to-call number</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

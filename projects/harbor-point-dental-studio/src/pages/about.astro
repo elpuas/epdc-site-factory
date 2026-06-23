@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title={site.metadata.about.title} description={site.metadata.about.description}>
+  <div class="page-shell">
+    <section class="hero">
+      <span class="eyebrow">About the practice</span>
+      <h1>A welcoming dental studio centered on clear communication and patient comfort.</h1>
+      <p>
+        The About page is responsible for explaining the practice story, care philosophy, and dentist
+        credentials in a way that supports trust before a first visit.
+      </p>
+      <div class="cta-row">
+        <a class="button" href="/contact">Meet the team and book a first visit</a>
+      </div>
+    </section>
+
+    <section class="grid two">
+      <article class="section-card">
+        <h2>Practice overview</h2>
+        <p>
+          Harbor Point Dental Studio is framed as a modern East Bay practice serving families and
+          professionals who want preventive, restorative, and cosmetic care in one reassuring setting.
+        </p>
+        <p>
+          The specification emphasizes reduced friction for first-time patients, so this page reinforces
+          clarity, warmth, and predictable visit expectations.
+        </p>
+      </article>
+
+      <article class="section-card">
+        <h2>Lead dentist bio</h2>
+        <p><strong>Name:</strong> {site.leadDentist.name}</p>
+        <p><strong>Education:</strong> {site.leadDentist.education}</p>
+        <p><strong>Experience:</strong> {site.leadDentist.experience}</p>
+        <p><strong>Care philosophy:</strong> {site.leadDentist.philosophy}</p>
+      </article>
+    </section>
+
+    <section class="grid two" style="margin-top: 1rem;">
+      <article class="section-card">
+        <h2>Team highlights</h2>
+        <ul class="stack-list">
+          {site.teamHighlights.map((highlight) => (
+            <li>{highlight}</li>
+          ))}
+        </ul>
+      </article>
+
+      <article class="section-card">
+        <h2>Office environment</h2>
+        <p>
+          The specification calls for a modern, welcoming brand. This placeholder content assumes the
+          office environment should feel calm, organized, and clean.
+        </p>
+        <p class="note">
+          TODO: Add confirmed office photography direction, team details, and any accessibility or
+          comfort amenities once the business supplies them.
+        </p>
+      </article>
+    </section>
+  </div>
+</BaseLayout>
