@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title={site.metadata.services.title} description={site.metadata.services.description}>
+  <div class="page-shell">
+    <section class="hero">
+      <span class="eyebrow">Services overview</span>
+      <h1>Preventive, restorative, cosmetic, and emergency dental care with a clear next step.</h1>
+      <p>
+        This minimal services page validates the service-overview task by grouping the core offerings
+        named in the specification and keeping the consultation CTA visible.
+      </p>
+      <div class="cta-row">
+        <a class="button" href="/contact">Schedule a consultation</a>
+      </div>
+    </section>
+
+    <section class="grid two">
+      {site.services.map((service) => (
+        <article class="section-card">
+          <h2>{service.name}</h2>
+          <p>{service.description}</p>
+          <p>
+            The final project should expand this overview into the full service-page set described in the
+            specification, including treatment-specific pages for Teeth Whitening and Dental Implants.
+          </p>
+        </article>
+      ))}
+    </section>
+
+    <section class="section-card" style="margin-top: 1rem;">
+      <h2>What patients should expect next</h2>
+      <p>
+        Each service should explain what problem it addresses, who it is for, and the next appointment
+        action a patient can take. This validation build demonstrates the shared structure only.
+      </p>
+      <p class="note">
+        TODO: Treatment-page content such as candidacy, process, expected results, financing notes, and
+        FAQs still need to be generated for the full specification.
+      </p>
+    </section>
+  </div>
+</BaseLayout>

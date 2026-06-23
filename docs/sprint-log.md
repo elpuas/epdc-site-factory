@@ -246,3 +246,44 @@ Future execution plans:
 
 Next:
 Execution Result Contract Validation
+
+## Sprint 012
+
+Goal:
+Validate the factory by generating the first real Astro project.
+
+Completed:
+
+- Generated the first validation project in `projects/harbor-point-dental-studio/`.
+- Added a minimal Astro structure with `src/pages/`, `src/components/`, `src/layouts/`, `src/data/`, and `public/`.
+- Implemented the required pages: `index.astro`, `about.astro`, `services.astro`, and `contact.astro`.
+- Implemented shared layout and site components in `src/layouts/BaseLayout.astro`, `src/components/site/Header.astro`, and `src/components/site/Footer.astro`.
+- Added structured project content in `src/data/site.ts`.
+- Added `projects/harbor-point-dental-studio/FACTORY_REPORT.md`.
+- Added `docs/project-generation-learnings.md`.
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None. The validation project uses repository source files only.
+
+Decisions made:
+
+- Keep the first generated project intentionally minimal and validation-focused rather than attempting the full sitemap.
+- Use TODO markers instead of inventing missing business details from the specification.
+- Treat this sprint as a proof that the factory contracts can guide a real project output, even though project generation is still manual.
+
+Known limitations:
+
+- The generated project covers only the minimum page set requested for the sprint.
+- Treatment pages, New Patients, Reviews, analytics integration, schema markup, and submission delivery were not completed.
+- The output validates the architecture but does not prove automated end-to-end code generation yet.
+
+Future execution plans:
+
+- Expand project generation to cover the full planned sitemap.
+- Define the execution-to-project-file contract so future generated prompts can write code outputs more directly.
+- Add QA-driven validation against acceptance criteria after generation.
+
+Next:
+Full Sitemap Generation Validation

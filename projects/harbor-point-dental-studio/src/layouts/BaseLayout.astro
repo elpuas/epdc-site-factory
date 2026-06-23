@@ -1,0 +1,191 @@
+---
+import Header from "../components/site/Header.astro";
+import Footer from "../components/site/Footer.astro";
+import { site } from "../data/site";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --page: #f7faf8;
+    --surface: #ffffff;
+    --surface-alt: #eaf5f3;
+    --text: #183036;
+    --muted: #4f6970;
+    --accent: #176b74;
+    --accent-soft: #d4ebea;
+    --border: #c9dedc;
+    --shadow: 0 12px 36px rgba(17, 55, 64, 0.08);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background: var(--page);
+  }
+
+  body {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  main {
+    min-height: 60vh;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.15;
+  }
+
+  a {
+    color: var(--accent);
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+  }
+
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    z-index: 100;
+    background: white;
+    color: var(--text);
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--accent);
+  }
+
+  .page-shell {
+    margin: 0 auto;
+    max-width: 72rem;
+    padding: 2rem 1.25rem 4rem;
+  }
+
+  .hero,
+  .section-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+
+  .hero {
+    padding: 2rem;
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .eyebrow {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .button,
+  .button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .button {
+    background: var(--accent);
+    color: white;
+  }
+
+  .button-secondary {
+    background: var(--accent-soft);
+    color: var(--text);
+  }
+
+  .grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .grid.two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid.three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .section-card {
+    padding: 1.5rem;
+  }
+
+  .stack-list {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .note {
+    border-left: 4px solid var(--accent);
+    background: var(--surface-alt);
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  @media (max-width: 48rem) {
+    .grid.two,
+    .grid.three {
+      grid-template-columns: 1fr;
+    }
+
+    .hero,
+    .section-card {
+      padding: 1.25rem;
+    }
+  }
+</style>

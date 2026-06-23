@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title={site.metadata.contact.title} description={site.metadata.contact.description}>
+  <div class="page-shell">
+    <section class="hero">
+      <span class="eyebrow">Contact and appointments</span>
+      <h1>Request an appointment or review office details before your first visit.</h1>
+      <p>
+        The Contact page keeps the phone number, address, office hours, parking notes, and appointment
+        request form together so patients can act without searching for critical details.
+      </p>
+      <div class="cta-row">
+        <a class="button" href="tel:TODO">TODO: Add click-to-call number</a>
+        <a class="button-secondary" href="#appointment-form">Jump to appointment form</a>
+      </div>
+    </section>
+
+    <section class="grid two">
+      <article class="section-card">
+        <h2>Office details</h2>
+        <p><strong>Phone:</strong> {site.phone}</p>
+        <p><strong>Address:</strong> {site.address}</p>
+        <p><strong>Hours:</strong> {site.officeHours}</p>
+        <p><strong>Parking:</strong> {site.parkingNotes}</p>
+        <p class="note">
+          TODO: Add the embeddable Google Maps URL once the confirmed address is available.
+        </p>
+      </article>
+
+      <article class="section-card" id="appointment-form">
+        <h2>Appointment request form</h2>
+        <form>
+          <p>
+            <label for="name">Full name</label><br />
+            <input id="name" name="name" type="text" autocomplete="name" />
+          </p>
+          <p>
+            <label for="phone">Phone number</label><br />
+            <input id="phone" name="phone" type="tel" autocomplete="tel" />
+          </p>
+          <p>
+            <label for="service-interest">Service interest</label><br />
+            <select id="service-interest" name="service-interest">
+              <option>Preventive dentistry</option>
+              <option>Restorative dentistry</option>
+              <option>Cosmetic dentistry</option>
+              <option>Emergency care</option>
+            </select>
+          </p>
+          <p>
+            <label for="message">How can we help?</label><br />
+            <textarea id="message" name="message" rows="5"></textarea>
+          </p>
+          <button class="button" type="submit">Request an appointment</button>
+        </form>
+        <p class="note">
+          TODO: This validation build includes the form structure only. Submission delivery to the
+          practice inbox is a later backend task in the factory plan.
+        </p>
+      </article>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    background: white;
+    font: inherit;
+  }
+
+  button.button {
+    border: 0;
+    cursor: pointer;
+  }
+</style>

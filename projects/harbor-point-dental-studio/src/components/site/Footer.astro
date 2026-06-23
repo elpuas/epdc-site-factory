@@ -1,0 +1,71 @@
+---
+import { site } from "../../data/site";
+---
+
+<footer class="site-footer">
+  <div class="inner">
+    <div>
+      <h2>{site.shortName}</h2>
+      <p>{site.description}</p>
+    </div>
+
+    <div>
+      <h2>Visit information</h2>
+      <ul>
+        <li><strong>Phone:</strong> {site.phone}</li>
+        <li><strong>Address:</strong> {site.address}</li>
+        <li><strong>Hours:</strong> {site.officeHours}</li>
+        <li><strong>Parking:</strong> {site.parkingNotes}</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>Service area</h2>
+      <p>Supporting dental patients in {site.serviceAreas.join(", ")}.</p>
+      <a class="footer-link" href={site.primaryCta.href}>{site.primaryCta.label}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #113740;
+    color: #f6fbfb;
+    margin-top: 4rem;
+  }
+
+  .inner {
+    margin: 0 auto;
+    max-width: 72rem;
+    padding: 2.5rem 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin: 0 0 0.75rem;
+  }
+
+  p,
+  li {
+    color: rgba(246, 251, 251, 0.92);
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .footer-link {
+    color: inherit;
+    font-weight: 700;
+  }
+
+  @media (max-width: 48rem) {
+    .inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

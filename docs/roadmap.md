@@ -131,6 +131,15 @@ Status: Sprint 011 completed
 
 ## Phase 9 - Project Generation
 
+Status: Sprint 012 completed
+
 - Generate websites from specifications
 - Validate outputs through QA
 - Store completed projects in the workspace
+
+### Sprint 012 - First Generated Astro Project
+
+- Added the first generated validation project in `projects/harbor-point-dental-studio/`
+- Generated a minimal Astro page set with shared layout, header, footer, and structured site data
+- Added `projects/harbor-point-dental-studio/FACTORY_REPORT.md` to document task coverage, missing information, and specification improvements
+- Added `docs/project-generation-learnings.md` to capture what worked, what failed, and what still needs redesign
