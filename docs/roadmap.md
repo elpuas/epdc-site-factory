@@ -123,13 +123,30 @@ Status: Sprint 011 completed
 - Added `execution/results/README.md` to define the future execution-output structure
 - Added `docs/execution-architecture.md`
 
-## Phase 8 - Memory
+## Phase 8 - Runtime Foundation
+
+Status: Sprint 014 completed
+
+- Define the runtime boundary after execution-package creation
+- Document runtime responsibilities, logs, retries, and review flow
+- Document runtime-specific MCP strategy without implementation
+
+### Sprint 014 - Runtime Foundation
+
+- Added `runtime/README.md` and `runtime/runtime-schema.md`
+- Added Codex runtime contracts in `runtime/codex/`
+- Added `docs/runtime-architecture.md`
+- Added `docs/factory-vs-runtime.md`
+- Documented preferred MCP strategy for runtime-layer knowledge access
+- Clarified that the factory stops at execution packages and the runtime begins at external execution consumption
+
+## Phase 9 - Memory
 
 - Design working memory structures
 - Explore long-term knowledge storage
 - Evaluate SQLite and retrieval strategies
 
-## Phase 9 - Project Generation
+## Phase 10 - Project Generation
 
 Status: Sprint 012 completed
 
