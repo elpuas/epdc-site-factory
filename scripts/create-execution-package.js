@@ -55,6 +55,17 @@ function splitSections(markdown) {
   return sections;
 }
 
+function extractPromptPayload(markdown) {
+  const marker = "\n## Prompt Payload\n";
+  const index = markdown.indexOf(marker);
+
+  if (index === -1) {
+    return "";
+  }
+
+  return markdown.slice(index + marker.length).trim();
+}
+
 function parseMetadata(sectionBody) {
   return Object.fromEntries(
     sectionBody
@@ -65,12 +76,25 @@ function parseMetadata(sectionBody) {
   );
 }
 
+function parseArrayValue(value) {
+  if (!value) {
+    return [];
+  }
+
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
 function inferResultPath(sourcePrompt) {
   const normalized = sourcePrompt.replace(/\\/g, "/").replace(/\.md$/, "");
   return `execution/results/${normalized}/result.json`;
 }
 
-function buildReviewRequirements(category) {
+function buildReviewRequirements(category, executionIntent) {
   const common = {
     reviewer: "future-qa-layer",
     approvalStatus: "pending-review",
@@ -94,7 +118,7 @@ function buildReviewRequirements(category) {
     ],
     approvalProcess: [
       "Review package metadata and payload completeness",
-      "Confirm boundaries are preserved",
+      "Confirm runtime scope and boundaries are preserved",
       "Confirm result path is valid for future execution output",
       "Mark package as approved for future execution",
     ],
@@ -102,6 +126,7 @@ function buildReviewRequirements(category) {
 
   return {
     ...common,
+    executionIntent,
     categoryFocus:
       category === "frontend"
         ? "Route, layout, component, and conversion-surface execution output"
@@ -117,33 +142,65 @@ function buildReviewRequirements(category) {
   };
 }
 
+function buildExecutionBoundaries(executionIntent) {
+  const common = [
+    "Do not implement orchestration.",
+    "Do not add memory.",
+    "Do not add MCP execution.",
+  ];
+
+  if (executionIntent === "plan") {
+    return ["Do not modify target project files.", ...common];
+  }
+
+  if (executionIntent === "review") {
+    return ["Do not expand scope from review into unrelated implementation.", ...common];
+  }
+
+  if (executionIntent === "revise") {
+    return ["Revise only within the declared target project path and allowed files.", ...common];
+  }
+
+  return ["Modify only the declared allowed files inside the target project path.", ...common];
+}
+
 function buildExecutionPackage(relativeHandoffPath, handoffMarkdown) {
   const sections = splitSections(handoffMarkdown);
   const metadata = parseMetadata(sections["Handoff Metadata"] || "");
   const sourcePrompt = metadata["Source prompt"];
   const category = metadata.Category || "unknown";
   const handoffId = metadata["Handoff ID"];
-  const promptPayload = sections["Prompt Payload"] || "";
+  const promptMode = metadata["Prompt mode"] || "planning";
+  const promptPayload = extractPromptPayload(handoffMarkdown);
+  const projectId = metadata["Project ID"] || "";
+  const taskId = metadata["Task ID"] || "";
+  const executionIntent = metadata["Execution intent"] || (promptMode === "execution" ? "implement" : "plan");
+  const targetProjectPath = metadata["Target project path"] || "";
+  const allowedFiles = parseArrayValue(metadata["Allowed files"]);
+  const expectedOutputs = parseArrayValue(metadata["Expected outputs"]);
+  const implementationGoal = metadata["Implementation goal"] || "";
 
   const executionId = `${handoffId}-execution`;
   const resultPath = inferResultPath(sourcePrompt);
 
   return {
     executionId,
+    promptMode,
+    projectId,
+    taskId,
+    targetProjectPath,
+    allowedFiles,
+    executionIntent,
     sourceHandoff: relativeHandoffPath.replace(/\\/g, "/"),
     sourcePrompt,
     category,
     status: "prepared",
     promptPayload,
+    expectedOutputs,
+    implementationGoal,
     expectedResultPath: resultPath,
-    reviewRequirements: buildReviewRequirements(category),
-    boundaries: [
-      "Do not call Codex.",
-      "Do not call any AI model.",
-      "Do not generate websites.",
-      "Do not implement orchestration.",
-      "Do not implement memory.",
-    ],
+    reviewRequirements: buildReviewRequirements(category, executionIntent),
+    boundaries: buildExecutionBoundaries(executionIntent),
   };
 }
 
@@ -170,6 +227,9 @@ function main() {
     fs.writeFileSync(absoluteOutputPath, `${JSON.stringify(executionPackage, null, 2)}\n`);
 
     packagesCreated.push({
+      promptMode: executionPackage.promptMode,
+      projectId: executionPackage.projectId,
+      taskId: executionPackage.taskId,
       sourceHandoff: relativeHandoffPath,
       category: executionPackage.category,
       executionPackage: relativeOutputPath,

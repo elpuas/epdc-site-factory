@@ -125,7 +125,7 @@ Status: Sprint 011 completed
 
 ## Phase 8 - Runtime Foundation
 
-Status: Sprint 015 completed
+Status: Sprint 016 completed
 
 - Define the runtime boundary after execution-package creation
 - Document runtime responsibilities, logs, retries, and review flow
@@ -147,6 +147,15 @@ Status: Sprint 015 completed
 - Confirmed the runtime could stay within allowed Harbor Point frontend files
 - Added `docs/codex-runtime-validation.md` with execution-package, prompt, and schema findings
 - Identified the remaining contract gap between planning-oriented prompts and implementation-oriented runtime execution
+
+### Sprint 016 - Execution Prompt System
+
+- Added runtime-facing execution prompt templates in `execution-prompts/`
+- Extended the prompt builder and task runner with `planning` and `execution` modes
+- Added explicit runtime scope fields to execution packages: `projectId`, `taskId`, `targetProjectPath`, `allowedFiles`, and `executionIntent`
+- Added execution prompt context fields for `expectedOutputs` and `implementationGoal`
+- Added `docs/planning-vs-execution-prompts.md` and `docs/execution-prompt-validation.md`
+- Updated runtime and execution docs to document explicit scope instead of runtime inference
 
 ## Phase 9 - Memory
 

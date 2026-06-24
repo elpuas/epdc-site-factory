@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--tasks--content-001`
 - Source prompt: `generated-prompts/tasks/content-001.md`
 - Category: `content`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `content-brand-messaging`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["Content implementation guidance","Page hierarchy and CTA notes","Service-page or local-business messaging notes","Dependency notes for frontend or SEO implementation"]`
+- Implementation goal: Use this assembled context package to address task `content-brand-messaging`: Prepare core brand and trust messaging. Structure the core messaging needed across the site, including the practice value proposition, reassuring tone, service-category summaries, and trust signals tied to family and cosmetic dental care. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

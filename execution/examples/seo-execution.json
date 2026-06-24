@@ -1,10 +1,23 @@
 {
   "executionId": "generated-prompts--generated-seo-prompt-execution",
+  "promptMode": "execution",
+  "projectId": "harbor-point-dental-studio",
+  "taskId": "seo-page-metadata",
+  "targetProjectPath": "projects/harbor-point-dental-studio",
+  "allowedFiles": [
+    "projects/harbor-point-dental-studio/src/layouts/BaseLayout.astro",
+    "projects/harbor-point-dental-studio/src/pages/index.astro"
+  ],
+  "executionIntent": "implement",
   "sourceHandoff": "codex-handoff/output/generated-prompts/generated-seo-prompt-handoff.md",
   "sourcePrompt": "generated-prompts/generated-seo-prompt.md",
   "category": "seo",
   "status": "prepared",
   "promptPayload": "# Prompt\n\n## Role\n\nYou are the SEO Agent for EPDC Site Factory.",
+  "expectedOutputs": [
+    "Implement the required SEO updates only in the allowed files"
+  ],
+  "implementationGoal": "Implement unique metadata for the scoped public pages.",
   "expectedResultPath": "execution/results/generated-prompts/generated-seo-prompt/result.json",
   "reviewRequirements": {
     "reviewer": "future-qa-layer",
@@ -30,13 +43,13 @@
       "Confirm SEO scope alignment",
       "Mark the package approved for future execution"
     ],
+    "executionIntent": "implement",
     "categoryFocus": "Metadata, structured data, crawlability, and local SEO execution output"
   },
   "boundaries": [
-    "Do not call Codex.",
-    "Do not call any AI model.",
-    "Do not generate websites.",
+    "Modify only the declared allowed files inside the target project path.",
     "Do not implement orchestration.",
-    "Do not implement memory."
+    "Do not add memory.",
+    "Do not add MCP execution."
   ]
 }

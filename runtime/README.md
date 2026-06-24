@@ -26,6 +26,7 @@ The runtime layer consumes:
 - `execution/` package artifacts
 - generated prompt artifacts referenced by the package
 - project specifications referenced by the package lineage
+- explicit runtime scope fields such as `projectId`, `taskId`, `targetProjectPath`, `allowedFiles`, `expectedOutputs`, and `implementationGoal`
 
 ## Outputs
 
@@ -41,6 +42,7 @@ The runtime layer produces:
 - Read an execution package without changing its intended scope.
 - Deliver the prompt payload to the selected runtime.
 - Ensure the runtime also receives the project specification and other required context references.
+- Respect the declared `executionIntent` without inferring missing target files or goals.
 - Capture generated files in a reviewable output structure.
 - Record execution events, failures, retries, and final state transitions.
 - Route outputs into QA review before they are treated as approved.
@@ -58,6 +60,7 @@ The runtime layer produces:
 - Pass the generated prompt to the selected runtime as an execution input, not as a factory rewrite step.
 - Preserve prompt meaning and package lineage.
 - Attach the related specification and execution metadata required for scoped execution.
+- Do not infer file scope when `allowedFiles` is declared by the execution package.
 
 ### Generated file review
 

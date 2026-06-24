@@ -35,6 +35,10 @@ function inferCategory(relativePromptPath) {
   return patterns.find((pattern) => normalized.includes(pattern)) || "unknown";
 }
 
+function inferPromptMode(relativePromptPath) {
+  return relativePromptPath.replace(/\\/g, "/").includes("/execution/") ? "execution" : "planning";
+}
+
 function buildHandoffId(relativePromptPath) {
   return relativePromptPath
     .replace(/\\/g, "/")
@@ -44,9 +48,90 @@ function buildHandoffId(relativePromptPath) {
     .toLowerCase();
 }
 
+function splitSections(markdown) {
+  const sections = {};
+  const lines = markdown.split("\n");
+  let currentSection = null;
+  let buffer = [];
+
+  for (const line of lines) {
+    const headingMatch = line.match(/^## (.+)$/);
+
+    if (headingMatch) {
+      if (currentSection) {
+        sections[currentSection] = buffer.join("\n").trim();
+      }
+
+      currentSection = headingMatch[1].trim();
+      buffer = [];
+      continue;
+    }
+
+    if (currentSection) {
+      buffer.push(line);
+    }
+  }
+
+  if (currentSection) {
+    sections[currentSection] = buffer.join("\n").trim();
+  }
+
+  return sections;
+}
+
+function findBulletValue(sectionBody, label) {
+  const pattern = new RegExp(`^- ${label}:\\s*(.*)$`, "m");
+  const match = sectionBody.match(pattern);
+  return match ? match[1].trim().replace(/^`|`$/g, "") : "";
+}
+
+function extractBulletLines(sectionBody) {
+  return sectionBody
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith("- "))
+    .map((line) => line.replace(/^- /, "").trim());
+}
+
+function buildPromptMetadata(relativePromptPath, promptBody) {
+  const sections = splitSections(promptBody);
+  const promptMode = inferPromptMode(relativePromptPath);
+  const runtimeContext = sections["Runtime Context"] || "";
+  const contextSection = sections.Context || "";
+  const expectedOutputLines = extractBulletLines(sections["Expected Output"] || "");
+
+  const projectId =
+    findBulletValue(runtimeContext, "Project ID") || findBulletValue(contextSection, "Slug") || "";
+  const taskId =
+    findBulletValue(runtimeContext, "Task ID") || findBulletValue(contextSection, "ID") || "";
+  const executionIntent =
+    findBulletValue(runtimeContext, "Execution intent") || (promptMode === "execution" ? "implement" : "plan");
+  const targetProjectPath = findBulletValue(runtimeContext, "Target project path") || "";
+  const allowedFiles = findBulletValue(runtimeContext, "Allowed files") || "[]";
+  const expectedOutputs =
+    findBulletValue(runtimeContext, "Expected outputs") || JSON.stringify(expectedOutputLines);
+  const implementationGoal =
+    findBulletValue(runtimeContext, "Implementation goal") ||
+    sections.Task?.replace(/\s+/g, " ").trim() ||
+    "";
+
+  return {
+    promptMode,
+    projectId,
+    taskId,
+    executionIntent,
+    targetProjectPath,
+    allowedFiles,
+    expectedOutputs,
+    implementationGoal,
+  };
+}
+
 function buildHandoffMarkdown(relativePromptPath, promptBody) {
   const category = inferCategory(relativePromptPath);
+  const promptMode = inferPromptMode(relativePromptPath);
   const handoffId = buildHandoffId(relativePromptPath);
+  const promptMetadata = buildPromptMetadata(relativePromptPath, promptBody);
 
   return `# Codex Handoff
 
@@ -55,8 +140,16 @@ function buildHandoffMarkdown(relativePromptPath, promptBody) {
 - Handoff ID: \`${handoffId}\`
 - Source prompt: \`${relativePromptPath}\`
 - Category: \`${category}\`
+- Prompt mode: \`${promptMode}\`
 - Consumer: \`Codex\`
 - Status: \`prepared\`
+- Project ID: \`${promptMetadata.projectId}\`
+- Task ID: \`${promptMetadata.taskId}\`
+- Execution intent: \`${promptMetadata.executionIntent}\`
+- Target project path: \`${promptMetadata.targetProjectPath}\`
+- Allowed files: \`${promptMetadata.allowedFiles}\`
+- Expected outputs: \`${promptMetadata.expectedOutputs}\`
+- Implementation goal: ${promptMetadata.implementationGoal}
 
 ## Responsibilities
 
@@ -104,6 +197,7 @@ function main() {
     handoffs.push({
       sourcePrompt: relativePromptPath,
       category: inferCategory(relativePromptPath),
+      promptMode: inferPromptMode(relativePromptPath),
       handoffFile: relativeHandoffPath,
     });
   }

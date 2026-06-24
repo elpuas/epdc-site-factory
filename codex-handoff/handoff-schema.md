@@ -38,8 +38,16 @@ Contains:
 - Handoff ID
 - Source prompt path
 - Category
+- Prompt mode
 - Intended consumer
 - Preparation status
+- Project ID
+- Task ID
+- Execution intent
+- Target project path
+- Allowed files
+- Expected outputs
+- Implementation goal
 
 ### Responsibilities
 

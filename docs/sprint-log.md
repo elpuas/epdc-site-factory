@@ -416,3 +416,51 @@ Known limitations:
 
 Next:
 Execution Package And Prompt Contract Refinement
+
+## Sprint 016
+
+Goal:
+Separate planning prompts from execution prompts without redesigning the factory.
+
+Completed:
+
+- Added `execution-prompts/README.md` and runtime-facing execution templates for frontend, backend, SEO, QA, and content work.
+- Extended `scripts/assemble-context.js`, `scripts/build-prompt.js`, and `scripts/run-tasks.js` to support `planning` and `execution` prompt modes.
+- Added explicit runtime scope fields to execution prompts and execution packages: `projectId`, `taskId`, `targetProjectPath`, `allowedFiles`, `executionIntent`, `expectedOutputs`, and `implementationGoal`.
+- Extended `scripts/prepare-codex-handoff.js` and `scripts/create-execution-package.js` so handoffs and execution packages preserve prompt mode and runtime metadata.
+- Added `docs/planning-vs-execution-prompts.md` and `docs/execution-prompt-validation.md`.
+- Updated `execution/execution-schema.md`, `prompt-builder/prompt-schema.md`, `prompt-builder/README.md`, `execution/README.md`, `runtime/README.md`, `runtime/runtime-schema.md`, `task-runner/README.md`, and `task-runner/task-runner-schema.md`.
+- Regenerated planning and execution prompt artifacts, handoffs, and execution packages for the current example planner output.
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None. The execution prompt system continues to use the existing Node.js runtime and built-in modules only.
+
+Execution prompt decisions:
+
+- Planning prompts remain in place and keep their existing output paths.
+- Execution prompts use a separate template source in `execution-prompts/templates/`.
+- Execution prompts render into `generated-prompts/execution/` and `generated-prompts/execution/tasks/`.
+- The runtime receives explicit project scope and file scope instead of inferring them from the repository or validation notes.
+
+Package schema changes:
+
+- Added `promptMode` to distinguish planning and execution prompt lineage.
+- Added `projectId`, `taskId`, `targetProjectPath`, `allowedFiles`, and `executionIntent` to the execution package contract.
+- Added `expectedOutputs` and `implementationGoal` so runtime-facing expectations travel with the package.
+- Replaced conflicting pre-runtime boundaries with intent-aligned runtime boundaries.
+
+Runtime improvements:
+
+- The runtime can now consume an execution prompt that declares its project boundary directly.
+- `frontend-site-foundation` now has both a planning prompt and an execution prompt for comparison and validation.
+- Execution package preparation now preserves the full prompt payload instead of truncating at nested headings.
+
+Known limitations:
+
+- Task-to-file allowlists are still repository-defined examples rather than generated from a richer planning output contract.
+- Planning prompt packages still carry empty `allowedFiles` and `targetProjectPath` values because they are intentionally non-implementation artifacts.
+
+Next:
+Runtime Retry And Review Vocabulary

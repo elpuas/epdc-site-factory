@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--tasks--backend-002`
 - Source prompt: `generated-prompts/tasks/backend-002.md`
 - Category: `backend`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `backend-analytics-integration`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["Backend implementation guidance","Security and data-handling notes","Launch-ready backend constraints","Risk and future-readiness notes"]`
+- Implementation goal: Use this assembled context package to address task `backend-analytics-integration`: Plan analytics integration requirements. Define the backend or configuration work needed to support Google Analytics tracking for launch without expanding scope into unrelated data systems. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

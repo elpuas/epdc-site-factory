@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--tasks--seo-003`
 - Source prompt: `generated-prompts/tasks/seo-003.md`
 - Category: `seo`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `seo-structured-data`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["SEO implementation guidance","Metadata and page-intent notes","Local SEO consistency requirements","Structured-data and dependency notes"]`
+- Implementation goal: Use this assembled context package to address task `seo-structured-data`: Plan structured data for the practice and FAQ content. Define how Dentist-related business schema and FAQPage markup should be applied to the practice and treatment-page FAQs in alignment with the specification. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

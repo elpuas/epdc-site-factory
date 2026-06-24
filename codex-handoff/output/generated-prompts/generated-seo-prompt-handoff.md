@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--generated-seo-prompt`
 - Source prompt: `generated-prompts/generated-seo-prompt.md`
 - Category: `seo`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `seo-page-metadata`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["SEO implementation guidance","Metadata and page-intent notes","Local SEO consistency requirements","Structured-data and dependency notes"]`
+- Implementation goal: Use this assembled context package to address task `seo-page-metadata`: Plan unique metadata for all public pages. Define page-specific title and meta description requirements for Home, core pages, and treatment pages so each page aligns with its search intent and business purpose. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

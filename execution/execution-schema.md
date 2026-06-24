@@ -20,11 +20,24 @@ Every execution package should follow this JSON shape:
 ```json
 {
   "executionId": "generated-prompts--generated-frontend-prompt-execution",
+  "promptMode": "execution",
+  "projectId": "harbor-point-dental-studio",
+  "taskId": "frontend-site-foundation",
+  "targetProjectPath": "projects/harbor-point-dental-studio",
+  "allowedFiles": [
+    "projects/harbor-point-dental-studio/src/layouts/BaseLayout.astro",
+    "projects/harbor-point-dental-studio/src/components/site/Header.astro"
+  ],
+  "executionIntent": "implement",
   "sourceHandoff": "codex-handoff/output/generated-prompts/generated-frontend-prompt-handoff.md",
   "sourcePrompt": "generated-prompts/generated-frontend-prompt.md",
   "category": "frontend",
   "status": "prepared",
   "promptPayload": "# Prompt ...",
+  "expectedOutputs": [
+    "Implement the requested frontend changes only in the allowed files"
+  ],
+  "implementationGoal": "Implement the shared site foundation for the target project.",
   "expectedResultPath": "execution/results/generated-prompts/generated-frontend-prompt/result.json",
   "reviewRequirements": {
     "reviewer": "future-qa-layer",
@@ -35,10 +48,17 @@ Every execution package should follow this JSON shape:
     "approvalProcess": []
   },
   "boundaries": [
-    "Do not call Codex."
+    "Modify only the declared allowed files inside the target project path."
   ]
 }
 ```
+
+## Supported Execution Intents
+
+- `plan`
+- `implement`
+- `review`
+- `revise`
 
 ## Field Definitions
 
@@ -46,6 +66,33 @@ Every execution package should follow this JSON shape:
 
 - Stable identifier for the execution package
 - Derived deterministically from the handoff identifier
+
+### `promptMode`
+
+- Declares whether the source prompt is `planning` or `execution`
+- Allows planning prompts and execution prompts to coexist without ambiguity
+
+### `projectId`
+
+- Stable project identifier carried into the execution package
+
+### `taskId`
+
+- Stable planner task identifier carried into the execution package
+
+### `targetProjectPath`
+
+- Explicit repository path for the project surface the runtime may inspect or modify
+
+### `allowedFiles`
+
+- Explicit file allowlist for bounded runtime execution
+- May be empty for planning-only prompt packages
+
+### `executionIntent`
+
+- Declares whether the runtime package is for `plan`, `implement`, `review`, or `revise`
+- Replaces ambiguous planning-only assumptions
 
 ### `sourceHandoff`
 
@@ -69,6 +116,15 @@ Every execution package should follow this JSON shape:
 - Full prompt body carried forward from the handoff document
 - Must be preserved without semantic modification
 
+### `expectedOutputs`
+
+- Runtime-facing output expectations carried directly into the package
+
+### `implementationGoal`
+
+- Explicit statement of the scoped runtime goal
+- Used to keep execution bounded without inference
+
 ### `expectedResultPath`
 
 - Predeclared repository path for a future execution result artifact
@@ -81,14 +137,8 @@ Every execution package should follow this JSON shape:
 ### `boundaries`
 
 - Non-negotiable execution-workflow restrictions
-
-Required boundaries:
-
-- No Codex calls
-- No AI model calls
-- No website generation
-- No orchestration
-- No memory
+- Must align with the execution intent
+- Must not repeat pre-runtime-only restrictions that conflict with implementation work
 
 ## Supporting Manifest
 
@@ -96,6 +146,9 @@ The CLI also writes `execution/packages/manifest.json`.
 
 Each manifest entry contains:
 
+- `promptMode`
+- `projectId`
+- `taskId`
 - `sourceHandoff`
 - `category`
 - `executionPackage`

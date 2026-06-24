@@ -1,10 +1,23 @@
 {
   "executionId": "generated-prompts--generated-backend-prompt-execution",
+  "promptMode": "execution",
+  "projectId": "harbor-point-dental-studio",
+  "taskId": "backend-form-delivery",
+  "targetProjectPath": "projects/harbor-point-dental-studio",
+  "allowedFiles": [
+    "projects/harbor-point-dental-studio/src/pages/contact.astro",
+    "projects/harbor-point-dental-studio/src/pages/api/appointment-request.ts"
+  ],
+  "executionIntent": "implement",
   "sourceHandoff": "codex-handoff/output/generated-prompts/generated-backend-prompt-handoff.md",
   "sourcePrompt": "generated-prompts/generated-backend-prompt.md",
   "category": "backend",
   "status": "prepared",
   "promptPayload": "# Prompt\n\n## Role\n\nYou are the Backend Agent for EPDC Site Factory.",
+  "expectedOutputs": [
+    "Implement only the backend-facing files required by the task"
+  ],
+  "implementationGoal": "Implement launch-ready form delivery without adding a database.",
   "expectedResultPath": "execution/results/generated-prompts/generated-backend-prompt/result.json",
   "reviewRequirements": {
     "reviewer": "future-qa-layer",
@@ -30,13 +43,13 @@
       "Confirm backend scope alignment",
       "Mark the package approved for future execution"
     ],
+    "executionIntent": "implement",
     "categoryFocus": "Backend scope, data handling, and security-boundary execution output"
   },
   "boundaries": [
-    "Do not call Codex.",
-    "Do not call any AI model.",
-    "Do not generate websites.",
+    "Modify only the declared allowed files inside the target project path.",
     "Do not implement orchestration.",
-    "Do not implement memory."
+    "Do not add memory.",
+    "Do not add MCP execution."
   ]
 }

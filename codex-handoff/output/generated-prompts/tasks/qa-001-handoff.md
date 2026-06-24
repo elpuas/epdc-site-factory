@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--tasks--qa-001`
 - Source prompt: `generated-prompts/tasks/qa-001.md`
 - Category: `qa`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `qa-specification-coverage`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["Structured QA findings","Release-readiness summary","Rework recommendations","Coverage notes mapped to requirements"]`
+- Implementation goal: Use this assembled context package to address task `qa-specification-coverage`: Validate task coverage against the project specification. Review whether the planned implementation covers every required page, feature, integration, and acceptance criterion from the dental specification before downstream execution begins. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

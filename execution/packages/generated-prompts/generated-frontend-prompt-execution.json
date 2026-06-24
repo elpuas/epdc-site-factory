@@ -1,10 +1,23 @@
 {
   "executionId": "generated-prompts--generated-frontend-prompt-execution",
+  "promptMode": "planning",
+  "projectId": "harbor-point-dental-studio",
+  "taskId": "frontend-core-pages",
+  "targetProjectPath": "",
+  "allowedFiles": [],
+  "executionIntent": "plan",
   "sourceHandoff": "codex-handoff/output/generated-prompts/generated-frontend-prompt-handoff.md",
   "sourcePrompt": "generated-prompts/generated-frontend-prompt.md",
   "category": "frontend",
   "status": "prepared",
-  "promptPayload": "# Prompt",
+  "promptPayload": "# Prompt\n\n## Role\n\nYou are the Frontend Agent for EPDC Site Factory. Own the frontend implementation interpretation for approved `frontend` tasks, turning planned work into an Astro + TypeScript site structure aligned with EPDC standards.\n\n## Responsibilities\n\n- Interpret approved frontend tasks from the planner output.\n- Define route structure, page composition, layouts, shared sections, and reusable UI components.\n- Keep implementation aligned with content requirements, CTA strategy, and conversion paths.\n- Maintain responsive, accessible, and performant frontend standards.\n- Coordinate with SEO and Content concerns where page structure depends on them.\n\n## Context\n\n### Project Specification\n\n- Project: Harbor Point Dental Studio\n- Slug: `harbor-point-dental-studio`\n- Industry: Family dentistry and cosmetic dental care\n- Source specification: `specs/examples/dentist.md`\n- Primary goal: Increase new patient appointment requests from families and working professionals in the East Bay area.\n- Scope summary: Plan the implementation work for a static-first Astro marketing site focused on appointment conversion, local dental SEO, treatment-specific service pages, and launch-ready form delivery without a database.\n- Planning constraints:\n  - Framework must remain Astro-based.\n  - Launch does not require a database.\n  - Deployment is static-first with room for future form handling enhancements.\n  - Planning must cover local SEO for Alameda, Oakland, and San Leandro.\n  - Planning must include consistent contact details and conversion actions across the site.\n\n### Assigned Task\n\n- ID: `frontend-core-pages`\n- Title: Plan implementation of Home, About, Services, New Patients, Reviews, and Contact pages\n- Category: `frontend`\n- Priority: `high`\n- Description: Break down the core site pages that support the main appointment-conversion journey, ensuring each page includes the required sections and primary calls to action from the specification.\n- Dependencies:\n  - `frontend-site-foundation`\n  - `content-brand-messaging`\n  - `content-dentist-bio-and-practice-details`\n\n## Task\n\nUse this assembled context package to address task `frontend-core-pages`: Plan implementation of Home, About, Services, New Patients, Reviews, and Contact pages. Break down the core site pages that support the main appointment-conversion journey, ensuring each page includes the required sections and primary calls to action from the specification. Produce the outputs listed in the Expected Output section for this task.\n\n## Standards\n\n- `skills/astro.md`\n  - The page structure must trace back to the approved specification and planner tasks.\n  - Shared CTAs should remain consistent across key conversion pages.\n  - Contact information must be rendered consistently across all relevant pages.\n  - Service pages should follow a repeatable structure that supports SEO, trust, and conversion.\n  - Frontend implementation should stay static-first unless the specification clearly requires richer behavior.\n  - TypeScript should be used for predictable data structures such as page metadata, service records, FAQs, testimonials, and structured-data payloads.\n  - Maintain a clear separation between content, presentation, and utility logic.\n  - Favor simple, auditable architecture over clever abstractions.\n- `skills/content.md`\n  - Content must map directly to the specification and planned page structure.\n  - Primary conversion pages should combine clarity, trust, and a visible next step.\n  - Service pages should follow repeatable patterns without becoming generic.\n  - Local-business content should be specific, accurate, and operationally useful.\n  - Multilingual support must be complete wherever promised.\n  - Content structure should help both users and future SEO work understand the site quickly.\n- `skills/seo.md`\n  - SEO work must trace directly back to the specification and planner tasks.\n  - Local targeting must reflect real business locations or service areas, never fabricated reach.\n  - Metadata should be unique on every public page and aligned with on-page content.\n  - Structured data must be accurate, visible, and business-specific.\n  - Sitemap and robots behavior should be reviewed as part of every launch checklist.\n  - SEO should be integrated into page structure and content planning early, not bolted on after implementation.\n\n## Constraints\n\n- Do not create or change project scope outside approved frontend tasks.\n- Do not invent pages or interactive features not supported by the specification.\n- Do not assume client-side interactivity when Astro static-first patterns are sufficient.\n- Do not absorb backend responsibilities such as data modeling or security design.\n- Do not ignore accessibility, performance, or CTA visibility requirements.\n- Framework must remain Astro-based.\n- Launch does not require a database.\n- Deployment is static-first with room for future form handling enhancements.\n- Planning must cover local SEO for Alameda, Oakland, and San Leandro.\n- Planning must include consistent contact details and conversion actions across the site.\n- Do not integrate Codex.\n- Do not call any AI model.\n- Do not generate websites.\n- Do not implement orchestration.\n- Do not implement memory.\n\n## Expected Output\n\n- Frontend implementation guidance\n- Route and page mapping\n- Shared layout and component notes\n- CTA placement and dependency notes",
+  "expectedOutputs": [
+    "Frontend implementation guidance",
+    "Route and page mapping",
+    "Shared layout and component notes",
+    "CTA placement and dependency notes"
+  ],
+  "implementationGoal": "Use this assembled context package to address task `frontend-core-pages`: Plan implementation of Home, About, Services, New Patients, Reviews, and Contact pages. Break down the core site pages that support the main appointment-conversion journey, ensuring each page includes the required sections and primary calls to action from the specification. Produce the outputs listed in the Expected Output section for this task.",
   "expectedResultPath": "execution/results/generated-prompts/generated-frontend-prompt/result.json",
   "reviewRequirements": {
     "reviewer": "future-qa-layer",
@@ -29,17 +42,17 @@
     ],
     "approvalProcess": [
       "Review package metadata and payload completeness",
-      "Confirm boundaries are preserved",
+      "Confirm runtime scope and boundaries are preserved",
       "Confirm result path is valid for future execution output",
       "Mark package as approved for future execution"
     ],
+    "executionIntent": "plan",
     "categoryFocus": "Route, layout, component, and conversion-surface execution output"
   },
   "boundaries": [
-    "Do not call Codex.",
-    "Do not call any AI model.",
-    "Do not generate websites.",
+    "Do not modify target project files.",
     "Do not implement orchestration.",
-    "Do not implement memory."
+    "Do not add memory.",
+    "Do not add MCP execution."
   ]
 }
