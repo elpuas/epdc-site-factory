@@ -1,0 +1,41 @@
+{
+  "runtimeExecutionId": "frontend-site-foundation--codex--attempt-002",
+  "runtimeName": "codex",
+  "projectId": "harbor-point-dental-studio",
+  "taskId": "frontend-site-foundation",
+  "status": "completed",
+  "inputReferences": {
+    "executionPackage": "execution/packages/generated-prompts/execution/tasks/frontend-001-execution.json",
+    "generatedPrompt": "generated-prompts/execution/tasks/frontend-001.md",
+    "sourceHandoff": "codex-handoff/output/generated-prompts/execution/tasks/frontend-001-handoff.md",
+    "projectSpecification": "specs/examples/dentist.md",
+    "targetProject": "projects/harbor-point-dental-studio",
+    "allowedFiles": [
+      "projects/harbor-point-dental-studio/src/layouts/BaseLayout.astro",
+      "projects/harbor-point-dental-studio/src/components/site/Header.astro",
+      "projects/harbor-point-dental-studio/src/components/site/Footer.astro",
+      "projects/harbor-point-dental-studio/src/data/site.ts"
+    ]
+  },
+  "generatedFiles": [
+    "runtime/results/frontend-site-foundation/codex/attempt-002/runtime-log.json",
+    "runtime/results/frontend-site-foundation/codex/attempt-002/review-notes.md",
+    "runtime/results/frontend-site-foundation/codex/attempt-002/file-summary.md",
+    "docs/execution-prompt-comparison.md",
+    "docs/roadmap.md",
+    "docs/sprint-log.md"
+  ],
+  "failures": [
+    {
+      "stage": "review",
+      "severity": "warning",
+      "detail": "The execution prompt improved runtime targeting and ambiguity control, but some inherited planning-oriented language remains in the task title, description, and project scope summary."
+    }
+  ],
+  "reviewOutcome": {
+    "status": "approved",
+    "summary": "The execution-oriented prompt materially improved scope control, file targeting, and runtime compliance for the same bounded task, with fewer assumptions than Attempt 001."
+  },
+  "startedAt": "2026-06-24T15:10:00Z",
+  "endedAt": "2026-06-24T15:42:00Z"
+}

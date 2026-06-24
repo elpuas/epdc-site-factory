@@ -157,6 +157,15 @@ Status: Sprint 016 completed
 - Added `docs/planning-vs-execution-prompts.md` and `docs/execution-prompt-validation.md`
 - Updated runtime and execution docs to document explicit scope instead of runtime inference
 
+### Sprint 017 - Execution Prompt Validation
+
+- Added a second bounded runtime validation attempt under `runtime/results/frontend-site-foundation/codex/attempt-002/`
+- Compared Attempt 001 and Attempt 002 in `docs/execution-prompt-comparison.md`
+- Confirmed execution prompts improved ambiguity control, runtime assumptions, file targeting, and runtime compliance for `frontend-site-foundation`
+- Recorded remaining issues without redesigning the runtime or execution architecture:
+  - execution prompts still inherit some planning-oriented wording
+  - missing business facts still limit full contact-detail implementation
+
 ## Phase 9 - Memory
 
 - Design working memory structures
