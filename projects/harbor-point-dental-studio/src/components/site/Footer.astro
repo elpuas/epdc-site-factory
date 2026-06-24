@@ -1,5 +1,8 @@
 ---
 import { site } from "../../data/site";
+
+const hasConfirmedPhone = !site.phone.startsWith("TODO:");
+const phoneHref = hasConfirmedPhone ? `tel:${site.phone.replace(/[^+\d]/g, "")}` : null;
 ---
 
 <footer class="site-footer">
@@ -12,7 +15,10 @@ import { site } from "../../data/site";
     <div>
       <h2>Visit information</h2>
       <ul>
-        <li><strong>Phone:</strong> {site.phone}</li>
+        <li>
+          <strong>Phone:</strong>{" "}
+          {phoneHref ? <a class="footer-link" href={phoneHref}>{site.phone}</a> : site.phone}
+        </li>
         <li><strong>Address:</strong> {site.address}</li>
         <li><strong>Hours:</strong> {site.officeHours}</li>
         <li><strong>Parking:</strong> {site.parkingNotes}</li>
@@ -20,9 +26,16 @@ import { site } from "../../data/site";
     </div>
 
     <div>
-      <h2>Service area</h2>
+      <h2>Next step</h2>
       <p>Supporting dental patients in {site.serviceAreas.join(", ")}.</p>
-      <a class="footer-link" href={site.primaryCta.href}>{site.primaryCta.label}</a>
+      <nav aria-label="Footer navigation">
+        <ul>
+          {site.navigation.map((item) => (
+            <li><a class="footer-link" href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+      <a class="footer-link footer-cta" href={site.primaryCta.href}>{site.primaryCta.label}</a>
     </div>
   </div>
 </footer>
@@ -61,6 +74,11 @@ import { site } from "../../data/site";
   .footer-link {
     color: inherit;
     font-weight: 700;
+  }
+
+  .footer-cta {
+    display: inline-block;
+    margin-top: 1rem;
   }
 
   @media (max-width: 48rem) {

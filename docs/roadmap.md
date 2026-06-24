@@ -125,7 +125,7 @@ Status: Sprint 011 completed
 
 ## Phase 8 - Runtime Foundation
 
-Status: Sprint 014 completed
+Status: Sprint 015 completed
 
 - Define the runtime boundary after execution-package creation
 - Document runtime responsibilities, logs, retries, and review flow
@@ -139,6 +139,14 @@ Status: Sprint 014 completed
 - Added `docs/factory-vs-runtime.md`
 - Documented preferred MCP strategy for runtime-layer knowledge access
 - Clarified that the factory stops at execution packages and the runtime begins at external execution consumption
+
+### Sprint 015 - Codex Runtime Validation
+
+- Validated one bounded Codex runtime attempt against `frontend-site-foundation`
+- Wrote runtime attempt artifacts under `runtime/results/frontend-site-foundation/codex/attempt-001/`
+- Confirmed the runtime could stay within allowed Harbor Point frontend files
+- Added `docs/codex-runtime-validation.md` with execution-package, prompt, and schema findings
+- Identified the remaining contract gap between planning-oriented prompts and implementation-oriented runtime execution
 
 ## Phase 9 - Memory
 

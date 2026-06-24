@@ -375,3 +375,44 @@ Known limitations:
 
 Next:
 Prompt And Planner Refinement For Full Generation
+
+## Sprint 015
+
+Goal:
+Validate the Codex Runtime with one real bounded execution task.
+
+Completed:
+
+- Created a runtime validation attempt for `frontend-site-foundation` against `projects/harbor-point-dental-studio/`.
+- Modified only the allowed shared frontend files in the Harbor Point project:
+  - `src/layouts/BaseLayout.astro`
+  - `src/components/site/Header.astro`
+  - `src/components/site/Footer.astro`
+- Added runtime attempt artifacts in `runtime/results/frontend-site-foundation/codex/attempt-001/`.
+- Added `docs/codex-runtime-validation.md`.
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None. This sprint used the existing repository files only.
+
+Runtime validation decisions:
+
+- Validate one task only instead of attempting full project execution.
+- Treat the existing Harbor Point project as the runtime target because the factory report already mapped `frontend-site-foundation` to specific files.
+- Preserve safe fallbacks when required business data was still missing from the source specification.
+
+What the validation proved:
+
+- Codex can consume the existing package lineage and produce reviewable bounded output.
+- The runtime results structure is workable for logs, review notes, and file summaries.
+- Allowed-file enforcement is practical for a controlled execution task.
+
+Known limitations:
+
+- The execution package and generated prompt are still planning-oriented rather than implementation-oriented.
+- The current package boundaries still include pre-runtime restrictions that conflict with code-producing validation.
+- Missing contact data in the source specification prevented a full click-to-call implementation.
+
+Next:
+Execution Package And Prompt Contract Refinement
