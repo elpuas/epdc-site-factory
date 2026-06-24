@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--tasks--frontend-005`
 - Source prompt: `generated-prompts/tasks/frontend-005.md`
 - Category: `frontend`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `frontend-map-and-location-details`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["Frontend implementation guidance","Route and page mapping","Shared layout and component notes","CTA placement and dependency notes"]`
+- Implementation goal: Use this assembled context package to address task `frontend-map-and-location-details`: Plan location presentation and map integration. Define the frontend work for the Contact page map embed, office hours, full street address, and parking guidance so local visitors can find the practice easily. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

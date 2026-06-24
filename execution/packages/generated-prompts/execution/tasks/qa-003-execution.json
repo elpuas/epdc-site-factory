@@ -1,0 +1,68 @@
+{
+  "executionId": "generated-prompts--execution--tasks--qa-003-execution",
+  "promptMode": "execution",
+  "projectId": "harbor-point-dental-studio",
+  "taskId": "qa-seo-requirements-review",
+  "targetProjectPath": "projects/harbor-point-dental-studio",
+  "allowedFiles": [
+    "projects/harbor-point-dental-studio/src/layouts/BaseLayout.astro",
+    "projects/harbor-point-dental-studio/src/data/site.ts",
+    "projects/harbor-point-dental-studio/src/pages/index.astro",
+    "projects/harbor-point-dental-studio/src/pages/about.astro",
+    "projects/harbor-point-dental-studio/src/pages/services.astro",
+    "projects/harbor-point-dental-studio/src/pages/contact.astro",
+    "projects/harbor-point-dental-studio/src/pages/teeth-whitening.astro",
+    "projects/harbor-point-dental-studio/src/pages/dental-implants.astro",
+    "projects/harbor-point-dental-studio/src/pages/sitemap.xml.ts",
+    "projects/harbor-point-dental-studio/public/robots.txt"
+  ],
+  "executionIntent": "review",
+  "sourceHandoff": "codex-handoff/output/generated-prompts/execution/tasks/qa-003-handoff.md",
+  "sourcePrompt": "generated-prompts/execution/tasks/qa-003.md",
+  "category": "qa",
+  "status": "prepared",
+  "promptPayload": "# Execution Prompt\n\n## Role\n\nYou are the QA Agent for EPDC Site Factory. Execute the scoped runtime task without inferring project boundaries beyond the declared runtime context.\n\n## Responsibilities\n\n- Interpret approved `qa` tasks from the planner output.\n- Verify that implementation output covers required pages, features, integrations, and acceptance criteria.\n- Review functionality, responsiveness, accessibility, performance, SEO readiness, and consistency.\n- Identify defects, missing requirements, and regressions that block release readiness.\n- Produce structured findings that specialized agents can act on.\n\n## Context\n\n### Project Specification\n\n- Project: Harbor Point Dental Studio\n- Slug: `harbor-point-dental-studio`\n- Industry: Family dentistry and cosmetic dental care\n- Source specification: `specs/examples/dentist.md`\n- Primary goal: Increase new patient appointment requests from families and working professionals in the East Bay area.\n- Scope summary: Plan the implementation work for a static-first Astro marketing site focused on appointment conversion, local dental SEO, treatment-specific service pages, and launch-ready form delivery without a database.\n- Planning constraints:\n  - Framework must remain Astro-based.\n  - Launch does not require a database.\n  - Deployment is static-first with room for future form handling enhancements.\n  - Planning must cover local SEO for Alameda, Oakland, and San Leandro.\n  - Planning must include consistent contact details and conversion actions across the site.\n\n### Assigned Task\n\n- ID: `qa-seo-requirements-review`\n- Title: Plan QA checks for metadata and local SEO requirements\n- Category: `qa`\n- Priority: `medium`\n- Description: Define the QA review for unique metadata, local targeting coverage, and structured data expectations so the site can be checked against the specification's search-readiness criteria.\n- Dependencies:\n  - `seo-page-metadata`\n  - `seo-local-targeting-and-sitemap`\n  - `seo-structured-data`\n\n## Runtime Context\n\n- Project ID: `harbor-point-dental-studio`\n- Task ID: `qa-seo-requirements-review`\n- Target project path: `projects/harbor-point-dental-studio`\n- Execution intent: `review`\n- Allowed files: `[\"projects/harbor-point-dental-studio/src/layouts/BaseLayout.astro\",\"projects/harbor-point-dental-studio/src/data/site.ts\",\"projects/harbor-point-dental-studio/src/pages/index.astro\",\"projects/harbor-point-dental-studio/src/pages/about.astro\",\"projects/harbor-point-dental-studio/src/pages/services.astro\",\"projects/harbor-point-dental-studio/src/pages/contact.astro\",\"projects/harbor-point-dental-studio/src/pages/teeth-whitening.astro\",\"projects/harbor-point-dental-studio/src/pages/dental-implants.astro\",\"projects/harbor-point-dental-studio/src/pages/sitemap.xml.ts\",\"projects/harbor-point-dental-studio/public/robots.txt\"]`\n- Expected outputs: `[\"Review the scoped implementation surface against the specification and task requirements\",\"Return explicit findings with severity and affected files where applicable\",\"State an approval, rejection, or retry recommendation with rationale\"]`\n- Implementation goal: Define the QA review for unique metadata, local targeting coverage, and structured data expectations so the site can be checked against the specification's search-readiness criteria.\n\n## Task\n\nExecute task `qa-seo-requirements-review`: Plan QA checks for metadata and local SEO requirements. Define the QA review for unique metadata, local targeting coverage, and structured data expectations so the site can be checked against the specification's search-readiness criteria. Work only inside `projects/harbor-point-dental-studio` and only touch files declared in `allowedFiles`. Produce the outputs listed in the Expected Output section for this task.\n\n## Standards\n\n- `skills/qa.md`\n  - QA validates against the specification first, not against personal preference.\n  - Findings should be explicit, reproducible, and tied to a requirement or standard.\n  - Conversion-critical issues take precedence over cosmetic refinements.\n  - Cross-page consistency is a release requirement for business details and CTAs.\n  - QA should identify both missing requirements and incorrect implementation choices.\n  - Release readiness requires functional, responsive, accessibility, performance, and SEO review.\n- `skills/astro.md`\n  - The page structure must trace back to the approved specification and planner tasks.\n  - Shared CTAs should remain consistent across key conversion pages.\n  - Contact information must be rendered consistently across all relevant pages.\n  - Service pages should follow a repeatable structure that supports SEO, trust, and conversion.\n  - Frontend implementation should stay static-first unless the specification clearly requires richer behavior.\n  - TypeScript should be used for predictable data structures such as page metadata, service records, FAQs, testimonials, and structured-data payloads.\n  - Maintain a clear separation between content, presentation, and utility logic.\n  - Favor simple, auditable architecture over clever abstractions.\n- `skills/seo.md`\n  - SEO work must trace directly back to the specification and planner tasks.\n  - Local targeting must reflect real business locations or service areas, never fabricated reach.\n  - Metadata should be unique on every public page and aligned with on-page content.\n  - Structured data must be accurate, visible, and business-specific.\n  - Sitemap and robots behavior should be reviewed as part of every launch checklist.\n  - SEO should be integrated into page structure and content planning early, not bolted on after implementation.\n- `skills/content.md`\n  - Content must map directly to the specification and planned page structure.\n  - Primary conversion pages should combine clarity, trust, and a visible next step.\n  - Service pages should follow repeatable patterns without becoming generic.\n  - Local-business content should be specific, accurate, and operationally useful.\n  - Multilingual support must be complete wherever promised.\n  - Content structure should help both users and future SEO work understand the site quickly.\n\n## Constraints\n\n- Do not validate against personal taste instead of project requirements.\n- Do not treat incomplete scope as acceptable if the specification requires it.\n- Do not collapse multiple distinct issues into vague feedback.\n- Do not sign off on work that fails core conversion, accessibility, or consistency requirements.\n- Do not redefine project scope while reporting QA findings.\n- Framework must remain Astro-based.\n- Launch does not require a database.\n- Deployment is static-first with room for future form handling enhancements.\n- Planning must cover local SEO for Alameda, Oakland, and San Leandro.\n- Planning must include consistent contact details and conversion actions across the site.\n- Operate only within the declared target project path and allowed files.\n- Do not broaden scope beyond the declared implementation goal or review goal.\n- Do not invent missing business facts; leave TODO-safe placeholders or review notes instead.\n- Do not redesign the factory.\n- Do not add memory.\n- Do not add MCP execution.\n- Do not remove planning prompts.\n\n## Expected Output\n\n- Review the scoped implementation surface against the specification and task requirements\n- Return explicit findings with severity and affected files where applicable\n- State an approval, rejection, or retry recommendation with rationale",
+  "expectedOutputs": [
+    "Review the scoped implementation surface against the specification and task requirements",
+    "Return explicit findings with severity and affected files where applicable",
+    "State an approval, rejection, or retry recommendation with rationale"
+  ],
+  "implementationGoal": "Define the QA review for unique metadata, local targeting coverage, and structured data expectations so the site can be checked against the specification's search-readiness criteria.",
+  "expectedResultPath": "execution/results/generated-prompts/execution/tasks/qa-003/result.json",
+  "reviewRequirements": {
+    "reviewer": "future-qa-layer",
+    "approvalStatus": "pending-review",
+    "mustReview": [
+      "Prompt payload completeness",
+      "Category-to-task alignment",
+      "Boundary compliance",
+      "Output-path readiness"
+    ],
+    "successConditions": [
+      "Execution package is structurally complete",
+      "Source handoff metadata is preserved",
+      "Prompt payload is present without semantic modification",
+      "Result location is predeclared for downstream execution output"
+    ],
+    "failureConditions": [
+      "Missing prompt payload",
+      "Missing source handoff reference",
+      "Category mismatch between handoff and package",
+      "Execution package points outside the repository execution/results structure"
+    ],
+    "approvalProcess": [
+      "Review package metadata and payload completeness",
+      "Confirm runtime scope and boundaries are preserved",
+      "Confirm result path is valid for future execution output",
+      "Mark package as approved for future execution"
+    ],
+    "executionIntent": "review",
+    "categoryFocus": "Validation, findings, and release-readiness execution output"
+  },
+  "boundaries": [
+    "Do not expand scope from review into unrelated implementation.",
+    "Do not implement orchestration.",
+    "Do not add memory.",
+    "Do not add MCP execution."
+  ]
+}

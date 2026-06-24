@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--tasks--qa-002`
 - Source prompt: `generated-prompts/tasks/qa-002.md`
 - Category: `qa`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `qa-conversion-and-consistency-review`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["Structured QA findings","Release-readiness summary","Rework recommendations","Coverage notes mapped to requirements"]`
+- Implementation goal: Use this assembled context package to address task `qa-conversion-and-consistency-review`: Plan QA checks for conversion visibility and contact consistency. Define the QA review needed to confirm appointment actions are visible on desktop and mobile and that practice name, phone number, address, and office hours remain consistent across key pages. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

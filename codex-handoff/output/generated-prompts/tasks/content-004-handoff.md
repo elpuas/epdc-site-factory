@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--tasks--content-004`
 - Source prompt: `generated-prompts/tasks/content-004.md`
 - Category: `content`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `content-testimonials-and-faqs`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["Content implementation guidance","Page hierarchy and CTA notes","Service-page or local-business messaging notes","Dependency notes for frontend or SEO implementation"]`
+- Implementation goal: Use this assembled context package to address task `content-testimonials-and-faqs`: Prepare testimonials and FAQ content. Define the review highlights, patient-priority themes, and treatment-related FAQ content needed to support trust and search visibility across Reviews and treatment pages. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

@@ -4,7 +4,7 @@ The Prompt Builder layer converts canonical JSON context packages into determini
 
 ## Purpose
 
-This layer prepares Codex-ready prompt artifacts without invoking Codex or any AI model.
+This layer prepares deterministic prompt artifacts without invoking Codex or any AI model.
 
 It consumes:
 
@@ -17,6 +17,23 @@ It consumes:
 It produces:
 
 - Deterministic prompt files in `generated-prompts/`
+- Deterministic execution prompt files in `generated-prompts/execution/`
+
+## Prompt Modes
+
+The builder now supports two prompt modes.
+
+### Planning mode
+
+- Uses templates in `prompt-builder/templates/`
+- Produces planning-oriented prompts for task design, architecture, and decomposition
+- Writes to `generated-prompts/` and `generated-prompts/tasks/`
+
+### Execution mode
+
+- Uses templates in `execution-prompts/templates/`
+- Produces runtime-facing prompts for implementation, review, and revision work
+- Writes to `generated-prompts/execution/` and `generated-prompts/execution/tasks/`
 
 ## Prompt Layer Split
 
@@ -80,8 +97,9 @@ The `prompt-builder/examples/` directory is source-controlled reference material
 1. Start from a specification-backed planner task or standalone example target.
 2. Assemble a JSON context package through the Context Engine.
 3. Select the correct render template by category.
-4. Build prompt sections in schema order.
-5. Write the deterministic prompt file into `generated-prompts/`.
+4. Select the correct prompt mode: `planning` or `execution`.
+5. Build prompt sections in schema order.
+6. Write the deterministic prompt file into the mode-specific generated output directory.
 
 ## CLI
 
@@ -99,6 +117,8 @@ Examples:
 npm run build-prompt frontend
 npm run build-prompt backend
 npm run build-prompt seo
+npm run build-prompt frontend execution
+npm run run-tasks execution
 ```
 
 ## Design Principles

@@ -1,14 +1,25 @@
 # Prompt Schema
 
-This document defines the reusable prompt structure for all future EPDC Codex-ready prompts.
+This document defines the reusable prompt structure for EPDC planning prompts and execution prompts.
 
 ## Purpose
 
 The schema standardizes how prompts are assembled so every future agent-facing prompt follows the same contract.
 
-## Canonical Structure
+## Prompt Modes
 
-Every prompt should follow this structure:
+The factory supports two prompt modes:
+
+- Planning prompt
+- Execution prompt
+
+Planning prompts remain architecture-facing.
+
+Execution prompts are runtime-facing.
+
+## Planning Prompt Structure
+
+Every planning prompt should follow this structure:
 
 ```md
 # Prompt
@@ -18,6 +29,30 @@ Every prompt should follow this structure:
 ## Responsibilities
 
 ## Context
+
+## Task
+
+## Standards
+
+## Constraints
+
+## Expected Output
+```
+
+## Execution Prompt Structure
+
+Every execution prompt should follow this structure:
+
+```md
+# Execution Prompt
+
+## Role
+
+## Responsibilities
+
+## Context
+
+## Runtime Context
 
 ## Task
 
@@ -64,6 +99,20 @@ This usually includes:
 
 This section should be filtered to the assigned scope instead of dumping all available documents.
 
+### Runtime Context
+
+Execution prompts must contain:
+
+- `projectId`
+- `taskId`
+- `targetProjectPath`
+- `allowedFiles`
+- `executionIntent`
+- `expectedOutputs`
+- `implementationGoal`
+
+The runtime must not infer these values.
+
 ### Task
 
 Defines the actual assignment for the prompt.
@@ -73,6 +122,8 @@ This should state:
 - What work is being requested
 - Which task IDs are in scope
 - What the agent should produce for those tasks
+
+Execution prompts should state whether the runtime is implementing, reviewing, planning, or revising.
 
 ### Standards
 
@@ -119,6 +170,7 @@ Examples:
 - Pull standards from the required skill documents.
 - Preserve traceability by referencing task IDs and page names where useful.
 - Avoid including irrelevant context that increases prompt size without improving accuracy.
+- Keep planning and execution prompts as separate artifacts.
 
 ## Prompt Quality Checklist
 
@@ -127,6 +179,7 @@ Before a prompt is considered complete, confirm:
 - The target agent is explicit.
 - The task scope is explicit.
 - The prompt includes only relevant context.
+- Execution prompts include explicit runtime context instead of inferred scope.
 - Standards come from the correct skill documents.
 - Constraints preserve the repository boundaries.
 - Expected output is concrete and domain-specific.

@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--generated-frontend-prompt`
 - Source prompt: `generated-prompts/generated-frontend-prompt.md`
 - Category: `frontend`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `frontend-core-pages`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["Frontend implementation guidance","Route and page mapping","Shared layout and component notes","CTA placement and dependency notes"]`
+- Implementation goal: Use this assembled context package to address task `frontend-core-pages`: Plan implementation of Home, About, Services, New Patients, Reviews, and Contact pages. Break down the core site pages that support the main appointment-conversion journey, ensuring each page includes the required sections and primary calls to action from the specification. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

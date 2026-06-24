@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--generated-backend-prompt`
 - Source prompt: `generated-prompts/generated-backend-prompt.md`
 - Category: `backend`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `backend-form-delivery`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["Backend implementation guidance","Security and data-handling notes","Launch-ready backend constraints","Risk and future-readiness notes"]`
+- Implementation goal: Use this assembled context package to address task `backend-form-delivery`: Plan launch-ready form delivery without database storage. Define the backend-facing work needed to deliver appointment request submissions to the practice email inbox while preserving the launch constraint of no database requirement. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--tasks--frontend-003`
 - Source prompt: `generated-prompts/tasks/frontend-003.md`
 - Category: `frontend`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `frontend-treatment-pages`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["Frontend implementation guidance","Route and page mapping","Shared layout and component notes","CTA placement and dependency notes"]`
+- Implementation goal: Use this assembled context package to address task `frontend-treatment-pages`: Plan treatment-specific pages for Teeth Whitening and Dental Implants. Define the implementation work for the treatment-focused pages, including treatment overview, candidacy, process, benefits, FAQs, and consultation calls to action for high-intent search visitors. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

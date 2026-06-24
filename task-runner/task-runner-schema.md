@@ -12,12 +12,14 @@ The Task Runner output records how planner tasks were converted into generated p
 {
   "sourcePlannerOutput": "planner/example-output.json",
   "generatedAtLayer": "task-runner",
+  "promptMode": "execution",
   "tasksProcessed": [
     {
       "taskId": "frontend-core-pages",
       "category": "frontend",
       "contextTarget": "frontend",
-      "promptFile": "generated-prompts/tasks/frontend-002.md"
+      "promptMode": "execution",
+      "promptFile": "generated-prompts/execution/tasks/frontend-002.md"
     }
   ]
 }
@@ -34,6 +36,11 @@ The Task Runner output records how planner tasks were converted into generated p
 - Stable identifier for the producing layer.
 - Current value: `task-runner`
 
+### promptMode
+
+- The prompt mode used for the run
+- Supported values: `planning`, `execution`
+
 ### tasksProcessed
 
 - Array describing every task the runner converted into a prompt file.
@@ -43,6 +50,7 @@ Each entry should contain:
 - `taskId`
 - `category`
 - `contextTarget`
+- `promptMode`
 - `promptFile`
 
 ## Design Rules

@@ -1,0 +1,62 @@
+{
+  "executionId": "generated-prompts--execution--tasks--content-002-execution",
+  "promptMode": "execution",
+  "projectId": "harbor-point-dental-studio",
+  "taskId": "content-dentist-bio-and-practice-details",
+  "targetProjectPath": "projects/harbor-point-dental-studio",
+  "allowedFiles": [
+    "projects/harbor-point-dental-studio/src/data/site.ts",
+    "projects/harbor-point-dental-studio/src/pages/about.astro",
+    "projects/harbor-point-dental-studio/src/pages/contact.astro",
+    "projects/harbor-point-dental-studio/src/pages/new-patients.astro"
+  ],
+  "executionIntent": "implement",
+  "sourceHandoff": "codex-handoff/output/generated-prompts/execution/tasks/content-002-handoff.md",
+  "sourcePrompt": "generated-prompts/execution/tasks/content-002.md",
+  "category": "content",
+  "status": "prepared",
+  "promptPayload": "# Execution Prompt\n\n## Role\n\nYou are the Content Agent for EPDC Site Factory. Execute the scoped runtime task without inferring project boundaries beyond the declared runtime context.\n\n## Responsibilities\n\n- Interpret approved `content` tasks from the planner output.\n- Define page-level messaging structure, section hierarchy, CTA placement, and service-page organization.\n- Maintain consistency of tone, trust signals, local business facts, and multilingual expectations.\n- Support frontend and SEO work by clarifying the content structure each page requires.\n- Ensure content decisions remain aligned with business goals and user intent.\n\n## Context\n\n### Project Specification\n\n- Project: Harbor Point Dental Studio\n- Slug: `harbor-point-dental-studio`\n- Industry: Family dentistry and cosmetic dental care\n- Source specification: `specs/examples/dentist.md`\n- Primary goal: Increase new patient appointment requests from families and working professionals in the East Bay area.\n- Scope summary: Plan the implementation work for a static-first Astro marketing site focused on appointment conversion, local dental SEO, treatment-specific service pages, and launch-ready form delivery without a database.\n- Planning constraints:\n  - Framework must remain Astro-based.\n  - Launch does not require a database.\n  - Deployment is static-first with room for future form handling enhancements.\n  - Planning must cover local SEO for Alameda, Oakland, and San Leandro.\n  - Planning must include consistent contact details and conversion actions across the site.\n\n### Assigned Task\n\n- ID: `content-dentist-bio-and-practice-details`\n- Title: Prepare dentist bio and practice information\n- Category: `content`\n- Priority: `high`\n- Description: Define the required content for the lead dentist biography, education, years of experience, care philosophy, insurance notes, office hours, parking guidance, and other practice details referenced across About, New Patients, and Contact pages.\n- Dependencies:\n  - `content-brand-messaging`\n\n## Runtime Context\n\n- Project ID: `harbor-point-dental-studio`\n- Task ID: `content-dentist-bio-and-practice-details`\n- Target project path: `projects/harbor-point-dental-studio`\n- Execution intent: `implement`\n- Allowed files: `[\"projects/harbor-point-dental-studio/src/data/site.ts\",\"projects/harbor-point-dental-studio/src/pages/about.astro\",\"projects/harbor-point-dental-studio/src/pages/contact.astro\",\"projects/harbor-point-dental-studio/src/pages/new-patients.astro\"]`\n- Expected outputs: `[\"Implement the required content updates only in the allowed files\",\"Keep messaging consistent with the specification and existing site structure\",\"Report any missing business facts that must remain TODOs instead of invented copy\"]`\n- Implementation goal: Define the required content for the lead dentist biography, education, years of experience, care philosophy, insurance notes, office hours, parking guidance, and other practice details referenced across About, New Patients, and Contact pages.\n\n## Task\n\nExecute task `content-dentist-bio-and-practice-details`: Prepare dentist bio and practice information. Define the required content for the lead dentist biography, education, years of experience, care philosophy, insurance notes, office hours, parking guidance, and other practice details referenced across About, New Patients, and Contact pages. Work only inside `projects/harbor-point-dental-studio` and only touch files declared in `allowedFiles`. Produce the outputs listed in the Expected Output section for this task.\n\n## Standards\n\n- `skills/content.md`\n  - Content must map directly to the specification and planned page structure.\n  - Primary conversion pages should combine clarity, trust, and a visible next step.\n  - Service pages should follow repeatable patterns without becoming generic.\n  - Local-business content should be specific, accurate, and operationally useful.\n  - Multilingual support must be complete wherever promised.\n  - Content structure should help both users and future SEO work understand the site quickly.\n- `skills/seo.md`\n  - SEO work must trace directly back to the specification and planner tasks.\n  - Local targeting must reflect real business locations or service areas, never fabricated reach.\n  - Metadata should be unique on every public page and aligned with on-page content.\n  - Structured data must be accurate, visible, and business-specific.\n  - Sitemap and robots behavior should be reviewed as part of every launch checklist.\n  - SEO should be integrated into page structure and content planning early, not bolted on after implementation.\n- `skills/astro.md`\n  - The page structure must trace back to the approved specification and planner tasks.\n  - Shared CTAs should remain consistent across key conversion pages.\n  - Contact information must be rendered consistently across all relevant pages.\n  - Service pages should follow a repeatable structure that supports SEO, trust, and conversion.\n  - Frontend implementation should stay static-first unless the specification clearly requires richer behavior.\n  - TypeScript should be used for predictable data structures such as page metadata, service records, FAQs, testimonials, and structured-data payloads.\n  - Maintain a clear separation between content, presentation, and utility logic.\n  - Favor simple, auditable architecture over clever abstractions.\n\n## Constraints\n\n- Do not invent business claims, locations, services, or trust signals not supported by the specification.\n- Do not replace clear CTAs with vague marketing language.\n- Do not break page hierarchy or content consistency across related pages.\n- Do not treat multilingual support as partial if the specification promises it.\n- Do not absorb frontend or SEO ownership while defining content structure.\n- Framework must remain Astro-based.\n- Launch does not require a database.\n- Deployment is static-first with room for future form handling enhancements.\n- Planning must cover local SEO for Alameda, Oakland, and San Leandro.\n- Planning must include consistent contact details and conversion actions across the site.\n- Operate only within the declared target project path and allowed files.\n- Do not broaden scope beyond the declared implementation goal or review goal.\n- Do not invent missing business facts; leave TODO-safe placeholders or review notes instead.\n- Do not redesign the factory.\n- Do not add memory.\n- Do not add MCP execution.\n- Do not remove planning prompts.\n\n## Expected Output\n\n- Implement the required content updates only in the allowed files\n- Keep messaging consistent with the specification and existing site structure\n- Report any missing business facts that must remain TODOs instead of invented copy",
+  "expectedOutputs": [
+    "Implement the required content updates only in the allowed files",
+    "Keep messaging consistent with the specification and existing site structure",
+    "Report any missing business facts that must remain TODOs instead of invented copy"
+  ],
+  "implementationGoal": "Define the required content for the lead dentist biography, education, years of experience, care philosophy, insurance notes, office hours, parking guidance, and other practice details referenced across About, New Patients, and Contact pages.",
+  "expectedResultPath": "execution/results/generated-prompts/execution/tasks/content-002/result.json",
+  "reviewRequirements": {
+    "reviewer": "future-qa-layer",
+    "approvalStatus": "pending-review",
+    "mustReview": [
+      "Prompt payload completeness",
+      "Category-to-task alignment",
+      "Boundary compliance",
+      "Output-path readiness"
+    ],
+    "successConditions": [
+      "Execution package is structurally complete",
+      "Source handoff metadata is preserved",
+      "Prompt payload is present without semantic modification",
+      "Result location is predeclared for downstream execution output"
+    ],
+    "failureConditions": [
+      "Missing prompt payload",
+      "Missing source handoff reference",
+      "Category mismatch between handoff and package",
+      "Execution package points outside the repository execution/results structure"
+    ],
+    "approvalProcess": [
+      "Review package metadata and payload completeness",
+      "Confirm runtime scope and boundaries are preserved",
+      "Confirm result path is valid for future execution output",
+      "Mark package as approved for future execution"
+    ],
+    "executionIntent": "implement",
+    "categoryFocus": "Messaging, page hierarchy, and CTA execution output"
+  },
+  "boundaries": [
+    "Modify only the declared allowed files inside the target project path.",
+    "Do not implement orchestration.",
+    "Do not add memory.",
+    "Do not add MCP execution."
+  ]
+}

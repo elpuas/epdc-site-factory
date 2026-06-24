@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--tasks--seo-002`
 - Source prompt: `generated-prompts/tasks/seo-002.md`
 - Category: `seo`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `seo-local-targeting-and-sitemap`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["SEO implementation guidance","Metadata and page-intent notes","Local SEO consistency requirements","Structured-data and dependency notes"]`
+- Implementation goal: Use this assembled context package to address task `seo-local-targeting-and-sitemap`: Plan local SEO targeting and sitemap coverage. Define the local search targeting for Alameda, Oakland, and San Leandro, along with sitemap coverage for all public pages and rules for excluding future utility pages when needed. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

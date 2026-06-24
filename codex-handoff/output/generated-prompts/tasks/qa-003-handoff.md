@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--tasks--qa-003`
 - Source prompt: `generated-prompts/tasks/qa-003.md`
 - Category: `qa`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `qa-seo-requirements-review`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["Structured QA findings","Release-readiness summary","Rework recommendations","Coverage notes mapped to requirements"]`
+- Implementation goal: Use this assembled context package to address task `qa-seo-requirements-review`: Plan QA checks for metadata and local SEO requirements. Define the QA review for unique metadata, local targeting coverage, and structured data expectations so the site can be checked against the specification's search-readiness criteria. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

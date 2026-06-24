@@ -21,8 +21,9 @@ The Task Runner is responsible for:
 - Iterating over tasks
 - Matching each task to its agent category
 - Assembling a task-specific context package
-- Generating a task-specific prompt file
-- Writing prompt files into `generated-prompts/tasks/`
+- Generating a task-specific planning or execution prompt file
+- Writing planning prompt files into `generated-prompts/tasks/`
+- Writing execution prompt files into `generated-prompts/execution/tasks/`
 
 ## Boundary
 
@@ -44,6 +45,7 @@ It only converts planned tasks into deterministic prompt files.
 
 ```bash
 npm run run-tasks
+npm run run-tasks execution
 ```
 
 ## Output
@@ -53,5 +55,8 @@ The current output format is:
 - `generated-prompts/tasks/frontend-001.md`
 - `generated-prompts/tasks/backend-001.md`
 - `generated-prompts/tasks/seo-001.md`
+- `generated-prompts/execution/tasks/frontend-001.md`
+- `generated-prompts/execution/tasks/backend-001.md`
+- `generated-prompts/execution/tasks/seo-001.md`
 
 The runner also generates content and QA task prompts where those categories appear in the planner output.

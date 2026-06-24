@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--tasks--frontend-004`
 - Source prompt: `generated-prompts/tasks/frontend-004.md`
 - Category: `frontend`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `frontend-appointment-form-and-mobile-cta`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["Frontend implementation guidance","Route and page mapping","Shared layout and component notes","CTA placement and dependency notes"]`
+- Implementation goal: Use this assembled context package to address task `frontend-appointment-form-and-mobile-cta`: Plan appointment request form and mobile conversion actions. Define the frontend work for the appointment request form with service-interest selection, visible request actions on conversion pages, and a persistent mobile click-to-call experience. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 

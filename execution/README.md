@@ -31,7 +31,14 @@ An execution package preserves:
 
 - The source handoff reference
 - The source prompt reference
+- The prompt mode
+- The project and task identity
+- The target project path
+- The allowed file boundary
+- The execution intent
 - The prompt payload
+- The expected outputs
+- The implementation goal
 - The expected result location
 - The review requirements for downstream approval
 

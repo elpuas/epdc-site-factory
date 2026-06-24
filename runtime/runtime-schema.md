@@ -50,7 +50,7 @@ The runtime must accept these inputs:
 ### Execution Package
 
 - The canonical execution artifact created by `execution/`
-- Defines prompt payload, category, boundaries, expected results, and review requirements
+- Defines prompt payload, category, boundaries, expected results, review requirements, and explicit runtime scope
 
 ### Generated Prompt
 
@@ -141,3 +141,19 @@ This schema does not define:
 - runtime-specific APIs
 
 It defines only the minimum cross-runtime contract.
+
+## Runtime Scope Rule
+
+When the execution package provides:
+
+- `projectId`
+- `taskId`
+- `targetProjectPath`
+- `allowedFiles`
+- `executionIntent`
+- `expectedOutputs`
+- `implementationGoal`
+
+the runtime must consume those values directly.
+
+The runtime must not infer them from unrelated repository context.

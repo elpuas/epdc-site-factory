@@ -5,8 +5,16 @@
 - Handoff ID: `generated-prompts--tasks--content-002`
 - Source prompt: `generated-prompts/tasks/content-002.md`
 - Category: `content`
+- Prompt mode: `planning`
 - Consumer: `Codex`
 - Status: `prepared`
+- Project ID: `harbor-point-dental-studio`
+- Task ID: `content-dentist-bio-and-practice-details`
+- Execution intent: `plan`
+- Target project path: ``
+- Allowed files: `[]`
+- Expected outputs: `["Content implementation guidance","Page hierarchy and CTA notes","Service-page or local-business messaging notes","Dependency notes for frontend or SEO implementation"]`
+- Implementation goal: Use this assembled context package to address task `content-dentist-bio-and-practice-details`: Prepare dentist bio and practice information. Define the required content for the lead dentist biography, education, years of experience, care philosophy, insurance notes, office hours, parking guidance, and other practice details referenced across About, New Patients, and Contact pages. Produce the outputs listed in the Expected Output section for this task.
 
 ## Responsibilities
 
