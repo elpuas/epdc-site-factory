@@ -464,3 +464,42 @@ Known limitations:
 
 Next:
 Runtime Retry And Review Vocabulary
+
+## Sprint 017
+
+Goal:
+Validate whether the Sprint 016 execution prompt system produces a better bounded runtime contract than the planning prompt used in Sprint 015.
+
+Completed:
+
+- Created `runtime/results/frontend-site-foundation/codex/attempt-002/`.
+- Added `runtime-log.json`, `review-notes.md`, and `file-summary.md` for Attempt 002.
+- Added `docs/execution-prompt-comparison.md` to compare Attempt 001 and Attempt 002 for `frontend-site-foundation`.
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None. This sprint used the existing repository files and generated prompt artifacts only.
+
+Validation results:
+
+- Attempt 002 confirmed that execution prompts reduce ambiguity by declaring `executionIntent`, `targetProjectPath`, `allowedFiles`, `expectedOutputs`, and `implementationGoal` directly.
+- Attempt 002 reduced runtime assumptions compared with Attempt 001 because the runtime no longer needed to infer project boundaries or file targets from repository context.
+- Attempt 002 improved file targeting because the allowlist now travels with the execution prompt and execution package.
+- Attempt 002 improved runtime compliance and reviewability enough to move the controlled comparison from `retry-recommended` to `approved`.
+- Attempt 002 preserved the same Harbor Point implementation baseline rather than regenerating the task, which kept the sprint focused on prompt-contract validation only.
+
+Execution prompt effectiveness:
+
+- The execution prompt system is a better fit for bounded implementation work than the planning prompt system.
+- The main improvement is contract clarity, not a different architecture or a broader implementation surface.
+- The Harbor Point shared frontend implementation remained within the same controlled task boundary and did not require a second scope expansion.
+
+Remaining runtime issues:
+
+- Some planning-oriented wording still survives inside execution prompt sections inherited from upstream task definitions.
+- Missing business facts in the source specification still prevent full contact-detail completion.
+- Review outcomes are documented more clearly through the validation artifacts, but review vocabulary is still a follow-up refinement area.
+
+Next:
+Runtime Retry And Review Vocabulary
