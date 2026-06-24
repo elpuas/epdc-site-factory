@@ -29,17 +29,18 @@ Both attempts were limited to:
 | Allowed files declared | No | Yes |
 | Expected outputs declared | No | Yes |
 | Review outcome | `retry-recommended` | `approved` |
+| Harbor Point file edits during attempt | Yes | No additional edits required |
 
 ## Comparison
 
 ### Output quality
 
-Attempt 001 produced a reviewable bounded implementation in the Harbor Point shared layout, header, and footer files. Attempt 002 did not require new project-file edits because the existing bounded implementation already satisfied the task goals, but it made that conclusion easier to verify because the execution prompt explicitly declared the implementation target and expected outputs.
+Attempt 001 produced a reviewable bounded implementation in the Harbor Point shared layout, header, and footer files. Attempt 002 did not require new project-file edits because the existing bounded implementation already satisfied the task goals, but it made that conclusion easier to verify because the execution prompt explicitly declared the implementation target, file boundary, and expected outputs.
 
 Result:
 
 - Attempt 001 proved implementation was possible
-- Attempt 002 improved confidence in the result by reducing prompt ambiguity
+- Attempt 002 improved confidence in the same implementation baseline by reducing prompt ambiguity
 
 ### Scope control
 
@@ -154,4 +155,4 @@ They improved implementation reliability and reviewability more than the rendere
 
 Sprint 017 validates the Sprint 016 execution prompt system for `frontend-site-foundation`.
 
-The execution-oriented prompt is better than the planning-oriented prompt for bounded runtime work because it reduces ambiguity, lowers assumption count, improves file targeting, and produces a cleaner runtime contract without redesigning the architecture.
+The execution-oriented prompt is better than the planning-oriented prompt for bounded runtime work because it reduces ambiguity, lowers assumption count, improves file targeting, and produces a cleaner runtime contract without redesigning the architecture or broadening the validation scope.

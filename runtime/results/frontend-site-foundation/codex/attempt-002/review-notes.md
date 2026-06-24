@@ -12,13 +12,13 @@ The remaining caveat is that the execution prompt still inherits planning-orient
 
 Yes.
 
-No project files outside the declared allowlist were needed for the validation. The runtime attempt artifacts were written only to the required attempt folder, and the comparison and sprint documents were updated as requested.
+No project files outside the declared allowlist were needed for the validation. No additional Harbor Point project-file edits were required because the bounded `frontend-site-foundation` implementation already existed in the same allowlisted files from Attempt 001. The runtime attempt artifacts were written to the required attempt folder, and the comparison and sprint documents were updated as requested.
 
-## Did the output match the specification?
+## Did the output match the specification and validation goal?
 
 Mostly.
 
-The shared Harbor Point frontend foundation already reflected the bounded implementation target for navigation, header, footer, contact-detail placement, and persistent conversion actions. The execution prompt made it easier to verify that alignment without inferring missing project boundaries from the repository.
+The shared Harbor Point frontend foundation already reflected the bounded implementation target for navigation, header, footer, contact-detail placement, and persistent conversion actions. The execution prompt made it easier to verify that alignment without inferring missing project boundaries, execution intent, or file targets from repository context.
 
 The same source-data blocker remains unresolved:
 
@@ -35,6 +35,13 @@ Yes, but fewer than Attempt 001.
 - The runtime assumed the current Harbor Point shared frontend files were the correct comparison baseline because Sprint 015 had already implemented the bounded task in the same allowlisted files.
 - The runtime assumed the Sprint 017 comparison should measure prompt-contract quality and runtime behavior, not regenerate a second project or broaden the validation task.
 - The runtime did not need to infer the target project path, allowed files, or execution intent because the execution prompt declared them directly.
+
+Assumptions removed relative to Attempt 001:
+
+- no project-target inference
+- no allowed-file inference
+- no execution-intent inference
+- no expected-output inference
 
 ## Should the output be approved, rejected, or retried?
 

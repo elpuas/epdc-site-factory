@@ -487,6 +487,7 @@ Validation results:
 - Attempt 002 reduced runtime assumptions compared with Attempt 001 because the runtime no longer needed to infer project boundaries or file targets from repository context.
 - Attempt 002 improved file targeting because the allowlist now travels with the execution prompt and execution package.
 - Attempt 002 improved runtime compliance and reviewability enough to move the controlled comparison from `retry-recommended` to `approved`.
+- Attempt 002 preserved the same Harbor Point implementation baseline rather than regenerating the task, which kept the sprint focused on prompt-contract validation only.
 
 Execution prompt effectiveness:
 

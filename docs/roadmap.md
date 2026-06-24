@@ -161,6 +161,7 @@ Status: Sprint 016 completed
 
 - Added a second bounded runtime validation attempt under `runtime/results/frontend-site-foundation/codex/attempt-002/`
 - Compared Attempt 001 and Attempt 002 in `docs/execution-prompt-comparison.md`
+- Confirmed the Sprint 017 validation remained a single controlled comparison on the same Harbor Point allowlisted task without generating a new project or expanding task scope
 - Confirmed execution prompts improved ambiguity control, runtime assumptions, file targeting, and runtime compliance for `frontend-site-foundation`
 - Recorded remaining issues without redesigning the runtime or execution architecture:
   - execution prompts still inherit some planning-oriented wording
