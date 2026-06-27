@@ -218,6 +218,41 @@ Completed:
 - Added execution-package examples for frontend, backend, and SEO in `execution/examples/`.
 - Added `execution/results/README.md` to define the future execution-output structure.
 - Added `docs/execution-architecture.md`.
+
+## Sprint 018
+
+Goal:
+Create the official EPDC Astro Starter so future generated projects begin from a maintained Astro foundation instead of relying on an external runtime to bootstrap Astro from scratch.
+
+Completed:
+
+- Added the canonical starter in `starters/astro-minimal/`.
+- Added root Astro bootstrap files: `package.json`, `astro.config.mjs`, `tsconfig.json`, and `.gitignore`.
+- Added the canonical source structure: `src/components/`, `src/layouts/`, `src/pages/`, `src/data/`, `src/styles/`, and `public/`.
+- Added a minimal `BaseLayout.astro`, `index.astro`, `site.ts`, and `global.css` as the stable EPDC foundation.
+- Added `docs/astro-starter.md` to document why the starter exists, how it differs from the current official Astro starter, and how future Blueprints should extend it.
+- Added `docs/starter-validation.md` to validate structure, configuration, TypeScript setup, and every intentional difference from Astro defaults.
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None to the Factory repository root. The starter declares its own Astro dependency for future generated projects.
+
+Decisions made:
+
+- Keep the starter as close as possible to the current official Astro `basics` scaffold.
+- Remove official demo content instead of carrying starter branding into generated projects.
+- Add only the EPDC conventions that provide a stable long-term architectural baseline: `src/data/`, `src/styles/`, and `BaseLayout.astro`.
+- Do not integrate the starter into project generation in this sprint.
+
+Known limitations:
+
+- The starter is documented and implemented, but not yet wired into the Factory generation pipeline.
+- Blueprints and Patterns remain future work.
+- Runtime execution remains external to the Factory.
+
+Next:
+Starter Integration Planning
 - Added `scripts/create-execution-package.js`.
 - Updated `package.json` with `npm run create-execution-package`.
 - Updated `docs/roadmap.md`.

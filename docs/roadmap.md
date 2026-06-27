@@ -194,3 +194,11 @@ Status: Sprint 012 completed
 - Refined `skills/astro.md` based on evidence from the generated project
 - Updated `specs/schema.md` to require clearer business-detail inputs when relevant
 - Added `docs/factory-improvements.md` to distinguish implemented versus deferred improvements
+
+### Sprint 018 - Astro Starter Foundation
+
+- Added the canonical Astro starter in `starters/astro-minimal/`
+- Aligned the starter to the current official Astro scaffold instead of requiring runtime bootstrap from scratch
+- Documented the starter architecture in `docs/astro-starter.md`
+- Added validation findings in `docs/starter-validation.md`
+- Clarified the intended future flow from Factory to Astro Starter to Blueprints before runtime execution

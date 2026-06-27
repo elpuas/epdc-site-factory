@@ -1,0 +1,14 @@
+---
+import { site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title={site.title} description={site.description} lang={site.lang}>
+  <main class="page-shell">
+    <section class="hero">
+      <p class="eyebrow">EPDC Astro Starter</p>
+      <h1>{site.title}</h1>
+      <p>{site.description}</p>
+    </section>
+  </main>
+</BaseLayout>
