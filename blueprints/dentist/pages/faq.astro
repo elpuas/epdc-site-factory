@@ -2,14 +2,14 @@
 import AppointmentCTA from '../components/AppointmentCTA.astro';
 import FAQSection from '../components/FAQSection.astro';
 import Hero from '../components/Hero.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
 import { appointmentCta } from '../data/contact';
 import { faqs } from '../data/faq';
 import { homeHero } from '../data/hero';
 import { site } from '../data/site';
 ---
 
-<BaseLayout title={`FAQ | ${site.meta.title}`} description="Generic FAQ page template for the dental Blueprint.">
+<DentistLayout title={`FAQ | ${site.meta.title}`} description="Generic FAQ page template for the dental Blueprint.">
   <Hero
     hero={{
       ...homeHero,
@@ -20,4 +20,4 @@ import { site } from '../data/site';
   />
   <FAQSection items={faqs} title="General and treatment placeholders" />
   <AppointmentCTA cta={appointmentCta} />
-</BaseLayout>
+</DentistLayout>

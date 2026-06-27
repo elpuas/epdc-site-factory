@@ -44,9 +44,13 @@ Confirmed components:
 
 Confirmed:
 
-- `blueprints/dentist/layouts/BaseLayout.astro`
+- `blueprints/dentist/layouts/DentistLayout.astro`
 
-No additional layout was introduced because one shared shell is sufficient for the first Blueprint.
+Starter boundary confirmed:
+
+- the Blueprint assumes the Sprint 018 starter provides `src/layouts/BaseLayout.astro`
+- the Blueprint does not duplicate that starter-owned file
+- `DentistLayout.astro` is the dental-specific layer on top of the starter shell
 
 ### 4. Page templates exist
 
@@ -94,6 +98,7 @@ Confirmed:
 - no changes were made to runtime, starter integration, prompt builder, or generated projects
 - the Blueprint is isolated under `blueprints/dentist/`
 - placeholder data only models future `src/data/` contracts
+- starter-owned bootstrap files and starter `BaseLayout` were not duplicated inside the Blueprint
 
 ### 9. Placeholder assets are used appropriately
 

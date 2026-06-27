@@ -1,6 +1,7 @@
 ---
-import Header from '../components/Header.astro';
+import BaseLayout from '../../../starters/astro-minimal/src/layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 import WhatsAppFloatingButton from '../components/WhatsAppFloatingButton.astro';
 import { footer } from '../data/footer';
 import { navigation } from '../data/navigation';
@@ -14,27 +15,17 @@ interface Props {
 const { description = site.meta.description, title } = Astro.props;
 ---
 
-<!doctype html>
-<html lang={site.meta.lang}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description} />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="page-shell">
-      <Header navigation={navigation} site={site} />
-      <main id="main-content">
-        <slot />
-      </main>
-      <Footer legalNotice={footer.legalNotice} navigation={navigation} site={site} />
-    </div>
-    <WhatsAppFloatingButton href={site.whatsappHref} label="Open WhatsApp conversation" />
-  </body>
-</html>
+<BaseLayout title={title} description={description} lang={site.meta.lang}>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="page-shell">
+    <Header navigation={navigation} site={site} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer legalNotice={footer.legalNotice} navigation={navigation} site={site} />
+  </div>
+  <WhatsAppFloatingButton href={site.whatsappHref} label="Open WhatsApp conversation" />
+</BaseLayout>
 
 <style is:global>
   :root {

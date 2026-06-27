@@ -34,13 +34,14 @@ blueprints/dentist/
 
 ## Component Hierarchy
 
-Base layout:
+Layout hierarchy:
 
-- `BaseLayout`
-  - `Header`
-  - page content slot
-  - `Footer`
-  - `WhatsAppFloatingButton`
+- Starter `BaseLayout`
+  - Blueprint `DentistLayout`
+    - `Header`
+    - page content slot
+    - `Footer`
+    - `WhatsAppFloatingButton`
 
 Reusable section components:
 
@@ -57,6 +58,18 @@ Reusable section components:
 - `ContactSection`
 - `LocationsSection`
 - `BlogGrid`
+
+## Starter Boundary
+
+This Blueprint assumes every generated project starts from the Sprint 018 Astro Starter.
+
+That means the Blueprint does not duplicate starter-owned files such as:
+
+- `src/layouts/BaseLayout.astro`
+- starter metadata shell structure
+- starter root project bootstrap files
+
+Instead, the Blueprint adds dental-specific components, data contracts, page templates, and one dental-specific layout layer on top of the starter shell.
 
 ## Expected Data Inputs
 

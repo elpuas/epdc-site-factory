@@ -3,7 +3,7 @@ import AppointmentCTA from '../components/AppointmentCTA.astro';
 import FAQSection from '../components/FAQSection.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCards from '../components/ServiceCards.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
 import { appointmentCta } from '../data/contact';
 import { faqs } from '../data/faq';
 import { homeHero } from '../data/hero';
@@ -11,7 +11,7 @@ import { services } from '../data/services';
 import { site } from '../data/site';
 ---
 
-<BaseLayout title={`Services | ${site.meta.title}`} description="Generic service archive template for the dental Blueprint.">
+<DentistLayout title={`Services | ${site.meta.title}`} description="Generic service archive template for the dental Blueprint.">
   <Hero
     hero={{
       ...homeHero,
@@ -23,4 +23,4 @@ import { site } from '../data/site';
   <ServiceCards services={services} title="All service templates" />
   <FAQSection items={faqs} title="Common service questions" />
   <AppointmentCTA cta={appointmentCta} />
-</BaseLayout>
+</DentistLayout>

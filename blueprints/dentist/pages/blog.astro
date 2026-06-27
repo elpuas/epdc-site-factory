@@ -2,14 +2,14 @@
 import AppointmentCTA from '../components/AppointmentCTA.astro';
 import BlogGrid from '../components/BlogGrid.astro';
 import Hero from '../components/Hero.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
 import { blogPosts } from '../data/blog';
 import { appointmentCta } from '../data/contact';
 import { homeHero } from '../data/hero';
 import { site } from '../data/site';
 ---
 
-<BaseLayout title={`Blog | ${site.meta.title}`} description="Generic blog archive template for the dental Blueprint.">
+<DentistLayout title={`Blog | ${site.meta.title}`} description="Generic blog archive template for the dental Blueprint.">
   <Hero
     hero={{
       ...homeHero,
@@ -20,4 +20,4 @@ import { site } from '../data/site';
   />
   <BlogGrid posts={blogPosts} title="All placeholder articles" />
   <AppointmentCTA cta={appointmentCta} />
-</BaseLayout>
+</DentistLayout>

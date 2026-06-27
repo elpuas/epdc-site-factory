@@ -2,7 +2,8 @@
 
 The reusable composition rules for this Blueprint are:
 
-- `Header` and `Footer` live in `layouts/BaseLayout.astro`.
+- Starter `BaseLayout` owns the root HTML shell.
+- `DentistLayout` owns `Header`, `Footer`, skip-link placement, and `WhatsAppFloatingButton`.
 - Conversion pages should repeat `AppointmentCTA` after trust or education-heavy sections.
 - `Hero` is the shared top-of-page entry for Home and interior templates.
 - `ServiceCards`, `DoctorGrid`, `BlogGrid`, and `FAQSection` are reusable collection components that read arrays from `data/`.

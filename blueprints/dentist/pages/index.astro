@@ -9,7 +9,7 @@ import Hero from '../components/Hero.astro';
 import LocationsSection from '../components/LocationsSection.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import Testimonials from '../components/Testimonials.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
 import { about } from '../data/about';
 import { blogPosts } from '../data/blog';
 import { appointmentCta } from '../data/contact';
@@ -21,7 +21,7 @@ import { site } from '../data/site';
 import { testimonials } from '../data/testimonials';
 ---
 
-<BaseLayout title={site.meta.title} description={site.meta.description}>
+<DentistLayout title={site.meta.title} description={site.meta.description}>
   <Hero hero={homeHero} />
   <ServiceCards services={featuredServices} title="Featured dental services" />
   <ClinicIntro summary={about.summary} story={about.story} philosophy={about.philosophy} />
@@ -32,4 +32,4 @@ import { testimonials } from '../data/testimonials';
   <LocationsSection locations={locations} />
   <AppointmentCTA cta={appointmentCta} />
   <BlogGrid posts={blogPosts} title="Educational content preview" />
-</BaseLayout>
+</DentistLayout>

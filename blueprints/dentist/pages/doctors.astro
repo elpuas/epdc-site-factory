@@ -3,7 +3,7 @@ import AppointmentCTA from '../components/AppointmentCTA.astro';
 import DoctorGrid from '../components/DoctorGrid.astro';
 import Hero from '../components/Hero.astro';
 import TrustLogos from '../components/TrustLogos.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
 import { about } from '../data/about';
 import { appointmentCta } from '../data/contact';
 import { doctors } from '../data/doctors';
@@ -11,7 +11,7 @@ import { homeHero } from '../data/hero';
 import { site } from '../data/site';
 ---
 
-<BaseLayout title={`Doctors | ${site.meta.title}`} description="Generic doctors page template for the dental Blueprint.">
+<DentistLayout title={`Doctors | ${site.meta.title}`} description="Generic doctors page template for the dental Blueprint.">
   <Hero
     hero={{
       ...homeHero,
@@ -23,4 +23,4 @@ import { site } from '../data/site';
   <DoctorGrid doctors={doctors} title="Full team grid" />
   <TrustLogos items={about.trustLogos} />
   <AppointmentCTA cta={appointmentCta} />
-</BaseLayout>
+</DentistLayout>

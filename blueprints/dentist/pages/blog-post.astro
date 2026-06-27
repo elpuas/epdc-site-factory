@@ -1,6 +1,6 @@
 ---
 import AppointmentCTA from '../components/AppointmentCTA.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
 import { blogPosts } from '../data/blog';
 import { appointmentCta } from '../data/contact';
 import { site } from '../data/site';
@@ -8,7 +8,7 @@ import { site } from '../data/site';
 const post = blogPosts[0];
 ---
 
-<BaseLayout title={`${post.title} | ${site.meta.title}`} description={post.summary}>
+<DentistLayout title={`${post.title} | ${site.meta.title}`} description={post.summary}>
   <article class="section">
     <p class="eyebrow">{post.category}</p>
     <h1>{post.title}</h1>
@@ -18,4 +18,4 @@ const post = blogPosts[0];
     {post.body.map((paragraph) => <p>{paragraph}</p>)}
   </article>
   <AppointmentCTA cta={appointmentCta} />
-</BaseLayout>
+</DentistLayout>

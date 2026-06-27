@@ -3,14 +3,14 @@ import AppointmentCTA from '../components/AppointmentCTA.astro';
 import ContactSection from '../components/ContactSection.astro';
 import Hero from '../components/Hero.astro';
 import LocationsSection from '../components/LocationsSection.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
 import { appointmentCta, contactSection } from '../data/contact';
 import { homeHero } from '../data/hero';
 import { locations } from '../data/locations';
 import { site } from '../data/site';
 ---
 
-<BaseLayout title={`Contact | ${site.meta.title}`} description="Generic contact page template for the dental Blueprint.">
+<DentistLayout title={`Contact | ${site.meta.title}`} description="Generic contact page template for the dental Blueprint.">
   <Hero
     hero={{
       ...homeHero,
@@ -22,4 +22,4 @@ import { site } from '../data/site';
   <ContactSection content={contactSection} site={site} />
   <LocationsSection locations={locations} />
   <AppointmentCTA cta={appointmentCta} />
-</BaseLayout>
+</DentistLayout>

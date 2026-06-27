@@ -3,7 +3,7 @@ import AppointmentCTA from '../components/AppointmentCTA.astro';
 import FAQSection from '../components/FAQSection.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCards from '../components/ServiceCards.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
 import { appointmentCta } from '../data/contact';
 import { faqs } from '../data/faq';
 import { homeHero } from '../data/hero';
@@ -15,7 +15,7 @@ const relatedFaqs = faqs.filter((faq) => service.relatedFaqIds.includes(faq.id))
 const relatedServices = services.filter((item) => item.slug !== service.slug).slice(0, 2);
 ---
 
-<BaseLayout title={`${service.name} | ${site.meta.title}`} description={service.summary}>
+<DentistLayout title={`${service.name} | ${site.meta.title}`} description={service.summary}>
   <Hero
     hero={{
       ...homeHero,
@@ -56,4 +56,4 @@ const relatedServices = services.filter((item) => item.slug !== service.slug).sl
   <FAQSection items={relatedFaqs} title="Treatment-specific questions" />
   <AppointmentCTA cta={appointmentCta} />
   <ServiceCards services={relatedServices} title="Related service templates" />
-</BaseLayout>
+</DentistLayout>
