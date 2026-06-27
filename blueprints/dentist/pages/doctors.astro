@@ -1,0 +1,26 @@
+---
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import DoctorGrid from '../components/DoctorGrid.astro';
+import Hero from '../components/Hero.astro';
+import TrustLogos from '../components/TrustLogos.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { about } from '../data/about';
+import { appointmentCta } from '../data/contact';
+import { doctors } from '../data/doctors';
+import { homeHero } from '../data/hero';
+import { site } from '../data/site';
+---
+
+<BaseLayout title={`Doctors | ${site.meta.title}`} description="Generic doctors page template for the dental Blueprint.">
+  <Hero
+    hero={{
+      ...homeHero,
+      eyebrow: 'Doctors template',
+      title: 'Doctor and team profiles powered by data',
+      description: 'The team page stays reusable by reading role, specialties, credentials, and biographies from project data.',
+    }}
+  />
+  <DoctorGrid doctors={doctors} title="Full team grid" />
+  <TrustLogos items={about.trustLogos} />
+  <AppointmentCTA cta={appointmentCta} />
+</BaseLayout>

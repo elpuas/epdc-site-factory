@@ -259,6 +259,43 @@ Starter Integration Planning
 
 Dependencies added:
 
+## Sprint 020
+
+Goal:
+Implement the first reusable dental Blueprint as a generic architectural layer between the Astro starter and future project data.
+
+Completed:
+
+- Added `blueprints/dentist/` with `layouts/`, `components/`, `pages/`, `data/`, `patterns/`, `assets/`, and `placeholders/`.
+- Implemented reusable Astro components for Header, Footer, Hero, ServiceCards, ClinicIntro, BenefitsGrid, DoctorGrid, TrustLogos, Testimonials, GoogleReviews, FAQSection, AppointmentCTA, ContactSection, LocationsSection, WhatsAppFloatingButton, and BlogGrid.
+- Added a simple `BaseLayout.astro` that owns shared chrome, accessibility skip links, and the floating WhatsApp action.
+- Added generic page templates for Home, About, Services, Single Service, Doctors, Blog, Blog Post, FAQ, Contact, and Privacy Policy.
+- Added typed placeholder data modules to model the future `src/data/` contract while keeping the Blueprint independent from generated projects.
+- Added non-branded SVG placeholder assets and placeholder policy notes.
+- Added `blueprints/dentist/README.md`.
+- Added `docs/dental-blueprint-validation.md`.
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None. The Blueprint is documentation and template code only and does not alter the Factory runtime surface.
+
+Decisions made:
+
+- Keep the Blueprint self-contained under `blueprints/dentist/` instead of connecting it to the starter or generation pipeline in this sprint.
+- Use local placeholder `data/` modules to validate the future `src/data/` contract without embedding business-specific content.
+- Keep styling intentionally simple so the sprint validates data flow and section composition rather than visual polish.
+- Avoid runtime generation logic and dynamic route plumbing in the first Blueprint version.
+
+Known limitations:
+
+- The Blueprint is not yet wired into Factory generation, runtime execution, or project scaffolding.
+- Placeholder copy and assets are intentionally generic and should be replaced by future generated project data.
+- Service and blog detail routes are template references rather than production route generation.
+
+Next:
+Blueprint Integration Planning
+
 - None. The execution workflow uses the existing Node.js runtime and built-in modules only.
 
 Decisions made:

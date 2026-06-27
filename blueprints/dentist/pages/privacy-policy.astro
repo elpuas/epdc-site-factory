@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { privacyPolicy } from '../data/privacy';
+import { site } from '../data/site';
+---
+
+<BaseLayout title={`Privacy Policy | ${site.meta.title}`} description={privacyPolicy.intro}>
+  <article class="section">
+    <p class="eyebrow">Legal template</p>
+    <h1>{privacyPolicy.title}</h1>
+    <p>{privacyPolicy.intro}</p>
+    {privacyPolicy.sections.map((section) => (
+      <section class="card">
+        <h2>{section.heading}</h2>
+        {section.body.map((paragraph) => <p>{paragraph}</p>)}
+      </section>
+    ))}
+  </article>
+</BaseLayout>

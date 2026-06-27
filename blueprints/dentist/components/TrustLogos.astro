@@ -1,0 +1,25 @@
+---
+import type { TrustLogo } from '../data/types';
+
+interface Props {
+  items: TrustLogo[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="section">
+  <div class="section-heading">
+    <p class="eyebrow">Trust markers</p>
+    <h2>Reusable logo strip</h2>
+  </div>
+  <div class="logo-grid">
+    {items.map((item) => (
+      <article class="logo-card">
+        <img class="badge" src={item.image.src} alt={item.image.alt} />
+        <h3>{item.label}</h3>
+        <p>{item.type}</p>
+      </article>
+    ))}
+  </div>
+</section>

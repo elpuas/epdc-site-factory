@@ -1,0 +1,23 @@
+---
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import BenefitsGrid from '../components/BenefitsGrid.astro';
+import ClinicIntro from '../components/ClinicIntro.astro';
+import DoctorGrid from '../components/DoctorGrid.astro';
+import Hero from '../components/Hero.astro';
+import TrustLogos from '../components/TrustLogos.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { about } from '../data/about';
+import { appointmentCta } from '../data/contact';
+import { doctors } from '../data/doctors';
+import { homeHero } from '../data/hero';
+import { site } from '../data/site';
+---
+
+<BaseLayout title={`About | ${site.meta.title}`} description={about.summary}>
+  <Hero hero={{ ...homeHero, eyebrow: 'About template', title: 'About page structure for a generic dental site', description: about.summary }} />
+  <ClinicIntro summary={about.summary} story={about.story} philosophy={about.philosophy} />
+  <BenefitsGrid benefits={about.benefits} title="Care philosophy and differentiators" />
+  <DoctorGrid doctors={doctors} title="Team preview" />
+  <TrustLogos items={about.trustLogos} />
+  <AppointmentCTA cta={appointmentCta} />
+</BaseLayout>

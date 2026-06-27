@@ -1,0 +1,28 @@
+---
+import type { ReviewSummary, Testimonial } from '../data/types';
+
+interface Props {
+  summary: ReviewSummary;
+  items: Testimonial[];
+}
+
+const { summary, items } = Astro.props;
+---
+
+<section class="section section--split">
+  <div class="card review-summary">
+    <p class="eyebrow">Google reviews</p>
+    <h2>{summary.rating}</h2>
+    <p>{summary.reviewCountLabel}</p>
+    <p>{summary.label}</p>
+  </div>
+
+  <div class="stack">
+    {items.map((item) => (
+      <article class="card compact-card">
+        <h3>{item.authorLabel}</h3>
+        <p>{item.quote}</p>
+      </article>
+    ))}
+  </div>
+</section>

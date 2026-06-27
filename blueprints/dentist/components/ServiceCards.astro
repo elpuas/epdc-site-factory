@@ -1,0 +1,27 @@
+---
+import type { Service } from '../data/types';
+
+interface Props {
+  services: Service[];
+  title?: string;
+}
+
+const { services, title = 'Services' } = Astro.props;
+---
+
+<section class="section">
+  <div class="section-heading">
+    <p class="eyebrow">Service structure</p>
+    <h2>{title}</h2>
+  </div>
+  <div class="card-grid">
+    {services.map((service) => (
+      <article class="card">
+        <p class="pill">{service.category}</p>
+        <h3>{service.name}</h3>
+        <p>{service.summary}</p>
+        <a href={`/service-detail#${service.slug}`}>View template structure</a>
+      </article>
+    ))}
+  </div>
+</section>
