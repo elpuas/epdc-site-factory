@@ -500,6 +500,46 @@ Known limitations:
 Next:
 Runtime Retry And Review Vocabulary
 
+## Sprint 019
+
+Goal:
+Design the first reusable commercial vertical platform for EPDC Site Factory by documenting the architectural foundation for Costa Rican dental websites without implementing components or generating a site.
+
+Completed:
+
+- Reviewed the current Factory architecture in `docs/architecture/README.md`, `docs/astro-starter.md`, `docs/generated-project-audit.md`, `docs/factory-improvements.md`, `starters/astro-minimal/`, and `skills/astro.md`.
+- Added `design/dental-platform/README.md` to define the EPDC Dental Platform, its scope, and its research boundary.
+- Added `design/dental-platform/market-research.md` to convert the provided Costa Rica research summary into reusable market findings.
+- Added `design/dental-platform/page-structure.md` to define the canonical dental sitemap and page-level requirements.
+- Added `design/dental-platform/component-map.md` to document the future blueprint components and their ownership boundaries.
+- Added `design/dental-platform/data-model.md` to define the canonical dental `src/data/` structure with TypeScript-like examples.
+- Added `design/dental-platform/content-model.md`, `conversion-model.md`, and `seo-model.md` to define reusable content, conversion, and SEO architecture for dental clinics.
+- Added `design/dental-platform/future-blueprint.md` to separate Starter, Blueprint, Project Data, Generated Content, Runtime, and Future Knowledge responsibilities.
+- Added `docs/dental-platform-validation.md` to verify research coverage, component coverage, data-model coverage, conversion coverage, SEO coverage, and documentation-only scope.
+- Updated `docs/roadmap.md` to mark the Factory transition from infrastructure into reusable vertical platforms.
+
+Dependencies added:
+
+- None. Sprint 019 adds documentation and design artifacts only.
+
+Decisions made:
+
+- Keep the sprint strictly on the Factory preparation side of the boundary.
+- Use the provided Costa Rica research summary as the only market source of truth.
+- Treat WhatsApp, services, doctors, location clarity, reviews, and blog SEO as the strongest reusable dental-platform pattern for this market.
+- Keep components data-driven so future dental blueprint components render `src/data/` content instead of owning business copy.
+- Separate generic Astro starter responsibilities from future dental blueprint responsibilities.
+
+Known limitations:
+
+- No Astro components were implemented in this sprint.
+- No blueprint exists yet under `blueprints/dentist/`.
+- No project-generation logic consumes this design package yet.
+- The platform is intentionally scoped to Costa Rica and should not be treated as a universal dental-market model.
+
+Next:
+Dental Blueprint Implementation Planning
+
 ## Sprint 017
 
 Goal:
