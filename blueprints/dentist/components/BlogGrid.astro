@@ -1,0 +1,29 @@
+---
+import type { BlogPost } from '../data/types';
+
+interface Props {
+  posts: BlogPost[];
+  title?: string;
+}
+
+const { posts, title = 'Blog articles' } = Astro.props;
+---
+
+<section class="section">
+  <div class="section-heading">
+    <p class="eyebrow">Blog</p>
+    <h2>{title}</h2>
+  </div>
+  <div class="card-grid">
+    {posts.map((post) => (
+      <article class="card">
+        <img class="placeholder-image" src={post.image.src} alt={post.image.alt} />
+        <p class="pill">{post.category}</p>
+        <h3>{post.title}</h3>
+        <p>{post.summary}</p>
+        <p class="muted">{post.publishedAt} · {post.readTime}</p>
+        <a href={`/blog-post#${post.slug}`}>Read placeholder post</a>
+      </article>
+    ))}
+  </div>
+</section>

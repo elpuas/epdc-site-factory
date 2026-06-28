@@ -1,0 +1,38 @@
+---
+import type { ContactSectionData, SiteData } from '../data/types';
+
+interface Props {
+  content: ContactSectionData;
+  site: SiteData;
+}
+
+const { content, site } = Astro.props;
+---
+
+<section class="section section--split">
+  <div>
+    <p class="eyebrow">Contact section</p>
+    <h2>{content.title}</h2>
+    <p>{content.description}</p>
+  </div>
+
+  <div class="stack">
+    <article class="card compact-card">
+      <h3>Phone</h3>
+      <a href={`tel:${site.phone}`}>{site.phone}</a>
+    </article>
+    <article class="card compact-card">
+      <h3>WhatsApp</h3>
+      <a href={site.whatsappHref}>{site.whatsappNumber}</a>
+    </article>
+    <article class="card compact-card">
+      <h3>Email</h3>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </article>
+    <article class="card compact-card">
+      <h3>Form placeholder</h3>
+      <p>{content.appointmentNote}</p>
+      <p class="muted">{content.formDisclaimer}</p>
+    </article>
+  </div>
+</section>

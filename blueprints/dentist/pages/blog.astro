@@ -1,0 +1,23 @@
+---
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import BlogGrid from '../components/BlogGrid.astro';
+import Hero from '../components/Hero.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
+import { blogPosts } from '../data/blog';
+import { appointmentCta } from '../data/contact';
+import { homeHero } from '../data/hero';
+import { site } from '../data/site';
+---
+
+<DentistLayout title={`Blog | ${site.meta.title}`} description="Generic blog archive template for the dental Blueprint.">
+  <Hero
+    hero={{
+      ...homeHero,
+      eyebrow: 'Blog template',
+      title: 'Educational content archive for local SEO and patient guidance',
+      description: 'This archive grid validates how article metadata, summaries, and related service links can flow from data.',
+    }}
+  />
+  <BlogGrid posts={blogPosts} title="All placeholder articles" />
+  <AppointmentCTA cta={appointmentCta} />
+</DentistLayout>

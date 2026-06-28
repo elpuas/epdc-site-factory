@@ -1,0 +1,24 @@
+---
+import type { Testimonial } from '../data/types';
+
+interface Props {
+  items: Testimonial[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="section">
+  <div class="section-heading">
+    <p class="eyebrow">Testimonials</p>
+    <h2>Curated proof points</h2>
+  </div>
+  <div class="card-grid">
+    {items.map((item) => (
+      <blockquote class="card quote-card">
+        <p>"{item.quote}"</p>
+        <footer>{item.authorLabel}</footer>
+      </blockquote>
+    ))}
+  </div>
+</section>

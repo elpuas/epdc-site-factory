@@ -1,0 +1,29 @@
+---
+import type { Doctor } from '../data/types';
+
+interface Props {
+  doctors: Doctor[];
+  title?: string;
+}
+
+const { doctors, title = 'Doctor profiles' } = Astro.props;
+---
+
+<section class="section">
+  <div class="section-heading">
+    <p class="eyebrow">Professional credibility</p>
+    <h2>{title}</h2>
+  </div>
+  <div class="card-grid">
+    {doctors.map((doctor) => (
+      <article class="card">
+        <img class="avatar" src={doctor.image.src} alt={doctor.image.alt} />
+        <h3>{doctor.name}</h3>
+        <p class="muted">{doctor.role}</p>
+        <p>{doctor.bioShort}</p>
+        <p><strong>Specialties:</strong> {doctor.specialties.join(', ')}</p>
+        <p><strong>Credentials:</strong> {doctor.credentials.join(', ')}</p>
+      </article>
+    ))}
+  </div>
+</section>

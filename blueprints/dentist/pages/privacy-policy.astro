@@ -1,0 +1,19 @@
+---
+import DentistLayout from '../layouts/DentistLayout.astro';
+import { privacyPolicy } from '../data/privacy';
+import { site } from '../data/site';
+---
+
+<DentistLayout title={`Privacy Policy | ${site.meta.title}`} description={privacyPolicy.intro}>
+  <article class="section">
+    <p class="eyebrow">Legal template</p>
+    <h1>{privacyPolicy.title}</h1>
+    <p>{privacyPolicy.intro}</p>
+    {privacyPolicy.sections.map((section) => (
+      <section class="card">
+        <h2>{section.heading}</h2>
+        {section.body.map((paragraph) => <p>{paragraph}</p>)}
+      </section>
+    ))}
+  </article>
+</DentistLayout>

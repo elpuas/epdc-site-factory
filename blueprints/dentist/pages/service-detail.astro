@@ -1,0 +1,59 @@
+---
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import FAQSection from '../components/FAQSection.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
+import { appointmentCta } from '../data/contact';
+import { faqs } from '../data/faq';
+import { homeHero } from '../data/hero';
+import { services } from '../data/services';
+import { site } from '../data/site';
+
+const service = services[0];
+const relatedFaqs = faqs.filter((faq) => service.relatedFaqIds.includes(faq.id));
+const relatedServices = services.filter((item) => item.slug !== service.slug).slice(0, 2);
+---
+
+<DentistLayout title={`${service.name} | ${site.meta.title}`} description={service.summary}>
+  <Hero
+    hero={{
+      ...homeHero,
+      eyebrow: service.category,
+      title: service.name,
+      description: service.detail,
+    }}
+  />
+
+  <section class="section section--split">
+    <div>
+      <p class="eyebrow">Treatment overview</p>
+      <h2>Who this template serves</h2>
+      {service.candidateNotes.map((note) => <p>{note}</p>)}
+    </div>
+    <div class="card">
+      <h2>What to expect</h2>
+      <ul>
+        {service.processSteps.map((step) => <li>{step}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Benefits</p>
+      <h2>Structured trust and education</h2>
+    </div>
+    <div class="card-grid">
+      {service.benefits.map((benefit) => (
+        <article class="card">
+          <p>{benefit}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <FAQSection items={relatedFaqs} title="Treatment-specific questions" />
+  <AppointmentCTA cta={appointmentCta} />
+  <ServiceCards services={relatedServices} title="Related service templates" />
+</DentistLayout>

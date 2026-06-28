@@ -1,0 +1,22 @@
+---
+import type { AppointmentCtaData } from '../data/types';
+
+interface Props {
+  cta: AppointmentCtaData;
+}
+
+const { cta } = Astro.props;
+---
+
+<section class="section cta-panel">
+  <div>
+    <p class="eyebrow">Appointment CTA</p>
+    <h2>{cta.title}</h2>
+    <p>{cta.description}</p>
+    <p class="muted">{cta.phoneNote}</p>
+  </div>
+  <div class="button-row">
+    <a class="button button--primary" href={cta.primaryCta.href}>{cta.primaryCta.label}</a>
+    <a class="button button--secondary" href={cta.secondaryCta.href}>{cta.secondaryCta.label}</a>
+  </div>
+</section>

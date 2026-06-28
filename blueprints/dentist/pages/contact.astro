@@ -1,0 +1,25 @@
+---
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Hero from '../components/Hero.astro';
+import LocationsSection from '../components/LocationsSection.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
+import { appointmentCta, contactSection } from '../data/contact';
+import { homeHero } from '../data/hero';
+import { locations } from '../data/locations';
+import { site } from '../data/site';
+---
+
+<DentistLayout title={`Contact | ${site.meta.title}`} description="Generic contact page template for the dental Blueprint.">
+  <Hero
+    hero={{
+      ...homeHero,
+      eyebrow: 'Contact template',
+      title: 'Contact and visit information driven by structured data',
+      description: 'This page keeps appointment pathways, location logistics, and future form messaging separate from the component markup.',
+    }}
+  />
+  <ContactSection content={contactSection} site={site} />
+  <LocationsSection locations={locations} />
+  <AppointmentCTA cta={appointmentCta} />
+</DentistLayout>

@@ -1,0 +1,35 @@
+---
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import BenefitsGrid from '../components/BenefitsGrid.astro';
+import BlogGrid from '../components/BlogGrid.astro';
+import ClinicIntro from '../components/ClinicIntro.astro';
+import DoctorGrid from '../components/DoctorGrid.astro';
+import GoogleReviews from '../components/GoogleReviews.astro';
+import Hero from '../components/Hero.astro';
+import LocationsSection from '../components/LocationsSection.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import Testimonials from '../components/Testimonials.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
+import { about } from '../data/about';
+import { blogPosts } from '../data/blog';
+import { appointmentCta } from '../data/contact';
+import { doctors } from '../data/doctors';
+import { homeHero } from '../data/hero';
+import { locations } from '../data/locations';
+import { featuredServices } from '../data/services';
+import { site } from '../data/site';
+import { testimonials } from '../data/testimonials';
+---
+
+<DentistLayout title={site.meta.title} description={site.meta.description}>
+  <Hero hero={homeHero} />
+  <ServiceCards services={featuredServices} title="Featured dental services" />
+  <ClinicIntro summary={about.summary} story={about.story} philosophy={about.philosophy} />
+  <BenefitsGrid benefits={about.benefits} />
+  <DoctorGrid doctors={doctors} title="Doctor highlights" />
+  <Testimonials items={testimonials.featured} />
+  <GoogleReviews summary={testimonials.summary} items={testimonials.featured} />
+  <LocationsSection locations={locations} />
+  <AppointmentCTA cta={appointmentCta} />
+  <BlogGrid posts={blogPosts} title="Educational content preview" />
+</DentistLayout>

@@ -1,0 +1,21 @@
+---
+interface Props {
+  summary: string;
+  story: string;
+  philosophy: string;
+}
+
+const { summary, story, philosophy } = Astro.props;
+---
+
+<section class="section section--split">
+  <div>
+    <p class="eyebrow">Clinic introduction</p>
+    <h2>Story and philosophy placeholders</h2>
+  </div>
+  <div class="stack">
+    <p>{summary}</p>
+    <p>{story}</p>
+    <p>{philosophy}</p>
+  </div>
+</section>

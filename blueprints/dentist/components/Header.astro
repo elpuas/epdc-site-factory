@@ -1,0 +1,30 @@
+---
+import type { NavigationData, SiteData } from '../data/types';
+
+interface Props {
+  navigation: NavigationData;
+  site: SiteData;
+}
+
+const { navigation, site } = Astro.props;
+---
+
+<header class="site-header">
+  <a class="brand" href="/">
+    <span class="brand__name">{site.brandName}</span>
+    <span class="brand__tagline">{site.tagline}</span>
+  </a>
+
+  <nav aria-label="Primary navigation">
+    <ul class="nav-list">
+      {navigation.primary.map((item) => (
+        <li><a href={item.href}>{item.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+
+  <div class="header-actions">
+    <a href={`tel:${site.phone}`}>{site.phone}</a>
+    <a class="button button--primary" href={site.primaryCta.href}>{site.primaryCta.label}</a>
+  </div>
+</header>

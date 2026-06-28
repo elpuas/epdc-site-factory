@@ -205,7 +205,7 @@ Status: Sprint 012 completed
 
 ## Phase 11 - Vertical Platforms
 
-Status: Sprint 019 started
+Status: Sprint 020 completed
 
 - Define reusable market-specific platform architecture on top of the Astro starter
 - Separate vertical blueprint knowledge from project-specific content
@@ -222,3 +222,14 @@ Status: Sprint 019 started
 - Added `design/dental-platform/future-blueprint.md` to clarify what belongs to the starter, blueprint, project data, runtime, and future knowledge layers
 - Added `docs/dental-platform-validation.md`
 - Marked the Factory transition from infrastructure foundations into reusable vertical platforms
+
+### Sprint 020 - Dental Blueprint v1
+
+- Added the first reusable Blueprint in `blueprints/dentist/`
+- Implemented the canonical dental component set as reusable Astro components with typed props
+- Added a simple `BaseLayout.astro` and generic page templates for Home, About, Services, Single Service, Doctors, Blog, Blog Post, FAQ, Contact, and Privacy Policy
+- Added placeholder `data/` modules that model the future `src/data/` contract without embedding real business content
+- Added generic SVG placeholder assets plus Blueprint composition and data-flow notes
+- Added `blueprints/dentist/README.md`
+- Added `docs/dental-blueprint-validation.md`
+- Confirmed the Blueprint remains independent from the starter integration, runtime, prompt builder, and generated project pipeline
