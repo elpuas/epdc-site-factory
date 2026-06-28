@@ -1,59 +1,74 @@
-# Agent Registry
+# EPDC Site Factory Instructions
 
-This document is the central registry for the EPDC Site Factory agent contracts.
+## Repository Purpose
 
-These agents are documentation-defined only. They do not implement AI behavior, orchestration logic, memory, or website generation in this phase.
+EPDC Site Factory is a documentation-first repository for a deterministic website factory.
 
-## Architecture Summary
+The active repository scope is:
 
-The intended flow is:
+- specifications
+- planning contracts
+- domain guidance
+- prompt and execution-package generation
+- deterministic project assembly
+- runtime documentation
 
-`SPEC -> Planner Agent -> Task Breakdown -> Specialized Agents -> Outputs`
+The repository does not currently implement:
 
-The specification defines scope, the planner creates structured work, and specialized agents apply domain skills to produce implementation outputs.
+- Codex orchestration
+- live model execution
+- agent memory
+- autonomous website generation inside the factory layer
 
-## Registered Agents
+## Instruction Priorities
 
-### Planner Agent
+- Treat this file as repository guidance for Codex.
+- Treat nested `AGENTS.md` files as more specific overrides if they are added later.
+- Treat `skills/` as EPDC domain-contract documentation, not as Codex-discoverable skill packages.
+- Treat `.agents/skills/` as the correct location for repo-scoped Codex skills.
 
-- Purpose: Transform a project specification into structured implementation tasks.
-- Primary domain: Planning and task decomposition.
-- Detailed definition: [agents/planner.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/agents/planner.md)
+## Preferred Entry Points
 
-### Frontend Agent
+Start with these files before broad exploration:
 
-- Purpose: Define how approved frontend tasks become Astro + TypeScript implementation output.
-- Primary domain: Pages, layouts, components, and frontend structure.
-- Detailed definition: [agents/frontend.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/agents/frontend.md)
+1. `README.md`
+2. `docs/codex-standardization-audit.md`
+3. `docs/architecture/README.md`
+4. the subsystem README for the area being changed
 
-### Backend Agent
+Use targeted follow-up reads after that:
 
-- Purpose: Define how approved backend tasks become Supabase-aligned backend design and integration output.
-- Primary domain: Data, forms, integrations, security, and backend scope control.
-- Detailed definition: [agents/backend.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/agents/backend.md)
+- `docs/agent-registry.md` for agent definitions
+- `skills/` for EPDC domain standards
+- `agents/` for agent contracts
+- `prompts/` for planning-prompt guidance
+- `execution-prompts/` for runtime-facing prompt templates
+- `runtime/` for post-factory execution documentation
+- `assembler/` for deterministic project assembly
+- `blueprints/` and `starters/` for reusable implementation assets
 
-### SEO Agent
+## Repository Boundaries
 
-- Purpose: Define how approved SEO tasks become technical and local search implementation output.
-- Primary domain: Metadata, structured data, crawlability, and local discoverability.
-- Detailed definition: [agents/seo.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/agents/seo.md)
+- Keep Codex-specific conventions in `AGENTS.md`, `.agents/skills/`, and related Codex-facing docs.
+- Keep reusable EPDC architecture knowledge in `docs/`, `agents/`, `skills/`, `runtime/`, `assembler/`, `starters/`, and `blueprints/`.
+- Keep `prompts/` as internal Factory prompt-guidance documents. They are not Codex custom prompts.
+- Do not redesign the Factory when a documentation boundary fix is sufficient.
+- Prefer additive, low-risk standardization over migrations that would reshape the existing architecture.
 
-### QA Agent
+## Change Rules
 
-- Purpose: Validate delivered output against the specification, planner tasks, and implementation standards.
-- Primary domain: Functional quality, responsive behavior, accessibility, performance, and SEO verification.
-- Detailed definition: [agents/qa.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/agents/qa.md)
+- Preserve the deterministic factory pipeline.
+- Reuse official Codex terminology when it improves interoperability.
+- Do not relabel existing EPDC concepts unless the change removes real ambiguity.
+- Document structural deviations from official Codex conventions before proposing a migration.
 
-### Content Agent
+## Validation
 
-- Purpose: Define how approved content tasks become page-ready messaging and content structure.
-- Primary domain: Page hierarchy, conversion messaging, service-page content, local business content, and multilingual consistency.
-- Detailed definition: [agents/content.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/agents/content.md)
+When repository docs or deterministic scripts change, verify the affected commands still run:
 
-## Registry Rules
-
-- Agents must operate from the project specification and planner task output.
-- Agents must load their required context before producing outputs.
-- Agents must use the skill documents assigned to their domain.
-- Agents must not expand scope beyond the specification or planner-approved tasks.
-- Agents remain separable so implementation knowledge can evolve without changing the specification format.
+- `npm run assemble-context`
+- `npm run build-prompt`
+- `npm run run-tasks`
+- `npm run prepare-handoff`
+- `npm run create-execution-package`
+- `npm run create-project`

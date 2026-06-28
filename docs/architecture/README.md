@@ -539,19 +539,21 @@ These are future phases, not present-day architecture.
 
 ### Add a new Skill
 
-1. Add a new markdown contract under `skills/`.
-2. Keep it documentation-first: purpose, responsibilities, boundaries, and working rules.
-3. Update `scripts/assemble-context.js` so the right tasks include the new skill in `requiredSkills`.
-4. Update prompt guidance or templates only if the skill changes rendered prompt requirements.
+1. Decide whether the addition is an EPDC domain contract or a Codex skill package.
+2. For an EPDC domain contract, add a markdown document under `skills/`.
+3. Keep domain contracts documentation-first: purpose, responsibilities, boundaries, and working rules.
+4. Update `scripts/assemble-context.js` so the right tasks include the domain contract in `requiredSkills`.
+5. Update prompt guidance or templates only if the contract changes rendered prompt requirements.
+6. For a repo-scoped Codex skill, add a folder with `SKILL.md` under `.agents/skills/`.
 
 Rule:
 
-- skills define standards, not project scope
+- domain contracts define standards, not project scope
 
 ### Add a new Agent
 
 1. Add the new agent contract under `agents/`.
-2. Register it in `AGENTS.md`.
+2. Register it in `docs/agent-registry.md`.
 3. Define its domain boundary and constraints clearly.
 4. Update task-category routing only if the architecture genuinely supports that new ownership path.
 
