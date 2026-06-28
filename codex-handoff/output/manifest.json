@@ -3,10 +3,22 @@
   "outputDirectory": "codex-handoff/output",
   "handoffsPrepared": [
     {
+      "sourcePrompt": "generated-prompts/execution/generated-backend-execution-prompt.md",
+      "category": "backend",
+      "promptMode": "execution",
+      "handoffFile": "codex-handoff/output/generated-prompts/execution/generated-backend-execution-prompt-handoff.md"
+    },
+    {
       "sourcePrompt": "generated-prompts/execution/generated-frontend-execution-prompt.md",
       "category": "frontend",
       "promptMode": "execution",
       "handoffFile": "codex-handoff/output/generated-prompts/execution/generated-frontend-execution-prompt-handoff.md"
+    },
+    {
+      "sourcePrompt": "generated-prompts/execution/generated-seo-execution-prompt.md",
+      "category": "seo",
+      "promptMode": "execution",
+      "handoffFile": "codex-handoff/output/generated-prompts/execution/generated-seo-execution-prompt-handoff.md"
     },
     {
       "sourcePrompt": "generated-prompts/execution/tasks/backend-001.md",

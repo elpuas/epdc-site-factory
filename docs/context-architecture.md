@@ -20,7 +20,7 @@ This document defines the Context Assembly Engine layer for EPDC Site Factory.
 
 `↓`
 
-`Domain Contract`
+`Codex Skill`
 
 `↓`
 
@@ -50,9 +50,9 @@ The task tells the Context Engine:
 
 The agent contract tells the Context Engine which role owns the task and what outputs and constraints apply.
 
-## Step 5 - Domain Contract
+## Step 5 - Codex Skill
 
-The domain-contract layer tells the Context Engine which implementation standards belong in the package.
+The skill layer tells the Context Engine which reusable workflow instructions belong in the package.
 
 ## Step 6 - Context Assembly Engine
 
@@ -61,7 +61,7 @@ The Context Engine gathers:
 - Relevant specification material
 - One assigned task
 - The owning agent definition
-- The required domain-contract definitions
+- The required skill definitions
 - Shared constraints
 - Expected output guidance
 

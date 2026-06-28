@@ -5,11 +5,29 @@
     {
       "promptMode": "execution",
       "projectId": "harbor-point-dental-studio",
+      "taskId": "backend-form-delivery",
+      "sourceHandoff": "codex-handoff/output/generated-prompts/execution/generated-backend-execution-prompt-handoff.md",
+      "category": "backend",
+      "executionPackage": "execution/packages/generated-prompts/execution/generated-backend-execution-prompt-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/execution/generated-backend-execution-prompt/result.json"
+    },
+    {
+      "promptMode": "execution",
+      "projectId": "harbor-point-dental-studio",
       "taskId": "frontend-core-pages",
       "sourceHandoff": "codex-handoff/output/generated-prompts/execution/generated-frontend-execution-prompt-handoff.md",
       "category": "frontend",
       "executionPackage": "execution/packages/generated-prompts/execution/generated-frontend-execution-prompt-execution.json",
       "expectedResultPath": "execution/results/generated-prompts/execution/generated-frontend-execution-prompt/result.json"
+    },
+    {
+      "promptMode": "execution",
+      "projectId": "harbor-point-dental-studio",
+      "taskId": "seo-page-metadata",
+      "sourceHandoff": "codex-handoff/output/generated-prompts/execution/generated-seo-execution-prompt-handoff.md",
+      "category": "seo",
+      "executionPackage": "execution/packages/generated-prompts/execution/generated-seo-execution-prompt-execution.json",
+      "expectedResultPath": "execution/results/generated-prompts/execution/generated-seo-execution-prompt/result.json"
     },
     {
       "promptMode": "execution",

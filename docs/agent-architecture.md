@@ -68,32 +68,32 @@ This task layer is important because it creates consistent handoffs instead of l
 
 ## Step 4 - Specialized Agents
 
-Specialized agents consume the task breakdown plus the required domain-contract documents for their domain.
+Specialized agents consume the task breakdown plus the required skill packages for their domain.
 
 ### Frontend Agent
 
 - Owns Astro + TypeScript page structure, layouts, components, responsive presentation, and conversion-path visibility.
-- Uses `skills/astro.md` plus supporting content and SEO guidance.
+- Uses `.agents/skills/astro/SKILL.md` plus supporting content and SEO guidance.
 
 ### Backend Agent
 
 - Owns backend scope interpretation, form handling, data persistence decisions, integrations, authentication boundaries, and security rules when backend work is required.
-- Uses `skills/supabase.md`.
+- Uses `.agents/skills/supabase/SKILL.md`.
 
 ### SEO Agent
 
 - Owns metadata, structured data, local SEO, crawlability, sitemap, robots, and page-intent alignment.
-- Uses `skills/seo.md` and supporting content/frontend guidance.
+- Uses `.agents/skills/seo/SKILL.md` and supporting content/frontend guidance.
 
 ### Content Agent
 
 - Owns page hierarchy, messaging structure, CTA strategy, service-page guidance, local business content, and multilingual consistency.
-- Uses `skills/content.md`.
+- Uses `.agents/skills/content/SKILL.md`.
 
 ### QA Agent
 
 - Owns validation against the specification, planned tasks, and cross-domain implementation standards.
-- Uses `skills/qa.md` and supporting domain contracts as needed for verification.
+- Uses `.agents/skills/qa/SKILL.md` and supporting skills as needed for verification.
 
 ## Step 5 - Outputs
 

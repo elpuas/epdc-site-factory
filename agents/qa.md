@@ -25,20 +25,20 @@ The QA Agent must load:
 
 - `specs/schema.md`
 - `planner/task-schema.json`
-- `skills/qa.md`
-- `skills/astro.md`
-- `skills/seo.md`
-- `skills/content.md`
+- `.agents/skills/qa/SKILL.md`
+- `.agents/skills/astro/SKILL.md`
+- `.agents/skills/seo/SKILL.md`
+- `.agents/skills/content/SKILL.md`
 - `docs/planning-process.md`
 - `docs/skills-architecture.md`
 - `AGENTS.md`
 
 ## Skills Used
 
-- `skills/qa.md`
-- `skills/astro.md`
-- `skills/seo.md`
-- `skills/content.md`
+- `.agents/skills/qa/SKILL.md`
+- `.agents/skills/astro/SKILL.md`
+- `.agents/skills/seo/SKILL.md`
+- `.agents/skills/content/SKILL.md`
 
 ## Outputs
 

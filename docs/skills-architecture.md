@@ -1,14 +1,44 @@
-# Domain Contracts Architecture
+# Codex Skills Architecture
 
-This document explains how EPDC Site Factory connects specifications, planning, task output, EPDC domain contracts, and future agents.
+This document explains how EPDC Site Factory separates Codex-native skills from developer documentation, agent contracts, and prompt assets.
 
-## Workflow
+## Current Split
+
+| Surface | Role |
+| --- | --- |
+| `AGENTS.md` | Repository instructions for Codex |
+| `.agents/skills/` | Repo-scoped Codex-native reusable workflows |
+| `agents/` | EPDC agent contracts that define role boundaries |
+| `docs/` | Developer and architecture documentation |
+| `prompts/` and `execution-prompts/` | Prompt-generation assets |
+| `skills/` | Legacy migration directory, not the active workflow source of truth |
+
+## Active Factory Skills
+
+The current active Codex skills are:
+
+- `.agents/skills/planner/SKILL.md`
+- `.agents/skills/astro/SKILL.md`
+- `.agents/skills/content/SKILL.md`
+- `.agents/skills/seo/SKILL.md`
+- `.agents/skills/qa/SKILL.md`
+- `.agents/skills/supabase/SKILL.md`
+- `.agents/skills/factory-repository-map/SKILL.md`
+
+Each active skill follows the official Codex package format:
+
+- one folder per skill
+- `SKILL.md` with `name` and `description` frontmatter
+- explicit workflow instructions
+- progressive-disclosure friendly references
+
+## Workflow Relationship
 
 `SPEC`
 
 `↓`
 
-`Planner`
+`Planner Skill`
 
 `↓`
 
@@ -16,121 +46,44 @@ This document explains how EPDC Site Factory connects specifications, planning, 
 
 `↓`
 
-`Domain Contracts`
+`Specialist Skills`
 
 `↓`
 
-`Future Agents`
+`Agent Contracts`
 
-## Step 1 - SPEC
+`↓`
 
-The specification defines what a project requires.
+`Prompt and Runtime Artifacts`
 
-It captures:
+## Architectural Rules
 
-- Business goals
-- Technical requirements
-- Page requirements
-- Features
-- SEO requirements
-- Content expectations
-- Integrations
-- Acceptance criteria
+### 1. Skills teach reusable execution behavior
 
-The specification is the source of truth. Everything downstream should stay traceable to it.
+Codex skills should tell the agent how to perform a task:
 
-## Step 2 - Planner
+- when to use the skill
+- what context must be loaded
+- what instructions to follow
+- what constraints to preserve
+- what references matter
 
-The planner contract translates the specification into structured work.
+### 2. Agent contracts stay outside the skill system
 
-It does this by:
+The `agents/` directory still defines role boundaries such as Planner, Frontend, Backend, SEO, Content, and QA. Those files explain ownership and outputs, but they are not skill packages.
 
-- Reading the full specification
-- Interpreting scope and constraints
-- Breaking the work into discrete tasks
-- Assigning task categories
-- Preserving dependencies and priority
+### 3. Developer documentation stays in `docs/`
 
-The planner does not implement the work. It defines the work.
+Architecture explanation, migration rationale, audits, roadmap records, and sprint records should remain outside `.agents/skills/`.
 
-## Step 3 - Tasks
+### 4. Prompt assets stay in prompt directories
 
-The planner output is the handoff contract between planning and implementation knowledge.
+`prompts/` and `execution-prompts/` remain source assets for deterministic prompt generation. They are not Codex skills and they are not repository instructions.
 
-Each task identifies:
+## Migration Rule
 
-- What needs to be done
-- Which category owns it
-- How important it is
-- What it depends on
+If a file teaches a reusable agent workflow, it belongs in `.agents/skills/`.
 
-This task layer is important because it prevents future implementation work from skipping directly from a high-level specification into ad hoc execution.
+If a file primarily explains the project to humans, it belongs in `docs/`.
 
-## Step 4 - Domain Contracts
-
-Domain contracts define how each category of work should be approached.
-
-Current core domain contracts:
-
-- `skills/astro.md`
-- `skills/supabase.md`
-- `skills/seo.md`
-- `skills/qa.md`
-- `skills/content.md`
-
-These domain contracts provide implementation guidance for:
-
-- Frontend structure and Astro standards
-- Backend and Supabase rules when backend scope exists
-- Search optimization standards
-- Quality assurance expectations
-- Content organization and conversion patterns
-
-Domain contracts do not decide project scope. They interpret tasks within their domain.
-
-## Terminology Boundary
-
-The files in `skills/` are EPDC domain-contract documents.
-
-They are not the same thing as Codex-discoverable skill packages.
-
-Current Codex convention:
-
-- repo-scoped Codex skills live in `.agents/skills/`
-- each Codex skill is a folder with a `SKILL.md`
-- Codex uses the folder metadata for discovery and loads the full instructions only when the skill is selected
-
-EPDC keeps `skills/` because these documents define stable domain standards that the Factory pipeline references directly. If EPDC later migrates selected guidance into Codex skill packages, that should happen as an explicit future migration rather than by overloading the existing `skills/` directory.
-
-## Step 5 - Future Agents
-
-Future agents are expected to use tasks plus domain contracts together.
-
-The intended relationship is:
-
-- The specification says what the project needs.
-- The planner says what work must be done.
-- The domain contracts say how that work should be carried out.
-- Future agents would apply those domain contracts to execute the tasks.
-
-This repository does not implement those agents yet. Sprint 004 only defines the knowledge layer they would rely on.
-
-## Design Principles
-
-- Specifications define scope.
-- Planner output defines work.
-- Domain contracts define implementation standards.
-- Future agents should be replaceable without changing the specification format.
-- Each layer should remain understandable on its own.
-
-## Current Boundary
-
-This architecture documentation does not implement:
-
-- AI systems
-- Orchestration
-- Agent lifecycle management
-- Code generation
-- Website generation
-
-It only defines the knowledge flow that future execution systems would consume.
+If a file defines role ownership, it belongs in `agents/`.

@@ -278,7 +278,8 @@ Status: Sprint 024 completed
 
 - Audited the repository against the current official Codex guidance for `AGENTS.md`, instruction hierarchy, skills, customization, and knowledge discovery
 - Added `docs/codex-knowledge-architecture.md`
-- Classified every document under `skills/` and confirmed those files are EPDC domain contracts rather than Codex skill packages
-- Kept `.agents/skills/` as the only repo-scoped Codex skill surface and preserved the existing `factory-repository-map` package structure
-- Updated active architecture and terminology docs so EPDC domain contracts are no longer described as Codex skills in the live repository model
-- Preserved the existing `skills/` path for compatibility instead of performing an unjustified migration
+- Migrated the reusable workflow files from `skills/` into real Codex skill packages under `.agents/skills/`
+- Added active Factory skills for `planner`, `astro`, `content`, `seo`, `qa`, and `supabase`, alongside the existing `factory-repository-map` skill
+- Switched the active repository references and context assembly path to load `.agents/skills/*/SKILL.md` as the source of truth
+- Reduced `skills/` to legacy migration notes instead of leaving reusable workflows there as the active surface
+- Updated architecture, agent, and prompt docs to explain the final split between repo-scoped skills, developer docs, agent contracts, and prompt assets

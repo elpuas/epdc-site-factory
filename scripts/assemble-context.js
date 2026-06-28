@@ -9,7 +9,11 @@ const rootDir = path.resolve(__dirname, "..");
 const categoryConfig = {
   frontend: {
     agentFile: "agents/frontend.md",
-    skillFiles: ["skills/astro.md", "skills/content.md", "skills/seo.md"],
+    skillFiles: [
+      ".agents/skills/astro/SKILL.md",
+      ".agents/skills/content/SKILL.md",
+      ".agents/skills/seo/SKILL.md",
+    ],
     planningExpectedOutput: [
       "Frontend implementation guidance",
       "Route and page mapping",
@@ -24,7 +28,7 @@ const categoryConfig = {
   },
   backend: {
     agentFile: "agents/backend.md",
-    skillFiles: ["skills/supabase.md", "skills/qa.md"],
+    skillFiles: [".agents/skills/supabase/SKILL.md", ".agents/skills/qa/SKILL.md"],
     planningExpectedOutput: [
       "Backend implementation guidance",
       "Security and data-handling notes",
@@ -39,7 +43,11 @@ const categoryConfig = {
   },
   seo: {
     agentFile: "agents/seo.md",
-    skillFiles: ["skills/seo.md", "skills/content.md", "skills/astro.md"],
+    skillFiles: [
+      ".agents/skills/seo/SKILL.md",
+      ".agents/skills/content/SKILL.md",
+      ".agents/skills/astro/SKILL.md",
+    ],
     planningExpectedOutput: [
       "SEO implementation guidance",
       "Metadata and page-intent notes",
@@ -54,7 +62,12 @@ const categoryConfig = {
   },
   qa: {
     agentFile: "agents/qa.md",
-    skillFiles: ["skills/qa.md", "skills/astro.md", "skills/seo.md", "skills/content.md"],
+    skillFiles: [
+      ".agents/skills/qa/SKILL.md",
+      ".agents/skills/astro/SKILL.md",
+      ".agents/skills/seo/SKILL.md",
+      ".agents/skills/content/SKILL.md",
+    ],
     planningExpectedOutput: [
       "Structured QA findings",
       "Release-readiness summary",
@@ -69,7 +82,11 @@ const categoryConfig = {
   },
   content: {
     agentFile: "agents/content.md",
-    skillFiles: ["skills/content.md", "skills/seo.md", "skills/astro.md"],
+    skillFiles: [
+      ".agents/skills/content/SKILL.md",
+      ".agents/skills/seo/SKILL.md",
+      ".agents/skills/astro/SKILL.md",
+    ],
     planningExpectedOutput: [
       "Content implementation guidance",
       "Page hierarchy and CTA notes",

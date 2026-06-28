@@ -105,7 +105,7 @@ That is the correct Sprint 017 framing: deterministic preparation plus documente
 | Specification | Define business scope, requirements, and acceptance criteria | Implemented as schema plus examples |
 | Planner | Convert specification scope into categorized tasks with priorities and dependencies | Documented contract plus static example output |
 | Task Runner | Iterate planner tasks and generate task-level prompt artifacts | Implemented script |
-| Context Engine | Assemble canonical JSON context packages with task, agent, domain contracts, constraints, and runtime metadata | Implemented script |
+| Context Engine | Assemble canonical JSON context packages with task, agent, skills, constraints, and runtime metadata | Implemented script |
 | Prompt Builder | Render deterministic planning and execution prompts from context packages | Implemented script |
 | Execution Package | Preserve prompt payload, runtime scope, expected outputs, and review requirements in a runtime-consumable contract | Implemented script and docs |
 | Runtime | Consume packages, deliver prompts, capture logs and changed files, manage attempts and review flow | Documented and manually validated |
@@ -145,7 +145,7 @@ Current state:
 
 Location:
 
-- `skills/planner.md`
+- `.agents/skills/planner/SKILL.md`
 - `planner/task-schema.json`
 - `planner/example-output.json`
 
@@ -158,7 +158,7 @@ Owns:
 
 Current state:
 
-- planner contract is documented
+- planner skill is documented
 - repository uses a static example planner output
 - no live planner implementation exists
 
@@ -192,7 +192,7 @@ Location:
 Owns:
 
 - canonical JSON context packaging
-- agent and domain-contract loading
+- agent and skill loading
 - constraint packaging
 - expected-output packaging
 - runtime metadata attachment in execution mode
@@ -358,7 +358,7 @@ The task plan becomes deterministic downstream input. The Task Runner processes 
 
 ### 4. Task Runner -> Context Engine
 
-For each task, the Context Engine assembles the required execution context: specification summary, agent contract, domain contracts, constraints, expected outputs, and runtime metadata when relevant.
+For each task, the Context Engine assembles the required execution context: specification summary, agent contract, skills, constraints, expected outputs, and runtime metadata when relevant.
 
 ### 5. Context Engine -> Planning Prompt
 
@@ -398,7 +398,7 @@ These are the major working directories a new engineer needs to understand.
 
 - `specs/`: canonical specification schema and example specifications
 - `planner/`: planner schema and example task output
-- `skills/`: reusable implementation standards by domain
+- `.agents/skills/`: reusable implementation workflows by domain
 - `agents/`: role contracts for planner and specialist agents
 - `context-engine/`: context packaging contract and examples
 - `prompt-builder/`: planning prompt schema, examples, and templates
@@ -537,18 +537,18 @@ These are future phases, not present-day architecture.
 
 ## Developer Guide
 
-### Add a New Domain Contract Or Codex Skill
+### Add a New Codex Skill
 
-1. Decide whether the addition is an EPDC domain contract or a Codex skill package.
-2. For an EPDC domain contract, add a markdown document under `skills/`.
-3. Keep domain contracts documentation-first: purpose, responsibilities, boundaries, and working rules.
-4. Update `scripts/assemble-context.js` so the right tasks include the domain contract in `requiredSkills`.
-5. Update prompt guidance or templates only if the contract changes rendered prompt requirements.
-6. For a repo-scoped Codex skill, add a folder with `SKILL.md` under `.agents/skills/`.
+1. Decide whether the addition is a reusable workflow or developer documentation.
+2. For a reusable workflow, add a skill folder with `SKILL.md` under `.agents/skills/`.
+3. Keep the skill package explicit about when to use it, required context, instructions, constraints, and references.
+4. Update `scripts/assemble-context.js` so the right tasks include the skill in `requiredSkills`.
+5. Update prompt guidance or templates only if the skill changes rendered prompt requirements.
+6. Keep human-oriented architecture explanation in `docs/`, not in the skill package.
 
 Rule:
 
-- domain contracts define standards, not project scope
+- skills define reusable workflow standards, not project scope
 
 ### Add a new Agent
 
@@ -600,7 +600,7 @@ Use this process:
 ```text
 specs/              define scope
 planner/            define work
-skills/             define standards
+.agents/skills/     define Codex-native workflows
 agents/             define ownership
 context-engine/     assemble execution context
 prompt-builder/     render planning prompts

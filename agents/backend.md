@@ -25,16 +25,16 @@ The Backend Agent must load:
 
 - `specs/schema.md`
 - `planner/task-schema.json`
-- `skills/supabase.md`
-- `skills/qa.md`
+- `.agents/skills/supabase/SKILL.md`
+- `.agents/skills/qa/SKILL.md`
 - `docs/planning-process.md`
 - `docs/skills-architecture.md`
 - `AGENTS.md`
 
 ## Skills Used
 
-- `skills/supabase.md`
-- `skills/qa.md`
+- `.agents/skills/supabase/SKILL.md`
+- `.agents/skills/qa/SKILL.md`
 
 ## Outputs
 

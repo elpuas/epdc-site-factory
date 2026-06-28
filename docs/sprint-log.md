@@ -586,31 +586,37 @@ Completed:
 - Reviewed the current official Codex guidance for `AGENTS.md`, instruction discovery, skills, customization, and plugin packaging through the current Codex manual.
 - Added `docs/codex-knowledge-architecture.md`.
 - Classified every existing document under `skills/` and documented the reasoning for each classification.
-- Confirmed that the files under `skills/` are EPDC domain contracts, not Codex skill packages.
-- Confirmed that `.agents/skills/factory-repository-map/SKILL.md` remains the repository's only true Codex skill package and already follows the official package structure.
-- Updated live architecture and terminology docs so EPDC domain contracts are no longer described as Codex skills in the active repository model.
-- Updated the headings and explanatory text inside `skills/*.md` so those documents identify themselves as contracts while preserving their file paths for compatibility.
+- Migrated the reusable workflow files from `skills/` into active Codex skill packages under `.agents/skills/`.
+- Added real Factory skills for `planner`, `astro`, `content`, `seo`, `qa`, and `supabase`, alongside `factory-repository-map`.
+- Updated `scripts/assemble-context.js`, agent contracts, and prompt guidance so the active execution path now loads `.agents/skills/*/SKILL.md`.
+- Reduced `skills/` to legacy migration notes instead of leaving reusable workflows there as the active source of truth.
+- Updated live architecture docs so the repository now documents the final split:
+  - `.agents/skills/` for Codex-native executable skills
+  - `docs/` for developer documentation
+  - `agents/` for EPDC role contracts
+  - `prompts/` and `execution-prompts/` for prompt-generation assets
 - Updated `docs/roadmap.md`.
 
 Dependencies added:
 
-- None. This sprint standardizes documentation and repository guidance only.
+- None. This sprint standardizes repository knowledge architecture and skill packaging only.
 
 Decisions made:
 
 - Keep `AGENTS.md` focused on repository instructions only.
-- Keep `.agents/skills/` as the sole repo-scoped Codex skill surface.
-- Treat `skills/` as a legacy path for EPDC domain contracts rather than migrating those files into the Codex skill system.
-- Prefer terminology correction and architectural mapping over structural moves that are not required by official Codex guidance.
+- Use `.agents/skills/` as the sole active repo-scoped Codex skill surface.
+- Migrate reusable workflows instead of leaving them in `skills/`.
+- Keep only non-executable migration notes outside `.agents/skills/`.
+- Preserve the existing deterministic Factory architecture while changing only the knowledge packaging.
 
 Known limitations:
 
-- The `skills/` directory name remains in place for compatibility even though its contents are now explicitly documented as EPDC domain contracts.
 - Historical records and earlier audits may still use older terminology where it is part of the historical record.
-- A future migration could rename the `skills/` path, but this sprint does not justify that change.
+- The legacy `skills/` directory still exists as a migration note surface, but it is no longer part of the active workflow path.
+- Plugin packaging remains future work; this sprint standardizes local repo-scoped skills only.
 
 Next:
-Compatibility Path Rename Evaluation
+Plugin Packaging Evaluation
 
 ## Sprint 022
 

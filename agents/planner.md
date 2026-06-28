@@ -23,14 +23,14 @@ Transform an EPDC project specification into a structured implementation plan th
 The Planner Agent must load:
 
 - `specs/schema.md`
-- `skills/planner.md`
+- `.agents/skills/planner/SKILL.md`
 - `planner/task-schema.json`
 - `docs/planning-process.md`
 - `AGENTS.md`
 
 ## Skills Used
 
-- `skills/planner.md`
+- `.agents/skills/planner/SKILL.md`
 
 ## Outputs
 

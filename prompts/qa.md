@@ -9,11 +9,11 @@ Transform `qa` tasks plus the EPDC QA contracts into a prompt that directs Codex
 ## Assembly Inputs
 
 - Agent contract: `agents/qa.md`
-- Domain contracts:
-  - `skills/qa.md`
-  - `skills/astro.md`
-  - `skills/seo.md`
-  - `skills/content.md`
+- Skills:
+  - `.agents/skills/qa/SKILL.md`
+  - `.agents/skills/astro/SKILL.md`
+  - `.agents/skills/seo/SKILL.md`
+  - `.agents/skills/content/SKILL.md`
 - Prompt schema: `prompt-builder/prompt-schema.md`
 - Project specification
 - Planner output limited to the relevant `qa` tasks
@@ -45,7 +45,7 @@ Transform `qa` tasks plus the EPDC QA contracts into a prompt that directs Codex
 
 ### Standards
 
-- Pull functional, responsive, accessibility, performance, SEO, and release-checklist rules from `skills/qa.md`
+- Pull functional, responsive, accessibility, performance, SEO, and release-checklist rules from `.agents/skills/qa/SKILL.md`
 - Include supporting frontend, SEO, and content standards when they affect verification
 
 ### Constraints

@@ -4,7 +4,7 @@
 
 - The specification provided enough structure to generate a coherent first Astro project without redefining the architecture.
 - The planner output was useful for separating what could be built immediately from what should remain documented as incomplete.
-- The Astro, Content, and SEO domain contracts were practical guardrails for reusable layout structure, accessible navigation, and metadata consistency.
+- The Astro, Content, and SEO skills were practical guardrails for reusable layout structure, accessible navigation, and metadata consistency.
 - The generated prompt and handoff layers made it easy to see which frontend and content concerns were already expected by the factory.
 
 ## What Failed
@@ -24,7 +24,7 @@
 
 - `specs/examples/dentist.md` as the single source of truth for the project scope.
 - `planner/example-output.json` for mapping implementation work to explicit task IDs.
-- `skills/astro.md`, `skills/content.md`, and `skills/seo.md` for implementation standards.
+- `.agents/skills/astro/SKILL.md`, `.agents/skills/content/SKILL.md`, and `.agents/skills/seo/SKILL.md` for implementation standards.
 - `generated-prompts/tasks/` as a practical reference for which frontend, content, and SEO concerns mattered most for the first project.
 - The reporting layers in `codex-handoff/` and `execution/` as evidence that the factory preserves traceability well even before automated code generation exists.
 

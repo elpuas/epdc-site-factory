@@ -9,10 +9,10 @@ Transform `content` tasks plus the EPDC content contracts into a prompt that dir
 ## Assembly Inputs
 
 - Agent contract: `agents/content.md`
-- Domain contracts:
-  - `skills/content.md`
-  - `skills/seo.md`
-  - `skills/astro.md`
+- Skills:
+  - `.agents/skills/content/SKILL.md`
+  - `.agents/skills/seo/SKILL.md`
+  - `.agents/skills/astro/SKILL.md`
 - Prompt schema: `prompt-builder/prompt-schema.md`
 - Project specification
 - Planner output limited to the relevant `content` tasks
@@ -44,7 +44,7 @@ Transform `content` tasks plus the EPDC content contracts into a prompt that dir
 
 ### Standards
 
-- Pull content structure, hierarchy, CTA, service-page, local-business, multilingual, and EPDC rules from `skills/content.md`
+- Pull content structure, hierarchy, CTA, service-page, local-business, multilingual, and EPDC rules from `.agents/skills/content/SKILL.md`
 - Include supporting SEO and Astro constraints only when they materially affect content decisions
 
 ### Constraints

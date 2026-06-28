@@ -79,7 +79,7 @@ The Prompt Builder consumes:
 - Planner-scoped task ownership
 - Canonical JSON context packages
 - Agent contracts
-- Domain contracts
+- Skill packages
 - Builder templates
 
 ## Output
