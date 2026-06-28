@@ -1,0 +1,24 @@
+---
+import type { BenefitsSectionData } from '../types';
+
+interface Props {
+  section: BenefitsSectionData;
+}
+
+const { section } = Astro.props;
+---
+
+<section class="section">
+  <div class="section-heading">
+    <p class="eyebrow">{section.eyebrow}</p>
+    <h2>{section.title}</h2>
+  </div>
+  <div class="card-grid">
+    {section.benefits.map((benefit) => (
+      <article class="card">
+        <h3>{benefit.title}</h3>
+        <p>{benefit.description}</p>
+      </article>
+    ))}
+  </div>
+</section>

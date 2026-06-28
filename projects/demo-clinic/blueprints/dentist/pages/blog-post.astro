@@ -1,0 +1,29 @@
+---
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
+import type { AppointmentCtaData, BlogPost, FooterData, NavigationData, SeoPageData, SiteData } from '../types';
+
+interface Props {
+  appointmentCta: AppointmentCtaData;
+  baseLayout: unknown;
+  footer: FooterData;
+  navigation: NavigationData;
+  post: BlogPost;
+  seo: SeoPageData;
+  site: SiteData;
+}
+
+const { appointmentCta, baseLayout, footer, navigation, post, seo, site } = Astro.props;
+---
+
+<DentistLayout baseLayout={baseLayout} title={seo.title} description={seo.description} footer={footer} lang={seo.lang} navigation={navigation} site={site}>
+  <article class="section">
+    <p class="eyebrow">{post.category}</p>
+    <h1>{post.title}</h1>
+    <p class="muted">{post.publishedAt} · {post.readTime}</p>
+    <img class="placeholder-image" src={post.image.src} alt={post.image.alt} />
+    <p>{post.summary}</p>
+    {post.body.map((paragraph) => <p>{paragraph}</p>)}
+  </article>
+  <AppointmentCTA cta={appointmentCta} />
+</DentistLayout>

@@ -1,0 +1,40 @@
+---
+import type { FooterData, NavigationData, SiteData } from '../types';
+
+interface Props {
+  footer: FooterData;
+  navigation: NavigationData;
+  site: SiteData;
+}
+
+const { footer, navigation, site } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="site-footer__grid">
+    <section>
+      <h2>{site.brandName}</h2>
+      <p>{site.tagline}</p>
+      <p>{site.addressSummary}</p>
+    </section>
+
+    <section>
+      <h2>{footer.contactHeading}</h2>
+      <ul class="plain-list">
+        <li><a href={`tel:${site.phone}`}>{site.phone}</a></li>
+        <li><a href={site.whatsappHref}>{site.whatsappNumber}</a></li>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>{footer.linksHeading}</h2>
+      <ul class="plain-list">
+        {navigation.footer.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </section>
+  </div>
+  <p class="site-footer__legal">{footer.legalNotice}</p>
+</footer>

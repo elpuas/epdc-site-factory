@@ -1,0 +1,29 @@
+---
+import DentistLayout from '../layouts/DentistLayout.astro';
+import type { FooterData, NavigationData, PrivacyPolicyData, SeoPageData, SiteData } from '../types';
+
+interface Props {
+  baseLayout: unknown;
+  footer: FooterData;
+  navigation: NavigationData;
+  privacyPolicy: PrivacyPolicyData;
+  seo: SeoPageData;
+  site: SiteData;
+}
+
+const { baseLayout, footer, navigation, privacyPolicy, seo, site } = Astro.props;
+---
+
+<DentistLayout baseLayout={baseLayout} title={seo.title} description={seo.description} footer={footer} lang={seo.lang} navigation={navigation} site={site}>
+  <article class="section">
+    <p class="eyebrow">{privacyPolicy.eyebrow}</p>
+    <h1>{privacyPolicy.title}</h1>
+    <p>{privacyPolicy.intro}</p>
+    {privacyPolicy.sections.map((section) => (
+      <section class="card">
+        <h2>{section.heading}</h2>
+        {section.body.map((paragraph) => <p>{paragraph}</p>)}
+      </section>
+    ))}
+  </article>
+</DentistLayout>

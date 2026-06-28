@@ -1,0 +1,26 @@
+---
+import type { ServiceSectionData } from '../types';
+
+interface Props {
+  section: ServiceSectionData;
+}
+
+const { section } = Astro.props;
+---
+
+<section class="section">
+  <div class="section-heading">
+    <p class="eyebrow">{section.eyebrow}</p>
+    <h2>{section.title}</h2>
+  </div>
+  <div class="card-grid">
+    {section.services.map((service) => (
+      <article class="card">
+        <p class="pill">{service.category}</p>
+        <h3>{service.name}</h3>
+        <p>{service.summary}</p>
+        <a href={`/service-detail#${service.slug}`}>{section.linkLabel}</a>
+      </article>
+    ))}
+  </div>
+</section>

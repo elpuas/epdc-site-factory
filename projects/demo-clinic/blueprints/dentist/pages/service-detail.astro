@@ -1,0 +1,80 @@
+---
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import FAQSection from '../components/FAQSection.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
+import type { AppointmentCtaData, FAQSectionData, FooterData, HeroData, NavigationData, SeoPageData, Service, ServiceSectionData, SiteData } from '../types';
+
+interface Props {
+  appointmentCta: AppointmentCtaData;
+  baseLayout: unknown;
+  faq: FAQSectionData;
+  footer: FooterData;
+  hero: HeroData;
+  navigation: NavigationData;
+  relatedServices: ServiceSectionData;
+  seo: SeoPageData;
+  service: Service;
+  site: SiteData;
+  treatmentOverviewEyebrow: string;
+  treatmentOverviewTitle: string;
+  whatToExpectTitle: string;
+  benefitsEyebrow: string;
+  benefitsTitle: string;
+}
+
+const {
+  appointmentCta,
+  baseLayout,
+  benefitsEyebrow,
+  benefitsTitle,
+  faq,
+  footer,
+  hero,
+  navigation,
+  relatedServices,
+  seo,
+  service,
+  site,
+  treatmentOverviewEyebrow,
+  treatmentOverviewTitle,
+  whatToExpectTitle,
+} = Astro.props;
+---
+
+<DentistLayout baseLayout={baseLayout} title={seo.title} description={seo.description} footer={footer} lang={seo.lang} navigation={navigation} site={site}>
+  <Hero hero={hero} />
+
+  <section class="section section--split">
+    <div>
+      <p class="eyebrow">{treatmentOverviewEyebrow}</p>
+      <h2>{treatmentOverviewTitle}</h2>
+      {service.candidateNotes.map((note) => <p>{note}</p>)}
+    </div>
+    <div class="card">
+      <h2>{whatToExpectTitle}</h2>
+      <ul>
+        {service.processSteps.map((step) => <li>{step}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">{benefitsEyebrow}</p>
+      <h2>{benefitsTitle}</h2>
+    </div>
+    <div class="card-grid">
+      {service.benefits.map((benefit) => (
+        <article class="card">
+          <p>{benefit}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <FAQSection section={faq} />
+  <AppointmentCTA cta={appointmentCta} />
+  <ServiceCards section={relatedServices} />
+</DentistLayout>

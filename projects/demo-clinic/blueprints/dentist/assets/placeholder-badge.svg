@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-labelledby="title desc">
+  <title id="title">Trust badge placeholder</title>
+  <desc id="desc">Generic placeholder badge for trust, membership, or partner logos.</desc>
+  <rect width="220" height="220" rx="44" fill="#ffffff" stroke="#d7c9af" stroke-width="10"/>
+  <circle cx="110" cy="96" r="42" fill="#c7e6df"/>
+  <path d="M70 150h80l-40 34z" fill="#0d8c72" opacity=".34"/>
+</svg>

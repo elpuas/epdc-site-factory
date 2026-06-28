@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Blog placeholder</title>
+  <desc id="desc">Simple placeholder artwork for blog cards and posts.</desc>
+  <rect width="640" height="420" fill="#efe7d9"/>
+  <rect x="84" y="72" width="472" height="276" rx="24" fill="#ffffff" stroke="#d7c9af" stroke-width="6"/>
+  <rect x="126" y="126" width="220" height="18" rx="9" fill="#0d8c72" opacity=".24"/>
+  <rect x="126" y="166" width="352" height="16" rx="8" fill="#0d8c72" opacity=".16"/>
+  <rect x="126" y="196" width="300" height="16" rx="8" fill="#0d8c72" opacity=".16"/>
+  <rect x="126" y="246" width="120" height="48" rx="18" fill="#c7e6df"/>
+</svg>

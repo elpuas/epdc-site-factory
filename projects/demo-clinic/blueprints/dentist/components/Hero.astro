@@ -1,0 +1,28 @@
+---
+import type { HeroData } from '../types';
+
+interface Props {
+  hero: HeroData;
+}
+
+const { hero } = Astro.props;
+---
+
+<section class="section hero-grid">
+  <div>
+    <p class="eyebrow">{hero.eyebrow}</p>
+    <h1>{hero.title}</h1>
+    <p>{hero.description}</p>
+    <div class="button-row">
+      <a class="button button--primary" href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
+      <a class="button button--secondary" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
+    </div>
+    <ul class="inline-list" aria-label={hero.trustHighlightsLabel}>
+      {hero.trustHighlights.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </div>
+
+  <img class="placeholder-image" src={hero.image.src} alt={hero.image.alt} />
+</section>

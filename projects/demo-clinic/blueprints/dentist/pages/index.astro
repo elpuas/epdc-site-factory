@@ -1,0 +1,75 @@
+---
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import BenefitsGrid from '../components/BenefitsGrid.astro';
+import BlogGrid from '../components/BlogGrid.astro';
+import ClinicIntro from '../components/ClinicIntro.astro';
+import DoctorGrid from '../components/DoctorGrid.astro';
+import GoogleReviews from '../components/GoogleReviews.astro';
+import Hero from '../components/Hero.astro';
+import LocationsSection from '../components/LocationsSection.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import Testimonials from '../components/Testimonials.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
+import type {
+  AboutData,
+  AppointmentCtaData,
+  BlogSectionData,
+  DoctorSectionData,
+  FooterData,
+  GoogleReviewsSectionData,
+  HeroData,
+  LocationsSectionData,
+  NavigationData,
+  SeoPageData,
+  ServiceSectionData,
+  SiteData,
+  TestimonialsSectionData,
+} from '../types';
+
+interface Props {
+  about: AboutData;
+  appointmentCta: AppointmentCtaData;
+  baseLayout: unknown;
+  blog: BlogSectionData;
+  doctors: DoctorSectionData;
+  footer: FooterData;
+  googleReviews: GoogleReviewsSectionData;
+  hero: HeroData;
+  locations: LocationsSectionData;
+  navigation: NavigationData;
+  seo: SeoPageData;
+  services: ServiceSectionData;
+  site: SiteData;
+  testimonials: TestimonialsSectionData;
+}
+
+const {
+  about,
+  appointmentCta,
+  baseLayout,
+  blog,
+  doctors,
+  footer,
+  googleReviews,
+  hero,
+  locations,
+  navigation,
+  seo,
+  services,
+  site,
+  testimonials,
+} = Astro.props;
+---
+
+<DentistLayout baseLayout={baseLayout} title={seo.title} description={seo.description} footer={footer} lang={seo.lang} navigation={navigation} site={site}>
+  <Hero hero={hero} />
+  <ServiceCards section={services} />
+  <ClinicIntro section={about.intro} />
+  <BenefitsGrid section={about.benefits} />
+  <DoctorGrid section={doctors} />
+  <Testimonials section={testimonials} />
+  <GoogleReviews section={googleReviews} />
+  <LocationsSection section={locations} />
+  <AppointmentCTA cta={appointmentCta} />
+  <BlogGrid section={blog} />
+</DentistLayout>

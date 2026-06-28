@@ -1,0 +1,35 @@
+---
+import type { LocationsSectionData } from '../types';
+
+interface Props {
+  section: LocationsSectionData;
+}
+
+const { section } = Astro.props;
+---
+
+<section class="section">
+  <div class="section-heading">
+    <p class="eyebrow">{section.eyebrow}</p>
+    <h2>{section.title}</h2>
+  </div>
+  <div class="card-grid">
+    {section.locations.map((location) => (
+      <article class="card">
+        <h3>{location.label}</h3>
+        <p>{location.addressLine1}</p>
+        <p>{location.district}, {location.city}, {location.province}</p>
+        <p><strong>{section.phoneLabel}:</strong> {location.phone}</p>
+        <p><strong>{section.whatsappLabel}:</strong> {location.whatsapp}</p>
+        <p><strong>{section.hoursLabel}:</strong></p>
+        <ul class="plain-list">
+          {location.hours.map((entry) => (
+            <li>{entry.days}: {entry.open} - {entry.close}</li>
+          ))}
+        </ul>
+        <p>{location.mapSummary}</p>
+        <p class="muted"><strong>{section.parkingLabel}:</strong> {location.parkingNotes}</p>
+      </article>
+    ))}
+  </div>
+</section>

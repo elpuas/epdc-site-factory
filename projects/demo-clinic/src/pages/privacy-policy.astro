@@ -1,0 +1,18 @@
+---
+import PrivacyPolicyPage from '../../blueprints/dentist/pages/privacy-policy.astro';
+import { footer } from '../data/footer';
+import { navigation } from '../data/navigation';
+import { privacyPolicy } from '../data/privacy';
+import { seo } from '../data/seo';
+import { site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<PrivacyPolicyPage
+  baseLayout={BaseLayout}
+  footer={footer}
+  navigation={navigation}
+  privacyPolicy={privacyPolicy}
+  seo={seo.privacyPolicy}
+  site={site}
+/>
