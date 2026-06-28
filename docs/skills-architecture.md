@@ -88,6 +88,20 @@ These skills provide implementation guidance for:
 
 Skills do not decide project scope. They interpret tasks within their domain.
 
+## Terminology Boundary
+
+The files in `skills/` are EPDC domain-contract documents.
+
+They are not the same thing as Codex-discoverable skill packages.
+
+Current Codex convention:
+
+- repo-scoped Codex skills live in `.agents/skills/`
+- each Codex skill is a folder with a `SKILL.md`
+- Codex uses the folder metadata for discovery and loads the full instructions only when the skill is selected
+
+EPDC keeps `skills/` because these documents define stable domain standards that the Factory pipeline references directly. If EPDC later migrates selected guidance into Codex skill packages, that should happen as an explicit future migration rather than by overloading the existing `skills/` directory.
+
 ## Step 5 - Future Agents
 
 Future agents are expected to use tasks plus skills together.

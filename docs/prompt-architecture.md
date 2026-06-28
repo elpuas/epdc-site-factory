@@ -49,6 +49,7 @@ Purpose:
 - Describe how prompts for each role should be assembled
 - Explain source inputs, boundaries, and expected outputs
 - Provide architecture guidance, not executable templates
+- Remain internal Factory guidance, not Codex custom prompts
 
 ### Prompt Builder Templates
 
@@ -97,3 +98,9 @@ This prompt layer does not:
 - Generate websites
 - Implement orchestration
 - Implement memory
+
+## Codex Terminology Note
+
+The `prompts/` directory is an EPDC Factory layer.
+
+It is not the Codex custom-prompts surface described in the official Codex docs. Codex custom prompts are deprecated and live under a user Codex home directory, not inside the repository. For reusable repository-shared Codex instructions, prefer `AGENTS.md` and `.agents/skills/`.

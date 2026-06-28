@@ -254,3 +254,22 @@ Status: Sprint 021 completed
 - Confirmed the Blueprint is now the canonical presentation layer and the generated project is the canonical content owner
 - Added `docs/blueprint-data-validation.md`
 - Updated `blueprints/dentist/README.md`, `docs/factory-improvements.md`, and `docs/sprint-log.md`
+
+## Phase 12 - Codex Interoperability
+
+Status: Sprint 023 completed
+
+- Align repository instruction surfaces with current official Codex conventions
+- Clarify the boundary between EPDC domain contracts and Codex-native skill packaging
+- Introduce Codex-native repository scaffolding only where it provides immediate architectural value
+
+### Sprint 023 - Codex Repository Standardization
+
+- Audited the repository against the current Codex manual, `AGENTS.md` guidance, skills guidance, and plugin build guidance
+- Added `docs/codex-standardization-audit.md`
+- Restored `AGENTS.md` to its official repository-instructions role
+- Moved the agent registry to `docs/agent-registry.md`
+- Added the first repo-scoped Codex skill package in `.agents/skills/factory-repository-map/`
+- Fixed `scripts/create-execution-package.js` so execution-package generation no longer fails when a handoff omits an explicit source-prompt field
+- Clarified the boundary between EPDC `skills/`, repo-scoped Codex skills, and internal prompt-guidance docs
+- Updated `README.md`, `docs/skills-architecture.md`, `docs/prompt-architecture.md`, `prompts/README.md`, and architecture references to reflect the current boundary model

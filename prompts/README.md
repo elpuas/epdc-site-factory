@@ -9,6 +9,7 @@ They define:
 - Which outputs the prompt should request
 
 They do not define the final rendered prompt-file layout.
+They are also not Codex custom prompts.
 
 Executable prompt render templates live in:
 

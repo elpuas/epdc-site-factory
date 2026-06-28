@@ -227,7 +227,7 @@ Reason:
 Reason:
 
 - It is a placeholder.
-- It is not registered in [AGENTS.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/AGENTS.md).
+- It is not registered in [docs/agent-registry.md](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/docs/agent-registry.md).
 - The repo explicitly says orchestration is not implemented in this phase.
 
 ### 3. [scripts/create-project.js](/Users/alfredonavas/REACT/EPDC%20Site%20Factory/scripts/create-project.js)

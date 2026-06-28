@@ -55,9 +55,11 @@ Current execution stops before Codex. The repository prepares deterministic arti
 
 ### Agent and Skill Contracts
 
-- Agent registry: `AGENTS.md`
+- Codex repository instructions: `AGENTS.md`
+- Agent registry: `docs/agent-registry.md`
 - Agent contracts: `agents/`
-- Skill contracts: `skills/`
+- EPDC skill contracts: `skills/`
+- Repo-scoped Codex skills: `.agents/skills/`
 
 ### Context Engine
 
@@ -111,6 +113,7 @@ Reason:
 
 ```text
 epdc-site-factory/
+├── .agents/
 ├── AGENTS.md
 ├── README.md
 ├── agents/
@@ -139,6 +142,7 @@ epdc-site-factory/
 
 - Keep specifications as the source of truth.
 - Keep every layer deterministic and inspectable.
+- Keep Codex-specific repository guidance separate from architecture documentation.
 - Separate contracts from generated artifacts.
 - Separate context assembly from prompt rendering.
 - Separate prompt rendering from Codex handoff.

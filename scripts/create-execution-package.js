@@ -94,6 +94,13 @@ function inferResultPath(sourcePrompt) {
   return `execution/results/${normalized}/result.json`;
 }
 
+function inferSourcePrompt(relativeHandoffPath) {
+  return relativeHandoffPath
+    .replace(/\\/g, "/")
+    .replace(/^codex-handoff\/output\//, "")
+    .replace(/-handoff\.md$/, ".md");
+}
+
 function buildReviewRequirements(category, executionIntent) {
   const common = {
     reviewer: "future-qa-layer",
@@ -167,7 +174,7 @@ function buildExecutionBoundaries(executionIntent) {
 function buildExecutionPackage(relativeHandoffPath, handoffMarkdown) {
   const sections = splitSections(handoffMarkdown);
   const metadata = parseMetadata(sections["Handoff Metadata"] || "");
-  const sourcePrompt = metadata["Source prompt"];
+  const sourcePrompt = metadata["Source prompt"] || inferSourcePrompt(relativeHandoffPath);
   const category = metadata.Category || "unknown";
   const handoffId = metadata["Handoff ID"];
   const promptMode = metadata["Prompt mode"] || "planning";

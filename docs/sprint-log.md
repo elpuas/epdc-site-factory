@@ -537,6 +537,44 @@ Known limitations:
 Next:
 Runtime Retry And Review Vocabulary
 
+## Sprint 023
+
+Goal:
+Audit EPDC Site Factory against the current Codex repository conventions and apply only low-risk improvements that strengthen long-term interoperability.
+
+Completed:
+
+- Reviewed the current repository architecture across `README.md`, `AGENTS.md`, `skills/`, `agents/`, `prompts/`, `docs/`, `starters/`, `blueprints/`, `runtime/`, and `assembler/`.
+- Reviewed the latest official Codex manual guidance for `AGENTS.md`, project-instructions discovery, skills, customization, deprecated custom prompts, and plugin packaging.
+- Reviewed the current official `openai/skills` and `openai/plugins` repositories to confirm that skill distribution has moved to the plugin-first model and that `openai/skills` is deprecated.
+- Added `docs/codex-standardization-audit.md`.
+- Rewrote `AGENTS.md` as a repository instruction file instead of an agent registry.
+- Added `docs/agent-registry.md` and moved the registry content there.
+- Added the first repo-scoped Codex skill package in `.agents/skills/factory-repository-map/SKILL.md`.
+- Fixed `scripts/create-execution-package.js` so execution-package generation can fall back to the handoff path when `Source prompt` metadata is absent.
+- Updated `README.md`, `docs/skills-architecture.md`, `docs/prompt-architecture.md`, `prompts/README.md`, `docs/architecture/README.md`, and `docs/architecture-audit.md` to clarify the boundary between EPDC architecture docs and Codex-native instruction surfaces.
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None. Sprint 023 adds documentation and repo-scoped Codex instruction artifacts only.
+
+Decisions made:
+
+- Keep `AGENTS.md` small and operational so it matches the official Codex instruction role.
+- Keep `skills/` as EPDC domain-contract documentation for now instead of forcing a premature migration into Codex skill packages.
+- Use `.agents/skills/` for repo-scoped Codex-native workflows going forward.
+- Keep `prompts/` and `execution-prompts/` as internal Factory layers, but document clearly that they are not Codex custom prompts.
+
+Known limitations:
+
+- The repository now includes a Codex-native skill package surface, but the existing EPDC domain contracts in `skills/` have not been migrated.
+- No plugin packaging was introduced in this sprint.
+- Broader terminology cleanup was intentionally deferred to avoid churn without architectural payoff.
+
+Next:
+Skill Package Migration Planning
+
 ## Sprint 022
 
 Goal:
