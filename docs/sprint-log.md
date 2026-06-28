@@ -537,6 +537,42 @@ Known limitations:
 Next:
 Runtime Retry And Review Vocabulary
 
+## Sprint 021
+
+Goal:
+Validate that the Dental Blueprint can render a complete Astro website using only structured project data.
+
+Completed:
+
+- Reviewed the current architecture across `design/dental-platform/`, `blueprints/dentist/`, `starters/astro-minimal/`, `skills/astro.md`, `docs/astro-starter.md`, and `docs/generated-project-audit.md`.
+- Refactored the Dental Blueprint so layouts, page templates, and reusable components consume typed props from `blueprints/dentist/types.ts`.
+- Removed Blueprint-local business content modules under `blueprints/dentist/data/`.
+- Updated every Blueprint section component to receive visible content through props instead of hardcoded business copy.
+- Created `projects/dental-demo/` from the Astro starter as a full placeholder validation project.
+- Added project-owned data modules for site identity, navigation, hero content, about content, services, doctors, testimonials, locations, FAQs, SEO, footer content, schema, blog content, and privacy content.
+- Added project routes that import Blueprint page templates and pass project `src/data` into them.
+- Added `docs/blueprint-data-validation.md`.
+- Updated `blueprints/dentist/README.md`, `docs/roadmap.md`, `docs/factory-improvements.md`, and Blueprint pattern docs to reflect the new architecture.
+
+Dependencies added:
+
+- None to the repository root. The demo project uses the Astro dependency declared in its local `package.json`.
+
+Decisions made:
+
+- The Dental Blueprint is now the canonical presentation layer, not a content owner.
+- Generated projects own all visible business content under `src/data/`.
+- Blueprint page files remain useful as importable presentation templates, while generated project routes own final data selection.
+- The validated sitemap required two additional project-owned modules, `blog.ts` and `privacy.ts`, beyond the minimum dental platform list.
+
+Known limitations:
+
+- `src/data/schema.ts` is present in the demo project but is not yet injected into the layout as JSON-LD.
+- This sprint does not integrate the runtime, prompt builder, or deployment workflows.
+
+Next:
+Structured Data Integration Planning
+
 ## Sprint 019
 
 Goal:

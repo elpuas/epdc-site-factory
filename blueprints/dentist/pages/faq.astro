@@ -3,21 +3,24 @@ import AppointmentCTA from '../components/AppointmentCTA.astro';
 import FAQSection from '../components/FAQSection.astro';
 import Hero from '../components/Hero.astro';
 import DentistLayout from '../layouts/DentistLayout.astro';
-import { appointmentCta } from '../data/contact';
-import { faqs } from '../data/faq';
-import { homeHero } from '../data/hero';
-import { site } from '../data/site';
+import type { AppointmentCtaData, FAQSectionData, FooterData, HeroData, NavigationData, SeoPageData, SiteData } from '../types';
+
+interface Props {
+  appointmentCta: AppointmentCtaData;
+  baseLayout: unknown;
+  faq: FAQSectionData;
+  footer: FooterData;
+  hero: HeroData;
+  navigation: NavigationData;
+  seo: SeoPageData;
+  site: SiteData;
+}
+
+const { appointmentCta, baseLayout, faq, footer, hero, navigation, seo, site } = Astro.props;
 ---
 
-<DentistLayout title={`FAQ | ${site.meta.title}`} description="Generic FAQ page template for the dental Blueprint.">
-  <Hero
-    hero={{
-      ...homeHero,
-      eyebrow: 'FAQ template',
-      title: 'Questions answered through data-driven sections',
-      description: 'The FAQ page can support general, service, and contact questions without embedding clinic-specific wording in the template.',
-    }}
-  />
-  <FAQSection items={faqs} title="General and treatment placeholders" />
+<DentistLayout baseLayout={baseLayout} title={seo.title} description={seo.description} footer={footer} lang={seo.lang} navigation={navigation} site={site}>
+  <Hero hero={hero} />
+  <FAQSection section={faq} />
   <AppointmentCTA cta={appointmentCta} />
 </DentistLayout>

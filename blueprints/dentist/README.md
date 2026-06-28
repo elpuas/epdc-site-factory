@@ -8,7 +8,7 @@ It represents the canonical structure for a modern Costa Rican dental website wh
 
 This Blueprint is the architectural layer between:
 
-`starters/astro-minimal/` -> `blueprints/dentist/` -> future `src/data/` -> generated website
+`starters/astro-minimal/` -> `blueprints/dentist/` -> project `src/data/` -> generated website
 
 ## Folder Structure
 
@@ -16,21 +16,21 @@ This Blueprint is the architectural layer between:
 blueprints/dentist/
 ├── assets/
 ├── components/
-├── data/
 ├── layouts/
 ├── pages/
 ├── patterns/
+├── types.ts
 ├── placeholders/
 └── README.md
 ```
 
 - `layouts/`: shared page shell and site-wide chrome.
 - `components/`: reusable dental-specific UI sections with typed props.
-- `pages/`: page templates for the canonical dental sitemap.
-- `data/`: placeholder TypeScript modules that mirror the future `src/data/` contract.
+- `pages/`: prop-driven page templates for the canonical dental sitemap.
+- `types.ts`: shared TypeScript contracts between the Blueprint and generated projects.
 - `patterns/`: composition and data-flow guidance.
 - `assets/`: placeholder SVG assets used only for architecture validation.
-- `placeholders/`: placeholder policy and replacement notes.
+- `placeholders/`: placeholder asset policy and replacement notes.
 
 ## Component Hierarchy
 
@@ -73,7 +73,9 @@ Instead, the Blueprint adds dental-specific components, data contracts, page tem
 
 ## Expected Data Inputs
 
-The long-term source of truth should be future project-level `src/data/` modules with shapes equivalent to:
+The source of truth must be project-level `src/data/` modules. Sprint 021 validates this through `projects/dental-demo/`.
+
+Core project modules should include:
 
 - `site.ts`
 - `navigation.ts`
@@ -84,16 +86,11 @@ The long-term source of truth should be future project-level `src/data/` modules
 - `testimonials.ts`
 - `locations.ts`
 - `faq.ts`
-- `blog.ts`
-- `contact.ts`
-- `privacy.ts`
+- `seo.ts`
+- `footer.ts`
+- `schema.ts`
 
-In Sprint 020, the Blueprint keeps those modules locally under `blueprints/dentist/data/` only to validate:
-
-- component prop contracts
-- page composition
-- placeholder rendering
-- clean separation between template logic and content data
+Projects may add extra modules such as `blog.ts` and `privacy.ts` when the validated sitemap requires them.
 
 ## Page Templates
 
@@ -110,16 +107,17 @@ The Blueprint includes generic templates for:
 - Contact
 - Privacy Policy
 
-Each page reads from data modules and composes reusable sections. No page owns clinic-specific business content.
+Each page receives typed props from the generated project and composes reusable sections. No Blueprint page owns clinic-specific business content.
 
 ## Future Customization Points
 
-The next integration sprint can connect this Blueprint to the Factory by:
+The integration path validated in Sprint 021 is:
 
-- copying or extending the Astro starter surface
-- mapping generated `src/data/` modules into these component contracts
-- replacing placeholder assets with project assets
-- swapping placeholder copy with generated content
-- adding project-specific SEO and legal data
+- extend the Astro starter in a generated project
+- keep all business content in project `src/data/`
+- import Blueprint page templates from project route files
+- pass the project `BaseLayout.astro` into the Blueprint layout boundary
+- pass project data into typed Blueprint contracts
+- replace placeholder assets when a real project provides approved imagery
 
 This Blueprint intentionally does not modify the starter, runtime, prompt builder, or generation pipeline.

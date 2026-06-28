@@ -1,13 +1,13 @@
 ---
-import type { NavigationData, SiteData } from '../data/types';
+import type { FooterData, NavigationData, SiteData } from '../types';
 
 interface Props {
-  legalNotice: string;
+  footer: FooterData;
   navigation: NavigationData;
   site: SiteData;
 }
 
-const { legalNotice, navigation, site } = Astro.props;
+const { footer, navigation, site } = Astro.props;
 ---
 
 <footer class="site-footer">
@@ -19,16 +19,16 @@ const { legalNotice, navigation, site } = Astro.props;
     </section>
 
     <section>
-      <h2>Contact</h2>
+      <h2>{footer.contactHeading}</h2>
       <ul class="plain-list">
         <li><a href={`tel:${site.phone}`}>{site.phone}</a></li>
-        <li><a href={site.whatsappHref}>WhatsApp</a></li>
+        <li><a href={site.whatsappHref}>{site.whatsappNumber}</a></li>
         <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
       </ul>
     </section>
 
     <section>
-      <h2>Links</h2>
+      <h2>{footer.linksHeading}</h2>
       <ul class="plain-list">
         {navigation.footer.map((item) => (
           <li><a href={item.href}>{item.label}</a></li>
@@ -36,5 +36,5 @@ const { legalNotice, navigation, site } = Astro.props;
       </ul>
     </section>
   </div>
-  <p class="site-footer__legal">{legalNotice}</p>
+  <p class="site-footer__legal">{footer.legalNotice}</p>
 </footer>

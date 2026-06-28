@@ -1,4 +1,4 @@
-import type { NavigationData } from './types';
+import type { NavigationData } from '../../../../blueprints/dentist/types';
 
 export const navigation: NavigationData = {
   primary: [

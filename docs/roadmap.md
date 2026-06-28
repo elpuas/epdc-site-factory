@@ -205,7 +205,7 @@ Status: Sprint 012 completed
 
 ## Phase 11 - Vertical Platforms
 
-Status: Sprint 020 completed
+Status: Sprint 021 completed
 
 - Define reusable market-specific platform architecture on top of the Astro starter
 - Separate vertical blueprint knowledge from project-specific content
@@ -233,3 +233,13 @@ Status: Sprint 020 completed
 - Added `blueprints/dentist/README.md`
 - Added `docs/dental-blueprint-validation.md`
 - Confirmed the Blueprint remains independent from the starter integration, runtime, prompt builder, and generated project pipeline
+
+### Sprint 021 - Blueprint Data Integration
+
+- Refactored `blueprints/dentist/` so layouts, page templates, and reusable components consume typed props instead of Blueprint-local business content
+- Replaced Blueprint-local placeholder data ownership with a shared presentation contract in `blueprints/dentist/types.ts`
+- Validated the canonical architecture through `projects/dental-demo/`, a full placeholder project that extends `starters/astro-minimal/`
+- Added project-owned data modules for clinic identity, navigation, heroes, services, doctors, testimonials, locations, FAQs, SEO, footer content, schema, blog content, and privacy content
+- Confirmed the Blueprint is now the canonical presentation layer and the generated project is the canonical content owner
+- Added `docs/blueprint-data-validation.md`
+- Updated `blueprints/dentist/README.md`, `docs/factory-improvements.md`, and `docs/sprint-log.md`

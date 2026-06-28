@@ -6,18 +6,28 @@ import DoctorGrid from '../components/DoctorGrid.astro';
 import Hero from '../components/Hero.astro';
 import TrustLogos from '../components/TrustLogos.astro';
 import DentistLayout from '../layouts/DentistLayout.astro';
-import { about } from '../data/about';
-import { appointmentCta } from '../data/contact';
-import { doctors } from '../data/doctors';
-import { homeHero } from '../data/hero';
-import { site } from '../data/site';
+import type { AboutData, AppointmentCtaData, DoctorSectionData, FooterData, HeroData, NavigationData, SeoPageData, SiteData } from '../types';
+
+interface Props {
+  about: AboutData;
+  appointmentCta: AppointmentCtaData;
+  baseLayout: unknown;
+  doctors: DoctorSectionData;
+  footer: FooterData;
+  hero: HeroData;
+  navigation: NavigationData;
+  seo: SeoPageData;
+  site: SiteData;
+}
+
+const { about, appointmentCta, baseLayout, doctors, footer, hero, navigation, seo, site } = Astro.props;
 ---
 
-<DentistLayout title={`About | ${site.meta.title}`} description={about.summary}>
-  <Hero hero={{ ...homeHero, eyebrow: 'About template', title: 'About page structure for a generic dental site', description: about.summary }} />
-  <ClinicIntro summary={about.summary} story={about.story} philosophy={about.philosophy} />
-  <BenefitsGrid benefits={about.benefits} title="Care philosophy and differentiators" />
-  <DoctorGrid doctors={doctors} title="Team preview" />
-  <TrustLogos items={about.trustLogos} />
+<DentistLayout baseLayout={baseLayout} title={seo.title} description={seo.description} footer={footer} lang={seo.lang} navigation={navigation} site={site}>
+  <Hero hero={hero} />
+  <ClinicIntro section={about.intro} />
+  <BenefitsGrid section={about.benefits} />
+  <DoctorGrid section={doctors} />
+  <TrustLogos section={about.trustLogos} />
   <AppointmentCTA cta={appointmentCta} />
 </DentistLayout>

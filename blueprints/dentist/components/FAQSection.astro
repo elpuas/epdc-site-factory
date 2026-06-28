@@ -1,21 +1,20 @@
 ---
-import type { FAQItem } from '../data/types';
+import type { FAQSectionData } from '../types';
 
 interface Props {
-  items: FAQItem[];
-  title?: string;
+  section: FAQSectionData;
 }
 
-const { items, title = 'Frequently asked questions' } = Astro.props;
+const { section } = Astro.props;
 ---
 
 <section class="section">
   <div class="section-heading">
-    <p class="eyebrow">FAQ</p>
-    <h2>{title}</h2>
+    <p class="eyebrow">{section.eyebrow}</p>
+    <h2>{section.title}</h2>
   </div>
   <div class="stack">
-    {items.map((item) => (
+    {section.items.map((item) => (
       <details class="card">
         <summary>{item.question}</summary>
         <p>{item.answer}</p>

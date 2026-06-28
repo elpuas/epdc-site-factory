@@ -4,23 +4,26 @@ import FAQSection from '../components/FAQSection.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import DentistLayout from '../layouts/DentistLayout.astro';
-import { appointmentCta } from '../data/contact';
-import { faqs } from '../data/faq';
-import { homeHero } from '../data/hero';
-import { services } from '../data/services';
-import { site } from '../data/site';
+import type { AppointmentCtaData, FAQSectionData, FooterData, HeroData, NavigationData, SeoPageData, ServiceSectionData, SiteData } from '../types';
+
+interface Props {
+  appointmentCta: AppointmentCtaData;
+  baseLayout: unknown;
+  faq: FAQSectionData;
+  footer: FooterData;
+  hero: HeroData;
+  navigation: NavigationData;
+  seo: SeoPageData;
+  services: ServiceSectionData;
+  site: SiteData;
+}
+
+const { appointmentCta, baseLayout, faq, footer, hero, navigation, seo, services, site } = Astro.props;
 ---
 
-<DentistLayout title={`Services | ${site.meta.title}`} description="Generic service archive template for the dental Blueprint.">
-  <Hero
-    hero={{
-      ...homeHero,
-      eyebrow: 'Services template',
-      title: 'Service archive driven by structured treatment data',
-      description: 'This page validates how a dental site can route visitors into treatment-specific pages without owning business copy in the template.',
-    }}
-  />
-  <ServiceCards services={services} title="All service templates" />
-  <FAQSection items={faqs} title="Common service questions" />
+<DentistLayout baseLayout={baseLayout} title={seo.title} description={seo.description} footer={footer} lang={seo.lang} navigation={navigation} site={site}>
+  <Hero hero={hero} />
+  <ServiceCards section={services} />
+  <FAQSection section={faq} />
   <AppointmentCTA cta={appointmentCta} />
 </DentistLayout>

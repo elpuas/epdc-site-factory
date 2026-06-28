@@ -1,26 +1,25 @@
 ---
-import type { Service } from '../data/types';
+import type { ServiceSectionData } from '../types';
 
 interface Props {
-  services: Service[];
-  title?: string;
+  section: ServiceSectionData;
 }
 
-const { services, title = 'Services' } = Astro.props;
+const { section } = Astro.props;
 ---
 
 <section class="section">
   <div class="section-heading">
-    <p class="eyebrow">Service structure</p>
-    <h2>{title}</h2>
+    <p class="eyebrow">{section.eyebrow}</p>
+    <h2>{section.title}</h2>
   </div>
   <div class="card-grid">
-    {services.map((service) => (
+    {section.services.map((service) => (
       <article class="card">
         <p class="pill">{service.category}</p>
         <h3>{service.name}</h3>
         <p>{service.summary}</p>
-        <a href={`/service-detail#${service.slug}`}>View template structure</a>
+        <a href={`/service-detail#${service.slug}`}>{section.linkLabel}</a>
       </article>
     ))}
   </div>

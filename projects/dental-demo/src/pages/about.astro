@@ -1,0 +1,23 @@
+---
+import AboutPage from '../../../../blueprints/dentist/pages/about.astro';
+import { about } from '../data/about';
+import { doctorsPreview } from '../data/doctors';
+import { footer } from '../data/footer';
+import { aboutHero } from '../data/hero';
+import { navigation } from '../data/navigation';
+import { seo } from '../data/seo';
+import { appointmentCta, site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<AboutPage
+  about={about}
+  appointmentCta={appointmentCta}
+  baseLayout={BaseLayout}
+  doctors={doctorsPreview}
+  footer={footer}
+  hero={aboutHero}
+  navigation={navigation}
+  seo={seo.about}
+  site={site}
+/>

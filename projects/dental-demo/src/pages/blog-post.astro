@@ -1,0 +1,21 @@
+---
+import BlogPostPage from '../../../../blueprints/dentist/pages/blog-post.astro';
+import { blogPosts } from '../data/blog';
+import { footer } from '../data/footer';
+import { navigation } from '../data/navigation';
+import { seo } from '../data/seo';
+import { appointmentCta, site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const post = blogPosts[0];
+---
+
+<BlogPostPage
+  appointmentCta={appointmentCta}
+  baseLayout={BaseLayout}
+  footer={footer}
+  navigation={navigation}
+  post={post}
+  seo={seo.blogPost}
+  site={site}
+/>

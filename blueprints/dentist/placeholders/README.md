@@ -1,17 +1,15 @@
 # Placeholder Strategy
 
-This directory documents the placeholder policy for the first dental Blueprint.
+This directory documents the placeholder asset policy for the Dental Blueprint.
 
-Rules applied in Sprint 020:
+Rules applied in Sprint 021:
 
-- Placeholder text is generic and architectural.
-- Placeholder phone, email, and location values are non-specific.
 - Placeholder assets are simple SVG illustrations stored in `../assets/`.
 - No real clinic identity, testimonials, branding, or copyrighted imagery is used.
 
-Future generated projects should replace placeholders with:
+Generated projects should replace these assets with:
 
-- specification-approved project data under `src/data/`
-- generated copy
 - approved business assets
-- project-specific legal text
+- project-specific photography or illustration
+
+Business content no longer belongs inside the Blueprint. It must live in project `src/data/`.
