@@ -4,35 +4,56 @@ import FAQSection from '../components/FAQSection.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import DentistLayout from '../layouts/DentistLayout.astro';
-import { appointmentCta } from '../data/contact';
-import { faqs } from '../data/faq';
-import { homeHero } from '../data/hero';
-import { services } from '../data/services';
-import { site } from '../data/site';
+import type { AppointmentCtaData, FAQSectionData, FooterData, HeroData, NavigationData, SeoPageData, Service, ServiceSectionData, SiteData } from '../types';
 
-const service = services[0];
-const relatedFaqs = faqs.filter((faq) => service.relatedFaqIds.includes(faq.id));
-const relatedServices = services.filter((item) => item.slug !== service.slug).slice(0, 2);
+interface Props {
+  appointmentCta: AppointmentCtaData;
+  baseLayout: unknown;
+  faq: FAQSectionData;
+  footer: FooterData;
+  hero: HeroData;
+  navigation: NavigationData;
+  relatedServices: ServiceSectionData;
+  seo: SeoPageData;
+  service: Service;
+  site: SiteData;
+  treatmentOverviewEyebrow: string;
+  treatmentOverviewTitle: string;
+  whatToExpectTitle: string;
+  benefitsEyebrow: string;
+  benefitsTitle: string;
+}
+
+const {
+  appointmentCta,
+  baseLayout,
+  benefitsEyebrow,
+  benefitsTitle,
+  faq,
+  footer,
+  hero,
+  navigation,
+  relatedServices,
+  seo,
+  service,
+  site,
+  treatmentOverviewEyebrow,
+  treatmentOverviewTitle,
+  whatToExpectTitle,
+} = Astro.props;
 ---
 
-<DentistLayout title={`${service.name} | ${site.meta.title}`} description={service.summary}>
-  <Hero
-    hero={{
-      ...homeHero,
-      eyebrow: service.category,
-      title: service.name,
-      description: service.detail,
-    }}
-  />
+<DentistLayout baseLayout={baseLayout} title={seo.title} description={seo.description} footer={footer} lang={seo.lang} navigation={navigation} site={site}>
+  <Hero hero={hero} />
 
   <section class="section section--split">
     <div>
-      <p class="eyebrow">Treatment overview</p>
-      <h2>Who this template serves</h2>
+      <p class="eyebrow">{treatmentOverviewEyebrow}</p>
+      <h2>{treatmentOverviewTitle}</h2>
       {service.candidateNotes.map((note) => <p>{note}</p>)}
     </div>
     <div class="card">
-      <h2>What to expect</h2>
+      <h2>{whatToExpectTitle}</h2>
       <ul>
         {service.processSteps.map((step) => <li>{step}</li>)}
       </ul>
@@ -41,8 +62,8 @@ const relatedServices = services.filter((item) => item.slug !== service.slug).sl
 
   <section class="section">
     <div class="section-heading">
-      <p class="eyebrow">Benefits</p>
-      <h2>Structured trust and education</h2>
+      <p class="eyebrow">{benefitsEyebrow}</p>
+      <h2>{benefitsTitle}</h2>
     </div>
     <div class="card-grid">
       {service.benefits.map((benefit) => (
@@ -53,7 +74,7 @@ const relatedServices = services.filter((item) => item.slug !== service.slug).sl
     </div>
   </section>
 
-  <FAQSection items={relatedFaqs} title="Treatment-specific questions" />
+  <FAQSection section={faq} />
   <AppointmentCTA cta={appointmentCta} />
-  <ServiceCards services={relatedServices} title="Related service templates" />
+  <ServiceCards section={relatedServices} />
 </DentistLayout>

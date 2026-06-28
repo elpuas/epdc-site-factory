@@ -1,0 +1,52 @@
+---
+import ServiceDetailPage from '../../../../blueprints/dentist/pages/service-detail.astro';
+import { createTreatmentFaq } from '../data/faq';
+import { footer } from '../data/footer';
+import { homeHero } from '../data/hero';
+import { navigation } from '../data/navigation';
+import { seo } from '../data/seo';
+import {
+  relatedServicesSectionTitle,
+  serviceBenefitsEyebrow,
+  serviceBenefitsTitle,
+  services,
+  treatmentOverviewEyebrow,
+  treatmentOverviewTitle,
+  whatToExpectTitle,
+} from '../data/services';
+import { appointmentCta, site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const service = services[0];
+const faq = createTreatmentFaq(service.relatedFaqIds);
+const relatedServices = {
+  eyebrow: 'Related services',
+  title: relatedServicesSectionTitle,
+  linkLabel: 'View treatment details',
+  services: services.filter((item) => item.slug !== service.slug).slice(0, 2),
+};
+const hero = {
+  ...homeHero,
+  eyebrow: service.category,
+  title: service.name,
+  description: service.detail,
+};
+---
+
+<ServiceDetailPage
+  appointmentCta={appointmentCta}
+  baseLayout={BaseLayout}
+  benefitsEyebrow={serviceBenefitsEyebrow}
+  benefitsTitle={serviceBenefitsTitle}
+  faq={faq}
+  footer={footer}
+  hero={hero}
+  navigation={navigation}
+  relatedServices={relatedServices}
+  seo={seo.serviceDetail}
+  service={service}
+  site={site}
+  treatmentOverviewEyebrow={treatmentOverviewEyebrow}
+  treatmentOverviewTitle={treatmentOverviewTitle}
+  whatToExpectTitle={whatToExpectTitle}
+/>

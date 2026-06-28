@@ -1,0 +1,23 @@
+---
+import ServicesPage from '../../../../blueprints/dentist/pages/services.astro';
+import { servicesFaq } from '../data/faq';
+import { footer } from '../data/footer';
+import { servicesHero } from '../data/hero';
+import { navigation } from '../data/navigation';
+import { seo } from '../data/seo';
+import { servicesArchive } from '../data/services';
+import { appointmentCta, site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<ServicesPage
+  appointmentCta={appointmentCta}
+  baseLayout={BaseLayout}
+  faq={servicesFaq}
+  footer={footer}
+  hero={servicesHero}
+  navigation={navigation}
+  seo={seo.services}
+  services={servicesArchive}
+  site={site}
+/>

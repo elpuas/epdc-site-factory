@@ -10,26 +10,66 @@ import LocationsSection from '../components/LocationsSection.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import Testimonials from '../components/Testimonials.astro';
 import DentistLayout from '../layouts/DentistLayout.astro';
-import { about } from '../data/about';
-import { blogPosts } from '../data/blog';
-import { appointmentCta } from '../data/contact';
-import { doctors } from '../data/doctors';
-import { homeHero } from '../data/hero';
-import { locations } from '../data/locations';
-import { featuredServices } from '../data/services';
-import { site } from '../data/site';
-import { testimonials } from '../data/testimonials';
+import type {
+  AboutData,
+  AppointmentCtaData,
+  BlogSectionData,
+  DoctorSectionData,
+  FooterData,
+  GoogleReviewsSectionData,
+  HeroData,
+  LocationsSectionData,
+  NavigationData,
+  SeoPageData,
+  ServiceSectionData,
+  SiteData,
+  TestimonialsSectionData,
+} from '../types';
+
+interface Props {
+  about: AboutData;
+  appointmentCta: AppointmentCtaData;
+  baseLayout: unknown;
+  blog: BlogSectionData;
+  doctors: DoctorSectionData;
+  footer: FooterData;
+  googleReviews: GoogleReviewsSectionData;
+  hero: HeroData;
+  locations: LocationsSectionData;
+  navigation: NavigationData;
+  seo: SeoPageData;
+  services: ServiceSectionData;
+  site: SiteData;
+  testimonials: TestimonialsSectionData;
+}
+
+const {
+  about,
+  appointmentCta,
+  baseLayout,
+  blog,
+  doctors,
+  footer,
+  googleReviews,
+  hero,
+  locations,
+  navigation,
+  seo,
+  services,
+  site,
+  testimonials,
+} = Astro.props;
 ---
 
-<DentistLayout title={site.meta.title} description={site.meta.description}>
-  <Hero hero={homeHero} />
-  <ServiceCards services={featuredServices} title="Featured dental services" />
-  <ClinicIntro summary={about.summary} story={about.story} philosophy={about.philosophy} />
-  <BenefitsGrid benefits={about.benefits} />
-  <DoctorGrid doctors={doctors} title="Doctor highlights" />
-  <Testimonials items={testimonials.featured} />
-  <GoogleReviews summary={testimonials.summary} items={testimonials.featured} />
-  <LocationsSection locations={locations} />
+<DentistLayout baseLayout={baseLayout} title={seo.title} description={seo.description} footer={footer} lang={seo.lang} navigation={navigation} site={site}>
+  <Hero hero={hero} />
+  <ServiceCards section={services} />
+  <ClinicIntro section={about.intro} />
+  <BenefitsGrid section={about.benefits} />
+  <DoctorGrid section={doctors} />
+  <Testimonials section={testimonials} />
+  <GoogleReviews section={googleReviews} />
+  <LocationsSection section={locations} />
   <AppointmentCTA cta={appointmentCta} />
-  <BlogGrid posts={blogPosts} title="Educational content preview" />
+  <BlogGrid section={blog} />
 </DentistLayout>

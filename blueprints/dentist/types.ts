@@ -14,8 +14,44 @@ export interface MetaData {
   lang: string;
 }
 
+export interface SeoPageData extends MetaData {
+  canonicalPath: string;
+}
+
+export interface FooterData {
+  contactHeading: string;
+  linksHeading: string;
+  legalNotice: string;
+}
+
+export interface AppointmentCtaData {
+  eyebrow: string;
+  title: string;
+  description: string;
+  primaryCta: Link;
+  secondaryCta: Link;
+  phoneNote: string;
+}
+
+export interface ContactMethod {
+  title: string;
+  value: string;
+  href: string;
+}
+
+export interface ContactSectionData {
+  eyebrow: string;
+  title: string;
+  description: string;
+  methods: ContactMethod[];
+  appointmentCardTitle: string;
+  appointmentNote: string;
+  formDisclaimer: string;
+}
+
 export interface SiteData {
   brandName: string;
+  legalName: string;
   tagline: string;
   phone: string;
   whatsappNumber: string;
@@ -28,7 +64,10 @@ export interface SiteData {
   primaryCta: Link;
   secondaryCta: Link;
   socialLinks: Link[];
-  meta: MetaData;
+  accessibility: {
+    skipLinkLabel: string;
+    whatsappFloatingLabel: string;
+  };
 }
 
 export interface NavigationData {
@@ -43,6 +82,7 @@ export interface HeroData {
   image: ImageAsset;
   primaryCta: Link;
   secondaryCta: Link;
+  trustHighlightsLabel: string;
   trustHighlights: string[];
 }
 
@@ -59,9 +99,22 @@ export interface Service {
   relatedFaqIds: string[];
 }
 
+export interface ServiceSectionData {
+  eyebrow: string;
+  title: string;
+  linkLabel: string;
+  services: Service[];
+}
+
 export interface Benefit {
   title: string;
   description: string;
+}
+
+export interface BenefitsSectionData {
+  eyebrow: string;
+  title: string;
+  benefits: Benefit[];
 }
 
 export interface TrustLogo {
@@ -70,12 +123,25 @@ export interface TrustLogo {
   image: ImageAsset;
 }
 
-export interface AboutData {
+export interface TrustLogosSectionData {
+  eyebrow: string;
+  title: string;
+  items: TrustLogo[];
+}
+
+export interface ClinicIntroData {
+  eyebrow: string;
+  title: string;
   summary: string;
   story: string;
   philosophy: string;
-  benefits: Benefit[];
-  trustLogos: TrustLogo[];
+}
+
+export interface AboutData {
+  summary: string;
+  intro: ClinicIntroData;
+  benefits: BenefitsSectionData;
+  trustLogos: TrustLogosSectionData;
 }
 
 export interface Doctor {
@@ -89,6 +155,14 @@ export interface Doctor {
   image: ImageAsset;
 }
 
+export interface DoctorSectionData {
+  eyebrow: string;
+  title: string;
+  specialtiesLabel: string;
+  credentialsLabel: string;
+  doctors: Doctor[];
+}
+
 export interface Testimonial {
   id: string;
   quote: string;
@@ -96,15 +170,23 @@ export interface Testimonial {
   relatedServiceSlugs: string[];
 }
 
-export interface ReviewSummary {
-  label: string;
-  rating: string;
-  reviewCountLabel: string;
+export interface TestimonialsSectionData {
+  eyebrow: string;
+  title: string;
+  items: Testimonial[];
 }
 
-export interface TestimonialsData {
-  featured: Testimonial[];
+export interface ReviewSummary {
+  rating: string;
+  reviewCountLabel: string;
+  label: string;
+}
+
+export interface GoogleReviewsSectionData {
+  eyebrow: string;
+  title: string;
   summary: ReviewSummary;
+  items: Testimonial[];
 }
 
 export interface LocationHours {
@@ -124,8 +206,18 @@ export interface Location {
   phone: string;
   whatsapp: string;
   hours: LocationHours[];
-  mapLabel: string;
+  mapSummary: string;
   parkingNotes: string;
+}
+
+export interface LocationsSectionData {
+  eyebrow: string;
+  title: string;
+  phoneLabel: string;
+  whatsappLabel: string;
+  hoursLabel: string;
+  parkingLabel: string;
+  locations: Location[];
 }
 
 export interface FAQItem {
@@ -135,12 +227,10 @@ export interface FAQItem {
   category: string;
 }
 
-export interface AppointmentCtaData {
+export interface FAQSectionData {
+  eyebrow: string;
   title: string;
-  description: string;
-  primaryCta: Link;
-  secondaryCta: Link;
-  phoneNote: string;
+  items: FAQItem[];
 }
 
 export interface BlogPost {
@@ -155,18 +245,25 @@ export interface BlogPost {
   body: string[];
 }
 
-export interface ContactSectionData {
+export interface BlogSectionData {
+  eyebrow: string;
   title: string;
-  description: string;
-  appointmentNote: string;
-  formDisclaimer: string;
+  linkLabel: string;
+  posts: BlogPost[];
 }
 
 export interface PrivacyPolicyData {
+  eyebrow: string;
   title: string;
   intro: string;
   sections: Array<{
     heading: string;
     body: string[];
   }>;
+}
+
+export interface LayoutProps {
+  footer: FooterData;
+  navigation: NavigationData;
+  site: SiteData;
 }

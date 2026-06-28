@@ -1,5 +1,5 @@
 ---
-import type { HeroData } from '../data/types';
+import type { HeroData } from '../types';
 
 interface Props {
   hero: HeroData;
@@ -17,7 +17,7 @@ const { hero } = Astro.props;
       <a class="button button--primary" href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
       <a class="button button--secondary" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
     </div>
-    <ul class="inline-list" aria-label="Trust highlights">
+    <ul class="inline-list" aria-label={hero.trustHighlightsLabel}>
       {hero.trustHighlights.map((item) => (
         <li>{item}</li>
       ))}

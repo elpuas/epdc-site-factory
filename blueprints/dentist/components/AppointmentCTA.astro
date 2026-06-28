@@ -1,5 +1,5 @@
 ---
-import type { AppointmentCtaData } from '../data/types';
+import type { AppointmentCtaData } from '../types';
 
 interface Props {
   cta: AppointmentCtaData;
@@ -10,7 +10,7 @@ const { cta } = Astro.props;
 
 <section class="section cta-panel">
   <div>
-    <p class="eyebrow">Appointment CTA</p>
+    <p class="eyebrow">{cta.eyebrow}</p>
     <h2>{cta.title}</h2>
     <p>{cta.description}</p>
     <p class="muted">{cta.phoneNote}</p>

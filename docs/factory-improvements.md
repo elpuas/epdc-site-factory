@@ -30,6 +30,8 @@
   - map-embed or location-link requirements
   - approved testimonial guidance
 - Added `docs/generated-project-audit.md` to make the findings reusable across future sprints.
+- Refactored `blueprints/dentist/` so the Blueprint owns presentation contracts and project `src/data/` owns business content.
+- Added `projects/dental-demo/` to validate the Astro Starter -> Dental Blueprint -> Project Data architecture with a full placeholder site.
 
 ## Improvements Deferred
 
@@ -37,5 +39,6 @@
 - QA-skill updates for validation-build review rules
 - Planner refinements for bootstrap and validation-mode task boundaries
 - Any execution-layer redesign for turning prompt artifacts directly into project files
+- Starter-level structured-data injection from `src/data/schema.ts`
 
 Deferred items were not implemented in this sprint because the sprint goal was limited to auditing the first generated project and refining skills or schema only where directly supported by evidence.

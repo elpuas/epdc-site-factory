@@ -1,0 +1,32 @@
+---
+import HomePage from '../../../../blueprints/dentist/pages/index.astro';
+import { about } from '../data/about';
+import { blogPreview } from '../data/blog';
+import { doctorsPreview } from '../data/doctors';
+import { footer } from '../data/footer';
+import { homeHero } from '../data/hero';
+import { homeLocations } from '../data/locations';
+import { navigation } from '../data/navigation';
+import { seo } from '../data/seo';
+import { homeServices } from '../data/services';
+import { appointmentCta, site } from '../data/site';
+import { googleReviews, testimonials } from '../data/testimonials';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<HomePage
+  about={about}
+  appointmentCta={appointmentCta}
+  baseLayout={BaseLayout}
+  blog={blogPreview}
+  doctors={doctorsPreview}
+  footer={footer}
+  googleReviews={googleReviews}
+  hero={homeHero}
+  locations={homeLocations}
+  navigation={navigation}
+  seo={seo.home}
+  services={homeServices}
+  site={site}
+  testimonials={testimonials}
+/>

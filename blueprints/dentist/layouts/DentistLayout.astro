@@ -1,30 +1,33 @@
 ---
-import BaseLayout from '../../../starters/astro-minimal/src/layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import WhatsAppFloatingButton from '../components/WhatsAppFloatingButton.astro';
-import { footer } from '../data/footer';
-import { navigation } from '../data/navigation';
-import { site } from '../data/site';
+import type { FooterData, NavigationData, SiteData } from '../types';
 
 interface Props {
+  baseLayout: unknown;
   description?: string;
+  footer: FooterData;
+  lang?: string;
+  navigation: NavigationData;
+  site: SiteData;
   title: string;
 }
 
-const { description = site.meta.description, title } = Astro.props;
+const { baseLayout, description, footer, lang = 'en', navigation, site, title } = Astro.props;
+const BaseLayout = baseLayout as any;
 ---
 
-<BaseLayout title={title} description={description} lang={site.meta.lang}>
-  <a class="skip-link" href="#main-content">Skip to content</a>
+<BaseLayout title={title} description={description} lang={lang}>
+  <a class="skip-link" href="#main-content">{site.accessibility.skipLinkLabel}</a>
   <div class="page-shell">
     <Header navigation={navigation} site={site} />
     <main id="main-content">
       <slot />
     </main>
-    <Footer legalNotice={footer.legalNotice} navigation={navigation} site={site} />
+    <Footer footer={footer} navigation={navigation} site={site} />
   </div>
-  <WhatsAppFloatingButton href={site.whatsappHref} label="Open WhatsApp conversation" />
+  <WhatsAppFloatingButton href={site.whatsappHref} label={site.accessibility.whatsappFloatingLabel} />
 </BaseLayout>
 
 <style is:global>
