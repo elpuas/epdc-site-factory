@@ -1,0 +1,21 @@
+---
+import FAQPage from '../../blueprints/dentist/pages/faq.astro';
+import { faqPage } from '../data/faq';
+import { footer } from '../data/footer';
+import { faqHero } from '../data/hero';
+import { navigation } from '../data/navigation';
+import { seo } from '../data/seo';
+import { appointmentCta, site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<FAQPage
+  appointmentCta={appointmentCta}
+  baseLayout={BaseLayout}
+  faq={faqPage}
+  footer={footer}
+  hero={faqHero}
+  navigation={navigation}
+  seo={seo.faq}
+  site={site}
+/>

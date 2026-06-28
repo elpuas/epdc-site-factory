@@ -175,7 +175,7 @@ Status: Sprint 016 completed
 
 ## Phase 10 - Project Generation
 
-Status: Sprint 012 completed
+Status: Sprint 022 completed
 
 - Generate websites from specifications
 - Validate outputs through QA
@@ -202,6 +202,17 @@ Status: Sprint 012 completed
 - Documented the starter architecture in `docs/astro-starter.md`
 - Added validation findings in `docs/starter-validation.md`
 - Clarified the intended future flow from Factory to Astro Starter to Blueprints before runtime execution
+
+### Sprint 022 - Project Assembly Engine
+
+- Added the deterministic Assembly Engine contract in `assembler/README.md` and `assembler/assembly-schema.md`
+- Added `scripts/assemble-project.js` as the first project assembly CLI
+- Replaced the placeholder `create-project` command with a working deterministic assembler entrypoint
+- Implemented Starter copy, Blueprint copy, project data copy, placeholder asset copy, manifest generation, and pre-runtime validation
+- Generated the first assembled project in `projects/demo-clinic/`
+- Added `project.json` as the canonical manifest for assembled projects
+- Added `docs/project-assembly-validation.md`
+- Confirmed the Factory can now deterministically assemble runnable Astro projects without invoking AI or Runtime
 
 ## Phase 11 - Vertical Platforms
 

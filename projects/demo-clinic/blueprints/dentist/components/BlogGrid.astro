@@ -1,0 +1,28 @@
+---
+import type { BlogSectionData } from '../types';
+
+interface Props {
+  section: BlogSectionData;
+}
+
+const { section } = Astro.props;
+---
+
+<section class="section">
+  <div class="section-heading">
+    <p class="eyebrow">{section.eyebrow}</p>
+    <h2>{section.title}</h2>
+  </div>
+  <div class="card-grid">
+    {section.posts.map((post) => (
+      <article class="card">
+        <img class="placeholder-image" src={post.image.src} alt={post.image.alt} />
+        <p class="pill">{post.category}</p>
+        <h3>{post.title}</h3>
+        <p>{post.summary}</p>
+        <p class="muted">{post.publishedAt} · {post.readTime}</p>
+        <a href={`/blog-post#${post.slug}`}>{section.linkLabel}</a>
+      </article>
+    ))}
+  </div>
+</section>

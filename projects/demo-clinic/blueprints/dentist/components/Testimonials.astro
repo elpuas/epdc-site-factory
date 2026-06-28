@@ -1,0 +1,24 @@
+---
+import type { TestimonialsSectionData } from '../types';
+
+interface Props {
+  section: TestimonialsSectionData;
+}
+
+const { section } = Astro.props;
+---
+
+<section class="section">
+  <div class="section-heading">
+    <p class="eyebrow">{section.eyebrow}</p>
+    <h2>{section.title}</h2>
+  </div>
+  <div class="card-grid">
+    {section.items.map((item) => (
+      <blockquote class="card quote-card">
+        <p>"{item.quote}"</p>
+        <footer>{item.authorLabel}</footer>
+      </blockquote>
+    ))}
+  </div>
+</section>

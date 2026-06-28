@@ -1,0 +1,8 @@
+{
+  "name": "demo-clinic",
+  "starter": "astro-minimal",
+  "blueprint": "dentist",
+  "factoryVersion": "0.1.0",
+  "generatedAt": "2026-06-28T14:09:06.807Z",
+  "status": "assembled"
+}

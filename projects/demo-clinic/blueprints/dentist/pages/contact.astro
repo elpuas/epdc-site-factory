@@ -1,0 +1,29 @@
+---
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Hero from '../components/Hero.astro';
+import LocationsSection from '../components/LocationsSection.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
+import type { AppointmentCtaData, ContactSectionData, FooterData, HeroData, LocationsSectionData, NavigationData, SeoPageData, SiteData } from '../types';
+
+interface Props {
+  appointmentCta: AppointmentCtaData;
+  baseLayout: unknown;
+  contactSection: ContactSectionData;
+  footer: FooterData;
+  hero: HeroData;
+  locations: LocationsSectionData;
+  navigation: NavigationData;
+  seo: SeoPageData;
+  site: SiteData;
+}
+
+const { appointmentCta, baseLayout, contactSection, footer, hero, locations, navigation, seo, site } = Astro.props;
+---
+
+<DentistLayout baseLayout={baseLayout} title={seo.title} description={seo.description} footer={footer} lang={seo.lang} navigation={navigation} site={site}>
+  <Hero hero={hero} />
+  <ContactSection section={contactSection} />
+  <LocationsSection section={locations} />
+  <AppointmentCTA cta={appointmentCta} />
+</DentistLayout>

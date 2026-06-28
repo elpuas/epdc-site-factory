@@ -1,0 +1,28 @@
+---
+import type { GoogleReviewsSectionData } from '../types';
+
+interface Props {
+  section: GoogleReviewsSectionData;
+}
+
+const { section } = Astro.props;
+---
+
+<section class="section section--split">
+  <div class="card review-summary">
+    <p class="eyebrow">{section.eyebrow}</p>
+    <h2>{section.title}</h2>
+    <p>{section.summary.rating}</p>
+    <p>{section.summary.reviewCountLabel}</p>
+    <p>{section.summary.label}</p>
+  </div>
+
+  <div class="stack">
+    {section.items.map((item) => (
+      <article class="card compact-card">
+        <h3>{item.authorLabel}</h3>
+        <p>{item.quote}</p>
+      </article>
+    ))}
+  </div>
+</section>

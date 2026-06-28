@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">Doctor placeholder</title>
+  <desc id="desc">Minimal portrait placeholder for doctor profile cards.</desc>
+  <rect width="320" height="320" rx="32" fill="#efe7d9"/>
+  <circle cx="160" cy="116" r="52" fill="#c7e6df"/>
+  <path d="M88 256c12-48 48-74 72-74s60 26 72 74" fill="#0d8c72" opacity=".22"/>
+</svg>

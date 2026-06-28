@@ -1,0 +1,21 @@
+---
+import type { ClinicIntroData } from '../types';
+
+interface Props {
+  section: ClinicIntroData;
+}
+
+const { section } = Astro.props;
+---
+
+<section class="section section--split">
+  <div>
+    <p class="eyebrow">{section.eyebrow}</p>
+    <h2>{section.title}</h2>
+  </div>
+  <div class="stack">
+    <p>{section.summary}</p>
+    <p>{section.story}</p>
+    <p>{section.philosophy}</p>
+  </div>
+</section>

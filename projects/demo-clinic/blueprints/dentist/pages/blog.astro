@@ -1,0 +1,26 @@
+---
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import BlogGrid from '../components/BlogGrid.astro';
+import Hero from '../components/Hero.astro';
+import DentistLayout from '../layouts/DentistLayout.astro';
+import type { AppointmentCtaData, BlogSectionData, FooterData, HeroData, NavigationData, SeoPageData, SiteData } from '../types';
+
+interface Props {
+  appointmentCta: AppointmentCtaData;
+  baseLayout: unknown;
+  blog: BlogSectionData;
+  footer: FooterData;
+  hero: HeroData;
+  navigation: NavigationData;
+  seo: SeoPageData;
+  site: SiteData;
+}
+
+const { appointmentCta, baseLayout, blog, footer, hero, navigation, seo, site } = Astro.props;
+---
+
+<DentistLayout baseLayout={baseLayout} title={seo.title} description={seo.description} footer={footer} lang={seo.lang} navigation={navigation} site={site}>
+  <Hero hero={hero} />
+  <BlogGrid section={blog} />
+  <AppointmentCTA cta={appointmentCta} />
+</DentistLayout>

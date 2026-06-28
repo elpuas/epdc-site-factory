@@ -537,6 +537,45 @@ Known limitations:
 Next:
 Runtime Retry And Review Vocabulary
 
+## Sprint 022
+
+Goal:
+Implement the first deterministic Project Assembly Engine so the Factory can assemble runnable Astro projects from stable reusable assets without invoking AI.
+
+Completed:
+
+- Reviewed the current assembly architecture across `starters/astro-minimal/`, `blueprints/dentist/`, `projects/dental-demo/`, `design/dental-platform/`, `docs/astro-starter.md`, `docs/dental-blueprint-validation.md`, and `docs/blueprint-data-validation.md`.
+- Added `assembler/README.md` to define assembly philosophy, folder responsibilities, deterministic order, and runtime boundary.
+- Added `assembler/assembly-schema.md` to document the Assembly Engine input and output contract.
+- Added `scripts/assemble-project.js` as the first deterministic project assembler CLI.
+- Replaced the placeholder root `create-project` command so `npm run create-project dentist demo-clinic` now resolves to the assembler.
+- Implemented deterministic Starter copy, Blueprint copy, project data copy, placeholder asset copy, manifest generation, and pre-runtime validation.
+- Generated `projects/demo-clinic/` as the first assembled project output.
+- Added `projects/demo-clinic/project.json` as the canonical assembly manifest.
+- Validated the assembled project locally with `npm install`, `npm run build`, and `npm run dev`.
+- Added `docs/project-assembly-validation.md`.
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None to the repository root. The assembled project uses the Astro dependency declared in its local `package.json`.
+
+Decisions made:
+
+- The Assembly Engine is deterministic only and must not invoke AI, Runtime, Codex, prompt generation, or execution packages.
+- The generated project copies the Blueprint into `blueprints/<name>/` so the output is self-contained and runnable on its own.
+- The current dental assembly path uses `projects/dental-demo/` as the canonical placeholder data source for the `dentist` Blueprint.
+- `project.json` is now the canonical identity manifest for assembled projects.
+
+Known limitations:
+
+- The current assembler supports the validated `dentist` Blueprint only.
+- Placeholder business content still comes from the validated dental demo surface rather than a separate project-data package.
+- The engine assembles and validates project structure, but it does not own runtime execution or deployment concerns.
+
+Next:
+Blueprint Expansion And Runtime Handoff Planning
+
 ## Sprint 021
 
 Goal:

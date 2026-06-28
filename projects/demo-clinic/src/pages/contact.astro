@@ -1,0 +1,22 @@
+---
+import ContactPage from '../../blueprints/dentist/pages/contact.astro';
+import { footer } from '../data/footer';
+import { contactHero } from '../data/hero';
+import { contactLocations } from '../data/locations';
+import { navigation } from '../data/navigation';
+import { seo } from '../data/seo';
+import { appointmentCta, contactSection, site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<ContactPage
+  appointmentCta={appointmentCta}
+  baseLayout={BaseLayout}
+  contactSection={contactSection}
+  footer={footer}
+  hero={contactHero}
+  locations={contactLocations}
+  navigation={navigation}
+  seo={seo.contact}
+  site={site}
+/>

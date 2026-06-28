@@ -8,7 +8,7 @@
     "assemble-context": "node ./scripts/assemble-context.js",
     "build-prompt": "node ./scripts/build-prompt.js",
     "create-execution-package": "node ./scripts/create-execution-package.js",
-    "create-project": "node ./scripts/create-project.js",
+    "create-project": "node ./scripts/assemble-project.js",
     "prepare-handoff": "node ./scripts/prepare-codex-handoff.js",
     "run-tasks": "node ./scripts/run-tasks.js",
     "run-orchestrator": "node ./scripts/run-orchestrator.js"
