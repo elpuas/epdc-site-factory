@@ -8,7 +8,7 @@ The goal is to evaluate:
 
 - Astro structure
 - Specification coverage
-- Skill effectiveness
+- Domain-contract effectiveness
 - Prompt quality
 - Planner usefulness
 
@@ -64,7 +64,7 @@ What worked:
 
 What was missing:
 
-- The Astro skill did not previously describe component-folder naming or when to keep content inline versus extracting a component.
+- The Astro domain contract did not previously describe component-folder naming or when to keep content inline versus extracting a component.
 - The project still relies on inline section markup for most repeated content structures because the prompts did not require component-boundary decisions strongly enough.
 
 ### Data organization
@@ -76,7 +76,7 @@ What worked:
 
 What was missing:
 
-- The Astro skill did not previously mention `src/data/` as a first-class folder convention.
+- The Astro domain contract did not previously mention `src/data/` as a first-class folder convention.
 - The specification did not provide enough structured business information, so the data file became a TODO container rather than a complete content source.
 
 ## Specification Coverage
@@ -124,7 +124,7 @@ Assessment:
 - These TODOs were appropriate because the project did not invent missing facts.
 - Their volume shows the specification lacks required structured business-detail fields needed for first-project generation.
 
-## Skill Evaluation
+## Domain-Contract Evaluation
 
 ### Astro
 
@@ -247,5 +247,5 @@ What should be added:
 
 - The project structure is sound for a first factory output.
 - The strongest improvement area is not the architecture; it is the quality of implementation-ready details inside the specification and frontend generation guidance.
-- The Astro skill needed direct refinement from real output evidence, especially around bootstrap and folder conventions.
+- The Astro domain contract needed direct refinement from real output evidence, especially around bootstrap and folder conventions.
 - The specification schema needed stronger guidance for operational business details because their absence caused repeated TODOs across multiple pages.

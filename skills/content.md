@@ -1,10 +1,10 @@
-# Content Skill
+# Content Domain Contract
 
 ## Purpose
 
 Define the implementation guidance for structuring content in EPDC projects so pages are clear, conversion-oriented, locally relevant, and aligned with the project specification.
 
-This skill documents how future content work should be organized before or alongside implementation.
+This contract documents how future content work should be organized before or alongside implementation.
 
 ## Content Structure
 

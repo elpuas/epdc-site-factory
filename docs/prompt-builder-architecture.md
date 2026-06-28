@@ -62,7 +62,7 @@ That package includes:
 - Project specification summary
 - Assigned task
 - Agent definition
-- Required skills
+- Required domain contracts
 - Constraints
 - Expected output
 
@@ -119,7 +119,7 @@ The Context Engine owns:
 
 - Context assembly
 - Context-package structure
-- Source selection for task, agent, and skills
+- Source selection for task, agent, and domain contracts
 
 The Task Runner owns:
 

@@ -9,7 +9,7 @@ Transform a project specification into a structured planning prompt that directs
 ## Assembly Inputs
 
 - Agent contract: `agents/planner.md`
-- Skill contract: `skills/planner.md`
+- Planning contract: `skills/planner.md`
 - Prompt schema: `prompt-builder/prompt-schema.md`
 - Specification document
 - Any repository or project conventions that materially affect planning

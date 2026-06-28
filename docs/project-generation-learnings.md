@@ -4,7 +4,7 @@
 
 - The specification provided enough structure to generate a coherent first Astro project without redefining the architecture.
 - The planner output was useful for separating what could be built immediately from what should remain documented as incomplete.
-- The Astro, Content, and SEO skills were practical guardrails for reusable layout structure, accessible navigation, and metadata consistency.
+- The Astro, Content, and SEO domain contracts were practical guardrails for reusable layout structure, accessible navigation, and metadata consistency.
 - The generated prompt and handoff layers made it easy to see which frontend and content concerns were already expected by the factory.
 
 ## What Failed

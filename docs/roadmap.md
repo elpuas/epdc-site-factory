@@ -4,7 +4,7 @@
 
 - Create the base repository layout
 - Add foundational documentation
-- Establish early conventions for scripts, agents, skills, and project storage
+- Establish early conventions for scripts, agents, domain contracts, and project storage
 
 ## Phase 2 - Specifications
 
@@ -20,22 +20,22 @@ Status: Sprint 002 completed
 - Added realistic example specifications for dentist, clinic, and lawyer projects
 - Added a top-level `schema.md` entrypoint for the specification format
 
-## Phase 3 - Planning And Skills
+## Phase 3 - Planning And Domain Contracts
 
 Status: Sprint 004 completed
 
 - Define planning output contracts
 - Standardize reusable implementation knowledge
-- Establish domain-specific skill guidance
+- Establish domain-specific implementation contracts
 
-### Sprint 003 - Planner Skill Design
+### Sprint 003 - Planner Contract Design
 
 - Added `skills/planner.md`
 - Added `planner/task-schema.json`
 - Added `planner/example-output.json`
 - Added `docs/planning-process.md`
 
-### Sprint 004 - Core Skills Foundation
+### Sprint 004 - Core Domain Contracts Foundation
 
 - Added implementation guidance for Astro, Supabase, SEO, QA, and Content
 - Added `docs/skills-architecture.md`
@@ -188,7 +188,7 @@ Status: Sprint 022 completed
 - Added `projects/harbor-point-dental-studio/FACTORY_REPORT.md` to document task coverage, missing information, and specification improvements
 - Added `docs/project-generation-learnings.md` to capture what worked, what failed, and what still needs redesign
 
-### Sprint 013 - Generated Project Audit And Skill Refinement
+### Sprint 013 - Generated Project Audit And Contract Refinement
 
 - Audited the first generated Astro project in `docs/generated-project-audit.md`
 - Refined `skills/astro.md` based on evidence from the generated project
@@ -257,7 +257,7 @@ Status: Sprint 021 completed
 
 ## Phase 12 - Codex Interoperability
 
-Status: Sprint 023 completed
+Status: Sprint 024 completed
 
 - Align repository instruction surfaces with current official Codex conventions
 - Clarify the boundary between EPDC domain contracts and Codex-native skill packaging
@@ -273,3 +273,12 @@ Status: Sprint 023 completed
 - Fixed `scripts/create-execution-package.js` so execution-package generation no longer fails when a handoff omits an explicit source-prompt field
 - Clarified the boundary between EPDC `skills/`, repo-scoped Codex skills, and internal prompt-guidance docs
 - Updated `README.md`, `docs/skills-architecture.md`, `docs/prompt-architecture.md`, `prompts/README.md`, and architecture references to reflect the current boundary model
+
+### Sprint 024 - Codex Knowledge Architecture Standardization
+
+- Audited the repository against the current official Codex guidance for `AGENTS.md`, instruction hierarchy, skills, customization, and knowledge discovery
+- Added `docs/codex-knowledge-architecture.md`
+- Classified every document under `skills/` and confirmed those files are EPDC domain contracts rather than Codex skill packages
+- Kept `.agents/skills/` as the only repo-scoped Codex skill surface and preserved the existing `factory-repository-map` package structure
+- Updated active architecture and terminology docs so EPDC domain contracts are no longer described as Codex skills in the live repository model
+- Preserved the existing `skills/` path for compatibility instead of performing an unjustified migration

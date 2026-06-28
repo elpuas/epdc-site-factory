@@ -9,7 +9,7 @@ Transform `content` tasks plus the EPDC content contracts into a prompt that dir
 ## Assembly Inputs
 
 - Agent contract: `agents/content.md`
-- Skill contracts:
+- Domain contracts:
   - `skills/content.md`
   - `skills/seo.md`
   - `skills/astro.md`

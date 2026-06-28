@@ -71,4 +71,4 @@ When repository docs or deterministic scripts change, verify the affected comman
 - `npm run run-tasks`
 - `npm run prepare-handoff`
 - `npm run create-execution-package`
-- `npm run create-project`
+- `npm run create-project -- <blueprint> <project-name>`

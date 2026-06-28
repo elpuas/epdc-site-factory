@@ -9,7 +9,7 @@ Transform a `frontend` task set plus the EPDC frontend contracts into a prompt t
 ## Assembly Inputs
 
 - Agent contract: `agents/frontend.md`
-- Skill contracts:
+- Domain contracts:
   - `skills/astro.md`
   - `skills/content.md`
   - `skills/seo.md`

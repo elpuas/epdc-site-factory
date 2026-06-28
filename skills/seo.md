@@ -1,10 +1,10 @@
-# SEO Skill
+# SEO Domain Contract
 
 ## Purpose
 
 Define the implementation guidance for making EPDC sites discoverable, technically sound, and locally relevant.
 
-This skill documents how future SEO work should interpret specification requirements and turn them into concrete implementation standards.
+This contract documents how future SEO work should interpret specification requirements and turn them into concrete implementation standards.
 
 ## Technical SEO
 

@@ -105,7 +105,7 @@ That is the correct Sprint 017 framing: deterministic preparation plus documente
 | Specification | Define business scope, requirements, and acceptance criteria | Implemented as schema plus examples |
 | Planner | Convert specification scope into categorized tasks with priorities and dependencies | Documented contract plus static example output |
 | Task Runner | Iterate planner tasks and generate task-level prompt artifacts | Implemented script |
-| Context Engine | Assemble canonical JSON context packages with task, agent, skills, constraints, and runtime metadata | Implemented script |
+| Context Engine | Assemble canonical JSON context packages with task, agent, domain contracts, constraints, and runtime metadata | Implemented script |
 | Prompt Builder | Render deterministic planning and execution prompts from context packages | Implemented script |
 | Execution Package | Preserve prompt payload, runtime scope, expected outputs, and review requirements in a runtime-consumable contract | Implemented script and docs |
 | Runtime | Consume packages, deliver prompts, capture logs and changed files, manage attempts and review flow | Documented and manually validated |
@@ -192,7 +192,7 @@ Location:
 Owns:
 
 - canonical JSON context packaging
-- agent and skill loading
+- agent and domain-contract loading
 - constraint packaging
 - expected-output packaging
 - runtime metadata attachment in execution mode
@@ -358,7 +358,7 @@ The task plan becomes deterministic downstream input. The Task Runner processes 
 
 ### 4. Task Runner -> Context Engine
 
-For each task, the Context Engine assembles the required execution context: specification summary, agent contract, skill contracts, constraints, expected outputs, and runtime metadata when relevant.
+For each task, the Context Engine assembles the required execution context: specification summary, agent contract, domain contracts, constraints, expected outputs, and runtime metadata when relevant.
 
 ### 5. Context Engine -> Planning Prompt
 
@@ -439,7 +439,7 @@ What was learned:
 
 - missing business facts block publishable output quickly
 - reduced validation builds need explicit rules
-- implementation standards needed refinement, especially in the Astro skill
+- implementation standards needed refinement, especially in the Astro domain contract
 
 ### Runtime Validation
 
@@ -520,7 +520,7 @@ The active scripts operate on structured JSON context and package data. Markdown
 - No factory-owned knowledge layer
 - No dynamic file-allowlist generation from richer planning output
 - No automated validation of generated projects against the full specification
-- `scripts/create-project.js` is not implemented
+- project assembly currently requires explicit blueprint and project-name arguments
 - `scripts/run-orchestrator.js` is not implemented
 
 ## Roadmap Direction
@@ -537,7 +537,7 @@ These are future phases, not present-day architecture.
 
 ## Developer Guide
 
-### Add a new Skill
+### Add a New Domain Contract Or Codex Skill
 
 1. Decide whether the addition is an EPDC domain contract or a Codex skill package.
 2. For an EPDC domain contract, add a markdown document under `skills/`.

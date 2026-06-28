@@ -68,7 +68,7 @@ This task layer is important because it creates consistent handoffs instead of l
 
 ## Step 4 - Specialized Agents
 
-Specialized agents consume the task breakdown plus the required skill documents for their domain.
+Specialized agents consume the task breakdown plus the required domain-contract documents for their domain.
 
 ### Frontend Agent
 
@@ -93,7 +93,7 @@ Specialized agents consume the task breakdown plus the required skill documents 
 ### QA Agent
 
 - Owns validation against the specification, planned tasks, and cross-domain implementation standards.
-- Uses `skills/qa.md` and supporting domain skills as needed for verification.
+- Uses `skills/qa.md` and supporting domain contracts as needed for verification.
 
 ## Step 5 - Outputs
 

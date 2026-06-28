@@ -9,7 +9,7 @@ Transform `qa` tasks plus the EPDC QA contracts into a prompt that directs Codex
 ## Assembly Inputs
 
 - Agent contract: `agents/qa.md`
-- Skill contracts:
+- Domain contracts:
   - `skills/qa.md`
   - `skills/astro.md`
   - `skills/seo.md`

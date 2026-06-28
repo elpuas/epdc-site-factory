@@ -1,6 +1,6 @@
-# Skills Architecture
+# Domain Contracts Architecture
 
-This document explains how EPDC Site Factory connects specifications, planning, task output, implementation skills, and future agents.
+This document explains how EPDC Site Factory connects specifications, planning, task output, EPDC domain contracts, and future agents.
 
 ## Workflow
 
@@ -16,7 +16,7 @@ This document explains how EPDC Site Factory connects specifications, planning, 
 
 `↓`
 
-`Skills`
+`Domain Contracts`
 
 `↓`
 
@@ -41,7 +41,7 @@ The specification is the source of truth. Everything downstream should stay trac
 
 ## Step 2 - Planner
 
-The Planner Skill translates the specification into structured work.
+The planner contract translates the specification into structured work.
 
 It does this by:
 
@@ -66,11 +66,11 @@ Each task identifies:
 
 This task layer is important because it prevents future implementation work from skipping directly from a high-level specification into ad hoc execution.
 
-## Step 4 - Skills
+## Step 4 - Domain Contracts
 
-Skills define how each category of work should be approached.
+Domain contracts define how each category of work should be approached.
 
-Current core skills:
+Current core domain contracts:
 
 - `skills/astro.md`
 - `skills/supabase.md`
@@ -78,7 +78,7 @@ Current core skills:
 - `skills/qa.md`
 - `skills/content.md`
 
-These skills provide implementation guidance for:
+These domain contracts provide implementation guidance for:
 
 - Frontend structure and Astro standards
 - Backend and Supabase rules when backend scope exists
@@ -86,7 +86,7 @@ These skills provide implementation guidance for:
 - Quality assurance expectations
 - Content organization and conversion patterns
 
-Skills do not decide project scope. They interpret tasks within their domain.
+Domain contracts do not decide project scope. They interpret tasks within their domain.
 
 ## Terminology Boundary
 
@@ -104,14 +104,14 @@ EPDC keeps `skills/` because these documents define stable domain standards that
 
 ## Step 5 - Future Agents
 
-Future agents are expected to use tasks plus skills together.
+Future agents are expected to use tasks plus domain contracts together.
 
 The intended relationship is:
 
 - The specification says what the project needs.
 - The planner says what work must be done.
-- The skills say how that work should be carried out.
-- Future agents would apply those skills to execute the tasks.
+- The domain contracts say how that work should be carried out.
+- Future agents would apply those domain contracts to execute the tasks.
 
 This repository does not implement those agents yet. Sprint 004 only defines the knowledge layer they would rely on.
 
@@ -119,7 +119,7 @@ This repository does not implement those agents yet. Sprint 004 only defines the
 
 - Specifications define scope.
 - Planner output defines work.
-- Skills define implementation standards.
+- Domain contracts define implementation standards.
 - Future agents should be replaceable without changing the specification format.
 - Each layer should remain understandable on its own.
 

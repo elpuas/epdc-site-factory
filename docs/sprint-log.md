@@ -13,12 +13,12 @@ Completed:
 - Updated `docs/roadmap.md`.
 
 Next:
-Planner Skill Design
+Planner Contract Design
 
 ## Sprint 003
 
 Goal:
-Design the Planner Skill.
+Design the planner contract.
 
 Completed:
 
@@ -29,12 +29,12 @@ Completed:
 - Updated `docs/roadmap.md`.
 
 Next:
-Core Skills Foundation
+Core Domain Contracts Foundation
 
 ## Sprint 004
 
 Goal:
-Define the core implementation skills that future agents will use.
+Define the core implementation domain contracts that future agents will use.
 
 Completed:
 
@@ -573,7 +573,44 @@ Known limitations:
 - Broader terminology cleanup was intentionally deferred to avoid churn without architectural payoff.
 
 Next:
-Skill Package Migration Planning
+Codex Knowledge Architecture Standardization
+
+## Sprint 024
+
+Goal:
+Standardize the repository knowledge architecture so it aligns with the official Codex model without redesigning the Factory.
+
+Completed:
+
+- Reviewed the repository across `AGENTS.md`, `.agents/`, `skills/`, `docs/`, `prompts/`, `execution-prompts/`, `runtime/`, `specs/`, `blueprints/`, and `starters/`.
+- Reviewed the current official Codex guidance for `AGENTS.md`, instruction discovery, skills, customization, and plugin packaging through the current Codex manual.
+- Added `docs/codex-knowledge-architecture.md`.
+- Classified every existing document under `skills/` and documented the reasoning for each classification.
+- Confirmed that the files under `skills/` are EPDC domain contracts, not Codex skill packages.
+- Confirmed that `.agents/skills/factory-repository-map/SKILL.md` remains the repository's only true Codex skill package and already follows the official package structure.
+- Updated live architecture and terminology docs so EPDC domain contracts are no longer described as Codex skills in the active repository model.
+- Updated the headings and explanatory text inside `skills/*.md` so those documents identify themselves as contracts while preserving their file paths for compatibility.
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None. This sprint standardizes documentation and repository guidance only.
+
+Decisions made:
+
+- Keep `AGENTS.md` focused on repository instructions only.
+- Keep `.agents/skills/` as the sole repo-scoped Codex skill surface.
+- Treat `skills/` as a legacy path for EPDC domain contracts rather than migrating those files into the Codex skill system.
+- Prefer terminology correction and architectural mapping over structural moves that are not required by official Codex guidance.
+
+Known limitations:
+
+- The `skills/` directory name remains in place for compatibility even though its contents are now explicitly documented as EPDC domain contracts.
+- Historical records and earlier audits may still use older terminology where it is part of the historical record.
+- A future migration could rename the `skills/` path, but this sprint does not justify that change.
+
+Next:
+Compatibility Path Rename Evaluation
 
 ## Sprint 022
 

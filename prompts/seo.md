@@ -9,7 +9,7 @@ Transform `seo` tasks plus the EPDC SEO contracts into a prompt that directs Cod
 ## Assembly Inputs
 
 - Agent contract: `agents/seo.md`
-- Skill contracts:
+- Domain contracts:
   - `skills/seo.md`
   - `skills/content.md`
   - `skills/astro.md` when page structure affects SEO output

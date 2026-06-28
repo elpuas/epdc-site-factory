@@ -1,10 +1,10 @@
-# Planner Skill
+# Planner Contract
 
 ## Purpose
 
 Define how a future planner transforms an EPDC project specification into a structured, reviewable implementation task list.
 
-This skill is documentation only. It does not implement AI behavior, orchestration, memory, or code generation.
+This contract is documentation only. It does not implement AI behavior, orchestration, memory, or code generation.
 
 ## Responsibilities
 
@@ -18,7 +18,7 @@ This skill is documentation only. It does not implement AI behavior, orchestrati
 
 ## Inputs
 
-The Planner Skill expects:
+The planner contract expects:
 
 - A project specification written with the canonical EPDC schema
 - Repository conventions from `README.md` and `AGENTS.md`
@@ -38,7 +38,7 @@ Minimum required specification inputs:
 
 ## Outputs
 
-The Planner Skill produces:
+The planner contract produces:
 
 - A structured planning output in JSON
 - A task list with explicit categories, priorities, and dependencies

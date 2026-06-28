@@ -1,10 +1,10 @@
-# QA Skill
+# QA Domain Contract
 
 ## Purpose
 
 Define the implementation guidance for validating EPDC projects against their specification, planner output, and implementation standards before release.
 
-This skill describes what quality assurance must verify. It does not implement automated testing in this phase.
+This contract describes what quality assurance must verify. It does not implement automated testing in this phase.
 
 ## Functional Testing
 

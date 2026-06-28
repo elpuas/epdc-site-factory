@@ -1,10 +1,10 @@
-# Astro Skill
+# Astro Domain Contract
 
 ## Purpose
 
 Define the implementation guidance for building EPDC sites with Astro and TypeScript.
 
-This skill documents how future frontend work should structure pages, layouts, components, project bootstrap, and shared data patterns without generating code in this phase.
+This contract documents how future frontend work should structure pages, layouts, components, project bootstrap, and shared data patterns without generating code in this phase.
 
 ## Responsibilities
 

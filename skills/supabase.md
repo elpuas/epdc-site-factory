@@ -1,10 +1,10 @@
-# Supabase Skill
+# Supabase Domain Contract
 
 ## Purpose
 
 Define the implementation guidance for future backend-oriented EPDC work that uses Supabase.
 
-This skill describes how future projects should approach data, authentication, security, and migrations when the specification requires backend capability. It does not introduce backend scope where the specification says launch is static.
+This contract describes how future projects should approach data, authentication, security, and migrations when the specification requires backend capability. It does not introduce backend scope where the specification says launch is static.
 
 ## Responsibilities
 

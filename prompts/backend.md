@@ -9,7 +9,7 @@ Transform a `backend` task set plus the EPDC backend contracts into a prompt tha
 ## Assembly Inputs
 
 - Agent contract: `agents/backend.md`
-- Skill contracts:
+- Domain contracts:
   - `skills/supabase.md`
   - `skills/qa.md` when verification standards affect backend requirements
 - Prompt schema: `prompt-builder/prompt-schema.md`

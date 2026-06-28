@@ -38,7 +38,7 @@ At this stage, the specification describes what must be built. It does not descr
 
 ## Step 2 - Planning
 
-The Planner Skill reads the specification and translates it into structured implementation work.
+The planner contract reads the specification and translates it into structured implementation work.
 
 Its job is to:
 

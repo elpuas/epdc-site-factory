@@ -2,7 +2,7 @@
 
 ## Improvements Identified
 
-- Add bootstrap and folder-convention guidance to the Astro skill.
+- Add bootstrap and folder-convention guidance to the Astro domain contract.
 - Add explicit `src/data/` guidance for shared project facts and metadata.
 - Add validation-build guidance for reduced page sets.
 - Add schema guidance for business-critical operational details that blocked the first project.
@@ -36,7 +36,7 @@
 ## Improvements Deferred
 
 - Prompt refinements for file-generation maps and deferral reporting
-- QA-skill updates for validation-build review rules
+- QA domain-contract updates for validation-build review rules
 - Planner refinements for bootstrap and validation-mode task boundaries
 - Any execution-layer redesign for turning prompt artifacts directly into project files
 - Starter-level structured-data injection from `src/data/schema.ts`
