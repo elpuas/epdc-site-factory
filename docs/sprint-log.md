@@ -13,12 +13,12 @@ Completed:
 - Updated `docs/roadmap.md`.
 
 Next:
-Planner Skill Design
+Planner Contract Design
 
 ## Sprint 003
 
 Goal:
-Design the Planner Skill.
+Design the planner contract.
 
 Completed:
 
@@ -29,12 +29,12 @@ Completed:
 - Updated `docs/roadmap.md`.
 
 Next:
-Core Skills Foundation
+Core Domain Contracts Foundation
 
 ## Sprint 004
 
 Goal:
-Define the core implementation skills that future agents will use.
+Define the core implementation domain contracts that future agents will use.
 
 Completed:
 
@@ -573,7 +573,50 @@ Known limitations:
 - Broader terminology cleanup was intentionally deferred to avoid churn without architectural payoff.
 
 Next:
-Skill Package Migration Planning
+Codex Knowledge Architecture Standardization
+
+## Sprint 024
+
+Goal:
+Standardize the repository knowledge architecture so it aligns with the official Codex model without redesigning the Factory.
+
+Completed:
+
+- Reviewed the repository across `AGENTS.md`, `.agents/`, `skills/`, `docs/`, `prompts/`, `execution-prompts/`, `runtime/`, `specs/`, `blueprints/`, and `starters/`.
+- Reviewed the current official Codex guidance for `AGENTS.md`, instruction discovery, skills, customization, and plugin packaging through the current Codex manual.
+- Added `docs/codex-knowledge-architecture.md`.
+- Classified every existing document under `skills/` and documented the reasoning for each classification.
+- Migrated the reusable workflow files from `skills/` into active Codex skill packages under `.agents/skills/`.
+- Added real Factory skills for `planner`, `astro`, `content`, `seo`, `qa`, and `supabase`, alongside `factory-repository-map`.
+- Updated `scripts/assemble-context.js`, agent contracts, and prompt guidance so the active execution path now loads `.agents/skills/*/SKILL.md`.
+- Reduced `skills/` to legacy migration notes instead of leaving reusable workflows there as the active source of truth.
+- Updated live architecture docs so the repository now documents the final split:
+  - `.agents/skills/` for Codex-native executable skills
+  - `docs/` for developer documentation
+  - `agents/` for EPDC role contracts
+  - `prompts/` and `execution-prompts/` for prompt-generation assets
+- Updated `docs/roadmap.md`.
+
+Dependencies added:
+
+- None. This sprint standardizes repository knowledge architecture and skill packaging only.
+
+Decisions made:
+
+- Keep `AGENTS.md` focused on repository instructions only.
+- Use `.agents/skills/` as the sole active repo-scoped Codex skill surface.
+- Migrate reusable workflows instead of leaving them in `skills/`.
+- Keep only non-executable migration notes outside `.agents/skills/`.
+- Preserve the existing deterministic Factory architecture while changing only the knowledge packaging.
+
+Known limitations:
+
+- Historical records and earlier audits may still use older terminology where it is part of the historical record.
+- The legacy `skills/` directory still exists as a migration note surface, but it is no longer part of the active workflow path.
+- Plugin packaging remains future work; this sprint standardizes local repo-scoped skills only.
+
+Next:
+Plugin Packaging Evaluation
 
 ## Sprint 022
 

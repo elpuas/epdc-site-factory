@@ -25,18 +25,18 @@ The Content Agent must load:
 
 - `specs/schema.md`
 - `planner/task-schema.json`
-- `skills/content.md`
-- `skills/seo.md`
-- `skills/astro.md`
+- `.agents/skills/content/SKILL.md`
+- `.agents/skills/seo/SKILL.md`
+- `.agents/skills/astro/SKILL.md`
 - `docs/planning-process.md`
 - `docs/skills-architecture.md`
 - `AGENTS.md`
 
 ## Skills Used
 
-- `skills/content.md`
-- `skills/seo.md`
-- `skills/astro.md`
+- `.agents/skills/content/SKILL.md`
+- `.agents/skills/seo/SKILL.md`
+- `.agents/skills/astro/SKILL.md`
 
 ## Outputs
 

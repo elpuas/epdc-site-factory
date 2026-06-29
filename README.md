@@ -49,17 +49,17 @@ Current execution stops before Codex. The repository prepares deterministic arti
 
 ### Planning Layer
 
-- Planner skill: `skills/planner.md`
+- Planner skill: `.agents/skills/planner/SKILL.md`
 - Planner output schema: `planner/task-schema.json`
 - Example planner output: `planner/example-output.json`
 
-### Agent and Skill Contracts
+### Instructions, Skills, And Agent Contracts
 
 - Codex repository instructions: `AGENTS.md`
+- Repo-scoped Codex skills: `.agents/skills/`
 - Agent registry: `docs/agent-registry.md`
 - Agent contracts: `agents/`
-- EPDC skill contracts: `skills/`
-- Repo-scoped Codex skills: `.agents/skills/`
+- Legacy migration notes: `skills/`
 
 ### Context Engine
 
@@ -165,7 +165,7 @@ The project has progressed from scaffolding into a deterministic pre-execution p
 
 - Specification schema defined
 - Planner contract defined
-- Agent and skill contracts defined
+- Agent and Codex-skill layers defined
 - Context assembly implemented
 - Prompt generation implemented
 - Task runner implemented

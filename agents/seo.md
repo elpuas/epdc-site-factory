@@ -25,18 +25,18 @@ The SEO Agent must load:
 
 - `specs/schema.md`
 - `planner/task-schema.json`
-- `skills/seo.md`
-- `skills/content.md`
-- `skills/astro.md`
+- `.agents/skills/seo/SKILL.md`
+- `.agents/skills/content/SKILL.md`
+- `.agents/skills/astro/SKILL.md`
 - `docs/planning-process.md`
 - `docs/skills-architecture.md`
 - `AGENTS.md`
 
 ## Skills Used
 
-- `skills/seo.md`
-- `skills/content.md`
-- `skills/astro.md`
+- `.agents/skills/seo/SKILL.md`
+- `.agents/skills/content/SKILL.md`
+- `.agents/skills/astro/SKILL.md`
 
 ## Outputs
 

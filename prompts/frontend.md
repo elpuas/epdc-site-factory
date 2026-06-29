@@ -9,10 +9,10 @@ Transform a `frontend` task set plus the EPDC frontend contracts into a prompt t
 ## Assembly Inputs
 
 - Agent contract: `agents/frontend.md`
-- Skill contracts:
-  - `skills/astro.md`
-  - `skills/content.md`
-  - `skills/seo.md`
+- Skills:
+  - `.agents/skills/astro/SKILL.md`
+  - `.agents/skills/content/SKILL.md`
+  - `.agents/skills/seo/SKILL.md`
 - Prompt schema: `prompt-builder/prompt-schema.md`
 - Project specification
 - Planner output limited to the relevant `frontend` tasks
@@ -44,9 +44,9 @@ Transform a `frontend` task set plus the EPDC frontend contracts into a prompt t
 
 ### Standards
 
-- Pull Astro structure, accessibility, performance, and EPDC standards from `skills/astro.md`
-- Pull relevant hierarchy and CTA rules from `skills/content.md`
-- Pull relevant metadata-aware or page-intent constraints from `skills/seo.md`
+- Pull Astro structure, accessibility, performance, and EPDC standards from `.agents/skills/astro/SKILL.md`
+- Pull relevant hierarchy and CTA rules from `.agents/skills/content/SKILL.md`
+- Pull relevant metadata-aware or page-intent constraints from `.agents/skills/seo/SKILL.md`
 
 ### Constraints
 

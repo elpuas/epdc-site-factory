@@ -10,7 +10,7 @@ The intended flow is:
 
 `SPEC -> Planner Agent -> Task Breakdown -> Specialized Agents -> Outputs`
 
-The specification defines scope, the planner creates structured work, and specialized agents apply domain skills to produce implementation outputs.
+The specification defines scope, the planner creates structured work, and specialized agents apply Codex skills to produce implementation outputs.
 
 ## Registered Agents
 
@@ -54,6 +54,6 @@ The specification defines scope, the planner creates structured work, and specia
 
 - Agents must operate from the project specification and planner task output.
 - Agents must load their required context before producing outputs.
-- Agents must use the skill documents assigned to their domain.
+- Agents must use the skill packages assigned to their domain.
 - Agents must not expand scope beyond the specification or planner-approved tasks.
 - Agents remain separable so implementation knowledge can evolve without changing the specification format.

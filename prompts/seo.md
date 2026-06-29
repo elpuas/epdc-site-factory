@@ -9,10 +9,10 @@ Transform `seo` tasks plus the EPDC SEO contracts into a prompt that directs Cod
 ## Assembly Inputs
 
 - Agent contract: `agents/seo.md`
-- Skill contracts:
-  - `skills/seo.md`
-  - `skills/content.md`
-  - `skills/astro.md` when page structure affects SEO output
+- Skills:
+  - `.agents/skills/seo/SKILL.md`
+  - `.agents/skills/content/SKILL.md`
+  - `.agents/skills/astro/SKILL.md` when page structure affects SEO output
 - Prompt schema: `prompt-builder/prompt-schema.md`
 - Project specification
 - Planner output limited to the relevant `seo` tasks
@@ -43,7 +43,7 @@ Transform `seo` tasks plus the EPDC SEO contracts into a prompt that directs Cod
 
 ### Standards
 
-- Pull technical SEO, local SEO, metadata, OpenGraph, structured-data, sitemap, robots, and EPDC rules from `skills/seo.md`
+- Pull technical SEO, local SEO, metadata, OpenGraph, structured-data, sitemap, robots, and EPDC rules from `.agents/skills/seo/SKILL.md`
 - Pull relevant content and structure rules where SEO depends on them
 
 ### Constraints

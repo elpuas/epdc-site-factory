@@ -24,18 +24,18 @@ The Frontend Agent must load:
 
 - `specs/schema.md`
 - `planner/task-schema.json`
-- `skills/astro.md`
-- `skills/content.md`
-- `skills/seo.md`
+- `.agents/skills/astro/SKILL.md`
+- `.agents/skills/content/SKILL.md`
+- `.agents/skills/seo/SKILL.md`
 - `docs/planning-process.md`
 - `docs/skills-architecture.md`
 - `AGENTS.md`
 
 ## Skills Used
 
-- `skills/astro.md`
-- `skills/content.md`
-- `skills/seo.md`
+- `.agents/skills/astro/SKILL.md`
+- `.agents/skills/content/SKILL.md`
+- `.agents/skills/seo/SKILL.md`
 
 ## Outputs
 

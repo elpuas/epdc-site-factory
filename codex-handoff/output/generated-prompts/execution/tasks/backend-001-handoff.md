@@ -94,21 +94,18 @@ Execute task `backend-form-delivery`: Plan launch-ready form delivery without da
 
 ## Standards
 
-- `skills/supabase.md`
-  - Supabase is optional and specification-driven, not a default requirement for every project.
-  - Backend scope must remain minimal when a project is primarily a marketing site.
-  - Form submission handling should stay lightweight unless the specification requires dashboards, workflows, or persistent records.
+- `.agents/skills/supabase/SKILL.md`
+  - Backend scope must remain proportional to the specification.
   - Security planning is mandatory whenever Supabase enters scope.
   - Database design must map directly to planner tasks and specification requirements.
+  - Form submission handling should stay lightweight unless dashboards or persistent workflows are required.
   - Avoid hidden coupling between frontend structure and backend assumptions.
-  - Favor stable, understandable schemas over generalized frameworks.
-- `skills/qa.md`
-  - QA validates against the specification first, not against personal preference.
-  - Findings should be explicit, reproducible, and tied to a requirement or standard.
+- `.agents/skills/qa/SKILL.md`
+  - Findings must be explicit, reproducible, and traceable to requirements or standards.
   - Conversion-critical issues take precedence over cosmetic refinements.
   - Cross-page consistency is a release requirement for business details and CTAs.
-  - QA should identify both missing requirements and incorrect implementation choices.
-  - Release readiness requires functional, responsive, accessibility, performance, and SEO review.
+  - Review functional, responsive, accessibility, performance, and SEO concerns before approval.
+  - Release readiness must be stated clearly.
 
 ## Constraints
 

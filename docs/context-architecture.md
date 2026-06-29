@@ -20,7 +20,7 @@ This document defines the Context Assembly Engine layer for EPDC Site Factory.
 
 `↓`
 
-`Skill`
+`Codex Skill`
 
 `↓`
 
@@ -50,9 +50,9 @@ The task tells the Context Engine:
 
 The agent contract tells the Context Engine which role owns the task and what outputs and constraints apply.
 
-## Step 5 - Skill
+## Step 5 - Codex Skill
 
-The skill layer tells the Context Engine which implementation standards belong in the package.
+The skill layer tells the Context Engine which reusable workflow instructions belong in the package.
 
 ## Step 6 - Context Assembly Engine
 

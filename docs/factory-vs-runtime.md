@@ -9,7 +9,7 @@ The factory owns deterministic pre-execution preparation.
 Factory owns:
 
 - specifications
-- skills
+- repo-scoped Codex skills
 - agents
 - planning
 - context
@@ -52,7 +52,7 @@ The runtime does not own:
 
 - specification authoring
 - planning logic
-- skill definitions
+- skill definitions and package discovery
 - prompt generation rules
 - factory architecture redesign
 

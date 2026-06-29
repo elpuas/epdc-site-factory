@@ -24,8 +24,8 @@ The repository does not currently implement:
 
 - Treat this file as repository guidance for Codex.
 - Treat nested `AGENTS.md` files as more specific overrides if they are added later.
-- Treat `skills/` as EPDC domain-contract documentation, not as Codex-discoverable skill packages.
-- Treat `.agents/skills/` as the correct location for repo-scoped Codex skills.
+- Treat `.agents/skills/` as the active source of truth for repo-scoped Codex skills.
+- Treat `skills/` as a legacy migration directory, not as the active workflow surface.
 
 ## Preferred Entry Points
 
@@ -39,7 +39,7 @@ Start with these files before broad exploration:
 Use targeted follow-up reads after that:
 
 - `docs/agent-registry.md` for agent definitions
-- `skills/` for EPDC domain standards
+- `.agents/skills/` for repo-scoped Codex skills
 - `agents/` for agent contracts
 - `prompts/` for planning-prompt guidance
 - `execution-prompts/` for runtime-facing prompt templates
@@ -50,7 +50,7 @@ Use targeted follow-up reads after that:
 ## Repository Boundaries
 
 - Keep Codex-specific conventions in `AGENTS.md`, `.agents/skills/`, and related Codex-facing docs.
-- Keep reusable EPDC architecture knowledge in `docs/`, `agents/`, `skills/`, `runtime/`, `assembler/`, `starters/`, and `blueprints/`.
+- Keep developer documentation in `docs/`, implementation-role contracts in `agents/`, prompt assets in `prompts/` and `execution-prompts/`, and runtime or assembly knowledge in `runtime/`, `assembler/`, `starters/`, and `blueprints/`.
 - Keep `prompts/` as internal Factory prompt-guidance documents. They are not Codex custom prompts.
 - Do not redesign the Factory when a documentation boundary fix is sufficient.
 - Prefer additive, low-risk standardization over migrations that would reshape the existing architecture.
@@ -71,4 +71,4 @@ When repository docs or deterministic scripts change, verify the affected comman
 - `npm run run-tasks`
 - `npm run prepare-handoff`
 - `npm run create-execution-package`
-- `npm run create-project`
+- `npm run create-project -- <blueprint> <project-name>`

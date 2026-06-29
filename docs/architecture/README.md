@@ -145,7 +145,7 @@ Current state:
 
 Location:
 
-- `skills/planner.md`
+- `.agents/skills/planner/SKILL.md`
 - `planner/task-schema.json`
 - `planner/example-output.json`
 
@@ -158,7 +158,7 @@ Owns:
 
 Current state:
 
-- planner contract is documented
+- planner skill is documented
 - repository uses a static example planner output
 - no live planner implementation exists
 
@@ -358,7 +358,7 @@ The task plan becomes deterministic downstream input. The Task Runner processes 
 
 ### 4. Task Runner -> Context Engine
 
-For each task, the Context Engine assembles the required execution context: specification summary, agent contract, skill contracts, constraints, expected outputs, and runtime metadata when relevant.
+For each task, the Context Engine assembles the required execution context: specification summary, agent contract, skills, constraints, expected outputs, and runtime metadata when relevant.
 
 ### 5. Context Engine -> Planning Prompt
 
@@ -398,7 +398,7 @@ These are the major working directories a new engineer needs to understand.
 
 - `specs/`: canonical specification schema and example specifications
 - `planner/`: planner schema and example task output
-- `skills/`: reusable implementation standards by domain
+- `.agents/skills/`: reusable implementation workflows by domain
 - `agents/`: role contracts for planner and specialist agents
 - `context-engine/`: context packaging contract and examples
 - `prompt-builder/`: planning prompt schema, examples, and templates
@@ -439,7 +439,7 @@ What was learned:
 
 - missing business facts block publishable output quickly
 - reduced validation builds need explicit rules
-- implementation standards needed refinement, especially in the Astro skill
+- implementation standards needed refinement, especially in the Astro domain contract
 
 ### Runtime Validation
 
@@ -520,7 +520,7 @@ The active scripts operate on structured JSON context and package data. Markdown
 - No factory-owned knowledge layer
 - No dynamic file-allowlist generation from richer planning output
 - No automated validation of generated projects against the full specification
-- `scripts/create-project.js` is not implemented
+- project assembly currently requires explicit blueprint and project-name arguments
 - `scripts/run-orchestrator.js` is not implemented
 
 ## Roadmap Direction
@@ -537,18 +537,18 @@ These are future phases, not present-day architecture.
 
 ## Developer Guide
 
-### Add a new Skill
+### Add a New Codex Skill
 
-1. Decide whether the addition is an EPDC domain contract or a Codex skill package.
-2. For an EPDC domain contract, add a markdown document under `skills/`.
-3. Keep domain contracts documentation-first: purpose, responsibilities, boundaries, and working rules.
-4. Update `scripts/assemble-context.js` so the right tasks include the domain contract in `requiredSkills`.
-5. Update prompt guidance or templates only if the contract changes rendered prompt requirements.
-6. For a repo-scoped Codex skill, add a folder with `SKILL.md` under `.agents/skills/`.
+1. Decide whether the addition is a reusable workflow or developer documentation.
+2. For a reusable workflow, add a skill folder with `SKILL.md` under `.agents/skills/`.
+3. Keep the skill package explicit about when to use it, required context, instructions, constraints, and references.
+4. Update `scripts/assemble-context.js` so the right tasks include the skill in `requiredSkills`.
+5. Update prompt guidance or templates only if the skill changes rendered prompt requirements.
+6. Keep human-oriented architecture explanation in `docs/`, not in the skill package.
 
 Rule:
 
-- domain contracts define standards, not project scope
+- skills define reusable workflow standards, not project scope
 
 ### Add a new Agent
 
@@ -600,7 +600,7 @@ Use this process:
 ```text
 specs/              define scope
 planner/            define work
-skills/             define standards
+.agents/skills/     define Codex-native workflows
 agents/             define ownership
 context-engine/     assemble execution context
 prompt-builder/     render planning prompts

@@ -84,29 +84,24 @@ Use this assembled context package to address task `content-dentist-bio-and-prac
 
 ## Standards
 
-- `skills/content.md`
+- `.agents/skills/content/SKILL.md`
   - Content must map directly to the specification and planned page structure.
   - Primary conversion pages should combine clarity, trust, and a visible next step.
   - Service pages should follow repeatable patterns without becoming generic.
   - Local-business content should be specific, accurate, and operationally useful.
   - Multilingual support must be complete wherever promised.
-  - Content structure should help both users and future SEO work understand the site quickly.
-- `skills/seo.md`
+- `.agents/skills/seo/SKILL.md`
   - SEO work must trace directly back to the specification and planner tasks.
-  - Local targeting must reflect real business locations or service areas, never fabricated reach.
+  - Local targeting must reflect real business locations or service areas.
   - Metadata should be unique on every public page and aligned with on-page content.
   - Structured data must be accurate, visible, and business-specific.
   - Sitemap and robots behavior should be reviewed as part of every launch checklist.
-  - SEO should be integrated into page structure and content planning early, not bolted on after implementation.
-- `skills/astro.md`
-  - The page structure must trace back to the approved specification and planner tasks.
-  - Shared CTAs should remain consistent across key conversion pages.
-  - Contact information must be rendered consistently across all relevant pages.
-  - Service pages should follow a repeatable structure that supports SEO, trust, and conversion.
-  - Frontend implementation should stay static-first unless the specification clearly requires richer behavior.
-  - TypeScript should be used for predictable data structures such as page metadata, service records, FAQs, testimonials, and structured-data payloads.
-  - Maintain a clear separation between content, presentation, and utility logic.
+- `.agents/skills/astro/SKILL.md`
+  - Keep frontend implementation static-first unless the specification clearly requires richer behavior.
+  - Keep shared CTAs consistent across conversion-critical pages.
+  - Keep contact information consistent across all relevant pages.
   - Favor simple, auditable architecture over clever abstractions.
+  - Keep content, presentation, and utility logic clearly separated.
 
 ## Constraints
 
